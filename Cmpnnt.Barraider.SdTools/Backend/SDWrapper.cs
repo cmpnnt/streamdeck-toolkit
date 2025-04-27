@@ -1,5 +1,6 @@
 ﻿using System;
-using BarRaider.SdTools.Payloads;
+using System.Threading.Tasks;
+using BarRaider.SdTools.Communication.Payloads;
 using BarRaider.SdTools.Utilities;
 using CommandLine;
 
@@ -20,7 +21,6 @@ namespace BarRaider.SdTools.Backend
         ///   *  and SaviorXTanren's MixItUp.StreamDeckPlugin:
         ///     - https://github.com/SaviorXTanren/mixer-mixitup/
         /// *************************************************************************/
-
         /// <summary>
         /// Library's main initialization point. 
         /// Pass the args from your Main function and a list of supported PluginActionIds, the framework will handle the rest.
@@ -30,7 +30,8 @@ namespace BarRaider.SdTools.Backend
         /// /// <param name="updateHandler"></param>
         public static void Run(string[] args, IPluginActionRegistry registry, IUpdateHandler updateHandler = null)
         {
-            Logger.Instance.LogMessage(TracingLevel.Info, $"Plugin [{Tools.GetExeName()}] Loading - {registry.PluginActionIDs().Count} Actions Found");
+            Logger.Instance.LogMessage(TracingLevel.Info,
+                $"Plugin [{Tools.GetExeName()}] Loading - {registry.PluginActionIDs().Count} Actions Found");
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
             #if DEBUG
@@ -56,13 +57,25 @@ namespace BarRaider.SdTools.Backend
             });
 
             ParserResult<StreamDeckOptions> options = parser.ParseArguments<StreamDeckOptions>(args);
-            options.WithParsed(o => RunPlugin(o, registry, updateHandler));
+            options.WithParsed(async void (o) =>
+            {
+                try
+                {
+                    await RunPlugin(o, registry, updateHandler);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Instance.LogMessage(TracingLevel.Fatal,
+                        $"Plugin crashed with the following message: {ex.Message}");
+                }
+            });
         }
 
-        private static void RunPlugin(StreamDeckOptions options, IPluginActionRegistry registry, IUpdateHandler updateHandler)
+        private static async Task RunPlugin(StreamDeckOptions options, IPluginActionRegistry registry,
+            IUpdateHandler updateHandler)
         {
             _container = new PluginContainer(registry, updateHandler);
-            _container.Run(options);
+            await _container.Run(options);
         }
 
         private static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)

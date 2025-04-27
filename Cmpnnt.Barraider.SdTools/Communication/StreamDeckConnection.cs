@@ -1,14 +1,16 @@
-﻿using BarRaider.SdTools.Communication.Messages;
-using BarRaider.SdTools.Communication.SDEvents;
-using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using BarRaider.SdTools.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using BarRaider.SdTools.Backend;
+using BarRaider.SdTools.Communication.Commands;
+using BarRaider.SdTools.Communication.Commands.Dtos;
+using BarRaider.SdTools.Communication.Events;
+using BarRaider.SdTools.Communication.Events.Dtos;
 using BarRaider.SdTools.Utilities;
 using SkiaSharp;
 
@@ -21,23 +23,22 @@ namespace BarRaider.SdTools.Communication
     {
         private const int BUFFER_SIZE = 1024 * 1024;
 
-        private ClientWebSocket webSocket;
+        private IClientWebSocket webSocket;
         private readonly SemaphoreSlim sendSocketSemaphore = new(1);
-        private readonly CancellationTokenSource cancelTokenSource = new();
+        private readonly CancellationTokenSource cancelTokenSource;
         private readonly string registerEvent;
 
         /// <summary>
         /// The port used to connect to the StreamDeck websocket
         /// </summary>
-        public int Port { get; private set; }
+        public int Port { get; set; }
 
         /// <summary>
         /// This is the unique identifier used to communicate with the register StreamDeck plugin.
         /// </summary>
-        public string Uuid { get; private set; }
+        public string Uuid { get; set; }
 
         #region Public Events
-
         /// <summary>
         /// Raised when plugin is connected to stream deck app
         /// </summary>
@@ -150,12 +151,23 @@ namespace BarRaider.SdTools.Communication
             Port = port;
             Uuid = uuid;
             this.registerEvent = registerEvent;
+            this.cancelTokenSource = new CancellationTokenSource();
+        }
+        
+        // primarily for testing
+        internal StreamDeckConnection(int port, string uuid, string registerEvent, CancellationTokenSource cancellationTokenSource, IClientWebSocket webSocket = null)
+        {
+            Port = port;
+            Uuid = uuid;
+            this.registerEvent = registerEvent;
+            this.webSocket = webSocket ?? new ClientWebSocketWrapper();
+            this.cancelTokenSource = cancellationTokenSource;
         }
 
         internal void Run()
         {
             if (webSocket != null) return;
-            webSocket = new ClientWebSocket();
+            webSocket = new ClientWebSocketWrapper();
             _ = RunAsync();
         }
 
@@ -164,11 +176,33 @@ namespace BarRaider.SdTools.Communication
             cancelTokenSource.Cancel();
         }
 
-        internal Task SendAsync(IMessage message)
+        private Task SendAsync(IMessage message)
         {
             try
             {
-                return SendAsync(JsonConvert.SerializeObject(message));
+                string json = message switch
+                {
+                    RegisterEventCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.RegisterEventCommand),
+                    SetTitleCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetTitleCommand),
+                    LogCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.LogCommand),
+                    SetImageCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetImageCommand),
+                    ShowAlertCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.ShowAlertCommand),
+                    ShowOkCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.ShowOkCommand),
+                    SetGlobalSettingsCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetGlobalSettingsCommand),
+                    GetGlobalSettingsCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.GetGlobalSettingsCommand),
+                    SetSettingsCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetSettingsCommand),
+                    GetSettingsCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.GetSettingsCommand),
+                    SetStateCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetStateCommand),
+                    SendToPropertyInspectorCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SendToPropertyInspectorCommand),
+                    SwitchToProfileCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SwitchToProfileCommand),
+                    OpenUrlCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.OpenUrlCommand),
+                    SetFeedbackCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetFeedbackCommand),
+                    SetFeedbackCommandEx m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetFeedbackCommandEx),
+                    SetFeedbackLayoutCommand m => JsonSerializer.Serialize(m, CommandSerializerContext.Default.SetFeedbackLayoutCommand),
+                    _ => throw new NotSupportedException($"Serialization for type {message.GetType().FullName} is not supported by the source generator.")
+                };
+                
+                return SendAsync(json);
             }
             catch (Exception ex)
             {
@@ -178,15 +212,14 @@ namespace BarRaider.SdTools.Communication
         }
 
         #region Requests
-
         internal Task SetTitleAsync(string title, string context, SdkTarget target, int? state)
         {
-            return SendAsync(new SetTitleMessage(title, context, target, state));
+            return SendAsync(new SetTitleCommand(title, context, target, state));
         }
 
         internal Task LogMessageAsync(string message)
         {
-            return SendAsync(new LogMessage(message));
+            return SendAsync(new LogCommand(message));
         }
 
         internal Task SetImageAsync(SKData data, string context, SdkTarget target, int? state)
@@ -208,52 +241,52 @@ namespace BarRaider.SdTools.Communication
 
         internal Task SetImageAsync(string base64Image, string context, SdkTarget target, int? state)
         {
-            return SendAsync(new SetImageMessage(base64Image, context, target, state));
+            return SendAsync(new SetImageCommand(base64Image, context, target, state));
         }
 
         internal Task ShowAlertAsync(string context)
         {
-            return SendAsync(new ShowAlertMessage(context));
+            return SendAsync(new ShowAlertCommand(context));
         }
 
         internal Task ShowOkAsync(string context)
         {
-            return SendAsync(new ShowOkMessage(context));
+            return SendAsync(new ShowOkCommand(context));
         }
 
-        internal Task SetGlobalSettingsAsync(JObject settings)
+        internal Task SetGlobalSettingsAsync(JsonElement settings)
         {
-            return SendAsync(new SetGlobalSettingsMessage(settings, Uuid));
+            return SendAsync(new SetGlobalSettingsCommand(settings, Uuid));
         }
 
         internal Task GetGlobalSettingsAsync()
         {
-            return SendAsync(new GetGlobalSettingsMessage(Uuid));
+            return SendAsync(new GetGlobalSettingsCommand(Uuid));
         }
 
-        internal Task SetSettingsAsync(JObject settings, string context)
+        internal Task SetSettingsAsync(JsonElement settings, string context)
         {
-            return SendAsync(new SetSettingsMessage(settings, context));
+            return SendAsync(new SetSettingsCommand(settings, context));
         }
 
         internal Task GetSettingsAsync(string context)
         {
-            return SendAsync(new GetSettingsMessage(context));
+            return SendAsync(new GetSettingsCommand(context));
         }
 
         internal Task SetStateAsync(uint? state, string context)
         {
-            return SendAsync(new SetStateMessage(state, context));
+            return SendAsync(new SetStateCommand(state, context));
         }
 
-        internal Task SendToPropertyInspectorAsync(string action, JObject data, string context)
+        internal Task SendToPropertyInspectorAsync(string action, JsonElement data, string context)
         {
-            return SendAsync(new SendToPropertyInspectorMessage(action, data, context));
+            return SendAsync(new SendToPropertyInspectorCommand(action, data, context));
         }
 
         internal Task SwitchToProfileAsync(string device, string profileName, string context)
         {
-            return SendAsync(new SwitchToProfileMessage(device, profileName, context));
+            return SendAsync(new SwitchToProfileCommand(device, profileName, context));
         }
         internal Task OpenUrlAsync(string uri)
         {
@@ -262,22 +295,22 @@ namespace BarRaider.SdTools.Communication
 
         internal Task OpenUrlAsync(Uri uri)
         {
-            return SendAsync(new OpenUrlMessage(uri));
+            return SendAsync(new OpenUrlCommand(uri));
         }
 
         internal Task SetFeedbackAsync(Dictionary<string, string> dictKeyValues, string context)
         {
-            return SendAsync(new SetFeedbackMessage(dictKeyValues, context));
+            return SendAsync(new SetFeedbackCommand(dictKeyValues, context));
         }
 
-        internal Task SetFeedbackAsync(JObject feedbackPayload, string context)
+        internal Task SetFeedbackAsync(JsonElement feedbackPayload, string context)
         {
-            return SendAsync(new SetFeedbackMessageEx(feedbackPayload, context));
+            return SendAsync(new SetFeedbackCommandEx(feedbackPayload, context));
         }
 
         internal Task SetFeedbackLayoutAsync(string layout, string context)
         {
-            return SendAsync(new SetFeedbackLayoutMessage(layout, context));
+            return SendAsync(new SetFeedbackLayoutCommand(layout, context));
         }
         #endregion
 
@@ -308,22 +341,31 @@ namespace BarRaider.SdTools.Communication
 
         }
 
-        private async Task RunAsync()
+        internal async Task RunAsync()
         {
             try
             {
-                await webSocket.ConnectAsync(new Uri($"ws://localhost:{Port}"), cancelTokenSource.Token);
+                #if DEBUG
+                Logger.Instance.LogMessage(TracingLevel.Info, "RunAsync: Attempting to connect...");
+                #endif
+                
+                await webSocket.ConnectAsync(new Uri($"ws://localhost:{Port}"), cancelTokenSource.Token);   
                 if (webSocket.State != WebSocketState.Open)
                 {
-
                     Logger.Instance.LogMessage(TracingLevel.Fatal, $"{GetType()} RunAsync failed - Websocket not open {webSocket.State}");
                     await DisconnectAsync();
                     return;
                 }
-
-                await SendAsync(new RegisterEventMessage(registerEvent, Uuid));
-
-                OnConnected?.Invoke(this, new EventArgs());
+                
+                #if DEBUG
+                Logger.Instance.LogMessage(TracingLevel.Info, "RunAsync: WebSocket Connected. Sending registration...");
+                Logger.Instance.LogMessage(TracingLevel.Info, $"RegisterEvent: {registerEvent}, uuid: {Uuid}");
+                #endif
+                
+                await SendAsync(new RegisterEventCommand(registerEvent, Uuid));
+                
+                OnConnected?.Invoke(this, EventArgs.Empty);
+                
                 await ReceiveAsync();
             }
             catch (Exception ex)
@@ -337,7 +379,7 @@ namespace BarRaider.SdTools.Communication
             }
         }
 
-        private async Task<WebSocketCloseStatus> ReceiveAsync()
+        internal async Task<WebSocketCloseStatus> ReceiveAsync()
         {
             var buffer = new byte[BUFFER_SIZE];
             var arrayBuffer = new ArraySegment<byte>(buffer);
@@ -348,7 +390,7 @@ namespace BarRaider.SdTools.Communication
                 while (!cancelTokenSource.IsCancellationRequested && webSocket != null)
                 {
                     WebSocketReceiveResult result = await webSocket.ReceiveAsync(arrayBuffer, cancelTokenSource.Token);
-
+                    
                     if (result == null) continue;
                     
                     if (result.MessageType == WebSocketMessageType.Close ||
@@ -362,7 +404,15 @@ namespace BarRaider.SdTools.Communication
 
                     if (result.MessageType != WebSocketMessageType.Text) continue;
                     textBuffer.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
-                    if (!result.EndOfMessage) continue;
+                    
+                    if (!result.EndOfMessage)
+                    {
+                        #if DEBUG
+                        Logger.Instance.LogMessage(TracingLevel.Debug, "ReceiveAsync: Message is fragmented, continuing to receive...");
+                        #endif
+                        
+                        continue;
+                    }
                         
                     #if DEBUG
                     Logger.Instance.LogMessage(TracingLevel.Debug, $"Incoming Message: {textBuffer}");
@@ -370,13 +420,19 @@ namespace BarRaider.SdTools.Communication
 
                     var strBuffer = textBuffer.ToString();
                     textBuffer.Clear();
-                    BaseEvent evt = BaseEvent.Parse(strBuffer);
+                    Logger.Instance.LogMessage(TracingLevel.Info, $"ReceiveAsync: Full message received: {strBuffer}");
+                    
+                    BaseEvent evt = BaseEvent.Deserialize(strBuffer);
                     if (evt == null)
                     {
                         Logger.Instance.LogMessage(TracingLevel.Warn, $"{GetType()} Unknown event received from Stream Deck: {strBuffer}");
                         continue;
                     }
-
+                    
+                    #if DEBUG
+                    Logger.Instance.LogMessage(TracingLevel.Info, $"ReceiveAsync: Parsed event '{evt.Event}'.");
+                    #endif
+                    
                     try
                     {
                         switch (evt.Event)
@@ -417,6 +473,7 @@ namespace BarRaider.SdTools.Communication
             }
 
             Logger.Instance.LogMessage(TracingLevel.Info, $"{GetType()} ReceiveAsync ended with CancelToken: {cancelTokenSource.IsCancellationRequested} Websocket: {(webSocket == null ? "null" : "valid")}");
+            
             return WebSocketCloseStatus.NormalClosure;
         }
 
@@ -424,7 +481,7 @@ namespace BarRaider.SdTools.Communication
         {
             if (webSocket != null)
             {
-                ClientWebSocket socket = webSocket;
+                IClientWebSocket socket = webSocket;
                 webSocket = null;
 
                 try
@@ -435,8 +492,7 @@ namespace BarRaider.SdTools.Communication
                 {
                     Logger.Instance.LogMessage(TracingLevel.Error, $"{GetType()} DisconnectAsync failed to close connection. Exception: {ex}");
                 }
-
-
+                
                 try
                 {
                     socket.Dispose();

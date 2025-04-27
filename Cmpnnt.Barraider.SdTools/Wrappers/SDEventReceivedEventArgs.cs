@@ -11,7 +11,7 @@ namespace BarRaider.SdTools.Wrappers
         /// <summary>
         /// Event Information
         /// </summary>
-        public T Event { get; private set; }
+        public T Event { get; set; }
         internal SdEventReceivedEventArgs(T evt)
         {
             Event = evt;

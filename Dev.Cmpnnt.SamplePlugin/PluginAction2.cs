@@ -1,10 +1,13 @@
-﻿using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using BarRaider.SdTools.Wrappers;
 using System.Threading.Tasks;
 using BarRaider.SdTools.Attributes;
 using BarRaider.SdTools.Backend;
-using BarRaider.SdTools.Payloads;
+using BarRaider.SdTools.Communication.Events;
+using BarRaider.SdTools.Communication.Events.Dtos;
+using BarRaider.SdTools.Communication.Payloads;
 using BarRaider.SdTools.Utilities;
 using SkiaSharp;
 
@@ -12,6 +15,8 @@ namespace Dev.Cmpnnt.SamplePlugin
 {
     public partial class PluginAction2 : KeyAndEncoderBase
     {
+        // TODO: Can the framework be refactored to have a standardized settings class?
+        //   See: https://docs.elgato.com/streamdeck/sdk/guides/settings
         private class PluginSettings
         {
             public static PluginSettings CreateDefaultSettings()
@@ -25,11 +30,16 @@ namespace Dev.Cmpnnt.SamplePlugin
             }
 
             [FilenameProperty]
-            [JsonProperty(PropertyName = "outputFileName")]
+            [JsonPropertyName("outputFileName")]
             public string OutputFileName { get; set; }
-
-            [JsonProperty(PropertyName = "inputString")]
+            
+            [JsonPropertyName("inputString")]
             public string InputString { get; set; }
+            
+            public override string ToString()
+            {
+                return $"OutputFileName: {OutputFileName}, InputString: {InputString}";
+            }
         }
 
         #region Private Members
@@ -38,10 +48,16 @@ namespace Dev.Cmpnnt.SamplePlugin
         
         public PluginAction2(ISdConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            settings = payload.Settings == null || payload.Settings.Count == 0 ?
-                PluginSettings.CreateDefaultSettings() :
-                payload.Settings.ToObject<PluginSettings>();
-
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            settings = (payload.Settings == null || !payload.Settings.HasValue) ? 
+                PluginSettings.CreateDefaultSettings() : 
+                payload.Settings.Value.Deserialize<PluginSettings>(options);
+            
+            Logger.Instance.LogMessage(TracingLevel.Info, $"Settings: {settings}");
+            
+            // TODO: Remove these event handlers and replace with method calls like those in the base class
+            // They can be registered in the PluginContainer.Run method like those in the base classes
+            // and invoked in StreamDeckConnection.ReceiveAsync
             Connection.OnApplicationDidLaunch += Connection_OnApplicationDidLaunch;
             Connection.OnApplicationDidTerminate += Connection_OnApplicationDidTerminate;
             Connection.OnDeviceDidConnect += Connection_OnDeviceDidConnect;
@@ -52,44 +68,52 @@ namespace Dev.Cmpnnt.SamplePlugin
             Connection.OnTitleParametersDidChange += Connection_OnTitleParametersDidChange;
         }
 
-        private void Connection_OnTitleParametersDidChange(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.TitleParametersDidChange> e)
+        private void Connection_OnTitleParametersDidChange(object sender, SdEventReceivedEventArgs<TitleParametersDidChangeEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: TitleParametersDidChangeEvent");
         }
 
-        private void Connection_OnSendToPlugin(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.SendToPlugin> e)
+        private void Connection_OnSendToPlugin(object sender, SdEventReceivedEventArgs<SendToPluginEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: SendToPluginEvent");
         }
 
-        private void Connection_OnPropertyInspectorDidDisappear(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.PropertyInspectorDidDisappear> e)
+        private void Connection_OnPropertyInspectorDidDisappear(object sender, SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: PropertyInspectorDidDisappearEvent");
         }
 
-        private void Connection_OnPropertyInspectorDidAppear(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.PropertyInspectorDidAppear> e)
+        private void Connection_OnPropertyInspectorDidAppear(object sender, SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: PropertyInspectorDidAppearEvent");
         }
 
-        private void Connection_OnDeviceDidDisconnect(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.DeviceDidDisconnect> e)
+        private void Connection_OnDeviceDidDisconnect(object sender, SdEventReceivedEventArgs<DeviceDidDisconnectEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: DeviceDidDisconnectEvent");
         }
 
-        private void Connection_OnDeviceDidConnect(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.DeviceDidConnect> e)
+        private void Connection_OnDeviceDidConnect(object sender, SdEventReceivedEventArgs<DeviceDidConnectEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: DeviceDidConnectEvent");
         }
 
-        private void Connection_OnApplicationDidTerminate(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.ApplicationDidTerminate> e)
+        private void Connection_OnApplicationDidTerminate(object sender, SdEventReceivedEventArgs<ApplicationDidTerminateEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: ApplicationDidTerminateEvent");
         }
 
-        private void Connection_OnApplicationDidLaunch(object sender, SdEventReceivedEventArgs<BarRaider.SdTools.Events.ApplicationDidLaunch> e)
+        private void Connection_OnApplicationDidLaunch(object sender, SdEventReceivedEventArgs<ApplicationDidLaunchEvent> e)
         {
             // Your logic here. Feel free to remove this and the related event de/registrations if it's not needed
+            Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: ApplicationDidLaunchEvent");
         }
 
         public override void Dispose()
@@ -127,48 +151,63 @@ namespace Dev.Cmpnnt.SamplePlugin
 
         public override async void KeyPressed(KeyPayload payload)
         {
-            // Just some example busy work to do when the button is released
-            var tp = new TitleParameters()
+            try
             {
-                FontFamily = SKTypeface.FromFamilyName("Arial"),
-                FontStyle = SKFontStyle.Bold,
-                FontSizeInPoints = 9f,
-                TitleColor = SKColors.Gray,
-            };
-            
-            using (SKData data = Tools.GenerateKeyImage(tp, "Test", SKColors.White))
-            {
-                await Connection.SetImageAsync(data);
+                // Just some example busy work to do when the button is released
+                var tp = new TitleParameters()
+                {
+                    FontFamily = SKTypeface.FromFamilyName("Arial"),
+                    FontStyle = SKFontStyle.Bold,
+                    FontSizeInPoints = 9f,
+                    TitleColor = SKColors.Gray,
+                };
+
+                using (SKData data = Tools.GenerateKeyImage(tp, "Test", SKColors.White))
+                {
+                    await Connection.SetImageAsync(data);
+                }
+
+                Logger.Instance.LogMessage(TracingLevel.Info, "Key Pressed");
             }
-            
-            Logger.Instance.LogMessage(TracingLevel.Info, "Key Pressed");
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal, $"Plugin crashed with the following message: {ex.Message}");
+            }
         }
 
         public override async void KeyReleased(KeyPayload payload)
         {
-            var rand = RandomGenerator.Next(100).ToString();
-            
-            // Just some example busy work to do when the button is released
-            var tp = new TitleParameters()
+            try
             {
-                FontFamily = SKTypeface.FromFamilyName("Arial"),
-                FontStyle = SKFontStyle.Bold,
-                FontSizeInPoints = 9f,
-                TitleColor = SKColors.White
-            };
-            
-            using (SKData data = Tools.GenerateKeyImage(tp, rand, SKColors.Black))
-            {
-                await Connection.SetImageAsync(data);
+                var rand = RandomGenerator.Next(100).ToString();
+
+                // Just some example busy work to do when the button is released
+                var tp = new TitleParameters()
+                {
+                    FontFamily = SKTypeface.FromFamilyName("Arial"),
+                    FontStyle = SKFontStyle.Bold,
+                    FontSizeInPoints = 9f,
+                    TitleColor = SKColors.White
+                };
+
+                using (SKData data = Tools.GenerateKeyImage(tp, rand, SKColors.Black))
+                {
+                    await Connection.SetImageAsync(data);
+                }
+
+                Logger.Instance.LogMessage(TracingLevel.Info, "Key Released");
             }
-            
-            Logger.Instance.LogMessage(TracingLevel.Info, "Key Released");
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal, $"Plugin crashed with the following message: {ex.Message}");
+            }
         }
 
         public override void OnTick() { }
 
         public override void ReceivedSettings(ReceivedSettingsPayload payload)
         {
+            Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action has received settings");
             Tools.AutoPopulateSettings(settings, payload.Settings);
             SaveSettings();
         }
@@ -178,7 +217,10 @@ namespace Dev.Cmpnnt.SamplePlugin
         #region Private Methods
         private Task SaveSettings()
         {
-            return Connection.SetSettingsAsync(JObject.FromObject(settings));
+            Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action is saving settings");
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            using JsonDocument doc = JsonDocument.Parse(JsonSerializer.Serialize(settings, options));
+            return Connection.SetSettingsAsync(doc.RootElement);
         }
         #endregion
     }

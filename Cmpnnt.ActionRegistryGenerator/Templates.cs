@@ -12,7 +12,7 @@ internal static class Templates
 using System;
 using BarRaider.SdTools;
 using BarRaider.SdTools.Backend;
-using BarRaider.SdTools.Payloads;
+using BarRaider.SdTools.Communication.Payloads;
 using BarRaider.SdTools.Wrappers;
 using System.Collections.Frozen;
 using System.Collections.Generic;

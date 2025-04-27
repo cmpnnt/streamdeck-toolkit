@@ -1,0 +1,44 @@
+﻿using System.Text.Json.Serialization;
+using BarRaider.SdTools.Communication.Payloads;
+
+namespace BarRaider.SdTools.Communication.Events.Dtos
+{
+    /// <summary>
+    /// Payload for Dial down event
+    /// </summary>
+    public class DialDownEvent : BaseEvent
+    {
+        /// <summary>
+        /// Action Name
+        /// </summary>
+        public string Action { get; set; }
+
+        /// <summary>
+        /// Unique Action UUID
+        /// </summary>
+        public string Context { get; set; }
+
+        /// <summary>
+        /// Device UUID key was pressed on
+        /// </summary>
+        public string Device { get; set; }
+
+        /// <summary>
+        /// Information on dial status
+        /// </summary>
+        public DialPayload Payload { get; set; }
+
+        [JsonConstructor]
+        public DialDownEvent(string action, string context, string device, DialPayload payload)
+        {
+            Action = action;
+            Context = context;
+            Device = device;
+            Payload = payload;
+        }
+
+        public DialDownEvent()
+        {
+        }
+    }
+}

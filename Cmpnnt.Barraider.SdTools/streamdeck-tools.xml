@@ -1953,7 +1953,7 @@
             Boolean whether it was a long press or not
             </summary>
         </member>
-        <member name="P:BarRaider.SdTools.Payloads.TouchpadPressPayload.TapPosition">
+        <member name="P:BarRaider.SdTools.Payloads.TouchpadPressPayload.TapPos">
             <summary>
             Position on touchpad which was pressed
             </summary>
@@ -2459,7 +2459,7 @@
             Returns singleton entry of Log4Net logger
             </summary>
         </member>
-        <member name="M:BarRaider.SdTools.Utilities.Logger.LogMessage(BarRaider.SdTools.Utilities.TracingLevel,System.String)">
+        <member name="M:BarRaider.SdTools.Utilities.Logger.LogCommand(BarRaider.SdTools.Utilities.TracingLevel,System.String)">
             <summary>
             Add message to log with a specific severity level. 
             </summary>

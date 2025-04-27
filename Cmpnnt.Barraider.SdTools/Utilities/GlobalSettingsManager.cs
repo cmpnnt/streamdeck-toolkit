@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BarRaider.SdTools.Communication;
-using BarRaider.SdTools.Communication.SDEvents;
-using BarRaider.SdTools.Payloads;
+using BarRaider.SdTools.Communication.Events;
+using BarRaider.SdTools.Communication.Events.Dtos;
+using BarRaider.SdTools.Communication.Payloads;
 using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json.Linq;
 
 namespace BarRaider.SdTools.Utilities
 {
@@ -62,7 +63,6 @@ namespace BarRaider.SdTools.Utilities
 
             tmrGetGlobalSettings.Stop();
             tmrGetGlobalSettings.Interval = getGlobalSettingsDelayMs;
-            Logger.Instance.LogMessage(TracingLevel.Info, "GlobalSettingsManager initialized");
         }
 
         /// <summary>
@@ -76,8 +76,7 @@ namespace BarRaider.SdTools.Utilities
                 Logger.Instance.LogMessage(TracingLevel.Error, "GlobalSettingsManager::RequestGlobalSettings called while streamDeckConnection is null");
                 return;
             }
-
-            Logger.Instance.LogMessage(TracingLevel.Info, "GlobalSettingsManager::RequestGlobalSettings called");
+            
             tmrGetGlobalSettings.Start();
         }
 
@@ -87,15 +86,17 @@ namespace BarRaider.SdTools.Utilities
         /// <param name="settings"></param>
         /// <param name="triggerDidReceiveGlobalSettings"></param>
         /// <returns></returns>
-        public async Task SetGlobalSettings(JObject settings, bool triggerDidReceiveGlobalSettings = true)
+        public async Task SetGlobalSettings(JsonElement settings, bool triggerDidReceiveGlobalSettings = true)
         {
             if (streamDeckConnection == null)
             {
                 Logger.Instance.LogMessage(TracingLevel.Error, "GlobalSettingsManager::SetGlobalSettings called while streamDeckConnection is null");
                 return;
             }
-
+            
             Logger.Instance.LogMessage(TracingLevel.Info, "GlobalSettingsManager::SetGlobalSettings called");
+            // END
+            
             await streamDeckConnection.SetGlobalSettingsAsync(settings);
 
             if (triggerDidReceiveGlobalSettings)
@@ -108,15 +109,22 @@ namespace BarRaider.SdTools.Utilities
         #region Private Methods
         private void StreamDeckConnectionOnDidReceiveGlobalSettings(object sender, SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent> e)
         {
-            OnReceivedGlobalSettings?.Invoke(this, JObject.FromObject(e.Event.Payload).ToObject<ReceivedGlobalSettingsPayload>());
+            OnReceivedGlobalSettings?.Invoke(this, e.Event.Payload);
         }
 
         private async void TmrGetGlobalSettings_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            tmrGetGlobalSettings.Stop();
+            try
+            {
+                tmrGetGlobalSettings.Stop();
+                
+                await streamDeckConnection.GetGlobalSettingsAsync();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Error, $"TmrGetGlobalSettings_Elapsed has crashed with exception: {ex.Message}");
+            }
 
-            Logger.Instance.LogMessage(TracingLevel.Info, "GlobalSettingsManager::GetGlobalSettingsAsync triggered");
-            await streamDeckConnection.GetGlobalSettingsAsync();
         }
         #endregion
     }

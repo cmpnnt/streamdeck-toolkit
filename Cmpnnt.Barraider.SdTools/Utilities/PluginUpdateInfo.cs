@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace BarRaider.SdTools.Utilities
 {
@@ -41,20 +41,20 @@ namespace BarRaider.SdTools.Utilities
         /// <summary>
         /// Status
         /// </summary>
-        [JsonProperty("status")]
-        public PluginUpdateStatus Status { get; private set; }
+        [JsonPropertyName("status")]
+        public PluginUpdateStatus Status { get; set; }
 
         /// <summary>
         /// Update URL
         /// </summary>
-        [JsonProperty("updateURL")]
-        public string UpdateUrl { get; private set; }
+        [JsonPropertyName("updateUrl")]
+        public string UpdateUrl { get; set; }
 
         /// <summary>
         /// Update URL
         /// </summary>
-        [JsonProperty("updateImage")]
-        public string UpdateImage { get; private set; }
+        [JsonPropertyName("updateImage")]
+        public string UpdateImage { get; set; }
 
         /// <summary>
         /// Default Constructor

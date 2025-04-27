@@ -1,4 +1,4 @@
-﻿using BarRaider.SdTools.Payloads;
+﻿using BarRaider.SdTools.Communication.Payloads;
 
 namespace BarRaider.SdTools.Backend
 {
@@ -68,7 +68,7 @@ namespace BarRaider.SdTools.Backend
         /// <summary>
         /// Connection object which handles your communication with the Stream Deck app
         /// </summary>
-        protected ISdConnection Connection { get; private set; }
+        protected ISdConnection Connection { get; set; }
 
         /// <summary>
         /// Constructor for PluginBase. Receives the communication and plugin settings 

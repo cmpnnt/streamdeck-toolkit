@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 using BarRaider.SdTools.Utilities;
 using SkiaSharp;
 
@@ -61,7 +61,6 @@ namespace BarRaider.SdTools.Wrappers
         /// <summary>
         /// Title color
         /// </summary>
-        [JsonProperty("titleColor")]
         public SKColor TitleColor { get; set; } = SKColors.White;
 
         /// <summary>
@@ -79,8 +78,8 @@ namespace BarRaider.SdTools.Wrappers
         /// <summary>
         /// Font Size in Points
         /// </summary>
-        [JsonProperty("fontSize")]
-        public double FontSizeInPoints { get; set; } = 10;
+        [JsonPropertyName("fontSize")]
+        public double FontSizeInPoints { get; set; } = 10; // font size in points
 
         /// <summary>
         /// Font size in Pixels
@@ -97,25 +96,22 @@ namespace BarRaider.SdTools.Wrappers
         /// <summary>
         /// Font family
         /// </summary>
-        [JsonProperty("fontFamily")]
         public SKTypeface FontFamily { get; set; } = SKTypeface.FromFamilyName(DEFAULT_FONT_FAMILY_NAME);
 
         /// <summary>
         /// Font style
         /// </summary>
-        [JsonProperty("fontStyle")]
         public SKFontStyle FontStyle { get; set; } = SKFontStyle.Bold;
 
         /// <summary>
         /// Should title be shown
         /// </summary>
-        [JsonProperty("showTitle")]
         public bool ShowTitle { get; set; } = true;
 
         /// <summary>
         /// Vertical alignment of the title text on the key
         /// </summary>
-        [JsonProperty("titleAlignment")]
+        [JsonPropertyName("titleAlignment")]
         public TitleVerticalAlignment VerticalAlignment { get; set; } = TitleVerticalAlignment.Middle;
 
         /// <summary>

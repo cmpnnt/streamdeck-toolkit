@@ -1,4 +1,4 @@
-﻿using BarRaider.SdTools.Payloads;
+﻿using BarRaider.SdTools.Communication.Payloads;
 
 namespace BarRaider.SdTools.Utilities
 {
@@ -50,7 +50,7 @@ namespace BarRaider.SdTools.Utilities
         {
             return tpp == null ? 
                 "KeyPayload is null!" : 
-                $"Controller: {tpp.Controller} LongPress: {tpp.IsLongPress} Position: {(tpp.TapPosition?.Length == 2 ? tpp.TapPosition[0] + "," + tpp.TapPosition[1] : "Invalid")} Coordinates: ({tpp.Coordinates?.Row},{tpp.Coordinates?.Column}) Settings: {tpp.Settings}";
+                $"Controller: {tpp.Controller} LongPress: {tpp.IsLongPress} Position: {(tpp.TapPos?.Length == 2 ? tpp.TapPos[0] + "," + tpp.TapPos[1] : "Invalid")} Coordinates: ({tpp.Coordinates?.Row},{tpp.Coordinates?.Column}) Settings: {tpp.Settings}";
         }
     }
 }

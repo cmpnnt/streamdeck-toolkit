@@ -1,5 +1,5 @@
 ﻿using System;
-using BarRaider.SdTools.Payloads;
+using BarRaider.SdTools.Communication.Payloads;
 
 namespace BarRaider.SdTools.Backend
 {

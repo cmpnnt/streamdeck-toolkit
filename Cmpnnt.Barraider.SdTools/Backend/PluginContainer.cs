@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BarRaider.SdTools.Communication;
-using BarRaider.SdTools.Communication.SDEvents;
-using BarRaider.SdTools.Payloads;
-using BarRaider.SdTools.StreamDeckInfo;
+using BarRaider.SdTools.Communication.Events.Dtos;
+using BarRaider.SdTools.Communication.Payloads;
+using BarRaider.SdTools.Communication.Registration;
 using BarRaider.SdTools.Utilities;
 using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json.Linq;
 
 namespace BarRaider.SdTools.Backend
 {
-    // TODO: Replace async void with async Task
     internal class PluginContainer(IPluginActionRegistry actionRegistry, IUpdateHandler updateHandler)
     {
         private const int STREAMDECK_INITIAL_CONNECTION_TIMEOUT_SECONDS = 60;
@@ -30,18 +27,17 @@ namespace BarRaider.SdTools.Backend
         /// All current instances of plugin actions. Keyed on Action UUID. Action instances are added
         /// when the StreamDeck page containing the plugin is shown and removed when it is not visible.
         /// See the method Connection_OnWillAppear() in this file for that logic.
-        
         /// Note that your _plugin_ will still run on the user's machine as long as it is installed, even if
         /// there are no actions running. So, this logic keeps resource usage down when no actions are running.
         /// </summary>
         private static readonly Dictionary<string, ICommonPluginFunctions> Instances = new();
 
-        public void Run(StreamDeckOptions options)
+        public async Task Run(StreamDeckOptions options)
         {
             pluginUuid = options.PluginUuid;
             deviceInfo = options.DeviceInfo;
             connection = new StreamDeckConnection(options.Port, options.PluginUuid, options.RegisterEvent);
-            
+
             // Register for events
             connection.OnConnected += Connection_OnConnected;
             connection.OnDisconnected += Connection_OnDisconnected;
@@ -63,7 +59,7 @@ namespace BarRaider.SdTools.Backend
             {
                 updateHandler.OnUpdateStatusChanged += UpdateHandler_OnUpdateStatusChanged;
                 updateHandler.SetPluginConfiguration(Tools.GetExeName(), deviceInfo.Plugin.Version);
-                Task.Run(() => updateHandler.CheckForUpdate());
+                await Task.Run(updateHandler.CheckForUpdate);
             }
 
             // Start the connection
@@ -81,13 +77,14 @@ namespace BarRaider.SdTools.Backend
                 GlobalSettingsManager.Instance.Initialize(connection);
 
                 // We connected, loop every second until we disconnect
-                // TODO: Is there a better way to do this than a busy-wait? Some built-in background
-                // Task that is delayed via Task.Delay? I don't like hogging a thread for this.
+                /* TODO: Is there a better way to do this than a busy-wait? Some built-in background
+                   Task that is delayed via Task.Delay? I don't like hogging a thread for this. */
                 while (!disconnectEvent.WaitOne(TimeSpan.FromMilliseconds(1000)))
                 {
-                    RunTick();
+                    await RunTick();
                 }
             }
+
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin Disconnected - Exiting");
         }
 
@@ -100,6 +97,7 @@ namespace BarRaider.SdTools.Backend
                 {
                     await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
                 }
+
                 return;
             }
 
@@ -107,26 +105,26 @@ namespace BarRaider.SdTools.Backend
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin Keydown: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin Keydown: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new KeyPayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.State,
-                    e.Event.Payload?.UserDesiredState ?? 0,
-                    e.Event.Payload?.IsInMultiAction ?? false);
-                
+
                 if (instance is IKeypadPlugin plugin)
                 {
-                    plugin.KeyPressed(payload);
+                    plugin.KeyPressed(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"Keydown General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"Keydown General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -138,31 +136,31 @@ namespace BarRaider.SdTools.Backend
         private async void Connection_OnKeyUp(object sender, SdEventReceivedEventArgs<KeyUpEvent> e)
         {
             if (updateHandler?.IsBlockingUpdate ?? false) return;
-            
+
             await instancesLock.WaitAsync();
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin Keyup: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin Keyup: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new KeyPayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.State,
-                    e.Event.Payload?.UserDesiredState ?? 0,
-                    e.Event.Payload?.IsInMultiAction ?? false);
-                
+
                 if (instance is IKeypadPlugin plugin)
                 {
-                    plugin.KeyReleased(payload);
+                    plugin.KeyReleased(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"Keyup General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"Keyup General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -171,7 +169,7 @@ namespace BarRaider.SdTools.Backend
         }
 
         // Function runs every second, used to update UI
-        private async void RunTick()
+        private async Task RunTick()
         {
             if (updateHandler?.IsBlockingUpdate ?? false) return;
 
@@ -183,6 +181,11 @@ namespace BarRaider.SdTools.Backend
                     kvp.Value.OnTick();
                 }
             }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
+            }
             finally
             {
                 instancesLock.Release();
@@ -192,39 +195,53 @@ namespace BarRaider.SdTools.Backend
         // Action is loaded in the Stream Deck
         private async void Connection_OnWillAppear(object sender, SdEventReceivedEventArgs<WillAppearEvent> e)
         {
-            var conn = new SdConnection(connection, pluginUuid, deviceInfo, e.Event.Action, e.Event.Context, e.Event.Device);
+            var conn = new SdConnection(connection, pluginUuid, deviceInfo, e.Event.Action, e.Event.Context,
+                e.Event.Device);
+            
             await instancesLock.WaitAsync();
+            
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin OnWillAppear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin OnWillAppear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (actionRegistry.PluginActionIDs().Contains(e.Event.Action))
                 {
                     try
                     {
-                        if (Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance) && instance != null)
+                        if (Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance) &&
+                            instance != null)
                         {
-                            Logger.Instance.LogMessage(TracingLevel.Info, $"WillAppear called for already existing context {e.Event.Context} (might be inside a multi-action)");
+                            Logger.Instance.LogMessage(TracingLevel.Info,
+                                $"WillAppear called for already existing context {e.Event.Context} (might be inside a multi-action)");
                             return;
                         }
+
                         var payload = new InitialPayload(e.Event.Payload, deviceInfo);
                         Instances[e.Event.Context] = actionRegistry.CreateAction(e.Event.Action, conn, payload);
-                        
+
                         #if DEBUG
                         Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
                         #endif
                     }
                     catch (Exception ex)
                     {
-                        Logger.Instance.LogMessage(TracingLevel.Fatal, $"Could not create instance of {e.Event.Action} with context {e.Event.Context} - This may be due to an Exception raised in the constructor, or the class does not inherit PluginBase with the same constructor {ex}");
+                        Logger.Instance.LogMessage(TracingLevel.Fatal,
+                            $"Could not create instance of {e.Event.Action} with context {e.Event.Context} - This may be due to an Exception raised in the constructor, or the class does not inherit PluginBase with the same constructor {ex}");
                     }
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Warn, $"No plugin found that matches action: {e.Event.Action}");
+                    Logger.Instance.LogMessage(TracingLevel.Warn,
+                        $"No plugin found that matches action: {e.Event.Action}");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -238,16 +255,22 @@ namespace BarRaider.SdTools.Backend
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin OnWillDisappear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin OnWillDisappear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions value)) return;
                 value.Destroy();
                 Instances.Remove(e.Event.Context);
-                
+
                 #if DEBUG
                 Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
                 #endif
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -256,19 +279,26 @@ namespace BarRaider.SdTools.Backend
         }
 
         // Settings updated
-        private async void Connection_OnDidReceiveSettings(object sender, SdEventReceivedEventArgs<DidReceiveSettingsEvent> e)
+        private async void Connection_OnDidReceiveSettings(object sender,
+            SdEventReceivedEventArgs<DidReceiveSettingsEvent> e)
         {
             await instancesLock.WaitAsync();
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin OnDidReceiveSettings: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin OnDidReceiveSettings: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance))
                 {
-                    instance.ReceivedSettings(JObject.FromObject(e.Event.Payload ?? new ReceivedSettingsPayload()).ToObject<ReceivedSettingsPayload>());
+                    instance.ReceivedSettings(e.Event.Payload ?? new ReceivedSettingsPayload());
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -277,22 +307,30 @@ namespace BarRaider.SdTools.Backend
         }
 
         // Global settings updated
-        private async void Connection_OnDidReceiveGlobalSettings(object sender, SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent> e)
+        private async void Connection_OnDidReceiveGlobalSettings(object sender,
+            SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent> e)
         {
             await instancesLock.WaitAsync();
+            
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin OnDidReceiveGlobalSettings: Settings: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"Plugin OnDidReceiveGlobalSettings: Settings: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
-                var globalSettings = JObject.FromObject(e.Event.Payload ?? new ReceivedGlobalSettingsPayload()).ToObject<ReceivedGlobalSettingsPayload>();
+                ReceivedGlobalSettingsPayload globalSettings = e.Event.Payload ?? new ReceivedGlobalSettingsPayload();
                 foreach (string key in Instances.Keys)
                 {
                     Instances[key].ReceivedGlobalSettings(globalSettings);
                 }
 
                 updateHandler?.SetGlobalSettings(globalSettings);
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -308,6 +346,7 @@ namespace BarRaider.SdTools.Backend
                 {
                     await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
                 }
+
                 return;
             }
 
@@ -315,26 +354,26 @@ namespace BarRaider.SdTools.Backend
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"TouchpadPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"TouchpadPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new TouchpadPressPayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.Controller,
-                    e.Event.Payload?.IsLongPress ?? false,
-                    e.Event.Payload?.TapPosition);
-                
+
                 if (instance is IEncoderPlugin plugin)
                 {
-                    plugin.TouchPress(payload);
+                    plugin.TouchPress(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"TouchpadPress General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"TouchpadPress General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -347,29 +386,31 @@ namespace BarRaider.SdTools.Backend
         private async void Connection_OnDialUp(object sender, SdEventReceivedEventArgs<DialUpEvent> e)
         {
             if (updateHandler?.IsBlockingUpdate ?? false) return;
-            
+
             await instancesLock.WaitAsync();
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new DialPayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.Controller);
-                
+
                 if (instance is IEncoderPlugin plugin)
                 {
-                    plugin.DialUp(payload);
+                    plugin.DialUp(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -386,6 +427,7 @@ namespace BarRaider.SdTools.Backend
                 {
                     await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
                 }
+
                 return;
             }
 
@@ -393,24 +435,26 @@ namespace BarRaider.SdTools.Backend
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new DialPayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.Controller);
-                
+
                 if (instance is IEncoderPlugin plugin)
                 {
-                    plugin.DialDown(payload);
+                    plugin.DialDown(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -421,31 +465,31 @@ namespace BarRaider.SdTools.Backend
         private async void Connection_OnDialRotate(object sender, SdEventReceivedEventArgs<DialRotateEvent> e)
         {
             if (updateHandler?.IsBlockingUpdate ?? false) return;
-            
+
             await instancesLock.WaitAsync();
             try
             {
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"DialRotate: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
+                Logger.Instance.LogMessage(TracingLevel.Debug,
+                    $"DialRotate: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-                
-                var payload = new DialRotatePayload(
-                    e.Event.Payload?.Coordinates,
-                    e.Event.Payload?.Settings,
-                    e.Event.Payload?.Controller,
-                    e.Event.Payload?.Ticks ?? 0,
-                    e.Event.Payload?.IsDialPressed ?? false);
-                
+
                 if (instance is IEncoderPlugin plugin)
                 {
-                    plugin.DialRotate(payload);
+                    plugin.DialRotate(e.Event.Payload);
                 }
                 else
                 {
-                    Logger.Instance.LogMessage(TracingLevel.Error, $"DialRotate General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
+                    Logger.Instance.LogMessage(TracingLevel.Error,
+                        $"DialRotate General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
             }
             finally
             {
@@ -455,32 +499,49 @@ namespace BarRaider.SdTools.Backend
 
         private async void UpdateHandler_OnUpdateStatusChanged(object sender, PluginUpdateInfo e)
         {
-            lastUpdateInfo = e;
-            if (!string.IsNullOrEmpty(e.UpdateUrl))
+            try
             {
-                await connection.OpenUrlAsync(e.UpdateUrl);
-            }
-
-            if (!string.IsNullOrEmpty(e.UpdateImage))
-            {
-                await Task.Run(async () =>
+                lastUpdateInfo = e;
+                if (!string.IsNullOrEmpty(e.UpdateUrl))
                 {
-                    foreach (string contextId in Instances.Keys.ToList())
-                    {
-                        await connection.SetImageAsync(e.UpdateImage, contextId, SdkTarget.HardwareAndSoftware, null);
-                        await connection.SetTitleAsync(null, contextId, SdkTarget.HardwareAndSoftware, null);
-                    }
-                });
-            }
+                    await connection.OpenUrlAsync(e.UpdateUrl);
+                }
 
-            if (e.Status != PluginUpdateStatus.CriticalUpgrade) return;
-            Logger.Instance.LogMessage(TracingLevel.Fatal, $"Critical update needed");
-            Environment.Exit(0);
+                if (!string.IsNullOrEmpty(e.UpdateImage))
+                {
+                    await Task.Run(async () =>
+                    {
+                        foreach (string contextId in Instances.Keys.ToList())
+                        {
+                            await connection.SetImageAsync(e.UpdateImage, contextId, SdkTarget.HardwareAndSoftware,
+                                null);
+                            await connection.SetTitleAsync(null, contextId, SdkTarget.HardwareAndSoftware, null);
+                        }
+                    });
+                }
+
+                if (e.Status != PluginUpdateStatus.CriticalUpgrade) return;
+                Logger.Instance.LogMessage(TracingLevel.Fatal, $"Critical update needed");
+                Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
+            }
         }
 
         private void Connection_OnConnected(object sender, EventArgs e)
         {
-            connectEvent.Set();
+            try
+            {
+                connectEvent.Set();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.LogMessage(TracingLevel.Fatal,
+                    $"Plugin crashed with the following message: {ex.Message}");
+            }
         }
 
         private void Connection_OnDisconnected(object sender, EventArgs e)

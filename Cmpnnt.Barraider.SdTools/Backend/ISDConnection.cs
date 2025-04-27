@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using BarRaider.SdTools.Events;
-using BarRaider.SdTools.StreamDeckInfo;
+using BarRaider.SdTools.Communication.Events;
+using BarRaider.SdTools.Communication.Events.Dtos;
+using BarRaider.SdTools.Communication.Registration;
 using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SkiaSharp;
 
 namespace BarRaider.SdTools.Backend
@@ -20,39 +21,47 @@ namespace BarRaider.SdTools.Backend
         /// <summary>
         /// Event received by the plugin when the Property Inspector uses the sendToPlugin event.
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<SendToPlugin>> OnSendToPlugin;
+        event EventHandler<SdEventReceivedEventArgs<SendToPluginEvent>> OnSendToPlugin;
+
         /// <summary>
         /// Event received when the user changes the title or title parameters.
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<TitleParametersDidChange>> OnTitleParametersDidChange;
+        event EventHandler<SdEventReceivedEventArgs<TitleParametersDidChangeEvent>> OnTitleParametersDidChange;
+
         /// <summary>
         /// Event received when a monitored application is terminated
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<ApplicationDidTerminate>> OnApplicationDidTerminate;
+        event EventHandler<SdEventReceivedEventArgs<ApplicationDidTerminateEvent>> OnApplicationDidTerminate;
+
         /// <summary>
         /// Event received when a monitored application is launched
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<ApplicationDidLaunch>> OnApplicationDidLaunch;
+        event EventHandler<SdEventReceivedEventArgs<ApplicationDidLaunchEvent>> OnApplicationDidLaunch;
+
         /// <summary>
         /// Event received when a device is unplugged from the computer
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<DeviceDidDisconnect>> OnDeviceDidDisconnect;
+        event EventHandler<SdEventReceivedEventArgs<DeviceDidDisconnectEvent>> OnDeviceDidDisconnect;
+
         /// <summary>
         /// Event received when a device is plugged to the computer.
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<DeviceDidConnect>> OnDeviceDidConnect;
+        event EventHandler<SdEventReceivedEventArgs<DeviceDidConnectEvent>> OnDeviceDidConnect;
+
         /// <summary>
         /// Event received when the Property Inspector appears in the Stream Deck software user interface, for example when selecting a new instance.
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidAppear>> OnPropertyInspectorDidAppear;
+        event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent>> OnPropertyInspectorDidAppear;
+
         /// <summary>
         /// Event received when the Property Inspector for an instance is removed from the Stream Deck software user interface, for example when selecting a different instance.
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidDisappear>> OnPropertyInspectorDidDisappear;
+        event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent>> OnPropertyInspectorDidDisappear;
+
         /// <summary>
         /// Event received when the computer wakes up
         /// </summary>
-        event EventHandler<SdEventReceivedEventArgs<SystemDidWakeUp>> OnSystemDidWakeUp;
+        event EventHandler<SdEventReceivedEventArgs<SystemDidWakeUpEvent>> OnSystemDidWakeUp;
 
         #endregion
 
@@ -63,14 +72,14 @@ namespace BarRaider.SdTools.Backend
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        Task SendToPropertyInspectorAsync(JObject settings);
+        Task SendToPropertyInspectorAsync(JsonElement settings);
 
         /// <summary>
         /// Persists your plugin settings
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        Task SetSettingsAsync(JObject settings);
+        Task SetSettingsAsync(JsonElement settings);
 
         /// <summary>
         /// Persists your global plugin settings
@@ -78,7 +87,7 @@ namespace BarRaider.SdTools.Backend
         /// <param name="settings">Settings to save globally</param>
         /// <param name="triggerDidReceiveGlobalSettings">Boolean whether to also trigger a didReceiveGlobalSettings event. Default is true</param>
         /// <returns></returns>
-        Task SetGlobalSettingsAsync(JObject settings, bool triggerDidReceiveGlobalSettings = true);
+        Task SetGlobalSettingsAsync(JsonElement settings, bool triggerDidReceiveGlobalSettings = true);
 
         /// <summary>
         /// Persists your global plugin settings
@@ -199,11 +208,11 @@ namespace BarRaider.SdTools.Backend
         Task SetFeedbackAsync(string layoutItemKey, string value);
 
         /// <summary>
-        /// Sets the values of touchpad layouts items using a preset JObject
+        /// Sets the values of touchpad layouts items using a preset JsonElement
         /// </summary>
         /// <param name="feedbackPayload"></param>
         /// <returns></returns>
-        Task SetFeedbackAsync(JObject feedbackPayload);
+        Task SetFeedbackAsync(JsonElement feedbackPayload);
 
         /// <summary>
         /// Changes the current Stream Deck+ touch display layout

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using BarRaider.SdTools.Communication;
-using BarRaider.SdTools.Communication.SDEvents;
-using BarRaider.SdTools.Events;
-using BarRaider.SdTools.Payloads;
-using BarRaider.SdTools.StreamDeckInfo;
+using BarRaider.SdTools.Communication.Events.Dtos;
+using BarRaider.SdTools.Communication.Payloads;
+using BarRaider.SdTools.Communication.Registration;
 using BarRaider.SdTools.Utilities;
 using BarRaider.SdTools.Wrappers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SkiaSharp;
 
 namespace BarRaider.SdTools.Backend
@@ -21,89 +20,91 @@ namespace BarRaider.SdTools.Backend
     public class SdConnection : ISdConnection
     {
         #region Private Members
+
         private string previousImageHash;
 
-        [JsonIgnore]
-        private readonly string actionId;
+        [JsonIgnore] private readonly string actionId;
 
         /// <summary>
         /// An opaque value identifying the plugin. Received as an argument when the executable was launched.
         /// </summary>
-        [JsonIgnore]
-        private readonly string pluginUuid;
+        [JsonIgnore] private readonly string pluginUuid;
 
         /// <summary>
         /// Holds information about the devices connected to the computer
         /// </summary>
-        [JsonIgnore]
-        private readonly RegistrationInfo deviceInfo;
+        [JsonIgnore] private readonly RegistrationInfo deviceInfo;
+
         #endregion
 
         #region Public Events
+
         /// <summary>
         /// Event received by the plugin when the Property Inspector uses the sendToPlugin event.
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<SendToPlugin>> OnSendToPlugin;
-        
+        public event EventHandler<SdEventReceivedEventArgs<SendToPluginEvent>> OnSendToPlugin;
+
         /// <summary>
         /// Event received when the user changes the title or title parameters.
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<TitleParametersDidChange>> OnTitleParametersDidChange;
-        
+        public event EventHandler<SdEventReceivedEventArgs<TitleParametersDidChangeEvent>> OnTitleParametersDidChange;
+
         /// <summary>
         /// Event received when a monitored application is terminated
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<ApplicationDidTerminate>> OnApplicationDidTerminate;
-        
+        public event EventHandler<SdEventReceivedEventArgs<ApplicationDidTerminateEvent>> OnApplicationDidTerminate;
+
         /// <summary>
         /// Event received when a monitored application is launched
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<ApplicationDidLaunch>> OnApplicationDidLaunch;
-        
+        public event EventHandler<SdEventReceivedEventArgs<ApplicationDidLaunchEvent>> OnApplicationDidLaunch;
+
         /// <summary>
         /// Event received when a device is unplugged from the computer
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<DeviceDidDisconnect>> OnDeviceDidDisconnect;
-        
+        public event EventHandler<SdEventReceivedEventArgs<DeviceDidDisconnectEvent>> OnDeviceDidDisconnect;
+
         /// <summary>
         /// Event received when a device is plugged to the computer.
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<DeviceDidConnect>> OnDeviceDidConnect;
-        
+        public event EventHandler<SdEventReceivedEventArgs<DeviceDidConnectEvent>> OnDeviceDidConnect;
+
         /// <summary>
         /// Event received when the Property Inspector appears in the Stream Deck software user interface, for example when selecting a new instance.
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidAppear>> OnPropertyInspectorDidAppear;
-        
+        public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent>> OnPropertyInspectorDidAppear;
+
         /// <summary>
         /// Event received when the Property Inspector for an instance is removed from the Stream Deck software user interface, for example when selecting a different instance.
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidDisappear>> OnPropertyInspectorDidDisappear;
-        
+        public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent>> OnPropertyInspectorDidDisappear;
+
         /// <summary>
         /// Event received when the computer wakes up
         /// </summary>
-        public event EventHandler<SdEventReceivedEventArgs<SystemDidWakeUp>> OnSystemDidWakeUp;
+        public event EventHandler<SdEventReceivedEventArgs<SystemDidWakeUpEvent>> OnSystemDidWakeUp;
+
         #endregion
 
         #region Public Properties
+
         /// <summary>
         /// An opaque value identifying the plugin. This value is received during the Registration procedure
         /// </summary>
         [JsonIgnore]
-        public string ContextId { get; private set; }
+        public string ContextId { get; set; }
 
         /// <summary>
         /// An opaque value identifying the device the plugin is launched on.
         /// </summary>
         [JsonIgnore]
-        public string DeviceId { get; private set; }
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// StreamDeckConnection object, initialized based on the args received when launching the program
         /// </summary>
         [JsonIgnore]
-        public StreamDeckConnection StreamDeckConnection { get; private set; }
+        public StreamDeckConnection StreamDeckConnection { get; set; }
 
         #endregion
 
@@ -144,6 +145,7 @@ namespace BarRaider.SdTools.Backend
         }
 
         #region Public Methods
+
         /// <summary>
         /// Dispose (Destructor) function
         /// </summary>
@@ -170,19 +172,22 @@ namespace BarRaider.SdTools.Backend
             {
                 return deviceInfo.Devices.FirstOrDefault(d => d.Id == DeviceId);
             }
-            
-            Logger.Instance.LogMessage(TracingLevel.Error, $"Could not get DeviceInfo for DeviceId: {DeviceId} Devices: {deviceInfo?.Devices?.Length}");
+
+            Logger.Instance.LogMessage(TracingLevel.Error,
+                $"Could not get DeviceInfo for DeviceId: {DeviceId} Devices: {deviceInfo?.Devices?.Length}");
             return null;
         }
+
         #endregion
 
         #region Public Requests
+
         /// <summary>
         /// Send settings to the PropertyInspector
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public async Task SendToPropertyInspectorAsync(JObject settings)
+        public async Task SendToPropertyInspectorAsync(JsonElement settings)
         {
             if (StreamDeckConnection != null && !string.IsNullOrEmpty(ContextId) && !string.IsNullOrEmpty(actionId))
             {
@@ -195,7 +200,7 @@ namespace BarRaider.SdTools.Backend
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        public async Task SetSettingsAsync(JObject settings)
+        public async Task SetSettingsAsync(JsonElement settings)
         {
             if (StreamDeckConnection != null && !string.IsNullOrEmpty(ContextId) && !string.IsNullOrEmpty(actionId))
             {
@@ -209,7 +214,7 @@ namespace BarRaider.SdTools.Backend
         /// <param name="settings">Settings to save globally</param>
         /// <param name="triggerDidReceiveGlobalSettings">Boolean whether to also trigger a didReceiveGlobalSettings event. Default is true</param>
         /// <returns></returns>
-        public async Task SetGlobalSettingsAsync(JObject settings, bool triggerDidReceiveGlobalSettings = true)
+        public async Task SetGlobalSettingsAsync(JsonElement settings, bool triggerDidReceiveGlobalSettings = true)
         {
             if (StreamDeckConnection != null)
             {
@@ -393,14 +398,15 @@ namespace BarRaider.SdTools.Backend
         /// <returns></returns>
         public async Task SetFeedbackAsync(string layoutItemKey, string value)
         {
-            await StreamDeckConnection.SetFeedbackAsync(new Dictionary<string, string>() { { layoutItemKey, value } }, ContextId);
+            await StreamDeckConnection.SetFeedbackAsync(new Dictionary<string, string>() { { layoutItemKey, value } },
+                ContextId);
         }
 
         /// <summary>
         /// Sets the value of a single touchpad layout item
         /// </summary>
         /// <returns></returns>
-        public async Task SetFeedbackAsync(JObject feedbackPayload)
+        public async Task SetFeedbackAsync(JsonElement feedbackPayload)
         {
             await StreamDeckConnection.SetFeedbackAsync(feedbackPayload, ContextId);
         }
@@ -414,14 +420,18 @@ namespace BarRaider.SdTools.Backend
         {
             await StreamDeckConnection.SetFeedbackLayoutAsync(layout, ContextId);
         }
+
         #endregion
 
         #region Event Wrappers
+
         private void Connection_OnPropertyInspectorDidDisappear(object sender, SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent> e)
         {
             if (e.Event.Context == ContextId)
             {
-                OnPropertyInspectorDidDisappear?.Invoke(this, new SdEventReceivedEventArgs<PropertyInspectorDidDisappear>(new PropertyInspectorDidDisappear(e.Event.Action, e.Event.Context, e.Event.Device)));
+                OnPropertyInspectorDidDisappear?.Invoke(this,
+                    new SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent>(
+                        new PropertyInspectorDidDisappearEvent(e.Event.Action, e.Event.Context, e.Event.Device)));
             }
         }
 
@@ -429,34 +439,43 @@ namespace BarRaider.SdTools.Backend
         {
             if (e.Event.Context == ContextId)
             {
-                OnPropertyInspectorDidAppear?.Invoke(this, new SdEventReceivedEventArgs<PropertyInspectorDidAppear>(new PropertyInspectorDidAppear(e.Event.Action, e.Event.Context, e.Event.Device)));
+                OnPropertyInspectorDidAppear?.Invoke(this,
+                    new SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent>(
+                        new PropertyInspectorDidAppearEvent(e.Event.Action, e.Event.Context, e.Event.Device)));
             }
         }
 
         private void Connection_OnDeviceDidConnect(object sender, SdEventReceivedEventArgs<DeviceDidConnectEvent> e)
         {
-            OnDeviceDidConnect?.Invoke(this, new SdEventReceivedEventArgs<DeviceDidConnect>(new DeviceDidConnect(e.Event.DeviceInfo)));
+            OnDeviceDidConnect?.Invoke(this,
+                new SdEventReceivedEventArgs<DeviceDidConnectEvent>(new DeviceDidConnectEvent(e.Event.DeviceInfo)));
         }
 
-        private void Connection_OnDeviceDidDisconnect(object sender, SdEventReceivedEventArgs<DeviceDidDisconnectEvent> e)
+        private void Connection_OnDeviceDidDisconnect(object sender,
+            SdEventReceivedEventArgs<DeviceDidDisconnectEvent> e)
         {
-            OnDeviceDidDisconnect?.Invoke(this, new SdEventReceivedEventArgs<DeviceDidDisconnect>(new DeviceDidDisconnect(e.Event.Device)));
+            OnDeviceDidDisconnect?.Invoke(this,
+                new SdEventReceivedEventArgs<DeviceDidDisconnectEvent>(new DeviceDidDisconnectEvent(e.Event.Device)));
         }
 
         private void Connection_OnApplicationDidTerminate(object sender, SdEventReceivedEventArgs<ApplicationDidTerminateEvent> e)
         {
-            OnApplicationDidTerminate?.Invoke(this, new SdEventReceivedEventArgs<ApplicationDidTerminate>(new ApplicationDidTerminate(new ApplicationPayload(e.Event.Payload.Application))));
+            OnApplicationDidTerminate?.Invoke(this,
+                new SdEventReceivedEventArgs<ApplicationDidTerminateEvent>(
+                    new ApplicationDidTerminateEvent(new ApplicationPayload(e.Event.Payload.Application))));
         }
 
         private void Connection_OnApplicationDidLaunch(object sender, SdEventReceivedEventArgs<ApplicationDidLaunchEvent> e)
         {
-            OnApplicationDidLaunch?.Invoke(this, new SdEventReceivedEventArgs<ApplicationDidLaunch>(new ApplicationDidLaunch(new ApplicationPayload(e.Event.Payload.Application))));
+            OnApplicationDidLaunch?.Invoke(this,
+                new SdEventReceivedEventArgs<ApplicationDidLaunchEvent>(
+                    new ApplicationDidLaunchEvent(new ApplicationPayload(e.Event.Payload.Application))));
         }
 
         private void Connection_OnTitleParametersDidChange(object sender, SdEventReceivedEventArgs<TitleParametersDidChangeEvent> e)
         {
             if (e.Event.Context != ContextId) return;
-            
+
             // Special case to take into account that TitleParameters arrives right after an OnWillAppear
             if (OnTitleParametersDidChange == null)
             {
@@ -468,26 +487,33 @@ namespace BarRaider.SdTools.Backend
                         Connection_OnTitleParametersDidChange(this, e);
                     });
                 }
+
                 return;
             }
 
             TitleParametersPayload payload = e.Event.Payload;
-            var newPayload = new TitleParametersPayload(payload.Settings, payload.Coordinates, payload.State, payload.Title, payload.TitleParameters);
-            OnTitleParametersDidChange?.Invoke(this, new SdEventReceivedEventArgs<TitleParametersDidChange>(new TitleParametersDidChange(e.Event.Action, e.Event.Context, e.Event.Device, newPayload)));
+            var newPayload = new TitleParametersPayload(payload.Settings, payload.Coordinates, payload.State,
+                payload.Title, payload.TitleParameters);
+            OnTitleParametersDidChange?.Invoke(this,
+                new SdEventReceivedEventArgs<TitleParametersDidChangeEvent>(
+                    new TitleParametersDidChangeEvent(e.Event.Action, e.Event.Context, e.Event.Device, newPayload)));
         }
 
         private void Connection_OnSendToPlugin(object sender, SdEventReceivedEventArgs<SendToPluginEvent> e)
         {
             if (e.Event.Context == ContextId)
             {
-                OnSendToPlugin?.Invoke(this, new SdEventReceivedEventArgs<SendToPlugin>(new SendToPlugin(e.Event.Action, e.Event.Context, e.Event.Payload)));
+                OnSendToPlugin?.Invoke(this,
+                    new SdEventReceivedEventArgs<SendToPluginEvent>(new SendToPluginEvent(e.Event.Action, e.Event.Context,
+                        e.Event.Payload)));
             }
         }
 
         private void StreamDeckConnection_OnSystemDidWakeUp(object sender, SdEventReceivedEventArgs<SystemDidWakeUpEvent> e)
         {
-            OnSystemDidWakeUp?.Invoke(this, new SdEventReceivedEventArgs<SystemDidWakeUp>(new SystemDidWakeUp()));
+            OnSystemDidWakeUp?.Invoke(this, new SdEventReceivedEventArgs<SystemDidWakeUpEvent>(new SystemDidWakeUpEvent()));
         }
+
         #endregion
     }
 }

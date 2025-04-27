@@ -1,8 +1,7 @@
 ﻿using System.Collections.Frozen;
-using BarRaider.SdTools.Payloads;
+using BarRaider.SdTools.Communication.Payloads;
 
 namespace BarRaider.SdTools.Backend;
-
 
 /// <summary>
 /// This class is intended to be implemented by a class generated in Cmpnnt.ActionRegistryGenerator
@@ -14,7 +13,7 @@ public interface IPluginActionRegistry
     /// and in the attribute that decorates each action of your plugin. 
     /// </summary>
     public FrozenSet<string> PluginActionIDs();
-    
+
 
     /// <summary>
     /// Contains a source-generated factory for each action supported by this plugin.
