@@ -1,9 +1,9 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
 
-namespace Cmpnnt.SdTools.SourceGenerators;
+namespace Cmpnnt.SdTools.SourceGenerators.Templates;
 
-internal static class Templates
+internal static class PluginActionIdRegistryTemplate
     {
         public static string CreateRegistrar(ImmutableArray<string> plugins)
         {

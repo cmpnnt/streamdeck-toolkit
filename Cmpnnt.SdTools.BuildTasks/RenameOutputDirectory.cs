@@ -7,9 +7,15 @@ namespace Cmpnnt.SdTools.BuildTasks;
 
 public class RenameOutputDirectory : Task
 {
+    /// <summary>
+    /// The path to be renamed.
+    /// </summary>
     [Required]
     public string OldPath { get; set; }
         
+    /// <summary>
+    /// The path to change the old path to.
+    /// </summary>
     [Required]
     public string NewPath { get; set; }
 

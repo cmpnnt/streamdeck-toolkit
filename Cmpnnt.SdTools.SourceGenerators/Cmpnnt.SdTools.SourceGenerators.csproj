@@ -1,14 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <LangVersion>12</LangVersion>
         <Nullable>enable</Nullable>
+        <IsRoslynComponent>true</IsRoslynComponent>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU;ARM64;x64</Platforms>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" />
-      <PackageReference Include="System.Text.Json" Version="9.0.4" />
+        <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" PrivateAssets="all" />
+        <PackageReference Include="System.Text.Json" Version="9.0.4" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Cmpnnt.SdTools.Attributes;
@@ -13,8 +14,10 @@ using SkiaSharp;
 
 namespace Cmpnnt.SdTools.SamplePlugin
 {
+    // TODO: Generate the pi.html regardless of whether this attribute exists.
+    // Default to /PropertyInspector/ActionClassName.html and use this if provided
     [SdpiOutputDirectory("PropertyInspector/")]
-    public partial class PluginAction : KeyAndEncoderBase
+    public partial class PluginAction3 : KeyAndEncoderBase
     {
         public TextArea ta = new()
         {
@@ -23,13 +26,34 @@ namespace Cmpnnt.SdTools.SamplePlugin
             Label = "Textarea",
             ShowLength = true,
             Setting = "short_description",
-            Value = "short_description"
+            Value = "short_description",
+            Disabled = true
         };
         
-        public Select cbl = new()
+        public Select Select = new()
         {
             Label = "Select List",
             Setting = "fav_numbers",
+            Default = "2",
+            DataSourceSettings = new DataSourceSettings()
+            {
+                Options =
+                [
+                    new OptionSetting { Value = "1", Label = "One" },
+                    new OptionSetting { Value = "2", Label = "Two" },
+                    new OptionSetting { Value = "3", Label = "Three" },
+                    new OptionSetting { Value = "4", Label = "Four" },
+                    new OptionSetting { Value = "5", Label = "Five" }
+                ]
+            }
+        };
+
+        public CheckboxList cbl = new()
+        {
+            Label = "Checkbox List",
+            Setting = "fav_numbers",
+            Columns = 8,
+            Default = "2",
             DataSourceSettings = new DataSourceSettings()
             {
                 Options =
@@ -43,11 +67,11 @@ namespace Cmpnnt.SdTools.SamplePlugin
             }
         };
         
-        private class PluginSettings
+        private class PluginSettings3
         {
-            public static PluginSettings CreateDefaultSettings()
+            public static PluginSettings3 CreateDefaultSettings()
             {
-                var instance = new PluginSettings
+                var instance = new PluginSettings3
                 {
                     Name = string.Empty,
                     ShowName = false
@@ -65,15 +89,15 @@ namespace Cmpnnt.SdTools.SamplePlugin
         }
 
         #region Private Members
-        private readonly PluginSettings settings;
+        private readonly PluginSettings3 settings;
         #endregion
         
-        public PluginAction(ISdConnection connection, InitialPayload payload) : base(connection, payload)
+        public PluginAction3(ISdConnection connection, InitialPayload payload) : base(connection, payload)
         {
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             settings = (payload.Settings == null || !payload.Settings.HasValue) ? 
-                PluginSettings.CreateDefaultSettings() : 
-                payload.Settings.Value.Deserialize<PluginSettings>(options);
+                PluginSettings3.CreateDefaultSettings() : 
+                payload.Settings.Value.Deserialize<PluginSettings3>(options);
             
             Logger.Instance.LogMessage(TracingLevel.Info, $"Settings: {settings}");
             

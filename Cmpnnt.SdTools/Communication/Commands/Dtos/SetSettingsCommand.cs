@@ -8,6 +8,8 @@ namespace Cmpnnt.SdTools.Communication.Commands.Dtos
 
         public string Context { get; set; } = context;
 
+        /* TODO: Does the type matter here? I think the overall set settings logic can be
+           left as is. It just needs minor tweaks to align with the new classes and source generation */
         public JsonElement Payload { get; set; } = settings;
     }
 }

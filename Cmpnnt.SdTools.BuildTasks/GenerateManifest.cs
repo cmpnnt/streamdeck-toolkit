@@ -10,23 +10,31 @@ namespace Cmpnnt.SdTools.BuildTasks;
 
 public class GenerateManifest : Task
 {
-    // Input property from the MSBuild project file:
-    // Path to the compiled assembly of the main plugin project
+    /// <summary>
+    /// Path to the compiled assembly of the main plugin project
+    /// </summary>
     [Required]
     public string PluginAssemblyPath { get; set; }
-
-    // Input property from the MSBuild project file:
-    // Desired output path for manifest.json
+    
+    /// <summary>
+    /// Output path for manifest.json
+    /// </summary>
     [Required]
     public string OutputManifestPath { get; set; }
-
-    // Optional input: Namespace of the generated provider
+    
+    /// <summary>
+    /// Optional input: Namespace of the generated provider
+    /// </summary>
     public string GeneratedProviderNamespace { get; set; } = "GeneratedManifest";
-
-    // Optional input: Class name of the generated provider
+    
+    /// <summary>
+    /// Optional input: Class name of the generated provider
+    /// </summary>
     public string GeneratedProviderClass { get; set; } = "ManifestProvider";
-
-    // Optional input: Method name to get the data object
+    
+    /// <summary>
+    /// Optional input: Method name to get the data object
+    /// </summary>
     public string GeneratedProviderMethod { get; set; } = "GetManifestData";
 
     public override bool Execute()
@@ -46,9 +54,7 @@ public class GenerateManifest : Task
         try
         {
             Log.LogMessage(MessageImportance.Normal, $"Loading assembly: {PluginAssemblyPath}");
-            // Load the assembly into a separate context to avoid locking files if possible,
-            // although for build tasks, direct loading is often fine.
-            Assembly assembly = Assembly.LoadFrom(PluginAssemblyPath); // Consider using MetadataLoadContext if only reading metadata
+            Assembly assembly = Assembly.LoadFrom(PluginAssemblyPath);
 
             var providerFullName = $"{GeneratedProviderNamespace}.{GeneratedProviderClass}";
             Log.LogMessage(MessageImportance.Normal, $"Looking for type: {providerFullName}");
@@ -68,8 +74,7 @@ public class GenerateManifest : Task
                 Log.LogError($"Could not find static method '{GeneratedProviderMethod}' on type '{providerFullName}'.");
                 return false;
             }
-
-            Log.LogMessage(MessageImportance.Normal, "Invoking GetManifestData method...");
+            
             object manifestData = getDataMethod.Invoke(null, null);
 
             if (manifestData == null)
@@ -84,7 +89,6 @@ public class GenerateManifest : Task
                 WriteIndented = true,
                 // Ensure encoder allows characters often found in paths/names if necessary
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                // Include nulls or not Usually better to omit for manifest.json
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
             string jsonContent = JsonSerializer.Serialize(manifestData, options);

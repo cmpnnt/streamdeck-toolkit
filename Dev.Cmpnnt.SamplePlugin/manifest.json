@@ -23,7 +23,7 @@
       ],
       "SupportedInMultiActions": true,
       "Tooltip": "Sample Plugin to Test SDTools",
-      "PropertyInspectorPath": "PropertyInspector/Sample.html",
+      "PropertyInspectorPath": "PropertyInspector/index.html",
       "UUID": "com.test.sdtools.sampleplugin"
     }
   ],

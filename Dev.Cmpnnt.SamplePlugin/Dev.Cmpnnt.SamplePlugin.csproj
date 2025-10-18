@@ -8,6 +8,7 @@
   <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.LinkPlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.PackagePlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.GenerateManifest" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
 
   <!-- Properties -->
   <PropertyGroup>
@@ -57,59 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="!!README!!.txt" />
-    <Content Include="Images\categoryIcon%402x.png">
+    <Content Include="Images\**\*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\categoryIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\icon%402x.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pluginAction%402x.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pluginAction.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pluginIcon%402x.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\pluginIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\caret.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\check.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\check.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\elg_calendar.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\elg_calendar_inv.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\Sample.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\Sample.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\rcheck.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\sdpi.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\sdtools.common.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="PropertyInspector\**\*.*">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -117,8 +70,32 @@
   </ItemGroup>
   <!-- References -->
   <ItemGroup>
-    <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <Analyzer Include="..\Cmpnnt.SdTools.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.SdTools.SourceGenerators.dll" />
+    <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Cmpnnt.SdTools\Cmpnnt.SdTools.csproj" />
   </ItemGroup>
+
+    <PropertyGroup>
+        <!-- Enable source generator output for SDPI extraction -->
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+
+    <Target Name="WriteSdpiHtmlOutput" AfterTargets="CoreCompile">
+        <ItemGroup>
+            <SdpiGeneratedFile Include="$(CompilerGeneratedFilesOutputPath)\**\GeneratedSdpiComponents.g.cs" />
+        </ItemGroup>
+        <Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml
+                Condition="'@(SdpiGeneratedFile)' != ''"
+                GeneratedFile="@(SdpiGeneratedFile)">
+            <Output TaskParameter="GeneratedHtmlFiles" ItemName="SdpiHtmlFiles" />
+        </Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml>
+
+        <!-- Copy generated HTML files to output directory -->
+        <Copy SourceFiles="@(SdpiHtmlFiles)"
+              DestinationFiles="@(SdpiHtmlFiles->'$(OutDir)%(Identity)')"
+              SkipUnchangedFiles="true"
+              Condition="'@(SdpiHtmlFiles)' != ''" />
+    </Target>
 </Project>

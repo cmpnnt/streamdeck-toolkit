@@ -20,7 +20,7 @@ namespace Cmpnnt.SdTools.Communication
     /// <summary>
     /// Underlying object that communicates with the stream deck app
     /// </summary>
-    public class StreamDeckConnection
+    public class StreamDeckConnection : IDisposable
     {
         private const int BUFFER_SIZE = 1024 * 1024;
 
@@ -314,6 +314,12 @@ namespace Cmpnnt.SdTools.Communication
             return SendAsync(new SetFeedbackLayoutCommand(layout, context));
         }
         #endregion
+        
+        public void Dispose()
+        {
+            _ = DisconnectAsync();
+            GC.SuppressFinalize(this);
+        }
 
         #region Private Methods
         private async Task SendAsync(string text)

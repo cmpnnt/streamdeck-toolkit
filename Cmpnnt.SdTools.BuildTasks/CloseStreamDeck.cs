@@ -7,6 +7,9 @@ namespace Cmpnnt.SdTools.BuildTasks;
 public class CloseStreamDeck : Task
 {
     
+    /// <summary>
+    /// The name of the Stream Deck plugin.
+    /// </summary>
     [Required]
     public string PluginName { get; set; }
     
