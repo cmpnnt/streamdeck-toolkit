@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.BuildTasks", "Cmpnnt.BuildTasks\Cmpnnt.BuildTasks.csproj", "{BBC28933-0ED1-4A86-890E-7087ECB86AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.SdTools.BuildTasks", "Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj", "{BBC28933-0ED1-4A86-890E-7087ECB86AFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cmpnnt.Barraider.SdTools", "Cmpnnt.Barraider.SdTools\Cmpnnt.Barraider.SdTools.csproj", "{DABBD97D-6687-4CBD-A19E-AC9FFA3CEF03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cmpnnt.SdTools", "Cmpnnt.SdTools\Cmpnnt.SdTools.csproj", "{DABBD97D-6687-4CBD-A19E-AC9FFA3CEF03}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dev.Cmpnnt.SamplePlugin", "Dev.Cmpnnt.SamplePlugin\Dev.Cmpnnt.SamplePlugin.csproj", "{4635D874-69C0-4010-BE46-77EF92EB1553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.ActionRegistryGenerator", "Cmpnnt.ActionRegistryGenerator\Cmpnnt.ActionRegistryGenerator.csproj", "{689D4D6D-EBB6-42AE-9AA8-E715A771676F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.SdTools.SourceGenerators", "Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj", "{689D4D6D-EBB6-42AE-9AA8-E715A771676F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.Barraider.SdTools.Tests", "Cmpnnt.Barraider.SdTools.Tests\Cmpnnt.Barraider.SdTools.Tests.csproj", "{82417666-2F50-4867-A815-BE9DEA3D1DBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmpnnt.SdTools.Tests", "Cmpnnt.SdTools.Tests\Cmpnnt.SdTools.Tests.csproj", "{82417666-2F50-4867-A815-BE9DEA3D1DBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

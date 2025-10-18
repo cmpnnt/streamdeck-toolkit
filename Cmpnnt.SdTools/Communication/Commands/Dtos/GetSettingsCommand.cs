@@ -1,0 +1,9 @@
+﻿namespace Cmpnnt.SdTools.Communication.Commands.Dtos
+{
+    internal class GetSettingsCommand(string context) : IMessage
+    {
+        public string Event => "getSettings";
+
+        public string Context { get; set; } = context;
+    }
+}

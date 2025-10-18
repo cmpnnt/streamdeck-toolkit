@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using BarRaider.SdTools.Wrappers;
 using System.Threading.Tasks;
-using BarRaider.SdTools.Attributes;
-using BarRaider.SdTools.Backend;
-using BarRaider.SdTools.Communication.Events;
-using BarRaider.SdTools.Communication.Events.Dtos;
-using BarRaider.SdTools.Communication.Payloads;
-using BarRaider.SdTools.Utilities;
+using Cmpnnt.SdTools.Attributes;
+using Cmpnnt.SdTools.Backend;
+using Cmpnnt.SdTools.Communication.Events.Dtos;
+using Cmpnnt.SdTools.Communication.Payloads;
+using Cmpnnt.SdTools.Utilities;
+using Cmpnnt.SdTools.Wrappers;
 using SkiaSharp;
 
-namespace Dev.Cmpnnt.SamplePlugin
+namespace Cmpnnt.SdTools.SamplePlugin
 {
     public partial class PluginAction : KeyAndEncoderBase
     {

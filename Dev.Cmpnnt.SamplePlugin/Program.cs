@@ -1,7 +1,7 @@
-﻿using BarRaider.SdTools.Backend;
-using Cmpnnt.SdTools.Generators;
+﻿using Cmpnnt.SdTools.Backend;
+using Cmpnnt.SdTools.SourceGenerators;
 
-namespace Dev.Cmpnnt.SamplePlugin
+namespace Cmpnnt.SdTools.SamplePlugin
 {
     class Program
     {

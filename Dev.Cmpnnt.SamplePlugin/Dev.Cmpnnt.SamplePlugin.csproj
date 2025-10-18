@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="BuildTasks" >
   <!-- Tasks -->
-  <UsingTask TaskName="Cmpnnt.BuildTasks.SetOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.RenameOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.CloseStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.OpenStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.CloseStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.LinkPlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.PackagePlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
-  <UsingTask TaskName="Cmpnnt.BuildTasks.GenerateManifest" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.SetOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.CloseStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.OpenStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.CloseStreamDeck" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.LinkPlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.PackagePlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.SdTools.BuildTasks.GenerateManifest" AssemblyFile="$(TaskAssemblyPath)" />
 
   <!-- Properties -->
   <PropertyGroup>
@@ -15,10 +15,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Platforms>AnyCPU;x64;ARM64</Platforms>
+    <AssemblyName>Cmpnnt.SdTools.SamplePlugin</AssemblyName>
+    <RootNamespace>Cmpnnt.SdTools.SamplePlugin</RootNamespace>
+    <Company>Cmpnnt.SdTools.SamplePlugin</Company>
+    <Product>Cmpnnt.SdTools.SamplePlugin</Product>
     <!-- TODO: convert to native compilation -->
   </PropertyGroup>
   <PropertyGroup>
-    <TaskAssemblyPath>$(SolutionDir)Cmpnnt.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.BuildTasks.dll</TaskAssemblyPath>
+    <TaskAssemblyPath>$(SolutionDir)Cmpnnt.SdTools.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.SdTools.BuildTasks.dll</TaskAssemblyPath>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyNameLower>$([System.String]::Copy('$(AssemblyName)').ToLowerInvariant())</AssemblyNameLower>
@@ -28,20 +32,20 @@
 
   <!-- Targets -->
   <Target Name="BuildTasks">
-    <MSBuild Projects="..\Cmpnnt.BuildTasks\Cmpnnt.BuildTasks.csproj" />
+    <MSBuild Projects="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" />
   </Target>
   <Target Name="CloseStreamDeck" AfterTargets="Build">
-    <Cmpnnt.BuildTasks.CloseStreamDeck PluginName="$(AssemblyName)" />
+    <Cmpnnt.SdTools.BuildTasks.CloseStreamDeck PluginName="$(AssemblyName)" />
   </Target>
   <Target Name="GenerateManifest" AfterTargets="Build" DependsOnTargets="CloseStreamDeck">
-    <Cmpnnt.BuildTasks.GenerateManifest
+    <Cmpnnt.SdTools.BuildTasks.GenerateManifest
             PluginAssemblyPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\$(AssemblyNameLower).dll"
             OutputManifestPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" />
   </Target>
   <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest">
-    <Cmpnnt.BuildTasks.LinkPlugin Condition="'$(Configuration)' == 'Debug'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
-    <Cmpnnt.BuildTasks.PackagePlugin Condition="'$(Configuration)' == 'Release'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" />
-    <Cmpnnt.BuildTasks.OpenStreamDeck />
+    <Cmpnnt.SdTools.BuildTasks.LinkPlugin Condition="'$(Configuration)' == 'Debug'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
+    <Cmpnnt.SdTools.BuildTasks.PackagePlugin Condition="'$(Configuration)' == 'Release'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" />
+    <Cmpnnt.SdTools.BuildTasks.OpenStreamDeck />
   </Target>
   
   <!-- Items -->
@@ -113,8 +117,8 @@
   </ItemGroup>
   <!-- References -->
   <ItemGroup>
-    <ProjectReference Include="..\Cmpnnt.ActionRegistryGenerator\Cmpnnt.ActionRegistryGenerator.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
-    <ProjectReference Include="..\Cmpnnt.BuildTasks\Cmpnnt.BuildTasks.csproj" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\Cmpnnt.Barraider.SdTools\Cmpnnt.Barraider.SdTools.csproj" />
+    <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Cmpnnt.SdTools\Cmpnnt.SdTools.csproj" />
   </ItemGroup>
 </Project>
