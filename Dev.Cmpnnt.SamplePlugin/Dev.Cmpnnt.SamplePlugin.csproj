@@ -23,7 +23,7 @@
     <!-- TODO: convert to native compilation -->
   </PropertyGroup>
   <PropertyGroup>
-    <TaskAssemblyPath>$(SolutionDir)Cmpnnt.SdTools.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.SdTools.BuildTasks.dll</TaskAssemblyPath>
+    <TaskAssemblyPath>$(MSBuildThisFileDirectory)..\Cmpnnt.SdTools.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.SdTools.BuildTasks.dll</TaskAssemblyPath>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyNameLower>$([System.String]::Copy('$(AssemblyName)').ToLowerInvariant())</AssemblyNameLower>
@@ -35,15 +35,15 @@
   <Target Name="BuildTasks">
     <MSBuild Projects="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" />
   </Target>
-  <Target Name="CloseStreamDeck" AfterTargets="Build">
+  <Target Name="CloseStreamDeck" BeforeTargets="BeforeBuild" Condition="'$(DesignTimeBuild)' != 'true'">
     <Cmpnnt.SdTools.BuildTasks.CloseStreamDeck PluginName="$(AssemblyName)" />
   </Target>
-  <Target Name="GenerateManifest" AfterTargets="Build" DependsOnTargets="CloseStreamDeck">
+  <Target Name="GenerateManifest" AfterTargets="Build" Condition="'$(DesignTimeBuild)' != 'true'">
     <Cmpnnt.SdTools.BuildTasks.GenerateManifest
             PluginAssemblyPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\$(AssemblyNameLower).dll"
             OutputManifestPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" />
   </Target>
-  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest">
+  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest" Condition="'$(DesignTimeBuild)' != 'true'">
     <Cmpnnt.SdTools.BuildTasks.LinkPlugin Condition="'$(Configuration)' == 'Debug'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
     <Cmpnnt.SdTools.BuildTasks.PackagePlugin Condition="'$(Configuration)' == 'Release'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" />
     <Cmpnnt.SdTools.BuildTasks.OpenStreamDeck />
@@ -70,8 +70,8 @@
   </ItemGroup>
   <!-- References -->
   <ItemGroup>
-    <Analyzer Include="..\Cmpnnt.SdTools.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.SdTools.SourceGenerators.dll" />
-    <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" />
+<!--    <Analyzer Include="..\Cmpnnt.SdTools.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.SdTools.SourceGenerators.dll" />-->
+    <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Cmpnnt.SdTools\Cmpnnt.SdTools.csproj" />
   </ItemGroup>
@@ -82,7 +82,7 @@
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
 
-    <Target Name="WriteSdpiHtmlOutput" AfterTargets="CoreCompile">
+    <Target Name="WriteSdpiHtmlOutput" AfterTargets="CoreCompile" Condition="'$(DesignTimeBuild)' != 'true'">
         <ItemGroup>
             <SdpiGeneratedFile Include="$(CompilerGeneratedFilesOutputPath)\**\GeneratedSdpiComponents.g.cs" />
         </ItemGroup>

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Loader;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Build.Framework;
@@ -47,14 +48,27 @@ public class GenerateManifest : Task
 
         if (!File.Exists(PluginAssemblyPath))
         {
-            Log.LogError($"Plugin assembly not found at '{PluginAssemblyPath}'. Skipping manifest generation. This might happen on initial builds before the assembly exists.");
+            Log.LogWarning(
+                $"Plugin assembly not found at '{PluginAssemblyPath}'. Skipping manifest generation. This might happen on initial builds before the assembly exists.");
             return true;
         }
 
+        var alc = new AssemblyLoadContext(name: "ManifestGen", isCollectible: true);
         try
         {
+            // The assembly and its dependencies must be loaded into the same context.
+            // In this case, we assume that any dependencies for the plugin assembly are in the same directory.
+            alc.Resolving += (context, assemblyName) =>
+            {
+                string assemblyPath = Path.Combine(Path.GetDirectoryName(PluginAssemblyPath) ?? string.Empty, $"{assemblyName.Name}.dll");
+                
+                return File.Exists(assemblyPath) ? context.LoadFromAssemblyPath(assemblyPath) : null;
+            };
+
             Log.LogMessage(MessageImportance.Normal, $"Loading assembly: {PluginAssemblyPath}");
-            Assembly assembly = Assembly.LoadFrom(PluginAssemblyPath);
+            /* Using LoadFromAssemblyPath here means we need to manually resolve dependencies,
+             which is what's happening in the alc.Resolving block */
+            Assembly assembly = alc.LoadFromAssemblyPath(PluginAssemblyPath);
 
             var providerFullName = $"{GeneratedProviderNamespace}.{GeneratedProviderClass}";
             Log.LogMessage(MessageImportance.Normal, $"Looking for type: {providerFullName}");
@@ -62,19 +76,22 @@ public class GenerateManifest : Task
 
             if (providerType == null)
             {
-                Log.LogError($"Could not find generated type '{providerFullName}' in assembly '{PluginAssemblyPath}'. Ensure the source generator ran successfully.");
+                Log.LogError(
+                    $"Could not find generated type '{providerFullName}' in assembly '{PluginAssemblyPath}'. Ensure the source generator ran successfully.");
                 return false;
             }
 
             Log.LogMessage(MessageImportance.Normal, $"Looking for method: {GeneratedProviderMethod}");
-            MethodInfo getDataMethod = providerType.GetMethod(GeneratedProviderMethod, BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic); // Adjust flags if needed
+            MethodInfo getDataMethod = providerType.GetMethod(GeneratedProviderMethod,
+                BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
 
             if (getDataMethod == null)
             {
-                Log.LogError($"Could not find static method '{GeneratedProviderMethod}' on type '{providerFullName}'.");
+                Log.LogError(
+                    $"Could not find static method '{GeneratedProviderMethod}' on type '{providerFullName}'.");
                 return false;
             }
-            
+
             object manifestData = getDataMethod.Invoke(null, null);
 
             if (manifestData == null)
@@ -83,7 +100,7 @@ public class GenerateManifest : Task
                 return false;
             }
 
-            Log.LogMessage(MessageImportance.Normal, $"Serializing manifest data to JSON...");
+            Log.LogMessage(MessageImportance.Normal, "Serializing manifest data to JSON...");
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
@@ -97,19 +114,23 @@ public class GenerateManifest : Task
             string outputDir = Path.GetDirectoryName(OutputManifestPath);
             if (!string.IsNullOrEmpty(outputDir) && !Directory.Exists(outputDir))
             {
-                 Log.LogMessage(MessageImportance.Normal, $"Creating directory: {outputDir}");
-                 Directory.CreateDirectory(outputDir);
+                Log.LogMessage(MessageImportance.Normal, $"Creating directory: {outputDir}");
+                Directory.CreateDirectory(outputDir);
             }
 
             Log.LogMessage(MessageImportance.High, $"Writing manifest file: {OutputManifestPath}");
             File.WriteAllText(OutputManifestPath, jsonContent);
 
-            return true; // Success
+            return true;
         }
         catch (Exception ex)
         {
             Log.LogErrorFromException(ex, true, true, null);
-            return false; // Failure
+            return false;
+        }
+        finally
+        {
+            alc.Unload();
         }
     }
 }

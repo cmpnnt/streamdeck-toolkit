@@ -41,19 +41,26 @@ public class ProcessUtilities(string pluginName, Task task)
     public bool StopPlugin()
     {
         Process[] procs = Process.GetProcessesByName(pluginName);
+        if (procs.Length == 0)
+        {
+            logger.LogMessage($"Plugin '{pluginName}' is not running.");
+            return true;
+        }
+
         foreach (Process p in procs)
         {
             try
             {
+                logger.LogMessage($"Stopping plugin process '{pluginName}' (PID: {p.Id})...");
                 p.Kill();
+                p.WaitForExit();
+                logger.LogMessage($"Plugin '{pluginName}' stopped successfully.");
             }
             catch (Exception e)
             {
                 logger.LogError($"Failed to stop plugin: {e.Message}");
                 return false;
             }
-            
-            p.WaitForExit();
         }
         return true;
     }
@@ -65,18 +72,26 @@ public class ProcessUtilities(string pluginName, Task task)
     public bool StopStreamDeck()
     {
         Process[] procs = Process.GetProcessesByName("StreamDeck");
+        if (procs.Length == 0)
+        {
+            logger.LogMessage("Stream Deck is not running.");
+            return true;
+        }
+
         foreach (Process p in procs)
         {
             try
             {
+                logger.LogMessage($"Stopping Stream Deck (PID: {p.Id})...");
                 p.Kill();
+                p.WaitForExit();
+                logger.LogMessage("Stream Deck stopped successfully.");
             }
             catch (Exception e)
             {
                 logger.LogError($"Failed to stop Stream Deck: {e.Message}");
                 return false;
             }
-            p.WaitForExit();
         }
         return true;
     }

@@ -23,12 +23,15 @@ public class CloseStreamDeck : Task
         // SD application if we can't link the plugin. If neither the SD app nor plugin were running,
         // set `ClosedStreamDeck` to true. If either one was running and was successfully stopped,
         // set it to true. This will also run only in debug.
-        
+
         ProcessUtilities pu = new(PluginName, this);
+
+        Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Preparing to build Stream Deck plugin...");
 
         if (!pu.FindCli())
         {
-            return false;
+            Log.LogWarning("Stream Deck CLI not found. Plugin will not be automatically linked.");
+            return true; // Don't fail the build, just skip the automation
         }
 
         if (!pu.StopPlugin())
@@ -40,6 +43,8 @@ public class CloseStreamDeck : Task
         {
             return false;
         }
+
+        Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Stream Deck closed successfully.");
 
         return true;
     }
