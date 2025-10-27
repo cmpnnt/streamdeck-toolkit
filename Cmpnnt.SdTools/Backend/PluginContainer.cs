@@ -84,8 +84,10 @@ namespace Cmpnnt.SdTools.Backend
                     await RunTick();
                 }
             }
-
+            
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin Disconnected - Exiting");
+            await connection.DisposeAsync();
+            Environment.Exit(0);
         }
 
         // Button pressed
@@ -260,6 +262,7 @@ namespace Cmpnnt.SdTools.Backend
                 #endif
 
                 if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions value)) return;
+                
                 value.Destroy();
                 Instances.Remove(e.Event.Context);
 

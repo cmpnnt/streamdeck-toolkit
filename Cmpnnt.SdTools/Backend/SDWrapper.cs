@@ -32,6 +32,7 @@ namespace Cmpnnt.SdTools.Backend
         {
             Logger.Instance.LogMessage(TracingLevel.Info,
                 $"Plugin [{Tools.GetExeName()}] Loading - {registry.PluginActionIDs().Count} Actions Found");
+            
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
             #if DEBUG
@@ -71,8 +72,7 @@ namespace Cmpnnt.SdTools.Backend
             });
         }
 
-        private static async Task RunPlugin(StreamDeckOptions options, IPluginActionRegistry registry,
-            IUpdateHandler updateHandler)
+        private static async Task RunPlugin(StreamDeckOptions options, IPluginActionRegistry registry, IUpdateHandler updateHandler)
         {
             _container = new PluginContainer(registry, updateHandler);
             await _container.Run(options);

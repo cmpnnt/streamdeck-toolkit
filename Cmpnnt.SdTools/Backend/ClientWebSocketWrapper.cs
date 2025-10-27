@@ -9,6 +9,11 @@ public class ClientWebSocketWrapper : IClientWebSocket
 {
     private readonly ClientWebSocket clientWebSocket = new();
 
+    public ClientWebSocketWrapper()
+    {
+        clientWebSocket.Options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+    }
+
     public WebSocketState State => clientWebSocket.State;
 
     public Task ConnectAsync(Uri uri, CancellationToken cancellationToken)
