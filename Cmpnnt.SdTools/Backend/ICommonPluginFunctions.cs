@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Text.Json;
 using Cmpnnt.SdTools.Communication.Payloads;
 
 namespace Cmpnnt.SdTools.Backend
@@ -11,18 +12,15 @@ namespace Cmpnnt.SdTools.Backend
         /// <summary>
         /// Called when the PropertyInspector has new settings
         /// </summary>
-        /// <param name="payload"></param>
         void ReceivedSettings(ReceivedSettingsPayload payload);
 
         /// <summary>
         /// Called when GetGlobalSettings is called.
         /// </summary>
-        /// <param name="payload"></param>
         void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload);
 
         /// <summary>
-        /// Called every second
-        /// Logic for displaying title/image can go here
+        /// Called every second. Logic for displaying title/image can go here.
         /// </summary>
         void OnTick();
 
@@ -30,5 +28,25 @@ namespace Cmpnnt.SdTools.Backend
         /// Internal function used by StreamDeckTools to prevent memory leaks
         /// </summary>
         void Destroy();
+
+        /// <summary>
+        /// Called when the Property Inspector sends a payload to the plugin via sendToPlugin
+        /// </summary>
+        void OnSendToPlugin(JsonElement payload);
+
+        /// <summary>
+        /// Called when the user changes the title or title parameters
+        /// </summary>
+        void OnTitleParametersDidChange(TitleParametersPayload payload);
+
+        /// <summary>
+        /// Called when the Property Inspector appears in the Stream Deck software UI
+        /// </summary>
+        void OnPropertyInspectorDidAppear();
+
+        /// <summary>
+        /// Called when the Property Inspector for this instance is removed from the Stream Deck software UI
+        /// </summary>
+        void OnPropertyInspectorDidDisappear();
     }
 }

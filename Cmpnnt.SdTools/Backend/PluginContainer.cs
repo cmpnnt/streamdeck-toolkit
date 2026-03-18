@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Cmpnnt.SdTools.Communication;
+using Cmpnnt.SdTools.Communication.Events;
 using Cmpnnt.SdTools.Communication.Events.Dtos;
 using Cmpnnt.SdTools.Communication.Payloads;
 using Cmpnnt.SdTools.Communication.Registration;
 using Cmpnnt.SdTools.Utilities;
-using Cmpnnt.SdTools.Wrappers;
 
 namespace Cmpnnt.SdTools.Backend
 {
@@ -26,9 +26,6 @@ namespace Cmpnnt.SdTools.Backend
         /// <summary>
         /// All current instances of plugin actions. Keyed on Action UUID. Action instances are added
         /// when the StreamDeck page containing the plugin is shown and removed when it is not visible.
-        /// See the method Connection_OnWillAppear() in this file for that logic.
-        /// Note that your _plugin_ will still run on the user's machine as long as it is installed, even if
-        /// there are no actions running. So, this logic keeps resource usage down when no actions are running.
         /// </summary>
         private static readonly Dictionary<string, ICommonPluginFunctions> Instances = new();
 
@@ -38,23 +35,10 @@ namespace Cmpnnt.SdTools.Backend
             deviceInfo = options.DeviceInfo;
             connection = new StreamDeckConnection(options.Port, options.PluginUuid, options.RegisterEvent);
 
-            // Register for events
             connection.OnConnected += Connection_OnConnected;
             connection.OnDisconnected += Connection_OnDisconnected;
-            connection.OnKeyDown += Connection_OnKeyDown;
-            connection.OnKeyUp += Connection_OnKeyUp;
-            connection.OnWillAppear += Connection_OnWillAppear;
-            connection.OnWillDisappear += Connection_OnWillDisappear;
-            connection.OnDialRotate += Connection_OnDialRotate;
-            connection.OnDialDown += Connection_OnDialDown;
-            connection.OnDialUp += Connection_OnDialUp;
-            connection.OnTouchpadPress += Connection_OnTouchpadPress;
+            connection.OnEventReceived += Connection_OnEventReceived;
 
-            // Settings changed
-            connection.OnDidReceiveSettings += Connection_OnDidReceiveSettings;
-            connection.OnDidReceiveGlobalSettings += Connection_OnDidReceiveGlobalSettings;
-
-            // Plugin Version Updates
             if (updateHandler != null)
             {
                 updateHandler.OnUpdateStatusChanged += UpdateHandler_OnUpdateStatusChanged;
@@ -62,65 +46,396 @@ namespace Cmpnnt.SdTools.Backend
                 await Task.Run(updateHandler.CheckForUpdate);
             }
 
-            // Start the connection
             connection.Run();
             Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin Loaded: UUID: {pluginUuid} Device Info: {deviceInfo}");
             Logger.Instance.LogMessage(TracingLevel.Info, $"Plugin version: {deviceInfo.Plugin.Version}");
             Logger.Instance.LogMessage(TracingLevel.Info, "Connecting to Stream Deck...");
 
-            // Time to wait for initial connection
             if (connectEvent.WaitOne(TimeSpan.FromSeconds(STREAMDECK_INITIAL_CONNECTION_TIMEOUT_SECONDS)))
             {
                 Logger.Instance.LogMessage(TracingLevel.Info, "Connected to Stream Deck");
 
-                // Initialize GlobalSettings manager
                 GlobalSettingsManager.Instance.Initialize(connection);
 
-                // We connected, loop every second until we disconnect
-                /* TODO: Is there a better way to do this than a busy-wait? Some built-in background
-                   Task that is delayed via Task.Delay? I don't like hogging a thread for this. */
                 while (!disconnectEvent.WaitOne(TimeSpan.FromMilliseconds(1000)))
                 {
                     await RunTick();
                 }
             }
-            
+
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin Disconnected - Exiting");
             await connection.DisposeAsync();
             Environment.Exit(0);
         }
 
-        // Button pressed
-        private async void Connection_OnKeyDown(object sender, SdEventReceivedEventArgs<KeyDownEvent> e)
+        private async void Connection_OnEventReceived(object sender, BaseEvent evt)
         {
-            if (updateHandler?.IsBlockingUpdate ?? false)
-            {
-                if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
-                {
-                    await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
-                }
-
-                return;
-            }
-
-            await instancesLock.WaitAsync();
             try
             {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin Keydown: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IKeypadPlugin plugin)
+                switch (evt)
                 {
-                    plugin.KeyPressed(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"Keydown General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
+                    case WillAppearEvent e:
+                    {
+                        var conn = new SdConnection(connection, pluginUuid, deviceInfo, e.Action, e.Context, e.Device);
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin OnWillAppear: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!actionRegistry.PluginActionIDs().Contains(e.Action))
+                            {
+                                Logger.Instance.LogMessage(TracingLevel.Warn, $"No plugin found that matches action: {e.Action}");
+                                return;
+                            }
+
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions existing) && existing != null)
+                            {
+                                Logger.Instance.LogMessage(TracingLevel.Info,
+                                    $"WillAppear called for already existing context {e.Context} (might be inside a multi-action)");
+                                return;
+                            }
+
+                            var payload = new InitialPayload(e.Payload, deviceInfo);
+                            Instances[e.Context] = actionRegistry.CreateAction(e.Action, conn, payload);
+
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
+                            #endif
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Instance.LogMessage(TracingLevel.Fatal,
+                                $"Could not create instance of {e.Action} with context {e.Context} - This may be due to an Exception raised in the constructor, or the class does not inherit PluginBase with the same constructor {ex}");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case WillDisappearEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin OnWillDisappear: Context: {e.Context} Action: {e.Action}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions value)) return;
+                            value.Destroy();
+                            Instances.Remove(e.Context);
+
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
+                            #endif
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case KeyDownEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false)
+                        {
+                            if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                                await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            return;
+                        }
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin Keydown: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IKeypadPlugin plugin)
+                                plugin.KeyPressed(e.Payload);
+                            else
+                                Logger.Instance.LogMessage(TracingLevel.Error,
+                                    $"Keydown General Error: Could not convert {e.Context} to IKeypadPlugin");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case KeyUpEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false) return;
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin Keyup: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IKeypadPlugin plugin)
+                                plugin.KeyReleased(e.Payload);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DialRotateEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false) return;
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"DialRotate: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IEncoderPlugin plugin)
+                                plugin.DialRotate(e.Payload);
+                            else
+                                Logger.Instance.LogMessage(TracingLevel.Error,
+                                    $"DialRotate General Error: Could not convert {e.Context} to IEncoderPlugin");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DialDownEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false)
+                        {
+                            if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                                await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            return;
+                        }
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"DialPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IEncoderPlugin plugin)
+                                plugin.DialDown(e.Payload);
+                            else
+                                Logger.Instance.LogMessage(TracingLevel.Error,
+                                    $"DialDown General Error: Could not convert {e.Context} to IEncoderPlugin");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DialUpEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false) return;
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"DialPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IEncoderPlugin plugin)
+                                plugin.DialUp(e.Payload);
+                            else
+                                Logger.Instance.LogMessage(TracingLevel.Error,
+                                    $"DialDown General Error: Could not convert {e.Context} to IEncoderPlugin");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case TouchTapEvent e:
+                    {
+                        if (updateHandler?.IsBlockingUpdate ?? false)
+                        {
+                            if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                                await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            return;
+                        }
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"TouchpadPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (instance is IEncoderPlugin plugin)
+                                plugin.TouchPress(e.Payload);
+                            else
+                                Logger.Instance.LogMessage(TracingLevel.Error,
+                                    $"TouchpadPress General Error: Could not convert {e.Context} to IEncoderPlugin");
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DidReceiveSettingsEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin OnDidReceiveSettings: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                                instance.ReceivedSettings(e.Payload ?? new ReceivedSettingsPayload());
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DidReceiveGlobalSettingsEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            #if DEBUG
+                            Logger.Instance.LogMessage(TracingLevel.Debug,
+                                $"Plugin OnDidReceiveGlobalSettings: Settings: {e.Payload?.ToStringEx()}");
+                            #endif
+
+                            ReceivedGlobalSettingsPayload globalSettings = e.Payload ?? new ReceivedGlobalSettingsPayload();
+                            foreach (string key in Instances.Keys)
+                                Instances[key].ReceivedGlobalSettings(globalSettings);
+
+                            updateHandler?.SetGlobalSettings(globalSettings);
+                            GlobalSettingsManager.Instance.OnGlobalSettingsReceived(globalSettings);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case SendToPluginEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                                instance.OnSendToPlugin(e.Payload);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case TitleParametersDidChangeEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                                instance.OnTitleParametersDidChange(e.Payload);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case PropertyInspectorDidAppearEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                                instance.OnPropertyInspectorDidAppear();
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case PropertyInspectorDidDisappearEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                                instance.OnPropertyInspectorDidDisappear();
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    // Global events — broadcast to all instances that opt in via optional interfaces
+                    case ApplicationDidLaunchEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            foreach (ICommonPluginFunctions instance in Instances.Values)
+                                if (instance is IApplicationMonitorPlugin monitor)
+                                    monitor.OnApplicationDidLaunch(e.Payload);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case ApplicationDidTerminateEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            foreach (ICommonPluginFunctions instance in Instances.Values)
+                                if (instance is IApplicationMonitorPlugin monitor)
+                                    monitor.OnApplicationDidTerminate(e.Payload);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DeviceDidConnectEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            foreach (ICommonPluginFunctions instance in Instances.Values)
+                                if (instance is IDeviceMonitorPlugin monitor)
+                                    monitor.OnDeviceDidConnect(e);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case DeviceDidDisconnectEvent e:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            foreach (ICommonPluginFunctions instance in Instances.Values)
+                                if (instance is IDeviceMonitorPlugin monitor)
+                                    monitor.OnDeviceDidDisconnect(e.Device);
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    case SystemDidWakeUpEvent:
+                    {
+                        await instancesLock.WaitAsync();
+                        try
+                        {
+                            foreach (ICommonPluginFunctions instance in Instances.Values)
+                                if (instance is ISystemLifecyclePlugin lifecycle)
+                                    lifecycle.OnSystemDidWakeUp();
+                        }
+                        finally { instancesLock.Release(); }
+                        break;
+                    }
+
+                    default:
+                        Logger.Instance.LogMessage(TracingLevel.Warn,
+                            $"{GetType()} Unhandled event type: {evt.GetType().Name}");
+                        break;
                 }
             }
             catch (Exception ex)
@@ -128,49 +443,8 @@ namespace Cmpnnt.SdTools.Backend
                 Logger.Instance.LogMessage(TracingLevel.Fatal,
                     $"Plugin crashed with the following message: {ex.Message}");
             }
-            finally
-            {
-                instancesLock.Release();
-            }
         }
 
-        // Button released
-        private async void Connection_OnKeyUp(object sender, SdEventReceivedEventArgs<KeyUpEvent> e)
-        {
-            if (updateHandler?.IsBlockingUpdate ?? false) return;
-
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin Keyup: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IKeypadPlugin plugin)
-                {
-                    plugin.KeyReleased(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"Keyup General Error: Could not convert {e.Event.Context} to IKeypadPlugin");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Function runs every second, used to update UI
         private async Task RunTick()
         {
             if (updateHandler?.IsBlockingUpdate ?? false) return;
@@ -181,312 +455,6 @@ namespace Cmpnnt.SdTools.Backend
                 foreach (KeyValuePair<string, ICommonPluginFunctions> kvp in Instances.ToArray())
                 {
                     kvp.Value.OnTick();
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Action is loaded in the Stream Deck
-        private async void Connection_OnWillAppear(object sender, SdEventReceivedEventArgs<WillAppearEvent> e)
-        {
-            var conn = new SdConnection(connection, pluginUuid, deviceInfo, e.Event.Action, e.Event.Context,
-                e.Event.Device);
-            
-            await instancesLock.WaitAsync();
-            
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin OnWillAppear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (actionRegistry.PluginActionIDs().Contains(e.Event.Action))
-                {
-                    try
-                    {
-                        if (Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance) &&
-                            instance != null)
-                        {
-                            Logger.Instance.LogMessage(TracingLevel.Info,
-                                $"WillAppear called for already existing context {e.Event.Context} (might be inside a multi-action)");
-                            return;
-                        }
-
-                        var payload = new InitialPayload(e.Event.Payload, deviceInfo);
-                        Instances[e.Event.Context] = actionRegistry.CreateAction(e.Event.Action, conn, payload);
-
-                        #if DEBUG
-                        Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
-                        #endif
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Instance.LogMessage(TracingLevel.Fatal,
-                            $"Could not create instance of {e.Event.Action} with context {e.Event.Context} - This may be due to an Exception raised in the constructor, or the class does not inherit PluginBase with the same constructor {ex}");
-                    }
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Warn,
-                        $"No plugin found that matches action: {e.Event.Action}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        private async void Connection_OnWillDisappear(object sender, SdEventReceivedEventArgs<WillDisappearEvent> e)
-        {
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin OnWillDisappear: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions value)) return;
-                
-                value.Destroy();
-                Instances.Remove(e.Event.Context);
-
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug, $"Instance count is now {Instances.Count}");
-                #endif
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Settings updated
-        private async void Connection_OnDidReceiveSettings(object sender,
-            SdEventReceivedEventArgs<DidReceiveSettingsEvent> e)
-        {
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin OnDidReceiveSettings: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance))
-                {
-                    instance.ReceivedSettings(e.Event.Payload ?? new ReceivedSettingsPayload());
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Global settings updated
-        private async void Connection_OnDidReceiveGlobalSettings(object sender,
-            SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent> e)
-        {
-            await instancesLock.WaitAsync();
-            
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"Plugin OnDidReceiveGlobalSettings: Settings: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                ReceivedGlobalSettingsPayload globalSettings = e.Event.Payload ?? new ReceivedGlobalSettingsPayload();
-                foreach (string key in Instances.Keys)
-                {
-                    Instances[key].ReceivedGlobalSettings(globalSettings);
-                }
-
-                updateHandler?.SetGlobalSettings(globalSettings);
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        private async void Connection_OnTouchpadPress(object sender, SdEventReceivedEventArgs<TouchTapEvent> e)
-        {
-            if (updateHandler?.IsBlockingUpdate ?? false)
-            {
-                if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
-                {
-                    await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
-                }
-
-                return;
-            }
-
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"TouchpadPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IEncoderPlugin plugin)
-                {
-                    plugin.TouchPress(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"TouchpadPress General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Dial Up
-
-        private async void Connection_OnDialUp(object sender, SdEventReceivedEventArgs<DialUpEvent> e)
-        {
-            if (updateHandler?.IsBlockingUpdate ?? false) return;
-
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IEncoderPlugin plugin)
-                {
-                    plugin.DialUp(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        // Dial Down
-        private async void Connection_OnDialDown(object sender, SdEventReceivedEventArgs<DialDownEvent> e)
-        {
-            if (updateHandler?.IsBlockingUpdate ?? false)
-            {
-                if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
-                {
-                    await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
-                }
-
-                return;
-            }
-
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"DialPress: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IEncoderPlugin plugin)
-                {
-                    plugin.DialDown(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"DialDown General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.LogMessage(TracingLevel.Fatal,
-                    $"Plugin crashed with the following message: {ex.Message}");
-            }
-            finally
-            {
-                instancesLock.Release();
-            }
-        }
-
-        private async void Connection_OnDialRotate(object sender, SdEventReceivedEventArgs<DialRotateEvent> e)
-        {
-            if (updateHandler?.IsBlockingUpdate ?? false) return;
-
-            await instancesLock.WaitAsync();
-            try
-            {
-                #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Debug,
-                    $"DialRotate: Context: {e.Event.Context} Action: {e.Event.Action} Payload: {e.Event.Payload?.ToStringEx()}");
-                #endif
-
-                if (!Instances.TryGetValue(e.Event.Context, out ICommonPluginFunctions instance)) return;
-
-                if (instance is IEncoderPlugin plugin)
-                {
-                    plugin.DialRotate(e.Event.Payload);
-                }
-                else
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"DialRotate General Error: Could not convert {e.Event.Context} to IEncoderPlugin");
                 }
             }
             catch (Exception ex)
@@ -516,8 +484,7 @@ namespace Cmpnnt.SdTools.Backend
                     {
                         foreach (string contextId in Instances.Keys.ToList())
                         {
-                            await connection.SetImageAsync(e.UpdateImage, contextId, SdkTarget.HardwareAndSoftware,
-                                null);
+                            await connection.SetImageAsync(e.UpdateImage, contextId, SdkTarget.HardwareAndSoftware, null);
                             await connection.SetTitleAsync(null, contextId, SdkTarget.HardwareAndSoftware, null);
                         }
                     });

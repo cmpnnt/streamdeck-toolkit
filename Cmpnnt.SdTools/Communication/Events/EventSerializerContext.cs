@@ -4,6 +4,7 @@ using Cmpnnt.SdTools.Communication.Events.Dtos;
 namespace Cmpnnt.SdTools.Communication.Events;
 
 [JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true, WriteIndented = false)]
+[JsonSerializable(typeof(BaseEvent))]
 [JsonSerializable(typeof(ApplicationDidLaunchEvent))]
 [JsonSerializable(typeof(ApplicationDidTerminateEvent))]
 [JsonSerializable(typeof(DeviceDidConnectEvent))]
