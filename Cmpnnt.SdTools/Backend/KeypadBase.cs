@@ -1,12 +1,11 @@
-﻿using Cmpnnt.SdTools.Communication.Payloads;
+using System.Text.Json;
+using Cmpnnt.SdTools.Communication.Payloads;
 
 namespace Cmpnnt.SdTools.Backend
 {
     /// <summary>
-    /// Main abstract class your plugin should derive from for keys (not dials)
-    /// For dials use the EncoderBase or KeyAndEncoderBase
-    /// Holds implementation for all the basic functions
-    /// If you're missing an event, you can register to it from the Connection.StreamDeckConnection object
+    /// Main abstract class your plugin should derive from for keys (not dials).
+    /// For dials use EncoderBase or KeyAndEncoderBase.
     /// </summary>
     public abstract class KeypadBase : IKeypadPlugin
     {
@@ -23,28 +22,45 @@ namespace Cmpnnt.SdTools.Backend
         /// <summary>
         /// Called when the PropertyInspector has new settings
         /// </summary>
-        /// <param name="payload"></param>
         public abstract void ReceivedSettings(ReceivedSettingsPayload payload);
 
         /// <summary>
         /// Called when GetGlobalSettings is called.
         /// </summary>
-        /// <param name="payload"></param>
         public abstract void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload);
 
         /// <summary>
-        /// Called every second
-        /// Logic for displaying title/image can go here
+        /// Called every second. Logic for displaying title/image can go here.
         /// </summary>
         public abstract void OnTick();
 
         /// <summary>
-        /// Abstract method Called when the plugin is disposed
+        /// Called when the plugin is disposed
         /// </summary>
         public abstract void Dispose();
 
         /// <summary>
-        /// Main iDisposable Dispose function
+        /// Called when the Property Inspector sends a payload to the plugin via sendToPlugin
+        /// </summary>
+        public virtual void OnSendToPlugin(JsonElement payload) { }
+
+        /// <summary>
+        /// Called when the user changes the title or title parameters
+        /// </summary>
+        public virtual void OnTitleParametersDidChange(TitleParametersPayload payload) { }
+
+        /// <summary>
+        /// Called when the Property Inspector appears in the Stream Deck software UI
+        /// </summary>
+        public virtual void OnPropertyInspectorDidAppear() { }
+
+        /// <summary>
+        /// Called when the Property Inspector for this instance is removed from the Stream Deck software UI
+        /// </summary>
+        public virtual void OnPropertyInspectorDidDisappear() { }
+
+        /// <summary>
+        /// Internal dispose function
         /// </summary>
         public void Destroy()
         {
@@ -58,22 +74,9 @@ namespace Cmpnnt.SdTools.Backend
         protected ISdConnection Connection { get; set; }
 
         /// <summary>
-        /// Constructor for PluginBase. Receives the communication and plugin settings 
+        /// Constructor for PluginBase. Receives the communication and plugin settings.
         /// Note that the settings object is not used by the base and should be consumed by the deriving class.
-        /// Usually, a private class inside the deriving class is created which stores the settings
-        /// Example for settings usage:
-        /// * if (payload.Settings == null || payload.Settings.Count == 0)
-        /// * {
-        /// *         // CreateAction default settings
-        /// * }
-        /// * else
-        /// * {
-        ///     this.settings = payload.Settings.ToObject();
-        /// * }
-        /// 
         /// </summary>
-        /// <param name="connection">Communication module with Stream Deck</param>
-        /// <param name="payload">Plugin settings - NOTE: Not used in base class, should be consumed by deriving class</param>
         #pragma warning disable IDE0060 // Remove unused parameter
         public KeypadBase(ISdConnection connection, InitialPayload payload)
         #pragma warning restore IDE0060 // Remove unused parameter

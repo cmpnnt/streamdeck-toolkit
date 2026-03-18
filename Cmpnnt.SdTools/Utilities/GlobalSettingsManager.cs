@@ -2,9 +2,7 @@
 using System.Text.Json;
 using System.Threading.Tasks;
 using Cmpnnt.SdTools.Communication;
-using Cmpnnt.SdTools.Communication.Events.Dtos;
 using Cmpnnt.SdTools.Communication.Payloads;
-using Cmpnnt.SdTools.Wrappers;
 
 namespace Cmpnnt.SdTools.Utilities
 {
@@ -55,13 +53,24 @@ namespace Cmpnnt.SdTools.Utilities
         /// </summary>
         public event EventHandler<ReceivedGlobalSettingsPayload> OnReceivedGlobalSettings;
         
+        /// <summary>
+        /// Initializes the manager with the active WebSocket connection after plugin registration completes.
+        /// </summary>
+        /// <param name="connection">The active Stream Deck connection.</param>
+        /// <param name="getGlobalSettingsDelayMs">Debounce delay in milliseconds for global settings requests.</param>
         internal void Initialize(StreamDeckConnection connection, int getGlobalSettingsDelayMs = GET_GLOBAL_SETTINGS_DELAY_MS)
         {
             this.streamDeckConnection = connection;
-            this.streamDeckConnection.OnDidReceiveGlobalSettings += StreamDeckConnectionOnDidReceiveGlobalSettings;
-
             tmrGetGlobalSettings.Stop();
             tmrGetGlobalSettings.Interval = getGlobalSettingsDelayMs;
+        }
+
+        /// <summary>
+        /// Called by PluginContainer when global settings are received. Notifies subscribers.
+        /// </summary>
+        internal void OnGlobalSettingsReceived(ReceivedGlobalSettingsPayload payload)
+        {
+            OnReceivedGlobalSettings?.Invoke(this, payload);
         }
 
         /// <summary>
@@ -106,11 +115,6 @@ namespace Cmpnnt.SdTools.Utilities
         #endregion
 
         #region Private Methods
-        private void StreamDeckConnectionOnDidReceiveGlobalSettings(object sender, SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent> e)
-        {
-            OnReceivedGlobalSettings?.Invoke(this, e.Event.Payload);
-        }
-
         private async void TmrGetGlobalSettings_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             try

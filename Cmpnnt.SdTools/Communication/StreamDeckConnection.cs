@@ -9,9 +9,7 @@ using Cmpnnt.SdTools.Backend;
 using Cmpnnt.SdTools.Communication.Commands;
 using Cmpnnt.SdTools.Communication.Commands.Dtos;
 using Cmpnnt.SdTools.Communication.Events;
-using Cmpnnt.SdTools.Communication.Events.Dtos;
 using Cmpnnt.SdTools.Utilities;
-using Cmpnnt.SdTools.Wrappers;
 using SkiaSharp;
 using CommandSerializerContext = Cmpnnt.SdTools.Communication.Commands.CommandSerializerContext;
 
@@ -41,110 +39,22 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
     public string Uuid { get; set; }
 
     #region Public Events
+
     /// <summary>
     /// Raised when plugin is connected to stream deck app
     /// </summary>
     public event EventHandler<EventArgs> OnConnected;
 
     /// <summary>
-    /// /// Raised when plugin is disconnected from stream deck app
+    /// Raised when plugin is disconnected from stream deck app
     /// </summary>
     public event EventHandler<EventArgs> OnDisconnected;
 
     /// <summary>
-    /// Raised when key is pushed down
+    /// Raised when any event is received from the Stream Deck app.
+    /// Use pattern matching on the BaseEvent to handle specific event types.
     /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<KeyDownEvent>> OnKeyDown;
-
-    /// <summary>
-    /// Raised when key is released
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<KeyUpEvent>> OnKeyUp;
-
-    /// <summary>
-    /// Raised when the action is shown, main trigger for a PluginAction
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<WillAppearEvent>> OnWillAppear;
-
-    /// <summary>
-    /// Raised when the action is no longer shown, main trigger for Dispose of PluginAction
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<WillDisappearEvent>> OnWillDisappear;
-
-    /// <summary>
-    /// Contains information on the Title and its style
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<TitleParametersDidChangeEvent>> OnTitleParametersDidChange;
-
-    /// <summary>
-    /// Raised when a Stream Deck device is connected to the PC
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DeviceDidConnectEvent>> OnDeviceDidConnect;
-
-    /// <summary>
-    /// Raised when a Stream Deck device has disconnected from the PC
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DeviceDidDisconnectEvent>> OnDeviceDidDisconnect;
-
-    /// <summary>
-    /// Raised when a monitored app is launched/active
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<ApplicationDidLaunchEvent>> OnApplicationDidLaunch;
-
-    /// <summary>
-    /// Raised when a monitored app is terminated
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<ApplicationDidTerminateEvent>> OnApplicationDidTerminate;
-
-    /// <summary>
-    /// Raised after the PC wakes up from sleep
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<SystemDidWakeUpEvent>> OnSystemDidWakeUp;
-
-    /// <summary>
-    /// Raised when settings for the action are received
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DidReceiveSettingsEvent>> OnDidReceiveSettings;
-
-    /// <summary>
-    /// Raised when global settings for the entire plugin are received
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent>> OnDidReceiveGlobalSettings;
-
-    /// <summary>
-    /// Raised when the user is viewing the settings in the Stream Deck app
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent>> OnPropertyInspectorDidAppear;
-
-    /// <summary>
-    /// Raised when the user stops viewing the settings in the Stream Deck app
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent>> OnPropertyInspectorDidDisappear;
-
-    /// <summary>
-    /// Raised when a payload is sent to the plugin from the PI
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<SendToPluginEvent>> OnSendToPlugin;
-
-    /// <summary>
-    /// Raised when a dial is rotated
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DialRotateEvent>> OnDialRotate;
-
-    /// <summary>
-    /// Raised when a dial is down
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DialDownEvent>> OnDialDown;
-
-    /// <summary>
-    /// Raised when a dial is up
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<DialUpEvent>> OnDialUp;
-
-    /// <summary>
-    /// Raised when the touchpad is pressed
-    /// </summary>
-    public event EventHandler<SdEventReceivedEventArgs<TouchTapEvent>> OnTouchpadPress;
+    public event EventHandler<BaseEvent> OnEventReceived;
 
     #endregion
 
@@ -439,90 +349,17 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
                 }
 
                 #if DEBUG
-                Logger.Instance.LogMessage(TracingLevel.Info, $"ReceiveAsync: Parsed event '{evt.Event}'.");
+                Logger.Instance.LogMessage(TracingLevel.Info, $"ReceiveAsync: Parsed event '{evt.GetType().Name}'.");
                 #endif
 
                 try
                 {
-                    switch (evt.Event)
-                    {
-                        case EventTypes.KEY_DOWN:
-                            OnKeyDown?.Invoke(this,
-                                new SdEventReceivedEventArgs<KeyDownEvent>(evt as KeyDownEvent)); break;
-                        case EventTypes.KEY_UP:
-                            OnKeyUp?.Invoke(this, new SdEventReceivedEventArgs<KeyUpEvent>(evt as KeyUpEvent));
-                            break;
-                        case EventTypes.WILL_APPEAR:
-                            OnWillAppear?.Invoke(this,
-                                new SdEventReceivedEventArgs<WillAppearEvent>(evt as WillAppearEvent)); break;
-                        case EventTypes.WILL_DISAPPEAR:
-                            OnWillDisappear?.Invoke(this,
-                                new SdEventReceivedEventArgs<WillDisappearEvent>(evt as WillDisappearEvent)); break;
-                        case EventTypes.TITLE_PARAMETERS_DID_CHANGE:
-                            OnTitleParametersDidChange?.Invoke(this,
-                                new SdEventReceivedEventArgs<TitleParametersDidChangeEvent>(
-                                    evt as TitleParametersDidChangeEvent)); break;
-                        case EventTypes.DEVICE_DID_CONNECT:
-                            OnDeviceDidConnect?.Invoke(this,
-                                new SdEventReceivedEventArgs<DeviceDidConnectEvent>(evt as DeviceDidConnectEvent));
-                            break;
-                        case EventTypes.DEVICE_DID_DISCONNECT:
-                            OnDeviceDidDisconnect?.Invoke(this,
-                                new SdEventReceivedEventArgs<DeviceDidDisconnectEvent>(
-                                    evt as DeviceDidDisconnectEvent)); break;
-                        case EventTypes.APPLICATION_DID_LAUNCH:
-                            OnApplicationDidLaunch?.Invoke(this,
-                                new SdEventReceivedEventArgs<ApplicationDidLaunchEvent>(
-                                    evt as ApplicationDidLaunchEvent)); break;
-                        case EventTypes.APPLICATION_DID_TERMINATE:
-                            OnApplicationDidTerminate?.Invoke(this,
-                                new SdEventReceivedEventArgs<ApplicationDidTerminateEvent>(
-                                    evt as ApplicationDidTerminateEvent)); break;
-                        case EventTypes.SYSTEM_DID_WAKE_UP:
-                            OnSystemDidWakeUp?.Invoke(this,
-                                new SdEventReceivedEventArgs<SystemDidWakeUpEvent>(evt as SystemDidWakeUpEvent));
-                            break;
-                        case EventTypes.DID_RECEIVE_SETTINGS:
-                            OnDidReceiveSettings?.Invoke(this,
-                                new SdEventReceivedEventArgs<DidReceiveSettingsEvent>(
-                                    evt as DidReceiveSettingsEvent)); break;
-                        case EventTypes.DID_RECEIVE_GLOBAL_SETTINGS:
-                            OnDidReceiveGlobalSettings?.Invoke(this,
-                                new SdEventReceivedEventArgs<DidReceiveGlobalSettingsEvent>(
-                                    evt as DidReceiveGlobalSettingsEvent)); break;
-                        case EventTypes.PROPERTY_INSPECTOR_DID_APPEAR:
-                            OnPropertyInspectorDidAppear?.Invoke(this,
-                                new SdEventReceivedEventArgs<PropertyInspectorDidAppearEvent>(
-                                    evt as PropertyInspectorDidAppearEvent)); break;
-                        case EventTypes.PROPERTY_INSPECTOR_DID_DISAPPEAR:
-                            OnPropertyInspectorDidDisappear?.Invoke(this,
-                                new SdEventReceivedEventArgs<PropertyInspectorDidDisappearEvent>(
-                                    evt as PropertyInspectorDidDisappearEvent)); break;
-                        case EventTypes.SEND_TO_PLUGIN:
-                            OnSendToPlugin?.Invoke(this,
-                                new SdEventReceivedEventArgs<SendToPluginEvent>(evt as SendToPluginEvent)); break;
-                        case EventTypes.DIAL_ROTATE:
-                            OnDialRotate?.Invoke(this,
-                                new SdEventReceivedEventArgs<DialRotateEvent>(evt as DialRotateEvent)); break;
-                        case EventTypes.DIAL_DOWN:
-                            OnDialDown?.Invoke(this,
-                                new SdEventReceivedEventArgs<DialDownEvent>(evt as DialDownEvent)); break;
-                        case EventTypes.DIAL_UP:
-                            OnDialUp?.Invoke(this,
-                                new SdEventReceivedEventArgs<DialUpEvent>(evt as DialUpEvent)); break;
-                        case EventTypes.TOUCHTAP:
-                            OnTouchpadPress?.Invoke(this,
-                                new SdEventReceivedEventArgs<TouchTapEvent>(evt as TouchTapEvent)); break;
-                        default:
-                            Logger.Instance.LogMessage(TracingLevel.Warn,
-                                $"{GetType()} Unsupported Stream Deck event: {strBuffer}");
-                            break;
-                    }
+                    OnEventReceived?.Invoke(this, evt);
                 }
                 catch (Exception ex)
                 {
                     Logger.Instance.LogMessage(TracingLevel.Error,
-                        $"{GetType()} Unhandled 3rd party exception when triggering {evt.Event} event. Exception: {ex}");
+                        $"{GetType()} Unhandled exception when handling {evt.GetType().Name} event. Exception: {ex}");
                 }
             }
         }
