@@ -43,7 +43,10 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
 
     static void Execute(Compilation compilation, System.Collections.Immutable.ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext context)
     {
-        if (classes.IsDefaultOrEmpty) return;
+        if (classes.IsDefaultOrEmpty)
+        {
+            return;
+        }
 
         var pluginActions = new List<ActionInfo>();
         string? firstNamespace = null;
@@ -61,8 +64,14 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
         foreach (ClassDeclarationSyntax classDec in classes)
         {
             SemanticModel semanticModel = compilation.GetSemanticModel(classDec.SyntaxTree);
-            if (semanticModel.GetDeclaredSymbol(classDec) is not { IsAbstract: false } classSymbol) continue; // Ignore abstract classes
-            if (!ImplementsInterface(classSymbol, commonInterfaceSymbol)) continue;
+            if (semanticModel.GetDeclaredSymbol(classDec) is not { IsAbstract: false } classSymbol)
+            {
+                continue; // Ignore abstract classes
+            }
+            if (!ImplementsInterface(classSymbol, commonInterfaceSymbol))
+            {
+                continue;
+            }
             
             string fullClassName = classSymbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat).Replace("global::", "");
             string namespaceName = classSymbol.ContainingNamespace?.ToDisplayString() ?? string.Empty;
@@ -242,8 +251,14 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
             // Set Controllers
             sb.Append("                action.Controllers = new List<string> { ");
             List<string> controllers = [];
-            if (action.IsKeypad) controllers.Add("\"Keypad\"");
-            if (action.IsEncoder) controllers.Add("\"Encoder\"");
+            if (action.IsKeypad)
+            {
+                controllers.Add("\"Keypad\"");
+            }
+            if (action.IsEncoder)
+            {
+                controllers.Add("\"Encoder\"");
+            }
             sb.Append(string.Join(", ", controllers));
             sb.AppendLine(" };");
             
@@ -271,8 +286,14 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
 
     static bool ImplementsInterface(INamedTypeSymbol? classSymbol, INamedTypeSymbol? interfaceSymbol)
     {
-        if (classSymbol == null || interfaceSymbol == null) return false;
-        if (interfaceSymbol.TypeKind != TypeKind.Interface) return false;
+        if (classSymbol == null || interfaceSymbol == null)
+        {
+            return false;
+        }
+        if (interfaceSymbol.TypeKind != TypeKind.Interface)
+        {
+            return false;
+        }
 
         // Check direct interfaces and all base interfaces
         return classSymbol.AllInterfaces.Any(i => SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, interfaceSymbol.OriginalDefinition));
@@ -283,7 +304,10 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
     // Escapes a string for embedding within a C# string literal
     static string EscapeString(string? value)
     {
-        if (value == null) return string.Empty;
+        if (value == null)
+        {
+            return string.Empty;
+        }
         // Basic escaping for quotes and backslashes
         return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
     }
@@ -299,3 +323,18 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
         public bool IsEncoder { get; } = IsEncoder;
     }
 }
+
+/* TODO:
+    - Look at a full manifest example from Elgato and make sure my sample has every property.
+    - Add new attribute to the Program.cs for the sample plugin for the MinimumVersion property.
+    - Get OS value from C# code and add it to the OS Platform property. Not sure yet what to do about the MinimumVersion property.
+        It could be defaulted to the minimum OS version supported by both .NET and the stream deck for that OS.
+        Another attribute on the Program.cs class could specify OSes and versions if you don't want the default.
+    - Get Version, Author and Description from the csproj MSBuild properties
+    - SDKVersion, Category, Icon, Name and CategoryIcon need to be populated some other way.
+    - The Plugin, Category and Action icons can be gotten from a folder in the sample plugin directory called `icons`.
+        They'd have to be named the same as the plugin actions. The logic in the generator would be, if the icons are present,
+        use the path to the images/icons directory. If not, use the bundled icon.
+    - For the actions, we need to source the values for the Encoder and States objects and the SupportedInMultiActions, 
+        and Tooltip properties. the PropertyInspectorPath and UUID are already source generated. 
+ */

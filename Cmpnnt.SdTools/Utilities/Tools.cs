@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using Cmpnnt.SdTools.Attributes;
 using Cmpnnt.SdTools.Communication.Registration;
 using Cmpnnt.SdTools.Wrappers;
 using SkiaSharp;
@@ -57,7 +53,10 @@ namespace Cmpnnt.SdTools.Utilities
         /// <returns></returns>
         public static string ImageToBase64(SKImage image, bool addHeaderPrefix)
         {
-            if (image == null) return null;
+            if (image == null)
+            {
+                return null;
+            }
             using SKBitmap bitmap = SKBitmap.FromImage(image);
             byte[] imageBytes = bitmap.Bytes;
             string base64String = Convert.ToBase64String(imageBytes);
@@ -72,7 +71,10 @@ namespace Cmpnnt.SdTools.Utilities
         /// <returns></returns>
         public static string ImageToBase64(SKBitmap image, bool addHeaderPrefix)
         {
-            if (image == null) return null;
+            if (image == null)
+            {
+                return null;
+            }
             byte[] imageBytes = image.Bytes;
             string base64String = Convert.ToBase64String(imageBytes);
             return addHeaderPrefix ? HEADER_PREFIX + base64String : base64String;
@@ -300,8 +302,11 @@ namespace Cmpnnt.SdTools.Utilities
         /// <returns></returns>
         public static string ImageToSha512(SKData data)
         {
-            if (data == null) return null;
-            
+            if (data == null)
+            {
+                return null;
+            }
+
             try
             {
                 return BytesToSha512(data.ToArray());
@@ -341,130 +346,6 @@ namespace Cmpnnt.SdTools.Utilities
             }
             return null;
         }
-        #endregion
-        
-        // TODO: This needs to be refactored to be AOT friendly.
-        //   The inner settings classes without this generic type crap is problematic for source generated JSON serialization because
-        //   that relies on known classes into which the JSON can be deserialized. The inner classes for settings are always different.
-        //   That's probably why these hoops are necessary.
-        // TODO: See if this can be source generated instead
-        #region JsonElement Related
-        #nullable enable
-        /// <summary>
-        /// Populates properties of the 'toSettings' object based on values in the 'fromElement'.
-        /// Properties are matched based on the [JsonPropertyName] attribute or C# property name.
-        /// </summary>
-        /// <typeparam name="T">The type of the settings object.</typeparam>
-        /// <param name="toSettings">The settings object to populate.</param>
-        /// <param name="fromElement">The JsonElement (expected to be an object) containing source values.</param>
-        /// <returns>The number of properties successfully populated.</returns>
-        // TODO: Source generate this to remove the typeof and reflection usage
-        public static int AutoPopulateSettings<T>(T toSettings, JsonElement fromElement)
-        {
-            Dictionary<string, PropertyInfo> dicProperties = MatchPropertiesWithJsonPropertyName(toSettings); // Renamed helper
-            var totalPopulated = 0;
-            
-            if (fromElement.ValueKind != JsonValueKind.Object)
-            {
-                return totalPopulated;
-            }
-            
-            foreach (JsonProperty prop in fromElement.EnumerateObject())
-            {
-                if (!dicProperties.TryGetValue(prop.Name, out PropertyInfo? info) || info == null)
-                {
-                    // No matching property found (or it was ignored by MatchPropertiesWithJsonPropertyName)
-                    continue;
-                }
-
-                try
-                {
-                    // Special handling for FilenamePropertyAttribute
-                    
-                    if (info.GetCustomAttributes(typeof(FilenamePropertyAttribute), true).Length > 0)
-                    {
-                        if (prop.Value.ValueKind == JsonValueKind.String)
-                        {
-                            string? jsonStringValue = prop.Value.GetString();
-                            if (jsonStringValue != null)
-                            {
-                                string value = FilenameFromString(jsonStringValue);
-                                info.SetValue(toSettings, value);
-                                totalPopulated++;
-                            }
-                            // TODO else: JSON value is null, decide if you want to set the property to null or skip
-                        }
-                    }
-                    else // Standard property handling
-                    {
-                        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                        object? value = prop.Value.Deserialize(info.PropertyType, options);
-
-                        info.SetValue(toSettings, value);
-                        totalPopulated++;
-                    }
-                }
-                catch (JsonException jsonEx)
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Fatal, $"Warning: Could not deserialize JSON property '{prop.Name}' to {info.Name} ({info.PropertyType}). Error: {jsonEx.Message}");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Instance.LogMessage(TracingLevel.Fatal, $"Warning: Could not set property '{info.Name}' from JSON property '{prop.Name}'. Error: {ex.Message}");
-                }
-            }
-
-            return totalPopulated;
-        }
-
-        /// <summary>
-        /// Creates a dictionary mapping JSON property names to PropertyInfo objects for a given type T.
-        /// It prioritizes the name specified in [JsonPropertyName] attribute.
-        /// If the attribute is missing, it uses the C# property name by default.
-        /// </summary>
-        /// <typeparam name="T">The type to inspect.</typeparam>
-        /// <param name="obj">An instance of the type (used for type inference, can be null).</param>
-        /// <returns>A dictionary mapping JSON keys to settable PropertyInfo objects.</returns>
-        private static Dictionary<string, PropertyInfo> MatchPropertiesWithJsonPropertyName<T>(T? obj)
-        {
-            var dicProperties = new Dictionary<string, PropertyInfo>(StringComparer.OrdinalIgnoreCase);
-
-            // We only need the type T, not the instance obj itself unless obj could be a derived type,
-            // and we only want properties of that specific derived type at runtime.
-            // If T is always the exact type desired, obj being null is fine.
-            Type type = typeof(T);
-            if (obj != null) {
-                type = obj.GetType();
-            }
-            
-            PropertyInfo[] props = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (PropertyInfo prop in props)
-            {
-                if (!prop.CanWrite) continue;
-
-                // Check for the System.Text.Json attribute
-                var jsonNameAttr = prop.GetCustomAttribute<JsonPropertyNameAttribute>(true);
-
-                string jsonKey;
-                if (jsonNameAttr != null && !string.IsNullOrEmpty(jsonNameAttr.Name))
-                {
-                    // Use the name from the attribute
-                    jsonKey = jsonNameAttr.Name;
-                }
-                else
-                {
-                    //jsonKey = prop.Name;
-                    var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-                    jsonKey = options.PropertyNamingPolicy?.ConvertName(prop.Name) ?? prop.Name;
-                }
-
-                // Add or update the dictionary entry. Using indexer handles potential duplicates
-                dicProperties[jsonKey] = prop;
-            }
-            return dicProperties;
-        }
-        #nullable disable
         #endregion
 
         #region Dials Related

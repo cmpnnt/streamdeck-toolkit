@@ -14,6 +14,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+    <PublishAot>true</PublishAot>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Platforms>AnyCPU;x64;ARM64</Platforms>
     <AssemblyName>Cmpnnt.SdTools.SamplePlugin</AssemblyName>

@@ -124,7 +124,10 @@ namespace Cmpnnt.SdTools.Backend
                                 $"Plugin OnWillDisappear: Context: {e.Context} Action: {e.Action}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions value)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions value))
+                            {
+                                return;
+                            }
                             value.Destroy();
                             Instances.Remove(e.Context);
 
@@ -141,7 +144,9 @@ namespace Cmpnnt.SdTools.Backend
                         if (updateHandler?.IsBlockingUpdate ?? false)
                         {
                             if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                            {
                                 await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            }
                             return;
                         }
                         await instancesLock.WaitAsync();
@@ -152,12 +157,19 @@ namespace Cmpnnt.SdTools.Backend
                                 $"Plugin Keydown: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IKeypadPlugin plugin)
+                            {
                                 plugin.KeyPressed(e.Payload);
+                            }
                             else
+                            {
                                 Logger.Instance.LogMessage(TracingLevel.Error,
                                     $"Keydown General Error: Could not convert {e.Context} to IKeypadPlugin");
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -165,7 +177,10 @@ namespace Cmpnnt.SdTools.Backend
 
                     case KeyUpEvent e:
                     {
-                        if (updateHandler?.IsBlockingUpdate ?? false) return;
+                        if (updateHandler?.IsBlockingUpdate ?? false)
+                        {
+                            return;
+                        }
                         await instancesLock.WaitAsync();
                         try
                         {
@@ -174,9 +189,14 @@ namespace Cmpnnt.SdTools.Backend
                                 $"Plugin Keyup: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IKeypadPlugin plugin)
+                            {
                                 plugin.KeyReleased(e.Payload);
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -193,12 +213,19 @@ namespace Cmpnnt.SdTools.Backend
                                 $"DialRotate: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IEncoderPlugin plugin)
+                            {
                                 plugin.DialRotate(e.Payload);
+                            }
                             else
+                            {
                                 Logger.Instance.LogMessage(TracingLevel.Error,
                                     $"DialRotate General Error: Could not convert {e.Context} to IEncoderPlugin");
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -209,7 +236,9 @@ namespace Cmpnnt.SdTools.Backend
                         if (updateHandler?.IsBlockingUpdate ?? false)
                         {
                             if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                            {
                                 await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            }
                             return;
                         }
                         await instancesLock.WaitAsync();
@@ -220,12 +249,19 @@ namespace Cmpnnt.SdTools.Backend
                                 $"DialPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IEncoderPlugin plugin)
+                            {
                                 plugin.DialDown(e.Payload);
+                            }
                             else
+                            {
                                 Logger.Instance.LogMessage(TracingLevel.Error,
                                     $"DialDown General Error: Could not convert {e.Context} to IEncoderPlugin");
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -242,12 +278,19 @@ namespace Cmpnnt.SdTools.Backend
                                 $"DialPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IEncoderPlugin plugin)
+                            {
                                 plugin.DialUp(e.Payload);
+                            }
                             else
+                            {
                                 Logger.Instance.LogMessage(TracingLevel.Error,
                                     $"DialDown General Error: Could not convert {e.Context} to IEncoderPlugin");
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -258,7 +301,9 @@ namespace Cmpnnt.SdTools.Backend
                         if (updateHandler?.IsBlockingUpdate ?? false)
                         {
                             if (!string.IsNullOrEmpty(lastUpdateInfo?.UpdateUrl))
+                            {
                                 await connection.OpenUrlAsync(lastUpdateInfo.UpdateUrl);
+                            }
                             return;
                         }
                         await instancesLock.WaitAsync();
@@ -269,12 +314,19 @@ namespace Cmpnnt.SdTools.Backend
                                 $"TouchpadPress: Context: {e.Context} Action: {e.Action} Payload: {e.Payload?.ToStringEx()}");
                             #endif
 
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
+                                return;
+                            }
                             if (instance is IEncoderPlugin plugin)
+                            {
                                 plugin.TouchPress(e.Payload);
+                            }
                             else
+                            {
                                 Logger.Instance.LogMessage(TracingLevel.Error,
                                     $"TouchpadPress General Error: Could not convert {e.Context} to IEncoderPlugin");
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -309,7 +361,9 @@ namespace Cmpnnt.SdTools.Backend
 
                             ReceivedGlobalSettingsPayload globalSettings = e.Payload ?? new ReceivedGlobalSettingsPayload();
                             foreach (string key in Instances.Keys)
+                            {
                                 Instances[key].ReceivedGlobalSettings(globalSettings);
+                            }
 
                             updateHandler?.SetGlobalSettings(globalSettings);
                             GlobalSettingsManager.Instance.OnGlobalSettingsReceived(globalSettings);
@@ -324,7 +378,9 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
                                 instance.OnSendToPlugin(e.Payload);
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -336,7 +392,9 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
                                 instance.OnTitleParametersDidChange(e.Payload);
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -348,7 +406,9 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
                                 instance.OnPropertyInspectorDidAppear();
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -360,7 +420,9 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions instance))
+                            {
                                 instance.OnPropertyInspectorDidDisappear();
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -373,8 +435,12 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             foreach (ICommonPluginFunctions instance in Instances.Values)
+                            {
                                 if (instance is IApplicationMonitorPlugin monitor)
+                                {
                                     monitor.OnApplicationDidLaunch(e.Payload);
+                                }
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -386,8 +452,12 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             foreach (ICommonPluginFunctions instance in Instances.Values)
+                            {
                                 if (instance is IApplicationMonitorPlugin monitor)
+                                {
                                     monitor.OnApplicationDidTerminate(e.Payload);
+                                }
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -399,8 +469,12 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             foreach (ICommonPluginFunctions instance in Instances.Values)
+                            {
                                 if (instance is IDeviceMonitorPlugin monitor)
+                                {
                                     monitor.OnDeviceDidConnect(e);
+                                }
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -412,8 +486,12 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             foreach (ICommonPluginFunctions instance in Instances.Values)
+                            {
                                 if (instance is IDeviceMonitorPlugin monitor)
+                                {
                                     monitor.OnDeviceDidDisconnect(e.Device);
+                                }
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;
@@ -425,8 +503,12 @@ namespace Cmpnnt.SdTools.Backend
                         try
                         {
                             foreach (ICommonPluginFunctions instance in Instances.Values)
+                            {
                                 if (instance is ISystemLifecyclePlugin lifecycle)
+                                {
                                     lifecycle.OnSystemDidWakeUp();
+                                }
+                            }
                         }
                         finally { instancesLock.Release(); }
                         break;

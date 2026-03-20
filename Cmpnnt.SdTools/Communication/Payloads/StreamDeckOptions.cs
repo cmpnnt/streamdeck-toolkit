@@ -57,8 +57,7 @@ namespace Cmpnnt.SdTools.Communication.Payloads
 
                 try
                 {
-                    var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-                    deviceInfo = JsonSerializer.Deserialize<RegistrationInfo>(RawInfo, options);
+                    deviceInfo = JsonSerializer.Deserialize(RawInfo, RegistrationSerializerContext.Default.RegistrationInfo);
                     return deviceInfo;
                 }
                 catch (JsonException ex)

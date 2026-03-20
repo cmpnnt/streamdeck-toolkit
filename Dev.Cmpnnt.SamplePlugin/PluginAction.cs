@@ -42,37 +42,15 @@ namespace Cmpnnt.SdTools.SamplePlugin
             }
         };
 
-        private class PluginSettings
-        {
-            public static PluginSettings CreateDefaultSettings()
-            {
-                var instance = new PluginSettings
-                {
-                    Name = string.Empty,
-                    ShowName = false
-                };
-                return instance;
-            }
-
-            public string Name { get; set; }
-            public bool ShowName { get; set; }
-
-            public override string ToString()
-            {
-                return $"Name: {Name}, ShowName: {ShowName}";
-            }
-        }
-
         #region Private Members
-        private readonly PluginSettings settings;
+        private readonly PluginActionSettings settings;
         #endregion
 
         public PluginAction(ISdConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             settings = (payload.Settings == null || !payload.Settings.HasValue) ?
-                PluginSettings.CreateDefaultSettings() :
-                payload.Settings.Value.Deserialize<PluginSettings>(options);
+                PluginActionSettings.CreateDefaultSettings() :
+                payload.Settings.Value.Deserialize(SamplePluginSerializerContext.Default.PluginActionSettings);
 
             Logger.Instance.LogMessage(TracingLevel.Info, $"Settings: {settings}");
         }

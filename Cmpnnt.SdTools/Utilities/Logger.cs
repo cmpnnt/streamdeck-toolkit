@@ -45,8 +45,11 @@ namespace Cmpnnt.SdTools.Utilities
         {
             get
             {
-                if (_instance != null) return _instance;
-                
+                if (_instance != null)
+                {
+                    return _instance;
+                }
+
                 lock (ObjLock)
                 {
                     return _instance ??= new Logger();

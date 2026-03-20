@@ -1,6 +1,5 @@
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Cmpnnt.SdTools.Attributes;
 using Cmpnnt.SdTools.Backend;
@@ -13,41 +12,15 @@ namespace Cmpnnt.SdTools.SamplePlugin
 {
     public partial class PluginAction2 : KeyAndEncoderBase
     {
-        private class PluginSettings
-        {
-            public static PluginSettings CreateDefaultSettings()
-            {
-                var instance = new PluginSettings
-                {
-                    OutputFileName = string.Empty,
-                    InputString = string.Empty
-                };
-                return instance;
-            }
-
-            [FilenameProperty]
-            [JsonPropertyName("outputFileName")]
-            public string OutputFileName { get; set; }
-
-            [JsonPropertyName("inputString")]
-            public string InputString { get; set; }
-
-            public override string ToString()
-            {
-                return $"OutputFileName: {OutputFileName}, InputString: {InputString}";
-            }
-        }
-
         #region Private Members
-        private readonly PluginSettings settings;
+        private readonly PluginAction2Settings settings;
         #endregion
 
         public PluginAction2(ISdConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             settings = (payload.Settings == null || !payload.Settings.HasValue) ?
-                PluginSettings.CreateDefaultSettings() :
-                payload.Settings.Value.Deserialize<PluginSettings>(options);
+                PluginAction2Settings.CreateDefaultSettings() :
+                payload.Settings.Value.Deserialize(SamplePluginSerializerContext.Default.PluginAction2Settings);
 
             Logger.Instance.LogMessage(TracingLevel.Info, $"Settings: {settings}");
         }
@@ -154,7 +127,7 @@ namespace Cmpnnt.SdTools.SamplePlugin
         public override void ReceivedSettings(ReceivedSettingsPayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action has received settings");
-            Tools.AutoPopulateSettings(settings, payload.Settings);
+            settings.PopulateFromJson(payload.Settings);
             SaveSettings();
         }
 
@@ -164,8 +137,7 @@ namespace Cmpnnt.SdTools.SamplePlugin
         private Task SaveSettings()
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action is saving settings");
-            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-            using JsonDocument doc = JsonDocument.Parse(JsonSerializer.Serialize(settings, options));
+            using JsonDocument doc = JsonDocument.Parse(JsonSerializer.Serialize(settings, SamplePluginSerializerContext.Default.PluginAction2Settings));
             return Connection.SetSettingsAsync(doc.RootElement);
         }
         #endregion
