@@ -16,4 +16,10 @@
       <ProjectReference Include="..\Cmpnnt.SdTools\Cmpnnt.SdTools.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="LICENSE.txt">
+        <Pack>true</Pack>
+      </None>
+    </ItemGroup>
+
 </Project>
