@@ -78,7 +78,10 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
 
     internal void Run()
     {
-        if (webSocket != null) return;
+        if (webSocket != null)
+        {
+            return;
+        }
         webSocket = new ClientWebSocketWrapper();
         _ = RunAsync();
     }
@@ -306,7 +309,10 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
             {
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(arrayBuffer, cancelTokenSource.Token);
 
-                if (result == null) continue;
+                if (result == null)
+                {
+                    continue;
+                }
 
                 if (result.MessageType == WebSocketMessageType.Close ||
                     (result.CloseStatus is not null && result.CloseStatus.Value != WebSocketCloseStatus.Empty))
@@ -319,7 +325,10 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
                     return result.CloseStatus.GetValueOrDefault();
                 }
 
-                if (result.MessageType != WebSocketMessageType.Text) continue;
+                if (result.MessageType != WebSocketMessageType.Text)
+                {
+                    continue;
+                }
                 textBuffer.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
 
                 if (!result.EndOfMessage)
@@ -416,7 +425,10 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
     
     public void Dispose()
     {
-        if (disposed) return;
+        if (disposed)
+        {
+            return;
+        }
         Stop();
         sendSocketSemaphore?.Dispose();
         cancelTokenSource?.Dispose();
@@ -426,8 +438,11 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
-        if (disposed) return;
-        
+        if (disposed)
+        {
+            return;
+        }
+
         if (!cancelTokenSource.IsCancellationRequested)
         {
             await cancelTokenSource.CancelAsync();

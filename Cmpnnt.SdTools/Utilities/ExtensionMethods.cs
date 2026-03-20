@@ -20,7 +20,10 @@ namespace Cmpnnt.SdTools.Utilities
         /// <returns></returns>
         public static bool IsCoordinatesSame(this KeyCoordinates coordinates, KeyCoordinates secondCoordinates)
         {
-            if (secondCoordinates == null) return false;
+            if (secondCoordinates == null)
+            {
+                return false;
+            }
             return coordinates.Row == secondCoordinates.Row && coordinates.Column == secondCoordinates.Column;
         }
         #endregion
@@ -191,7 +194,10 @@ namespace Cmpnnt.SdTools.Utilities
             do
             {
                 canvas.GetTextCenter(brush, text, imageWidth, out textFitsImage, minimumFontSize);
-                if (textFitsImage) continue;
+                if (textFitsImage)
+                {
+                    continue;
+                }
                 
                 variableFont.Dispose();
                 size -= 0.5f;
@@ -241,8 +247,11 @@ namespace Cmpnnt.SdTools.Utilities
                 
                 canvas.DrawText(text, (float)image.Width/2, (float)stringHeight, font, fill);
 
-                if (titleParameters.TitleStrokeColor == default) return;
-                
+                if (titleParameters.TitleStrokeColor == default)
+                {
+                    return;
+                }
+
                 using var stroke = new SKPaint(font);
                 stroke.TextSize = (float)titleParameters.FontSizeInPixels;
                 stroke.IsAntialias = true;
@@ -289,8 +298,11 @@ namespace Cmpnnt.SdTools.Utilities
         {
             try
             {
-                if (titleParameters == null) return str;
-                
+                if (titleParameters == null)
+                {
+                    return str;
+                }
+
                 int padding = leftPaddingPixels + rightPaddingPixels;
                 var finalString = new StringBuilder();
                 var currentLine = new StringBuilder();

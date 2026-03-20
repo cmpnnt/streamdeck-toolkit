@@ -94,7 +94,10 @@ public class SdpiGenerator : IIncrementalGenerator
         ImmutableArray<ClassInfo> classInfos,
         SourceProductionContext context)
     {
-        if (classInfos.IsDefaultOrEmpty) return;
+        if (classInfos.IsDefaultOrEmpty)
+        {
+            return;
+        }
 
         var htmlOutputs = new List<(string ClassName, string HtmlContent, string OutputPath)>();
 
@@ -106,7 +109,10 @@ public class SdpiGenerator : IIncrementalGenerator
                 .OfType<BaseObjectCreationExpressionSyntax>()
                 .ToList();
 
-            if (objectCreations.Count == 0) continue;
+            if (objectCreations.Count == 0)
+            {
+                continue;
+            }
 
             SemanticModel semanticModel = compilation.GetSemanticModel(classInfo.ClassSyntax.SyntaxTree);
             List<string> htmlComponents = [];
@@ -115,10 +121,16 @@ public class SdpiGenerator : IIncrementalGenerator
             {
                 ISymbol? symbol = semanticModel.GetSymbolInfo(objectCreation, context.CancellationToken).Symbol;
 
-                if (symbol is not IMethodSymbol methodSymbol) continue;
+                if (symbol is not IMethodSymbol methodSymbol)
+                {
+                    continue;
+                }
 
                 INamedTypeSymbol? typeSymbol = methodSymbol.ContainingType;
-                if (typeSymbol is null) continue;
+                if (typeSymbol is null)
+                {
+                    continue;
+                }
 
                 string fullName = typeSymbol.ToDisplayString();
                 string? generatedComponent = null;
@@ -397,7 +409,10 @@ public class SdpiGenerator : IIncrementalGenerator
                 }
             }
 
-            if (htmlComponents.Count == 0) continue;
+            if (htmlComponents.Count == 0)
+            {
+                continue;
+            }
 
             string fullHtml = HtmlTemplates.GenerateHtmlDocument(htmlComponents);
 
@@ -434,7 +449,10 @@ public class SdpiGenerator : IIncrementalGenerator
             }
         }
 
-        if (htmlOutputs.Count == 0) return;
+        if (htmlOutputs.Count == 0)
+        {
+            return;
+        }
 
         // Generate a C# file containing all HTML outputs
         string csharpOutput = GenerateMultipleHtmlOutputs(htmlOutputs);

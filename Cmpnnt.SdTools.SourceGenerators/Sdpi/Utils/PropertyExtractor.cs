@@ -23,7 +23,10 @@ internal static class PropertyExtractor
     {
         var properties = new Dictionary<string, object?>();
 
-        if (objectCreation.Initializer == null) return properties;
+        if (objectCreation.Initializer == null)
+        {
+            return properties;
+        }
 
         foreach (ExpressionSyntax expression in objectCreation.Initializer.Expressions)
         {
@@ -46,8 +49,11 @@ internal static class PropertyExtractor
     {
         // Try to get constant value first (for literals: string, bool, int)
         Optional<object?> constantValue = semanticModel.GetConstantValue(expression, cancellationToken);
-        
-        if (constantValue.HasValue)  return constantValue.Value;
+
+        if (constantValue.HasValue)
+        {
+            return constantValue.Value;
+        }
 
         return expression switch
         {

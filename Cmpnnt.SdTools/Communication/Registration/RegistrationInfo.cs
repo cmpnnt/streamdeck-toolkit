@@ -57,8 +57,14 @@ namespace Cmpnnt.SdTools.Communication.Registration
                 }
             }
 
-            if (Application != null) sb.Append($"ApplicationInfo: {Application}\n");
-            if (Plugin != null) sb.Append($"PluginInfo: {Plugin}\n");
+            if (Application != null)
+            {
+                sb.Append($"ApplicationInfo: {Application}\n");
+            }
+            if (Plugin != null)
+            {
+                sb.Append($"PluginInfo: {Plugin}\n");
+            }
             
             return sb.ToString();
         }

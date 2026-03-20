@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <PublishAot>true</PublishAot>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>BarRaider</Authors>
         <Product>Stream Deck Tools by BarRaider</Product>
