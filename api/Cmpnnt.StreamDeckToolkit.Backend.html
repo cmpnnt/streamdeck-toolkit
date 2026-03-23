@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace Cmpnnt.StreamDeckToolkit.Backend | PIA Sharp </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Backend | PIA Sharp ">
+      
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Backend">
+
+  <h1 id="Cmpnnt_StreamDeckToolkit_Backend" data-uid="Cmpnnt.StreamDeckToolkit.Backend" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Backend</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.html">ClientWebSocketWrapper</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.html">EncoderBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for dials (not keys).
+For keys use KeypadBase or KeyAndEncoderBase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.html">KeyAndEncoderBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for actions that support both keys and dials.
+For keys only use KeypadBase. For dials only use EncoderBase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.html">KeypadBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for keys (not dials).
+For dials use EncoderBase or KeyAndEncoderBase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.html">SdConnection</a></dt>
+      <dd><p>Outbound API client for a single Stream Deck action instance.
+Use this to send commands (set title, set image, etc.) to the Stream Deck app.
+Incoming events are delivered via interface methods on ICommonPluginFunctions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.html">SdWrapper</a></dt>
+      <dd><ul>
+<li>Configuration Instructions: TODO</li>
+</ul>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.html">IApplicationMonitorPlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to monitor application launch/terminate events.
+Implement this on your plugin action class to receive these global events.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.html">IClientWebSocket</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.html">ICommonPluginFunctions</a></dt>
+      <dd><p>Common functions used by both keypad and dial plugins</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.html">IDeviceMonitorPlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.
+Implement this on your plugin action class to receive these global events.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.html">IEncoderPlugin</a></dt>
+      <dd><p>Interface used to capture dial/encoder events</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.html">IKeypadPlugin</a></dt>
+      <dd><p>Interface used to capture key events</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.html">IPluginActionRegistry</a></dt>
+      <dd><p>This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.html">ISdConnection</a></dt>
+      <dd><p>Interface for a Stream Deck connection. Provides outbound API methods to send
+commands to the Stream Deck app. Incoming events are delivered via interface
+methods on ICommonPluginFunctions and its extensions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.html">ISystemLifecyclePlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to respond to system wake events.
+Implement this on your plugin action class to receive these global events.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

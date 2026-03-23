@@ -1,5 +1,5 @@
 {
-  "source_base_path": "/home/runner/work/streamdeck-tools/streamdeck-tools/docfx_project",
+  "source_base_path": "/home/runner/work/streamdeck-toolkit/streamdeck-toolkit/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,1808 +12,1850 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.yml\" sourcestartlinenumber=\"1\">FilenamePropertyAttribute - Used to indicate the current property holds a file name.\nThis will allow StreamDeck Utilities to strip the mandatory &quot;C:\\fakepath&quot; added by the SDK</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute.yml\" sourcestartlinenumber=\"1\">FilenamePropertyAttribute - Used to indicate the current property holds a file name.\nThis will allow StreamDeck Utilities to strip the mandatory &quot;C:\\fakepath&quot; added by the SDK</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Attributes.SdSettingsAttribute",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.yml\" sourcestartlinenumber=\"1\">Marks a settings class for AOT-compatible source-generated JSON population.\nThe class must also be declared as <code>partial</code> for the source generator to implement it\n<xref href=\"Cmpnnt.SdTools.ISettingsPopulatable\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute.yml\" sourcestartlinenumber=\"1\">Marks a settings class for AOT-compatible source-generated JSON population.\nThe class must also be declared as <code>partial</code> for the source generator to implement it\n<xref href=\"Cmpnnt.StreamDeckToolkit.ISettingsPopulatable\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"1\">SdpiOutputDirectoryAttribute - Specifies the output directory for the generated SDPI HTML file.\nThe HTML filename will be the name of the decorated class with a .html extension.\nDefaults to <code sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"3\">PropertyInspector/</code></p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"1\">SdpiOutputDirectoryAttribute - Specifies the output directory for the generated SDPI HTML file.\nThe HTML filename will be the name of the decorated class with a .html extension.\nDefaults to <code sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"3\">PropertyInspector/</code></p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiPropertyNameAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiPropertyNameAttribute.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.yml\" sourcestartlinenumber=\"1\">SdpiPropertyNameAttribute - Specifies the name of an SDPI property on a class property.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.SdpiPropertyNameAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.SdpiPropertyNameAttribute.yml\" sourcestartlinenumber=\"1\">SdpiPropertyNameAttribute - Specifies the name of an SDPI property on a class property.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Attributes.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Attributes",
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ClientWebSocketWrapper.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.ClientWebSocketWrapper.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.ClientWebSocketWrapper",
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.EncoderBase.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.EncoderBase.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.EncoderBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.EncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for dials (not keys).\nFor keys use KeypadBase or KeyAndEncoderBase.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.EncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for dials (not keys).\nFor keys use KeypadBase or KeyAndEncoderBase.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to monitor application launch/terminate events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to monitor application launch/terminate events.\nImplement this on your plugin action class to receive these global events.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IClientWebSocket.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IClientWebSocket.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IClientWebSocket",
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.ICommonPluginFunctions",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.yml\" sourcestartlinenumber=\"1\">Common functions used by both keypad and dial plugins</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.yml\" sourcestartlinenumber=\"1\">Common functions used by both keypad and dial plugins</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.\nImplement this on your plugin action class to receive these global events.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IEncoderPlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IEncoderPlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IEncoderPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IEncoderPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture dial/encoder events</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture dial/encoder events</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IKeypadPlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IKeypadPlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IKeypadPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IKeypadPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture key events</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture key events</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.IPluginActionRegistry",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.yml\" sourcestartlinenumber=\"1\">This class is intended to be implemented by a class generated in Cmpnnt.SdTools.SourceGenerators</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.yml\" sourcestartlinenumber=\"1\">This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ISdConnection.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.ISdConnection.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.ISdConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ISdConnection.yml\" sourcestartlinenumber=\"1\">Interface for a Stream Deck connection. Provides outbound API methods to send\ncommands to the Stream Deck app. Incoming events are delivered via interface\nmethods on ICommonPluginFunctions and its extensions.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ISdConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.yml\" sourcestartlinenumber=\"1\">Interface for a Stream Deck connection. Provides outbound API methods to send\ncommands to the Stream Deck app. Incoming events are delivered via interface\nmethods on ICommonPluginFunctions and its extensions.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to system wake events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to system wake events.\nImplement this on your plugin action class to receive these global events.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.KeyAndEncoderBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for actions that support both keys and dials.\nFor keys only use KeypadBase. For dials only use EncoderBase.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for actions that support both keys and dials.\nFor keys only use KeypadBase. For dials only use EncoderBase.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.KeypadBase.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.KeypadBase.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.KeypadBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.KeypadBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for keys (not dials).\nFor dials use EncoderBase or KeyAndEncoderBase.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.KeypadBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for keys (not dials).\nFor dials use EncoderBase or KeyAndEncoderBase.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.SdConnection.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.SdConnection.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.SdConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.SdConnection.yml\" sourcestartlinenumber=\"1\">Outbound API client for a single Stream Deck action instance.\nUse this to send commands (set title, set image, etc.) to the Stream Deck app.\nIncoming events are delivered via interface methods on ICommonPluginFunctions.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.SdConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.yml\" sourcestartlinenumber=\"1\">Outbound API client for a single Stream Deck action instance.\nUse this to send commands (set title, set image, etc.) to the Stream Deck app.\nIncoming events are delivered via interface methods on ICommonPluginFunctions.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.SdWrapper.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.SdWrapper.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend.SdWrapper",
-      "Summary": "<ul sourcefile=\"api/Cmpnnt.SdTools.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.SdTools.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend.SdWrapper",
+      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Backend.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Backend.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Backend",
+      "Title": "Cmpnnt.StreamDeckToolkit.Backend",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.CloseStreamDeck.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.CloseStreamDeck.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.CloseStreamDeck.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.CloseStreamDeck.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.CloseStreamDeck",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.CloseStreamDeck",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.yml\" sourcestartlinenumber=\"1\">Extracts HTML content from a source-generated C# file containing SDPI HTML constants.\nSupports multiple HTML outputs from classes decorated with SdpiOutputDirectoryAttribute.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml.yml\" sourcestartlinenumber=\"1\">Extracts HTML content from a source-generated C# file containing SDPI HTML constants.\nSupports multiple HTML outputs from classes decorated with SdpiOutputDirectoryAttribute.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.GenerateManifest.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.GenerateManifest.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.GenerateManifest",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.LinkPlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.LinkPlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.LinkPlugin",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.OpenStreamDeck.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.OpenStreamDeck.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.OpenStreamDeck",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.PackagePlugin.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.PackagePlugin.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.PackagePlugin",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.RenameOutputDirectory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.RenameOutputDirectory.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.RenameOutputDirectory",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.CommandLineWrapper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.CommandLineWrapper.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.CommandLineWrapper",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.ProcessUtilities.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.ProcessUtilities.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.ProcessUtilities",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks.Utilities",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.BuildTasks.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.BuildTasks",
+      "Title": "Cmpnnt.StreamDeckToolkit.BuildTasks",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.BaseEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.BaseEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.BaseEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.BaseEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.BaseEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.BaseEvent.yml\" sourcestartlinenumber=\"1\">Base event that all the actual events derive from</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.BaseEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.BaseEvent.yml\" sourcestartlinenumber=\"1\">Base event that all the actual events derive from</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidLaunch event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidLaunch event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidTerminate Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidTerminate Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidConnect Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidConnect Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidDisconnect Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidDisconnect Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial down event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial down event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.yml\" sourcestartlinenumber=\"1\">Payload for dial rotation event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent.yml\" sourcestartlinenumber=\"1\">Payload for dial rotation event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial up event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial up event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveGlobalSettings Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveGlobalSettings Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveSettings Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveSettings Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyDown event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyDown event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyUp event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyUp event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidAppearEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidAppearEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidDisappearEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidDisappearEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.yml\" sourcestartlinenumber=\"1\">Payload for SendToPluginEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent.yml\" sourcestartlinenumber=\"1\">Payload for SendToPluginEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for SystemDidWakeUp event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for SystemDidWakeUp event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChangeEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChangeEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.yml\" sourcestartlinenumber=\"1\">Payload for touchpad press</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent.yml\" sourcestartlinenumber=\"1\">Payload for touchpad press</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillAppearEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillAppearEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillDisappearEvent event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillDisappearEvent event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos",
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Events.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Events",
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Events",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.AppearancePayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.yml\" sourcestartlinenumber=\"1\">Payload for Appearance settings</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload.yml\" sourcestartlinenumber=\"1\">Payload for Appearance settings</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.yml\" sourcestartlinenumber=\"1\">ApplicationPayload</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.yml\" sourcestartlinenumber=\"1\">ApplicationPayload</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.DialPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is down or up</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is down or up</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is rotated</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is rotated</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.EmptyPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.EmptyPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.EmptyPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.yml\" sourcestartlinenumber=\"1\">Empty payload in event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.EmptyPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.EmptyPayload.yml\" sourcestartlinenumber=\"1\">Empty payload in event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.InitialPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.yml\" sourcestartlinenumber=\"1\">Payload received during the plugin's constructor</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload.yml\" sourcestartlinenumber=\"1\">Payload received during the plugin's constructor</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.yml\" sourcestartlinenumber=\"1\">Coordinates of the current key</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates.yml\" sourcestartlinenumber=\"1\">Coordinates of the current key</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.KeyPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a key is pressed or released</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a key is pressed or released</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedGlobalSettings event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedGlobalSettings event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedSettings event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedSettings event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.yml\" sourcestartlinenumber=\"1\">Class holding all the information passed to the plugin when the program was launched</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.yml\" sourcestartlinenumber=\"1\">Class holding all the information passed to the plugin when the program was launched</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChange Event</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChange Event</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.yml\" sourcestartlinenumber=\"1\">Raw payload for TitleParametersRawPayload event (without objects)</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload.yml\" sourcestartlinenumber=\"1\">Raw payload for TitleParametersRawPayload event (without objects)</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.yml\" sourcestartlinenumber=\"1\">Payload received when the touchpad (above the dials) is pressed</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload.yml\" sourcestartlinenumber=\"1\">Payload received when the touchpad (above the dials) is pressed</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Payloads",
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.DeviceType.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.DeviceType.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.DeviceType",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.DeviceType.yml\" sourcestartlinenumber=\"1\">Type of StreamDeck hardware device, currently two are supported (classic and mini)</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType.yml\" sourcestartlinenumber=\"1\">Type of StreamDeck hardware device, currently two are supported (classic and mini)</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.RegistrationInfo",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck app and StreamDeck hardware device that the plugin is communicating with</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck app and StreamDeck hardware device that the plugin is communicating with</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck hardware device</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck hardware device</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.yml\" sourcestartlinenumber=\"1\">Layout of the keys on the StreamDeck hardware device</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize.yml\" sourcestartlinenumber=\"1\">Layout of the keys on the StreamDeck hardware device</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.Registration",
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.SdkTarget.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.SdkTarget.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.SdkTarget.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.SdkTarget.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.SdkTarget",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.SdkTarget.yml\" sourcestartlinenumber=\"1\">Target to send Title/Image to</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.SdkTarget",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.SdkTarget.yml\" sourcestartlinenumber=\"1\">Target to send Title/Image to</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.StreamDeckConnection.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.StreamDeckConnection.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication.StreamDeckConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.StreamDeckConnection.yml\" sourcestartlinenumber=\"1\">Underlying object that communicates with the stream deck app</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.yml\" sourcestartlinenumber=\"1\">Underlying object that communicates with the stream deck app</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Communication.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Communication.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Communication",
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.BaseComponent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.BaseComponent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.BaseComponent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.BaseComponent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.BaseComponent",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.BaseComponent",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Button.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Button.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Button.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Button.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Button",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Button.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-button&gt; component rendering of localized content.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Button",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Button.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-button&gt; component rendering of localized content.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.BaseCalendar.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.BaseCalendar.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.BaseCalendar",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.yml\" sourcestartlinenumber=\"1\">The common properties for all calendar input types.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.BaseCalendar",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.BaseCalendar.yml\" sourcestartlinenumber=\"1\">The common properties for all calendar input types.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Date.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Date.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Date.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Date.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.Date",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Date.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;date&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;date&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.Date",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Date.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;date&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;date&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.DateTime.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.DateTime.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.DateTime.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.DateTime.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.DateTime",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.DateTime.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;datetime-local&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;datetime-local&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.DateTime",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.DateTime.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;datetime-local&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;datetime-local&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Month.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Month.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Month.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Month.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.Month",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Month.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;month&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;month&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.Month",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Month.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;month&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;month&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Time.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Time.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Time.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Time.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.Time",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Time.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;time&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;time&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.Time",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Time.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;time&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;time&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.TimeTypes",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.yml\" sourcestartlinenumber=\"1\">Contains all the valid values for the &quot;type&quot; attribute of &lt;sdpi-calendar&gt; components.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.yml\" sourcestartlinenumber=\"1\">Contains all the valid values for the &quot;type&quot; attribute of &lt;sdpi-calendar&gt; components.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Week.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Week.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Week.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Week.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar.Week",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Week.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;week&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;week&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar.Week",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Calendar.Week.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;week&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;week&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Calendar.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Calendar",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Calendar",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Checkbox.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Checkbox.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Checkbox.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Checkbox.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Checkbox",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Checkbox.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox&gt; component provides a styled wrapper of &lt;input type=&quot;checkbox&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Checkbox",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Checkbox.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox&gt; component provides a styled wrapper of &lt;input type=&quot;checkbox&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.CheckboxList.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.CheckboxList.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.CheckboxList.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.CheckboxList.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.CheckboxList",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.CheckboxList.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox-list&gt; component provides a way of rendering multiple &lt;sdpi-checkbox&gt; components\nthat represent a single value within the settings.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.CheckboxList",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.CheckboxList.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox-list&gt; component provides a way of rendering multiple &lt;sdpi-checkbox&gt; components\nthat represent a single value within the settings.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Color.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Color.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Color.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Color.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Color",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Color.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-color&gt; component provides a styled wrapper of &lt;input type=&quot;color&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Color",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Color.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-color&gt; component provides a styled wrapper of &lt;input type=&quot;color&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Delegate.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Delegate.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Delegate.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Delegate.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Delegate",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Delegate.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-delegate&gt; component enables the invocation of a sendToPlugin event, allowing for\nthe persisted setting to be delegated to the plugin, and then rendered within this component.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Delegate",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Delegate.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-delegate&gt; component enables the invocation of a sendToPlugin event, allowing for\nthe persisted setting to be delegated to the plugin, and then rendered within this component.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.File.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.File.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.File.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.File.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.File",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.File.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-file&gt; component provides a styled wrapper of &lt;input type=&quot;file&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.File",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.File.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-file&gt; component provides a styled wrapper of &lt;input type=&quot;file&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.LocalizedContent.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.LocalizedContent.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.LocalizedContent",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.LocalizedContent.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-i18n&gt; component provides rendering of localized content.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.LocalizedContent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-i18n&gt; component provides rendering of localized content.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Password.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Password.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Password.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Password.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Password",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Password.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-password&gt; component provides a styled wrapper of &lt;input type=&quot;password&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Password",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Password.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-password&gt; component provides a styled wrapper of &lt;input type=&quot;password&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Radio.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Radio.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Radio.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Radio.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Radio",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Radio.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-radio&gt; component provides a styled wrapper of &lt;input type=&quot;radio&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Radio",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Radio.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-radio&gt; component provides a styled wrapper of &lt;input type=&quot;radio&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Range.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Range.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Range.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Range.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Range",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Range.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-range&gt; component provides a styled wrapper of &lt;input type=&quot;range&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Range",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Range.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-range&gt; component provides a styled wrapper of &lt;input type=&quot;range&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Select.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Select.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Select.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Select.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Select",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Select.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-select&gt; component provides a styled wrapper of &lt;input type=&quot;select&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Select",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Select.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-select&gt; component provides a styled wrapper of &lt;input type=&quot;select&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.DataSourceSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.DataSourceSettings.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Settings.DataSourceSettings",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.yml\" sourcestartlinenumber=\"1\">Allows the possible values of a setting to be populated from an external data source.\nSee the <a href=\"https://sdpi-components.dev/docs/helpers/data-source\">SDPI component docs.</a></p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings.DataSourceSettings",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Settings.DataSourceSettings.yml\" sourcestartlinenumber=\"1\">Allows the possible values of a setting to be populated from an external data source.\nSee the <a href=\"https://sdpi-components.dev/docs/helpers/data-source\">SDPI component docs.</a></p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.OptionSetting.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.OptionSetting.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Settings.OptionSetting",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.PersistenceSettings.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.PersistenceSettings.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Settings.PersistenceSettings",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Settings.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Settings",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.TextArea.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.TextArea.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.TextArea.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.TextArea.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.TextArea",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.TextArea.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-textarea&gt; component provides a styled wrapper of &lt;textarea&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.TextArea",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.TextArea.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-textarea&gt; component provides a styled wrapper of &lt;textarea&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.Textfield.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Textfield.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.Textfield.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.Textfield.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components.Textfield",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Textfield.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-text&gt; component provides a styled wrapper of &lt;input type=&quot;text&quot;&gt;.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Components.Textfield",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Textfield.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-text&gt; component provides a styled wrapper of &lt;input type=&quot;text&quot;&gt;.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Components.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Components.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Components.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Components",
+      "Title": "Cmpnnt.StreamDeckToolkit.Components",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.ISettingsPopulatable.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.ISettingsPopulatable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.ISettingsPopulatable.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.ISettingsPopulatable.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.ISettingsPopulatable",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.ISettingsPopulatable.yml\" sourcestartlinenumber=\"1\">Implemented by settings classes that support AOT-compatible JSON merge/patch population.\nApply <xref href=\"Cmpnnt.SdTools.Attributes.SdSettingsAttribute\" data-throw-if-not-resolved=\"false\"></xref> to a <code>partial</code> settings\nclass and the source generator will implement this interface automatically.</p>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.ISettingsPopulatable",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.ISettingsPopulatable.yml\" sourcestartlinenumber=\"1\">Implemented by settings classes that support AOT-compatible JSON merge/patch population.\nApply <xref href=\"Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute\" data-throw-if-not-resolved=\"false\"></xref> to a <code>partial</code> settings\nclass and the source generator will implement this interface automatically.</p>\n"
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.ManifestModelSourceGenerator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.ManifestModelSourceGenerator.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators.ManifestModelSourceGenerator",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.PluginRegistrar.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.PluginRegistrar.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.PluginRegistrar.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.PluginRegistrar.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators.PluginRegistrar",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators.PluginRegistrar",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi.SdpiGenerator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi.SdpiGenerator.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi.SdpiGenerator",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators.Sdpi",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators.Sdpi",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.SettingsPopulatorGenerator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.SettingsPopulatorGenerator.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators.SettingsPopulatorGenerator",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.SourceGenerators",
+      "Title": "Cmpnnt.StreamDeckToolkit.SourceGenerators",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.ExtensionMethods.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.MyTestClass.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.ExtensionMethods.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.MyTestClass.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.ExtensionMethods",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.ExtensionMethods.yml\" sourcestartlinenumber=\"1\">Extension methods for various objects</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.GlobalSettingsManager",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.yml\" sourcestartlinenumber=\"1\">Helper class which allows fetching the GlobalSettings of a plugin</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.GraphicsTools.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.GraphicsTools.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.GraphicsTools",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.GraphicsTools.yml\" sourcestartlinenumber=\"1\">Library of tools used to manipulate graphics</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.IUpdateHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.IUpdateHandler.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.IUpdateHandler",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.IUpdateHandler.yml\" sourcestartlinenumber=\"1\">Interface for a plugin update handler</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.Logger.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.Logger.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.Logger",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.Logger.yml\" sourcestartlinenumber=\"1\">Log4Net logger helper class</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.PluginUpdateInfo",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.yml\" sourcestartlinenumber=\"1\">Response to an update request</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.PluginUpdateStatus",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.yml\" sourcestartlinenumber=\"1\">Status of update request</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.RandomGenerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.RandomGenerator.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.RandomGenerator",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.RandomGenerator.yml\" sourcestartlinenumber=\"1\">Helper class for generating random numbers</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.Tools.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.Tools.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.Tools",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.Tools.yml\" sourcestartlinenumber=\"1\">Set of common utilities used by various plugins\nCurrently the class mostly focuses on image-related functions that will be passed to the StreamDeck key</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.TracingLevel.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.TracingLevel.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities.TracingLevel",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.TracingLevel.yml\" sourcestartlinenumber=\"1\">Tracing levels used for Logger</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Utilities.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Utilities",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests.MyTestClass",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleParameters.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Wrappers.TitleParameters",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleParameters.yml\" sourcestartlinenumber=\"1\">Class holding all the Title Information set by a user in the Property Inspector</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.Wrappers.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.SdTools.Wrappers",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.SdTools.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.SdTools.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.SdTools",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.ExtensionMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.ExtensionMethods.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.ExtensionMethods",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.ExtensionMethods.yml\" sourcestartlinenumber=\"1\">Extension methods for various objects</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.GlobalSettingsManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.GlobalSettingsManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.GlobalSettingsManager",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.GlobalSettingsManager.yml\" sourcestartlinenumber=\"1\">Helper class which allows fetching the GlobalSettings of a plugin</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.GraphicsTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.GraphicsTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.GraphicsTools",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.GraphicsTools.yml\" sourcestartlinenumber=\"1\">Library of tools used to manipulate graphics</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler.yml\" sourcestartlinenumber=\"1\">Interface for a plugin update handler</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.Logger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.Logger",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.Logger.yml\" sourcestartlinenumber=\"1\">Log4Net logger helper class</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo.yml\" sourcestartlinenumber=\"1\">Response to an update request</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateStatus",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateStatus.yml\" sourcestartlinenumber=\"1\">Status of update request</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.RandomGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.RandomGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.RandomGenerator",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.RandomGenerator.yml\" sourcestartlinenumber=\"1\">Helper class for generating random numbers</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.Tools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.Tools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.Tools",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.Tools.yml\" sourcestartlinenumber=\"1\">Set of common utilities used by various plugins\nCurrently the class mostly focuses on image-related functions that will be passed to the StreamDeck key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.TracingLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.TracingLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities.TracingLevel",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Utilities.TracingLevel.yml\" sourcestartlinenumber=\"1\">Tracing levels used for Logger</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Utilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Utilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleHorizontalAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleHorizontalAlignment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Wrappers.TitleHorizontalAlignment",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleHorizontalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Wrappers.TitleParameters",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleParameters.yml\" sourcestartlinenumber=\"1\">Class holding all the Title Information set by a user in the Property Inspector</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleVerticalAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleVerticalAlignment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Wrappers.TitleVerticalAlignment",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Wrappers.TitleVerticalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Wrappers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Wrappers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit",
       "Summary": null
     },
     {
