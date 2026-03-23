@@ -1,0 +1,34 @@
+name: "Publish Documentation"
+
+on:
+  workflow_run:
+    workflows:
+      - "Update Changelog"
+    types:
+      - completed
+  workflow_dispatch:
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.API_PAT }}
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - run: dotnet tool update -g docfx
+      - run: dotnet restore Cmpnnt.SdTools/Cmpnnt.SdTools.csproj
+      - run: dotnet build Cmpnnt.SdTools/Cmpnnt.SdTools.csproj -c Release
+      - run: docfx docfx_project/docfx.json
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.API_PAT }}
+          publish_dir: docfx_project/_site

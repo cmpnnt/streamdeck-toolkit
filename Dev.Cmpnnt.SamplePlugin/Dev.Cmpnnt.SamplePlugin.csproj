@@ -21,7 +21,6 @@
     <RootNamespace>Cmpnnt.SdTools.SamplePlugin</RootNamespace>
     <Company>Cmpnnt.SdTools.SamplePlugin</Company>
     <Product>Cmpnnt.SdTools.SamplePlugin</Product>
-    <!-- TODO: convert to native compilation -->
   </PropertyGroup>
   <PropertyGroup>
     <TaskAssemblyPath>$(MSBuildThisFileDirectory)..\Cmpnnt.SdTools.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.SdTools.BuildTasks.dll</TaskAssemblyPath>
@@ -53,9 +52,6 @@
   <!-- Items -->
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="manifest.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="!!README!!.txt" />
@@ -69,9 +65,10 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  
   <!-- References -->
   <ItemGroup>
-<!--    <Analyzer Include="..\Cmpnnt.SdTools.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.SdTools.SourceGenerators.dll" />-->
+    <!-- <Analyzer Include="..\Cmpnnt.SdTools.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.SdTools.SourceGenerators.dll" />-->
     <ProjectReference Include="..\Cmpnnt.SdTools.SourceGenerators\Cmpnnt.SdTools.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\Cmpnnt.SdTools.BuildTasks\Cmpnnt.SdTools.BuildTasks.csproj" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Cmpnnt.SdTools\Cmpnnt.SdTools.csproj" />
