@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using Cmpnnt.SdTools.Attributes;
+using Cmpnnt.StreamDeckToolkit.Attributes;
 
-namespace Cmpnnt.SdTools.SamplePlugin
+namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     [SdSettings]
     internal partial class PluginActionSettings

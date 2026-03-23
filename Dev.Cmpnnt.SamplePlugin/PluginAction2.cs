@@ -1,14 +1,13 @@
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Cmpnnt.SdTools.Attributes;
-using Cmpnnt.SdTools.Backend;
-using Cmpnnt.SdTools.Communication.Payloads;
-using Cmpnnt.SdTools.Utilities;
-using Cmpnnt.SdTools.Wrappers;
+using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
+using Cmpnnt.StreamDeckToolkit.Utilities;
+using Cmpnnt.StreamDeckToolkit.Wrappers;
 using SkiaSharp;
 
-namespace Cmpnnt.SdTools.SamplePlugin
+namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     public partial class PluginAction2 : KeyAndEncoderBase
     {

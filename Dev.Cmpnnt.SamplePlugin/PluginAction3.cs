@@ -1,17 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Cmpnnt.SdTools.Attributes;
-using Cmpnnt.SdTools.Backend;
-using Cmpnnt.SdTools.Communication.Payloads;
-using Cmpnnt.SdTools.Components;
-using Cmpnnt.SdTools.Components.Settings;
-using Cmpnnt.SdTools.Utilities;
-using Cmpnnt.SdTools.Wrappers;
+using Cmpnnt.StreamDeckToolkit.Attributes;
+using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
+using Cmpnnt.StreamDeckToolkit.Components;
+using Cmpnnt.StreamDeckToolkit.Components.Settings;
+using Cmpnnt.StreamDeckToolkit.Utilities;
+using Cmpnnt.StreamDeckToolkit.Wrappers;
 using SkiaSharp;
 
-namespace Cmpnnt.SdTools.SamplePlugin
+namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     [SdpiOutputDirectory("PropertyInspector/")]
     public partial class PluginAction3 : KeyAndEncoderBase

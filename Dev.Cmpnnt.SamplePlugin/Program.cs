@@ -1,7 +1,7 @@
-﻿using Cmpnnt.SdTools.Backend;
-using Cmpnnt.SdTools.SourceGenerators;
+﻿using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.SourceGenerators;
 
-namespace Cmpnnt.SdTools.SamplePlugin
+namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     class Program
     {
