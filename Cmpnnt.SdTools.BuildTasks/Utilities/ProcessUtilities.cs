@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Microsoft.Build.Utilities;
 using Task = Microsoft.Build.Utilities.Task;
 
 namespace Cmpnnt.SdTools.BuildTasks.Utilities;
 
-public class ProcessUtilities(string pluginName, Task task)
+public partial class ProcessUtilities(string pluginName, Task task)
 {
     private readonly TaskLoggingHelper logger = new(task);
 
@@ -19,8 +20,8 @@ public class ProcessUtilities(string pluginName, Task task)
             logger.LogError("Cannot find streamdeck CLI installed.");
             return false;
         }
-       
-        Regex regex = new(@"^\d.\d.\d");
+        
+        Regex regex = VersionRegex();
         MatchCollection matches = regex.Matches(result.output);
         
         if (matches.Count == 0)
@@ -71,7 +72,8 @@ public class ProcessUtilities(string pluginName, Task task)
     /// <returns>True, if Stream Deck process was stopped</returns>
     public bool StopStreamDeck()
     {
-        Process[] procs = Process.GetProcessesByName("StreamDeck");
+        string processName = CommandLineWrapper.GetOsPlatform() == OSPlatform.Windows ? "StreamDeck" : "Stream Deck";
+        Process[] procs = Process.GetProcessesByName(processName);
         if (procs.Length == 0)
         {
             logger.LogMessage("Stream Deck is not running.");
@@ -131,8 +133,12 @@ public class ProcessUtilities(string pluginName, Task task)
     /// <returns>True, if successful</returns>
     public bool StartStreamDeck(string appPath)
     {
-        Process process = Process.Start(appPath);
-        return process is { Responding: true };
+        ProcessStartInfo startInfo = CommandLineWrapper.GetOsPlatform() == OSPlatform.OSX
+            ? new ProcessStartInfo("open", $"\"{appPath}\"")
+            : new ProcessStartInfo(appPath);
+
+        Process process = Process.Start(startInfo);
+        return process != null;
     }
     
     public bool IsRunning(string processName)
@@ -140,4 +146,7 @@ public class ProcessUtilities(string pluginName, Task task)
         Process[] procs = Process.GetProcessesByName(processName);
         return procs.Length > 0;
     }
+
+    [GeneratedRegex(@"^\d.\d.\d")]
+    private static partial Regex VersionRegex();
 }

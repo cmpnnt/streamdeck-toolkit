@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -127,12 +128,14 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
                               public string Version { get; set; } = "0.1.0.1";
                               [JsonPropertyName("CodePath")]
                               public string? CodePath { get; set; } // Set below
+                              [JsonPropertyName("CodePathMac")]
+                              public string? CodePathMac { get; set; } // Set below
                               [JsonPropertyName("Category")]
                               public string Category { get; set; } = "SDTools Sample Plugin";
                               [JsonPropertyName("CategoryIcon")]
                               public string CategoryIcon { get; set; } = "Images/categoryIcon";
                               [JsonPropertyName("OS")]
-                              public List<OsInfo> Os { get; set; } = new List<OsInfo> { new OsInfo() };
+                              public List<OsInfo> Os { get; set; } = new List<OsInfo>();
                               [JsonPropertyName("SDKVersion")]
                               public int SdkVersion { get; set; } = 2;
                               [JsonPropertyName("Software")]
@@ -166,9 +169,9 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
                           internal class OsInfo
                           {
                               [JsonPropertyName("Platform")]
-                              public string Platform { get; set; } = "windows";
+                              public string Platform { get; set; } = string.Empty;
                               [JsonPropertyName("MinimumVersion")]
-                              public string MinimumVersion { get; set; } = "10";
+                              public string MinimumVersion { get; set; } = string.Empty;
                           }
                       
                           internal class SoftwareInfo
@@ -235,6 +238,15 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
         }
         sb.AppendLine($"""            root.Uuid = "{EscapeString(rootUuid)}";""");
         sb.AppendLine($"""            root.CodePath = "{EscapeString(rootUuid)}.exe"; // Default CodePath based on UUID""");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            sb.AppendLine($"""            root.CodePathMac = "{EscapeString(rootUuid)}"; // CodePath for macOS""");
+            sb.AppendLine("""            root.Os = new List<OsInfo> { new OsInfo { Platform = "mac", MinimumVersion = "12" } };""");
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            sb.AppendLine("""            root.Os = new List<OsInfo> { new OsInfo { Platform = "windows", MinimumVersion = "10" } };""");
+        }
 
         // Add Actions
         sb.AppendLine();

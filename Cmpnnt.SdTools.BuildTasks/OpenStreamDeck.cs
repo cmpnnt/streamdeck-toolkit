@@ -1,5 +1,7 @@
-﻿using System;
+using System;
+using System.Runtime.InteropServices;
 using Cmpnnt.SdTools.BuildTasks.Utilities;
+using Microsoft.Build.Framework;
 using Task = Microsoft.Build.Utilities.Task;
 
 namespace Cmpnnt.SdTools.BuildTasks;
@@ -11,20 +13,16 @@ public class OpenStreamDeck : Task
         // This is an `AfterBuild` task to restart the Stream Deck application after the plugin
         // has been successfully built and linked/packaged. This ensures the plugin is loaded
         // and ready for testing.
+        string appPath = CommandLineWrapper.GetOsPlatform() == OSPlatform.Windows ? 
+            @"C:\Program Files\Elgato\StreamDeck\StreamDeck.exe" :
+            "/Applications/Elgato Stream Deck.app";
 
-        string appPath = Environment.OSVersion.Platform switch
-        {
-            PlatformID.Win32NT => @"C:\Program Files\Elgato\StreamDeck\StreamDeck.exe",
-            PlatformID.MacOSX => "/Applications/Elgato Stream Deck.app",
-            _ => throw new NotSupportedException() // Linux: Wishful thinking
-        };
-
-        Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Starting Stream Deck...");
+        Log.LogMessage(MessageImportance.High, "Starting Stream Deck...");
 
         ProcessUtilities pu = new("", this);
         if (pu.StartStreamDeck(appPath))
         {
-            Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Stream Deck started successfully.");
+            Log.LogMessage(MessageImportance.High, "Stream Deck started successfully.");
             return true;
         }
 

@@ -26,7 +26,7 @@ public class CloseStreamDeck : Task
 
         ProcessUtilities pu = new(PluginName, this);
 
-        Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Preparing to build Stream Deck plugin...");
+        Log.LogMessage(MessageImportance.High, "Preparing to build Stream Deck plugin...");
 
         if (!pu.FindCli())
         {
@@ -44,7 +44,7 @@ public class CloseStreamDeck : Task
             return false;
         }
 
-        Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Stream Deck closed successfully.");
+        Log.LogMessage(MessageImportance.High, "Stream Deck closed successfully.");
 
         return true;
     }
