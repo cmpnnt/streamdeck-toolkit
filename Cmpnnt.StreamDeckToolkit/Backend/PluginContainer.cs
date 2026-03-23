@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,13 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
     internal class PluginContainer(IPluginActionRegistry actionRegistry, IUpdateHandler updateHandler)
     {
         private const int STREAMDECK_INITIAL_CONNECTION_TIMEOUT_SECONDS = 60;
-        private StreamDeckConnection connection;
+        private StreamDeckConnection connection = null!;
         private readonly ManualResetEvent connectEvent = new(false);
         private readonly ManualResetEvent disconnectEvent = new(false);
         private readonly SemaphoreSlim instancesLock = new(1);
-        private string pluginUuid;
-        private RegistrationInfo deviceInfo;
-        private PluginUpdateInfo lastUpdateInfo;
+        private string pluginUuid = null!;
+        private RegistrationInfo deviceInfo = null!;
+        private PluginUpdateInfo? lastUpdateInfo;
 
         /// <summary>
         /// All current instances of plugin actions. Keyed on Action UUID. Action instances are added
@@ -68,7 +69,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
             Environment.Exit(0);
         }
 
-        private async void Connection_OnEventReceived(object sender, BaseEvent evt)
+        private async void Connection_OnEventReceived(object? sender, BaseEvent evt)
         {
             try
             {
@@ -86,7 +87,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
                                 return;
                             }
 
-                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions existing) && existing != null)
+                            if (Instances.TryGetValue(e.Context, out ICommonPluginFunctions? existing) && existing != null)
                             {
                                 Logger.Instance.LogMessage(TracingLevel.Info,
                                     $"WillAppear called for already existing context {e.Context} (might be inside a multi-action)");
@@ -110,7 +111,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
                         await instancesLock.WaitAsync();
                         try
                         {
-                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions value)) return;
+                            if (!Instances.TryGetValue(e.Context, out ICommonPluginFunctions? value)) return;
                             
                             value.Destroy();
                             Instances.Remove(e.Context);
@@ -308,7 +309,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
             await instancesLock.WaitAsync();
             try
             {
-                if (Instances.TryGetValue(context, out ICommonPluginFunctions instance))
+                if (Instances.TryGetValue(context, out ICommonPluginFunctions? instance))
                 {
                     if (instance is TPlugin typed)
                     {
@@ -345,7 +346,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
             finally { instancesLock.Release(); }
         }
 
-        private async void UpdateHandler_OnUpdateStatusChanged(object sender, PluginUpdateInfo e)
+        private async void UpdateHandler_OnUpdateStatusChanged(object? sender, PluginUpdateInfo e)
         {
             try
             {
@@ -381,7 +382,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
             }
         }
 
-        private void Connection_OnConnected(object sender, EventArgs e)
+        private void Connection_OnConnected(object? sender, EventArgs e)
         {
             try
             {
@@ -394,7 +395,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
             }
         }
 
-        private void Connection_OnDisconnected(object sender, EventArgs e)
+        private void Connection_OnDisconnected(object? sender, EventArgs e)
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Disconnect event received");
             disconnectEvent.Set();
