@@ -1,4 +1,12 @@
 
+## [v1.0.2] - 2026-03-23
+### :recycle: Refactors
+- [`9036e93`](https://github.com/cmpnnt/streamdeck-toolkit/commit/9036e9345cb05b84bf185f1356134ca3c9c30a4e) - **build**: move namespaces and upgrade framework/language versions *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+### :wrench: Chores
+- [`96c2a1c`](https://github.com/cmpnnt/streamdeck-toolkit/commit/96c2a1c8fa06e6364dbb967fd1fa5432f4b4c9ab) - **warnings**: address compiler warnings *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.0.1] - 2026-03-23
 ### :bug: Bug Fixes
 - [`5759799`](https://github.com/cmpnnt/streamdeck-tools/commit/5759799d70a5a4caee0ae6e7bc3466a2b5671da4) - **build**: replace Environment.OSVersion with RuntimeInformation for macOS compatibility *(commit by [@cmpnnt](https://github.com/cmpnnt))*
@@ -47,3 +55,4 @@
 
 [v1.0.0]: https://github.com/cmpnnt/streamdeck-tools/compare/v0.1.0...v1.0.0
 [v1.0.1]: https://github.com/cmpnnt/streamdeck-tools/compare/v1.0.0...v1.0.1
+[v1.0.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.1...v1.0.2
