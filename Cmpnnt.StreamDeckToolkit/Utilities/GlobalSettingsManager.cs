@@ -18,7 +18,7 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
 
         #region Private Members
         private const int GET_GLOBAL_SETTINGS_DELAY_MS = 300;
-        private StreamDeckConnection streamDeckConnection;
+        private SdWebSocketClient streamDeckConnection;
         private readonly System.Timers.Timer tmrGetGlobalSettings = new();
         #endregion
 
@@ -61,7 +61,7 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
         /// </summary>
         /// <param name="connection">The active Stream Deck connection.</param>
         /// <param name="getGlobalSettingsDelayMs">Debounce delay in milliseconds for global settings requests.</param>
-        internal void Initialize(StreamDeckConnection connection, int getGlobalSettingsDelayMs = GET_GLOBAL_SETTINGS_DELAY_MS)
+        internal void Initialize(SdWebSocketClient connection, int getGlobalSettingsDelayMs = GET_GLOBAL_SETTINGS_DELAY_MS)
         {
             this.streamDeckConnection = connection;
             tmrGetGlobalSettings.Stop();

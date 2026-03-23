@@ -9,14 +9,14 @@ using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using Cmpnnt.StreamDeckToolkit.Utilities;
 using SkiaSharp;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
     /// <summary>
     /// Outbound API client for a single Stream Deck action instance.
     /// Use this to send commands (set title, set image, etc.) to the Stream Deck app.
     /// Incoming events are delivered via interface methods on ICommonPluginFunctions.
     /// </summary>
-    public class SdConnection : ISdConnection
+    public class OutboundConnection : IOutboundConnection
     {
         #region Private Members
 
@@ -25,7 +25,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
         [JsonIgnore] private readonly string actionId;
         [JsonIgnore] private readonly string pluginUuid;
         [JsonIgnore] private readonly RegistrationInfo deviceInfo;
-        [JsonIgnore] private readonly StreamDeckConnection streamDeckConnection;
+        [JsonIgnore] private readonly SdWebSocketClient streamDeckConnection;
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
         #endregion
 
         /// <summary>
-        /// Initializes a new SdConnection for a single action instance.
+        /// Initializes a new OutboundConnection for a single action instance.
         /// </summary>
         /// <param name="connection">The underlying WebSocket connection to the Stream Deck app.</param>
         /// <param name="pluginUuid">The plugin's unique identifier.</param>
@@ -54,8 +54,8 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
         /// <param name="actionId">The action's UUID as defined in the manifest.</param>
         /// <param name="contextId">The opaque context identifier for this action instance.</param>
         /// <param name="deviceId">The identifier of the device this instance runs on.</param>
-        public SdConnection(
-            StreamDeckConnection connection,
+        public OutboundConnection(
+            SdWebSocketClient connection,
             string pluginUuid,
             RegistrationInfo deviceInfo,
             string actionId,

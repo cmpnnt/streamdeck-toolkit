@@ -1,7 +1,8 @@
 ﻿using System.Collections.Frozen;
+using Cmpnnt.StreamDeckToolkit.Actions;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend;
+namespace Cmpnnt.StreamDeckToolkit.Runtime;
 
 /// <summary>
 /// This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators
@@ -23,5 +24,5 @@ public interface IPluginActionRegistry
     /// <param name="payload">The initial payload received during the plugin's construction. Contains basic
     /// information about the plugin.</param>
     /// <returns>An instance of the PluginAction that corresponds to the given <paramref name="actionId"/></returns>
-    public ICommonPluginFunctions CreateAction(string actionId, ISdConnection connection, InitialPayload payload);
+    public ICommonPluginFunctions CreateAction(string actionId, IOutboundConnection connection, InitialPayload payload);
 }

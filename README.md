@@ -1,11 +1,10 @@
 # Stream Deck Toolkit for .NET
-> TODO: Rename repository just before making public
 
 ![Stream Deck Illustration](Images/streamdeck.png)
 
 > A C# library that manages communication with the Stream Deck, allowing you to focus on actually writing your plugin's logic.
 
-![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple) ![SDK 6.7.0](https://img.shields.io/badge/SDK-6.7.0-blue) [![.NET](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml)
+![.NET 10.0](https://img.shields.io/badge/.NET-10.0-purple) ![SDK 6.7.0](https://img.shields.io/badge/SDK-6.7.0-blue) [![.NET](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml)
 
 ### Stream Deck+ Support
 > TODO: Move this to the wiki

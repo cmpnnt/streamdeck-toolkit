@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using SkiaSharp;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
-    
-    // TODO: Rename ISdConnection and SdConnection to IOutboundSdConnection and OutboundSdConnection
-    // or something similar. The name should communicate that it's an outbound connection for the plugin actions
-    // and not be named similarly to StreamDeckConnection.
     
     /// <summary>
     /// Interface for a Stream Deck connection. Provides outbound API methods to send
     /// commands to the Stream Deck app. Incoming events are delivered via interface
     /// methods on ICommonPluginFunctions and its extensions.
     /// </summary>
-    public interface ISdConnection : IDisposable
+    public interface IOutboundConnection : IDisposable
     {
         /// <summary>
         /// Send settings to the PropertyInspector

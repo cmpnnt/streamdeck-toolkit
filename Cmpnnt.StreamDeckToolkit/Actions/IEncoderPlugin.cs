@@ -1,6 +1,6 @@
 ﻿using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Interface used to capture dial/encoder events

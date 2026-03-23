@@ -14,7 +14,7 @@ namespace Cmpnnt.StreamDeckToolkit.SourceGenerators;
 public class PluginRegistrar : IIncrementalGenerator
 {
     // All plugin actions should implement this interface
-    private const string INTERFACE_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions";
+    private const string INTERFACE_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {

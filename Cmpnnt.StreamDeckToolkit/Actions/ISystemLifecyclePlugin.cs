@@ -1,4 +1,4 @@
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Optional interface for plugin actions that need to respond to system wake events.

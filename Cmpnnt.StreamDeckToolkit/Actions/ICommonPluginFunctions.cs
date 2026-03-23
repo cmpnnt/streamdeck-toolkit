@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Common functions used by both keypad and dial plugins

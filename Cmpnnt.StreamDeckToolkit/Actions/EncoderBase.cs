@@ -1,7 +1,8 @@
 using System.Text.Json;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Main abstract class your plugin should derive from for dials (not keys).
@@ -81,14 +82,14 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
         /// <summary>
         /// Connection object which handles your communication with the Stream Deck app
         /// </summary>
-        protected ISdConnection Connection { get; set; }
+        protected IOutboundConnection Connection { get; set; }
 
         /// <summary>
         /// Constructor for PluginBase. Receives the communication and plugin settings.
         /// Note that the settings object is not used by the base and should be consumed by the deriving class.
         /// </summary>
         #pragma warning disable IDE0060 // Remove unused parameter
-        public EncoderBase(ISdConnection connection, InitialPayload payload)
+        public EncoderBase(IOutboundConnection connection, InitialPayload payload)
         #pragma warning restore IDE0060 // Remove unused parameter
         {
             Connection = connection;

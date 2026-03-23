@@ -12,9 +12,9 @@ namespace Cmpnnt.StreamDeckToolkit.SourceGenerators;
 [Generator]
 public class ManifestModelSourceGenerator : IIncrementalGenerator
 {
-    private const string COMMON_PLUGIN_FUNCTIONS = "Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions";
-    private const string KEYPAD_PLUGIN = "Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin";
-    private const string ENCODER_PLUGIN = "Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin";
+    private const string COMMON_PLUGIN_FUNCTIONS = "Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions";
+    private const string KEYPAD_PLUGIN = "Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin";
+    private const string ENCODER_PLUGIN = "Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -85,7 +85,7 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
             pluginActions.Add(new ActionInfo(fullClassName, namespaceName, isKeypad, isEncoder));
         }
 
-        if (!pluginActions.Any()) return; // No concrete actions found
+        if (pluginActions.Count == 0) return; // No concrete actions found
         
         var sourceBuilder = new StringBuilder();
         BuildSource(sourceBuilder, pluginActions, firstNamespace);
@@ -295,7 +295,6 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
 
 
     // Helper Methods
-
     static bool ImplementsInterface(INamedTypeSymbol? classSymbol, INamedTypeSymbol? interfaceSymbol)
     {
         if (classSymbol == null || interfaceSymbol == null)
@@ -309,19 +308,14 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
 
         // Check direct interfaces and all base interfaces
         return classSymbol.AllInterfaces.Any(i => SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, interfaceSymbol.OriginalDefinition));
-
-        // No need to check base types explicitly, AllInterfaces covers the hierarchy
     }
 
     // Escapes a string for embedding within a C# string literal
     static string EscapeString(string? value)
     {
-        if (value == null)
-        {
-            return string.Empty;
-        }
-        // Basic escaping for quotes and backslashes
-        return value.Replace("\\", "\\\\").Replace("\"", "\\\"");
+        return value == null ? string.Empty :
+            // Basic escaping for quotes and backslashes
+            value.Replace("\\", "\\\\").Replace(@"\", @"\\");
     }
 
     // Simple record to hold action info

@@ -1,6 +1,6 @@
 using Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.

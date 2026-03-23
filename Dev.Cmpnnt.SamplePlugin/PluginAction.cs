@@ -2,10 +2,11 @@ using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Cmpnnt.StreamDeckToolkit.Attributes;
-using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.Actions;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 using Cmpnnt.StreamDeckToolkit.Components;
 using Cmpnnt.StreamDeckToolkit.Components.Settings;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.Utilities;
 using Cmpnnt.StreamDeckToolkit.Wrappers;
 using SkiaSharp;
@@ -46,7 +47,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
         private readonly PluginActionSettings settings;
         #endregion
 
-        public PluginAction(ISdConnection connection, InitialPayload payload) : base(connection, payload)
+        public PluginAction(IOutboundConnection connection, InitialPayload payload) : base(connection, payload)
         {
             settings = (payload.Settings == null || !payload.Settings.HasValue) ?
                 PluginActionSettings.CreateDefaultSettings() :

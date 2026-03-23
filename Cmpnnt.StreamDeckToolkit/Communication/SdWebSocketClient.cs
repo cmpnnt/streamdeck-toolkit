@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.Communication.Commands;
 using Cmpnnt.StreamDeckToolkit.Communication.Commands.Dtos;
 using Cmpnnt.StreamDeckToolkit.Communication.Events;
@@ -17,7 +17,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication;
 /// <summary>
 /// Underlying object that communicates with the stream deck app
 /// </summary>
-public class StreamDeckConnection : IDisposable, IAsyncDisposable
+public class SdWebSocketClient : IDisposable, IAsyncDisposable
 {
     private const int BUFFER_SIZE = 1024 * 1024;
 
@@ -57,7 +57,7 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
 
     #endregion
 
-    internal StreamDeckConnection(int port, string uuid, string registerEvent)
+    internal SdWebSocketClient(int port, string uuid, string registerEvent)
     {
         Port = port;
         Uuid = uuid;
@@ -66,7 +66,7 @@ public class StreamDeckConnection : IDisposable, IAsyncDisposable
     }
     
     // primarily for testing
-    internal StreamDeckConnection(int port, string uuid, string registerEvent, CancellationTokenSource cancellationTokenSource, IClientWebSocket webSocket = null)
+    internal SdWebSocketClient(int port, string uuid, string registerEvent, CancellationTokenSource cancellationTokenSource, IClientWebSocket webSocket = null)
     {
         Port = port;
         Uuid = uuid;

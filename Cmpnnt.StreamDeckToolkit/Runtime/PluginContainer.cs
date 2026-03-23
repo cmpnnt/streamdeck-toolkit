@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Cmpnnt.StreamDeckToolkit.Actions;
 using Cmpnnt.StreamDeckToolkit.Communication;
 using Cmpnnt.StreamDeckToolkit.Communication.Events;
 using Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos;
@@ -11,12 +12,12 @@ using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using Cmpnnt.StreamDeckToolkit.Utilities;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
     internal class PluginContainer(IPluginActionRegistry actionRegistry, IUpdateHandler updateHandler)
     {
         private const int STREAMDECK_INITIAL_CONNECTION_TIMEOUT_SECONDS = 60;
-        private StreamDeckConnection connection = null!;
+        private SdWebSocketClient connection = null!;
         private readonly ManualResetEvent connectEvent = new(false);
         private readonly ManualResetEvent disconnectEvent = new(false);
         private readonly SemaphoreSlim instancesLock = new(1);
@@ -34,7 +35,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
         {
             pluginUuid = options.PluginUuid;
             deviceInfo = options.DeviceInfo;
-            connection = new StreamDeckConnection(options.Port, options.PluginUuid, options.RegisterEvent);
+            connection = new SdWebSocketClient(options.Port, options.PluginUuid, options.RegisterEvent);
 
             connection.OnConnected += Connection_OnConnected;
             connection.OnDisconnected += Connection_OnDisconnected;
@@ -77,7 +78,7 @@ namespace Cmpnnt.StreamDeckToolkit.Backend
                 {
                     case WillAppearEvent e:
                     {
-                        var conn = new SdConnection(connection, pluginUuid, deviceInfo, e.Action, e.Context, e.Device);
+                        var conn = new OutboundConnection(connection, pluginUuid, deviceInfo, e.Action, e.Context, e.Device);
                         await instancesLock.WaitAsync();
                         try
                         {

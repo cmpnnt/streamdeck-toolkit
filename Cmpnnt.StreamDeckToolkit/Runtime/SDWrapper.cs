@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
+using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using Cmpnnt.StreamDeckToolkit.Utilities;
 using CommandLine;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
     /// <summary>
     /// * Configuration Instructions: TODO

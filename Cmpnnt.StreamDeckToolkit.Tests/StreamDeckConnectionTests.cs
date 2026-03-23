@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Cmpnnt.StreamDeckToolkit.Backend;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.Communication;
 using Cmpnnt.StreamDeckToolkit.Communication.Events;
 using Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos;
@@ -11,7 +11,7 @@ using NSubstitute;
 
 namespace Cmpnnt.StreamDeckToolkit.Tests;
 
-public class StreamDeckConnectionTests
+public class SdWebSocketClientTests
 {
     // TODO: Test more ClientWebSocket scenarios (closed, aborted, etc)
     [Test]
@@ -40,7 +40,7 @@ public class StreamDeckConnectionTests
                 return Task.FromResult(result);
             });
 
-        var connection = new StreamDeckConnection(1234, "test-uuid", "register-event", cts, mockWebSocket);
+        var connection = new SdWebSocketClient(1234, "test-uuid", "register-event", cts, mockWebSocket);
 
         BaseEvent? receivedEvent = null;
         connection.OnEventReceived += (_, evt) =>

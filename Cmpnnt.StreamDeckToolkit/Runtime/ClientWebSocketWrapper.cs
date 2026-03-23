@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend;
+namespace Cmpnnt.StreamDeckToolkit.Runtime;
 
 public class ClientWebSocketWrapper : IClientWebSocket
 {

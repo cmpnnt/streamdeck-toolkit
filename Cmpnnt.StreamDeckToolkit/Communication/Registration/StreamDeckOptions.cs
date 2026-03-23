@@ -6,7 +6,7 @@ using Cmpnnt.StreamDeckToolkit.Utilities;
 using CommandLine;
 using RegistrationSerializerContext = Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationSerializerContext;
 
-namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
+namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
 {
     /// <summary>
     /// Class holding all the information passed to the plugin when the program was launched

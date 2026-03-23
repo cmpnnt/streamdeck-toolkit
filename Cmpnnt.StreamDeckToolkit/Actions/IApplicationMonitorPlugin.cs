@@ -1,6 +1,6 @@
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 
-namespace Cmpnnt.StreamDeckToolkit.Backend
+namespace Cmpnnt.StreamDeckToolkit.Actions
 {
     /// <summary>
     /// Optional interface for plugin actions that need to monitor application launch/terminate events.
