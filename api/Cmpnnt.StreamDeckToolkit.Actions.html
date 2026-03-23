@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ISystemLifecyclePlugin | PIA Sharp </title>
+      <title>Namespace Cmpnnt.StreamDeckToolkit.Actions | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ISystemLifecyclePlugin | PIA Sharp ">
+      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Actions | PIA Sharp ">
       
-      <meta name="description" content="Optional interface for plugin actions that need to respond to system wake events. Implement this on your plugin action class to receive these global events.">
+      
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_StreamDeckToolkit_Backend_ISystemLifecyclePlugin.md&amp;value=---%0Auid%3A%20Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,76 +84,75 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin">
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Actions">
 
+  <h1 id="Cmpnnt_StreamDeckToolkit_Actions" data-uid="Cmpnnt.StreamDeckToolkit.Actions" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Actions</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
 
-
-  <h1 id="Cmpnnt_StreamDeckToolkit_Backend_ISystemLifecyclePlugin" data-uid="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin" class="text-break">
-Interface ISystemLifecyclePlugin  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/ISystemLifecyclePlugin.cs/#L7"><i class="bi bi-code-slash"></i></a>
-  </h1>
-
-  <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.html">StreamDeckToolkit</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.html">Backend</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
-  </div>
-
-  <div class="markdown summary"><p>Optional interface for plugin actions that need to respond to system wake events.
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.EncoderBase.html">EncoderBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for dials (not keys).
+For keys use KeypadBase or KeyAndEncoderBase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.KeyAndEncoderBase.html">KeyAndEncoderBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for actions that support both keys and dials.
+For keys only use KeypadBase. For dials only use EncoderBase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html">KeypadBase</a></dt>
+      <dd><p>Main abstract class your plugin should derive from for keys (not dials).
+For dials use EncoderBase or KeyAndEncoderBase.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.IApplicationMonitorPlugin.html">IApplicationMonitorPlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to monitor application launch/terminate events.
 Implement this on your plugin action class to receive these global events.</p>
-</div>
-  <div class="markdown conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ISystemLifecyclePlugin</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_ISystemLifecyclePlugin_OnSystemDidWakeUp_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.OnSystemDidWakeUp*"></a>
-
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_ISystemLifecyclePlugin_OnSystemDidWakeUp" data-uid="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.OnSystemDidWakeUp">
-  OnSystemDidWakeUp()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/ISystemLifecyclePlugin.cs/#L12"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the computer wakes up from sleep.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnSystemDidWakeUp()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions.html">ICommonPluginFunctions</a></dt>
+      <dd><p>Common functions used by both keypad and dial plugins</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.html">IDeviceMonitorPlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.
+Implement this on your plugin action class to receive these global events.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin.html">IEncoderPlugin</a></dt>
+      <dd><p>Interface used to capture dial/encoder events</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin.html">IKeypadPlugin</a></dt>
+      <dd><p>Interface used to capture key events</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.ISystemLifecyclePlugin.html">ISystemLifecyclePlugin</a></dt>
+      <dd><p>Optional interface for plugin actions that need to respond to system wake events.
+Implement this on your plugin action class to receive these global events.</p>
+</dd>
+    </dl>
 
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/ISystemLifecyclePlugin.cs/#L7" class="edit-link">Edit this page</a>
         </div>
 
 

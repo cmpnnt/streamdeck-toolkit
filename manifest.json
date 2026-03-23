@@ -12,6 +12,146 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.EncoderBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.EncoderBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.EncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.EncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for dials (not keys).\nFor keys use KeypadBase or KeyAndEncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IApplicationMonitorPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IApplicationMonitorPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.IApplicationMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.IApplicationMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to monitor application launch/terminate events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions.yml\" sourcestartlinenumber=\"1\">Common functions used by both keypad and dial plugins</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture dial/encoder events</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture key events</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.ISystemLifecyclePlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.ISystemLifecyclePlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.ISystemLifecyclePlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.ISystemLifecyclePlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to system wake events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.KeyAndEncoderBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.KeyAndEncoderBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.KeyAndEncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.KeyAndEncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for actions that support both keys and dials.\nFor keys only use KeypadBase. For dials only use EncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions.KeypadBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for keys (not dials).\nFor dials use EncoderBase or KeyAndEncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Actions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Actions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute.yml",
       "output": {
         ".html": {
@@ -78,230 +218,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Attributes",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.EncoderBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for dials (not keys).\nFor keys use KeypadBase or KeyAndEncoderBase.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to monitor application launch/terminate events.\nImplement this on your plugin action class to receive these global events.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.yml\" sourcestartlinenumber=\"1\">Common functions used by both keypad and dial plugins</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.\nImplement this on your plugin action class to receive these global events.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture dial/encoder events</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture key events</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.yml\" sourcestartlinenumber=\"1\">This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ISdConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.yml\" sourcestartlinenumber=\"1\">Interface for a Stream Deck connection. Provides outbound API methods to send\ncommands to the Stream Deck app. Incoming events are delivered via interface\nmethods on ICommonPluginFunctions and its extensions.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to system wake events.\nImplement this on your plugin action class to receive these global events.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for actions that support both keys and dials.\nFor keys only use KeypadBase. For dials only use EncoderBase.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.KeypadBase",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for keys (not dials).\nFor dials use EncoderBase or KeyAndEncoderBase.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.SdConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdConnection.yml\" sourcestartlinenumber=\"1\">Outbound API client for a single Stream Deck action instance.\nUse this to send commands (set title, set image, etc.) to the Stream Deck app.\nIncoming events are delivered via interface methods on ICommonPluginFunctions.</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend.SdWrapper",
-      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Backend.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Backend",
       "Summary": null
     },
     {
@@ -908,20 +824,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.StreamDeckOptions.yml\" sourcestartlinenumber=\"1\">Class holding all the information passed to the plugin when the program was launched</p>\n"
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.yml",
       "output": {
         ".html": {
@@ -1048,6 +950,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.yml\" sourcestartlinenumber=\"1\">Class holding all the information passed to the plugin when the program was launched</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.yml",
       "output": {
         ".html": {
@@ -1076,6 +992,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.yml\" sourcestartlinenumber=\"1\">Underlying object that communicates with the stream deck app</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.SdkTarget.yml",
       "output": {
         ".html": {
@@ -1087,20 +1017,6 @@
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Communication.SdkTarget",
       "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.SdkTarget.yml\" sourcestartlinenumber=\"1\">Target to send Title/Image to</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection",
-      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.yml\" sourcestartlinenumber=\"1\">Underlying object that communicates with the stream deck app</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1510,6 +1426,104 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection.yml\" sourcestartlinenumber=\"1\">Interface for a Stream Deck connection. Provides outbound API methods to send\ncommands to the Stream Deck app. Incoming events are delivered via interface\nmethods on ICommonPluginFunctions and its extensions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry.yml\" sourcestartlinenumber=\"1\">This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.yml\" sourcestartlinenumber=\"1\">Outbound API client for a single Stream Deck action instance.\nUse this to send commands (set title, set image, etc.) to the Stream Deck app.\nIncoming events are delivered via interface methods on ICommonPluginFunctions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper",
+      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.SourceGenerators.ManifestModelSourceGenerator.yml",
       "output": {
         ".html": {
@@ -1608,16 +1622,16 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Tests.StreamDeckConnectionTests",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests",
       "Summary": null
     },
     {

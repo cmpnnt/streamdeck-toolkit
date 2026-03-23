@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class SdConnection | PIA Sharp </title>
+      <title>Class OutboundConnection | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class SdConnection | PIA Sharp ">
+      <meta name="title" content="Class OutboundConnection | PIA Sharp ">
       
       <meta name="description" content="Outbound API client for a single Stream Deck action instance. Use this to send commands (set title, set image, etc.) to the Stream Deck app. Incoming events are delivered via interface methods on ICommonPluginFunctions.">
       <link rel="icon" href="../images/favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_StreamDeckToolkit_Backend_SdConnection.md&amp;value=---%0Auid%3A%20Cmpnnt.StreamDeckToolkit.Backend.SdConnection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection.md&amp;value=---%0Auid%3A%20Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection">
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection">
 
 
 
-  <h1 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection" class="text-break">
-Class SdConnection  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection" class="text-break">
+Class OutboundConnection  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.html">StreamDeckToolkit</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.html">Backend</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.html">StreamDeckToolkit</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.html">Runtime</a></dd></dl>
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
@@ -104,7 +104,7 @@ Incoming events are delivered via interface methods on ICommonPluginFunctions.</
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SdConnection : ISdConnection, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class OutboundConnection : IOutboundConnection, IDisposable</code></pre>
   </div>
 
 
@@ -114,14 +114,14 @@ Incoming events are delivered via interface methods on ICommonPluginFunctions.</
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">SdConnection</span></div>
+      <div><span class="xref">OutboundConnection</span></div>
     </dd>
   </dl>
 
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.html">ISdConnection</a></div>
+      <div><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection.html">IOutboundConnection</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
     </dd>
   </dl>
@@ -162,24 +162,24 @@ Incoming events are delivered via interface methods on ICommonPluginFunctions.</
 </h2>
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection__ctor_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.#ctor*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection__ctor_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.#ctor*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection__ctor_Cmpnnt_StreamDeckToolkit_Communication_StreamDeckConnection_System_String_Cmpnnt_StreamDeckToolkit_Communication_Registration_RegistrationInfo_System_String_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.#ctor(Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection,System.String,Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo,System.String,System.String,System.String)">
-  SdConnection(StreamDeckConnection, string, RegistrationInfo, string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection__ctor_Cmpnnt_StreamDeckToolkit_Communication_SdWebSocketClient_System_String_Cmpnnt_StreamDeckToolkit_Communication_Registration_RegistrationInfo_System_String_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.#ctor(Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient,System.String,Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo,System.String,System.String,System.String)">
+  OutboundConnection(SdWebSocketClient, string, RegistrationInfo, string, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L57"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new SdConnection for a single action instance.</p>
+  <div class="markdown level1 summary"><p>Initializes a new OutboundConnection for a single action instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SdConnection(StreamDeckConnection connection, string pluginUuid, RegistrationInfo deviceInfo, string actionId, string contextId, string deviceId)</code></pre>
+    <pre><code class="lang-csharp hljs">public OutboundConnection(SdWebSocketClient connection, string pluginUuid, RegistrationInfo deviceInfo, string actionId, string contextId, string deviceId)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>connection</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.StreamDeckConnection.html">StreamDeckConnection</a></dt>
+    <dt><code>connection</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.html">SdWebSocketClient</a></dt>
     <dd><p>The underlying WebSocket connection to the Stream Deck app.</p>
 </dd>
     <dt><code>pluginUuid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
@@ -214,11 +214,11 @@ Incoming events are delivered via interface methods on ICommonPluginFunctions.</
 </h2>
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ContextId_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ContextId*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ContextId_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ContextId*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ContextId" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ContextId">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ContextId" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ContextId">
   ContextId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L37"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An opaque value identifying the plugin instance. Received during the Registration procedure.</p>
@@ -247,11 +247,11 @@ public string ContextId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_DeviceId_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.DeviceId*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_DeviceId_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.DeviceId*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_DeviceId" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.DeviceId">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_DeviceId" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.DeviceId">
   DeviceId
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An opaque value identifying the device the plugin is launched on.</p>
@@ -284,11 +284,11 @@ public string DeviceId { get; set; }</code></pre>
 </h2>
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_DeviceInfo_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.DeviceInfo*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_DeviceInfo_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.DeviceInfo*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_DeviceInfo" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.DeviceInfo">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_DeviceInfo" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.DeviceInfo">
   DeviceInfo()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the Stream Deck device's info</p>
@@ -316,11 +316,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_Dispose_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.Dispose*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_Dispose_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.Dispose*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_Dispose" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.Dispose">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_Dispose" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.Dispose">
   Dispose()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L74"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
@@ -343,11 +343,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_GetGlobalSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.GetGlobalSettingsAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_GetGlobalSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.GetGlobalSettingsAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_GetGlobalSettingsAsync" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.GetGlobalSettingsAsync">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_GetGlobalSettingsAsync" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.GetGlobalSettingsAsync">
   GetGlobalSettingsAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L126"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Requests global plugin settings, triggering a ReceivedGlobalSettings call</p>
@@ -375,11 +375,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_GetSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.GetSettingsAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_GetSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.GetSettingsAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_GetSettingsAsync" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.GetSettingsAsync">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_GetSettingsAsync" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.GetSettingsAsync">
   GetSettingsAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L200"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Tells Stream Deck to return the current plugin settings via the ReceivedSettings function</p>
@@ -407,11 +407,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_LogSdMessage_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.LogSdMessage*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_LogSdMessage_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.LogSdMessage*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_LogSdMessage_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.LogSdMessage(System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_LogSdMessage_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.LogSdMessage(System.String)">
   LogSdMessage(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Add a message to the Stream Deck log</p>
@@ -444,11 +444,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_OpenUrlAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.OpenUrlAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_OpenUrlAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.OpenUrlAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_OpenUrlAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.OpenUrlAsync(System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_OpenUrlAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.OpenUrlAsync(System.String)">
   OpenUrlAsync(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Opens a URI in the user's browser</p>
@@ -481,11 +481,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_OpenUrlAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.OpenUrlAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_OpenUrlAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.OpenUrlAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_OpenUrlAsync_System_Uri_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.OpenUrlAsync(System.Uri)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_OpenUrlAsync_System_Uri_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.OpenUrlAsync(System.Uri)">
   OpenUrlAsync(Uri)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Opens a URI in the user's browser</p>
@@ -518,11 +518,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SendToPropertyInspectorAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SendToPropertyInspectorAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SendToPropertyInspectorAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SendToPropertyInspectorAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SendToPropertyInspectorAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SendToPropertyInspectorAsync(System.Text.Json.JsonElement)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SendToPropertyInspectorAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SendToPropertyInspectorAsync(System.Text.Json.JsonElement)">
   SendToPropertyInspectorAsync(JsonElement)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Send settings to the PropertyInspector</p>
@@ -555,11 +555,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetDefaultImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetDefaultImageAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetDefaultImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetDefaultImageAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetDefaultImageAsync" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetDefaultImageAsync">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetDefaultImageAsync" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetDefaultImageAsync">
   SetDefaultImageAsync()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the default image for this state, as configured in the manifest</p>
@@ -587,11 +587,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
   SetFeedbackAsync(Dictionary&lt;string, string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the values of touchpad layouts items</p>
@@ -624,11 +624,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync(System.String,System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync(System.String,System.String)">
   SetFeedbackAsync(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L230"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the value of a single touchpad layout item</p>
@@ -663,11 +663,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackAsync(System.Text.Json.JsonElement)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackAsync(System.Text.Json.JsonElement)">
   SetFeedbackAsync(JsonElement)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L236"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the values of touchpad layouts items using a preset JsonElement</p>
@@ -700,11 +700,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackLayoutAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackLayoutAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackLayoutAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackLayoutAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetFeedbackLayoutAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetFeedbackLayoutAsync(System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetFeedbackLayoutAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetFeedbackLayoutAsync(System.String)">
   SetFeedbackLayoutAsync(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L242"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Changes the current Stream Deck+ touch display layout</p>
@@ -737,11 +737,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetGlobalSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetGlobalSettingsAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetGlobalSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetGlobalSettingsAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetGlobalSettingsAsync_System_Text_Json_JsonElement_System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetGlobalSettingsAsync(System.Text.Json.JsonElement,System.Boolean)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetGlobalSettingsAsync_System_Text_Json_JsonElement_System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetGlobalSettingsAsync(System.Text.Json.JsonElement,System.Boolean)">
   SetGlobalSettingsAsync(JsonElement, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Persists your global plugin settings</p>
@@ -776,11 +776,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetImageAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetImageAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetImageAsync_SkiaSharp_SKData_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetImageAsync(SkiaSharp.SKData,System.Nullable{System.Int32},System.Boolean)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetImageAsync_SkiaSharp_SKData_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetImageAsync(SkiaSharp.SKData,System.Nullable{System.Int32},System.Boolean)">
   SetImageAsync(SKData, int?, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets an image on the StreamDeck key</p>
@@ -817,11 +817,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetImageAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetImageAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetImageAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetImageAsync_System_String_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetImageAsync(System.String,System.Nullable{System.Int32},System.Boolean)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetImageAsync_System_String_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetImageAsync(System.String,System.Nullable{System.Int32},System.Boolean)">
   SetImageAsync(string, int?, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L135"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets an image on the StreamDeck key.</p>
@@ -858,11 +858,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetSettingsAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetSettingsAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetSettingsAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetSettingsAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetSettingsAsync(System.Text.Json.JsonElement)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetSettingsAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetSettingsAsync(System.Text.Json.JsonElement)">
   SetSettingsAsync(JsonElement)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Persists your plugin settings</p>
@@ -895,11 +895,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetStateAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetStateAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetStateAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetStateAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetStateAsync_System_Nullable_System_UInt32__" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetStateAsync(System.Nullable{System.UInt32})">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetStateAsync_System_Nullable_System_UInt32__" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetStateAsync(System.Nullable{System.UInt32})">
   SetStateAsync(uint?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L218"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the plugin to a specific state which is pre-configured in the manifest file</p>
@@ -932,11 +932,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetTitleAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetTitleAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetTitleAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetTitleAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SetTitleAsync_System_String_System_Nullable_System_Int32__" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SetTitleAsync(System.String,System.Nullable{System.Int32})">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SetTitleAsync_System_String_System_Nullable_System_Int32__" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SetTitleAsync(System.String,System.Nullable{System.Int32})">
   SetTitleAsync(string, int?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L164"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets a title on the StreamDeck key</p>
@@ -971,11 +971,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ShowAlert_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ShowAlert*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ShowAlert_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ShowAlert*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ShowAlert" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ShowAlert">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ShowAlert" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ShowAlert">
   ShowAlert()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L182"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Shows the Alert (Yellow Triangle) on the StreamDeck key</p>
@@ -1003,11 +1003,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ShowOk_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ShowOk*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ShowOk_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ShowOk*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_ShowOk" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.ShowOk">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_ShowOk" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.ShowOk">
   ShowOk()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L188"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Shows the Success (Green checkmark) on the StreamDeck key</p>
@@ -1035,11 +1035,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SwitchProfileAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SwitchProfileAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SwitchProfileAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SwitchProfileAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SwitchProfileAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SwitchProfileAsync(System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SwitchProfileAsync_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SwitchProfileAsync(System.String)">
   SwitchProfileAsync(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L170"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Switches to one of the plugin's built-in profiles</p>
@@ -1072,11 +1072,11 @@ public string DeviceId { get; set; }</code></pre>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SwitchProfileAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SwitchProfileAsync*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SwitchProfileAsync_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SwitchProfileAsync*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_SdConnection_SwitchProfileAsync_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.SwitchProfileAsync(System.String,System.String)">
+  <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_OutboundConnection_SwitchProfileAsync_System_String_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.SwitchProfileAsync(System.String,System.String)">
   SwitchProfileAsync(string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L176"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Switches to one of the plugin's built-in profiles on a specific device</p>
@@ -1115,7 +1115,7 @@ public string DeviceId { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/SDConnection.cs/#L19" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/OutboundConnection.cs/#L19" class="edit-link">Edit this page</a>
         </div>
 
 

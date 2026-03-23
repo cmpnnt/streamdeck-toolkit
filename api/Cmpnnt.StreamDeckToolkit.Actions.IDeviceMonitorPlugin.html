@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface IApplicationMonitorPlugin | PIA Sharp </title>
+      <title>Interface IDeviceMonitorPlugin | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface IApplicationMonitorPlugin | PIA Sharp ">
+      <meta name="title" content="Interface IDeviceMonitorPlugin | PIA Sharp ">
       
-      <meta name="description" content="Optional interface for plugin actions that need to monitor application launch/terminate events. Implement this on your plugin action class to receive these global events.">
+      <meta name="description" content="Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events. Implement this on your plugin action class to receive these global events.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin.md&amp;value=---%0Auid%3A%20Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin.md&amp;value=---%0Auid%3A%20Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,26 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin">
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin">
 
 
 
-  <h1 id="Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin" data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin" class="text-break">
-Interface IApplicationMonitorPlugin  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/IApplicationMonitorPlugin.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <h1 id="Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin" data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin" class="text-break">
+Interface IDeviceMonitorPlugin  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Actions/IDeviceMonitorPlugin.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.html">StreamDeckToolkit</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.html">Backend</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.html">StreamDeckToolkit</a>.<a class="xref" href="Cmpnnt.StreamDeckToolkit.Actions.html">Actions</a></dd></dl>
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Optional interface for plugin actions that need to monitor application launch/terminate events.
+  <div class="markdown summary"><p>Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.
 Implement this on your plugin action class to receive these global events.</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IApplicationMonitorPlugin</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IDeviceMonitorPlugin</code></pre>
   </div>
 
 
@@ -122,25 +122,25 @@ Implement this on your plugin action class to receive these global events.</p>
 </h2>
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin_OnApplicationDidLaunch_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.OnApplicationDidLaunch*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin_OnDeviceDidConnect_" data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.OnDeviceDidConnect*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin_OnApplicationDidLaunch_Cmpnnt_StreamDeckToolkit_Communication_Payloads_ApplicationPayload_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.OnApplicationDidLaunch(Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload)">
-  OnApplicationDidLaunch(ApplicationPayload)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/IApplicationMonitorPlugin.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin_OnDeviceDidConnect_Cmpnnt_StreamDeckToolkit_Communication_Events_Dtos_DeviceDidConnectEvent_" data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.OnDeviceDidConnect(Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent)">
+  OnDeviceDidConnect(DeviceDidConnectEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Actions/IDeviceMonitorPlugin.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a monitored application is launched.</p>
+  <div class="markdown level1 summary"><p>Called when a Stream Deck device is plugged into the computer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnApplicationDidLaunch(ApplicationPayload payload)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnDeviceDidConnect(DeviceDidConnectEvent evt)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>payload</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.html">ApplicationPayload</a></dt>
-    <dd><p>Contains the name of the application that was launched.</p>
+    <dt><code>evt</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.html">DeviceDidConnectEvent</a></dt>
+    <dd><p>The event containing device info for the newly connected device.</p>
 </dd>
   </dl>
 
@@ -155,25 +155,25 @@ Implement this on your plugin action class to receive these global events.</p>
 
 
 
-  <a id="Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin_OnApplicationDidTerminate_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.OnApplicationDidTerminate*"></a>
+  <a id="Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin_OnDeviceDidDisconnect_" data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.OnDeviceDidDisconnect*"></a>
 
-  <h3 id="Cmpnnt_StreamDeckToolkit_Backend_IApplicationMonitorPlugin_OnApplicationDidTerminate_Cmpnnt_StreamDeckToolkit_Communication_Payloads_ApplicationPayload_" data-uid="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.OnApplicationDidTerminate(Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload)">
-  OnApplicationDidTerminate(ApplicationPayload)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/IApplicationMonitorPlugin.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Cmpnnt_StreamDeckToolkit_Actions_IDeviceMonitorPlugin_OnDeviceDidDisconnect_System_String_" data-uid="Cmpnnt.StreamDeckToolkit.Actions.IDeviceMonitorPlugin.OnDeviceDidDisconnect(System.String)">
+  OnDeviceDidDisconnect(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Actions/IDeviceMonitorPlugin.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a monitored application is terminated.</p>
+  <div class="markdown level1 summary"><p>Called when a Stream Deck device is unplugged from the computer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnApplicationDidTerminate(ApplicationPayload payload)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnDeviceDidDisconnect(string deviceId)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>payload</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.html">ApplicationPayload</a></dt>
-    <dd><p>Contains the name of the application that was terminated.</p>
+    <dt><code>deviceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The opaque identifier of the device that disconnected.</p>
 </dd>
   </dl>
 
@@ -192,7 +192,7 @@ Implement this on your plugin action class to receive these global events.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Backend/IApplicationMonitorPlugin.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Actions/IDeviceMonitorPlugin.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Cmpnnt.StreamDeckToolkit.Backend | PIA Sharp </title>
+      <title>Namespace Cmpnnt.StreamDeckToolkit.Runtime | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Backend | PIA Sharp ">
+      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Runtime | PIA Sharp ">
       
       
       <link rel="icon" href="../images/favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Cmpnnt.StreamDeckToolkit.Backend">
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Runtime">
 
-  <h1 id="Cmpnnt_StreamDeckToolkit_Backend" data-uid="Cmpnnt.StreamDeckToolkit.Backend" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Backend</h1>
+  <h1 id="Cmpnnt_StreamDeckToolkit_Runtime" data-uid="Cmpnnt.StreamDeckToolkit.Runtime" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Runtime</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,36 +95,18 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ClientWebSocketWrapper.html">ClientWebSocketWrapper</a></dt>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.html">ClientWebSocketWrapper</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.EncoderBase.html">EncoderBase</a></dt>
-      <dd><p>Main abstract class your plugin should derive from for dials (not keys).
-For keys use KeypadBase or KeyAndEncoderBase.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.KeyAndEncoderBase.html">KeyAndEncoderBase</a></dt>
-      <dd><p>Main abstract class your plugin should derive from for actions that support both keys and dials.
-For keys only use KeypadBase. For dials only use EncoderBase.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.KeypadBase.html">KeypadBase</a></dt>
-      <dd><p>Main abstract class your plugin should derive from for keys (not dials).
-For dials use EncoderBase or KeyAndEncoderBase.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.SdConnection.html">SdConnection</a></dt>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.OutboundConnection.html">OutboundConnection</a></dt>
       <dd><p>Outbound API client for a single Stream Deck action instance.
 Use this to send commands (set title, set image, etc.) to the Stream Deck app.
 Incoming events are delivered via interface methods on ICommonPluginFunctions.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.SdWrapper.html">SdWrapper</a></dt>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.html">SdWrapper</a></dt>
       <dd><ul>
 <li>Configuration Instructions: TODO</li>
 </ul>
@@ -134,52 +116,19 @@ Incoming events are delivered via interface methods on ICommonPluginFunctions.</
 Interfaces
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IApplicationMonitorPlugin.html">IApplicationMonitorPlugin</a></dt>
-      <dd><p>Optional interface for plugin actions that need to monitor application launch/terminate events.
-Implement this on your plugin action class to receive these global events.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IClientWebSocket.html">IClientWebSocket</a></dt>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.html">IClientWebSocket</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ICommonPluginFunctions.html">ICommonPluginFunctions</a></dt>
-      <dd><p>Common functions used by both keypad and dial plugins</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IDeviceMonitorPlugin.html">IDeviceMonitorPlugin</a></dt>
-      <dd><p>Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.
-Implement this on your plugin action class to receive these global events.</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IEncoderPlugin.html">IEncoderPlugin</a></dt>
-      <dd><p>Interface used to capture dial/encoder events</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IKeypadPlugin.html">IKeypadPlugin</a></dt>
-      <dd><p>Interface used to capture key events</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.IPluginActionRegistry.html">IPluginActionRegistry</a></dt>
-      <dd><p>This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>
-</dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ISdConnection.html">ISdConnection</a></dt>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection.html">IOutboundConnection</a></dt>
       <dd><p>Interface for a Stream Deck connection. Provides outbound API methods to send
 commands to the Stream Deck app. Incoming events are delivered via interface
 methods on ICommonPluginFunctions and its extensions.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Backend.ISystemLifecyclePlugin.html">ISystemLifecyclePlugin</a></dt>
-      <dd><p>Optional interface for plugin actions that need to respond to system wake events.
-Implement this on your plugin action class to receive these global events.</p>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry.html">IPluginActionRegistry</a></dt>
+      <dd><p>This class is intended to be implemented by a class generated in Cmpnnt.StreamDeckToolkit.SourceGenerators</p>
 </dd>
     </dl>
 
