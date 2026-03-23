@@ -1,4 +1,9 @@
 
+## [v1.0.3] - 2026-03-23
+### :recycle: Refactors
+- [`6e6fdab`](https://github.com/cmpnnt/streamdeck-toolkit/commit/6e6fdabb77ebcbde8f20435d90b5f718aaa5fc3d) - reorganize Cmpnnt.StreamDeckToolkit directory structure *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.0.2] - 2026-03-23
 ### :recycle: Refactors
 - [`9036e93`](https://github.com/cmpnnt/streamdeck-toolkit/commit/9036e9345cb05b84bf185f1356134ca3c9c30a4e) - **build**: move namespaces and upgrade framework/language versions *(commit by [@cmpnnt](https://github.com/cmpnnt))*
@@ -56,3 +61,4 @@
 [v1.0.0]: https://github.com/cmpnnt/streamdeck-tools/compare/v0.1.0...v1.0.0
 [v1.0.1]: https://github.com/cmpnnt/streamdeck-tools/compare/v1.0.0...v1.0.1
 [v1.0.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.1...v1.0.2
+[v1.0.3]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.2...v1.0.3
