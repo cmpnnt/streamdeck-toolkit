@@ -23,8 +23,8 @@ jobs:
           dotnet-version: 8.x
 
       - run: dotnet tool update -g docfx
-      - run: dotnet restore Cmpnnt.SdTools/Cmpnnt.SdTools.csproj
-      - run: dotnet build Cmpnnt.SdTools/Cmpnnt.SdTools.csproj -c Release
+      - run: dotnet restore Cmpnnt.StreamDeckToolkit/Cmpnnt.StreamDeckToolkit.csproj
+      - run: dotnet build Cmpnnt.StreamDeckToolkit/Cmpnnt.StreamDeckToolkit.csproj -c Release
       - run: docfx docfx_project/docfx.json
 
       - name: Deploy
