@@ -1,0 +1,1914 @@
+{
+  "source_base_path": "/home/runner/work/streamdeck-tools/streamdeck-tools/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.FilenamePropertyAttribute.yml\" sourcestartlinenumber=\"1\">FilenamePropertyAttribute - Used to indicate the current property holds a file name.\nThis will allow StreamDeck Utilities to strip the mandatory &quot;C:\\fakepath&quot; added by the SDK</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Attributes.SdSettingsAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdSettingsAttribute.yml\" sourcestartlinenumber=\"1\">Marks a settings class for AOT-compatible source-generated JSON population.\nThe class must also be declared as <code>partial</code> for the source generator to implement it\n<xref href=\"Cmpnnt.SdTools.ISettingsPopulatable\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"1\">SdpiOutputDirectoryAttribute - Specifies the output directory for the generated SDPI HTML file.\nThe HTML filename will be the name of the decorated class with a .html extension.\nDefaults to <code sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiOutputDirectoryAttribute.yml\" sourcestartlinenumber=\"3\">PropertyInspector/</code></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Attributes.SdpiPropertyNameAttribute.yml\" sourcestartlinenumber=\"1\">SdpiPropertyNameAttribute - Specifies the name of an SDPI property on a class property.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Attributes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Attributes",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ClientWebSocketWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.ClientWebSocketWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.ClientWebSocketWrapper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.EncoderBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.EncoderBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.EncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.EncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for dials (not keys).\nFor keys use KeypadBase or KeyAndEncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IApplicationMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to monitor application launch/terminate events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IClientWebSocket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IClientWebSocket.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IClientWebSocket",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.ICommonPluginFunctions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ICommonPluginFunctions.yml\" sourcestartlinenumber=\"1\">Common functions used by both keypad and dial plugins</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IDeviceMonitorPlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to Stream Deck device connect/disconnect events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IEncoderPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IEncoderPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IEncoderPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IEncoderPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture dial/encoder events</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IKeypadPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IKeypadPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IKeypadPlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IKeypadPlugin.yml\" sourcestartlinenumber=\"1\">Interface used to capture key events</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.IPluginActionRegistry",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.IPluginActionRegistry.yml\" sourcestartlinenumber=\"1\">This class is intended to be implemented by a class generated in Cmpnnt.SdTools.SourceGenerators</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ISdConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.ISdConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.ISdConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ISdConnection.yml\" sourcestartlinenumber=\"1\">Interface for a Stream Deck connection. Provides outbound API methods to send\ncommands to the Stream Deck app. Incoming events are delivered via interface\nmethods on ICommonPluginFunctions and its extensions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.ISystemLifecyclePlugin.yml\" sourcestartlinenumber=\"1\">Optional interface for plugin actions that need to respond to system wake events.\nImplement this on your plugin action class to receive these global events.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.KeyAndEncoderBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.KeyAndEncoderBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for actions that support both keys and dials.\nFor keys only use KeypadBase. For dials only use EncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.KeypadBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.KeypadBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.KeypadBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.KeypadBase.yml\" sourcestartlinenumber=\"1\">Main abstract class your plugin should derive from for keys (not dials).\nFor dials use EncoderBase or KeyAndEncoderBase.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.SdConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.SdConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.SdConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Backend.SdConnection.yml\" sourcestartlinenumber=\"1\">Outbound API client for a single Stream Deck action instance.\nUse this to send commands (set title, set image, etc.) to the Stream Deck app.\nIncoming events are delivered via interface methods on ICommonPluginFunctions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.SdWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.SdWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend.SdWrapper",
+      "Summary": "<ul sourcefile=\"api/Cmpnnt.SdTools.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.SdTools.Backend.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Backend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Backend.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Backend",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.CloseStreamDeck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.CloseStreamDeck.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.CloseStreamDeck",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.BuildTasks.ExtractSdpiHtml.yml\" sourcestartlinenumber=\"1\">Extracts HTML content from a source-generated C# file containing SDPI HTML constants.\nSupports multiple HTML outputs from classes decorated with SdpiOutputDirectoryAttribute.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.GenerateManifest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.GenerateManifest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.GenerateManifest",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.LinkPlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.LinkPlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.LinkPlugin",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.OpenStreamDeck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.OpenStreamDeck.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.OpenStreamDeck",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.PackagePlugin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.PackagePlugin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.PackagePlugin",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.RenameOutputDirectory",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities.ProcessUtilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.Utilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks.Utilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.BuildTasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.BuildTasks.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.BuildTasks",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.BaseEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.BaseEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.BaseEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.BaseEvent.yml\" sourcestartlinenumber=\"1\">Base event that all the actual events derive from</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidLaunchEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidLaunch event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.ApplicationDidTerminateEvent.yml\" sourcestartlinenumber=\"1\">Payload for ApplicationDidTerminate Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidConnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidConnect Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DeviceDidDisconnectEvent.yml\" sourcestartlinenumber=\"1\">Payload for DeviceDidDisconnect Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial down event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialRotateEvent.yml\" sourcestartlinenumber=\"1\">Payload for dial rotation event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DialUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for Dial up event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveGlobalSettings Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.DidReceiveSettingsEvent.yml\" sourcestartlinenumber=\"1\">Payload for DidReceiveSettings Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyDownEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyDown event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.KeyUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for KeyUp event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidAppearEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for PropertyInspectorDidDisappearEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.SendToPluginEvent.yml\" sourcestartlinenumber=\"1\">Payload for SendToPluginEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.SystemDidWakeUpEvent.yml\" sourcestartlinenumber=\"1\">Payload for SystemDidWakeUp event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.TitleParametersDidChangeEvent.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChangeEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.TouchTapEvent.yml\" sourcestartlinenumber=\"1\">Payload for touchpad press</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.WillAppearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillAppearEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Events.Dtos.WillDisappearEvent.yml\" sourcestartlinenumber=\"1\">Payload for WillDisappearEvent event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.Dtos.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events.Dtos",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Events.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Events",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.AppearancePayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.AppearancePayload.yml\" sourcestartlinenumber=\"1\">Payload for Appearance settings</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ApplicationPayload.yml\" sourcestartlinenumber=\"1\">ApplicationPayload</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.DialPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.DialPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is down or up</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.DialRotatePayload.yml\" sourcestartlinenumber=\"1\">Payload received when a dial is rotated</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.EmptyPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.EmptyPayload.yml\" sourcestartlinenumber=\"1\">Empty payload in event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.InitialPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.InitialPayload.yml\" sourcestartlinenumber=\"1\">Payload received during the plugin's constructor</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.KeyCoordinates.yml\" sourcestartlinenumber=\"1\">Coordinates of the current key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.KeyPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.KeyPayload.yml\" sourcestartlinenumber=\"1\">Payload received when a key is pressed or released</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ReceivedGlobalSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedGlobalSettings event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.ReceivedSettingsPayload.yml\" sourcestartlinenumber=\"1\">Payload that holds all the settings in the ReceivedSettings event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.StreamDeckOptions.yml\" sourcestartlinenumber=\"1\">Class holding all the information passed to the plugin when the program was launched</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersPayload.yml\" sourcestartlinenumber=\"1\">Payload for TitleParametersDidChange Event</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TitleParametersRawPayload.yml\" sourcestartlinenumber=\"1\">Raw payload for TitleParametersRawPayload event (without objects)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Payloads.TouchpadPressPayload.yml\" sourcestartlinenumber=\"1\">Payload received when the touchpad (above the dials) is pressed</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Payloads.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Payloads",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.DeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.DeviceType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.DeviceType",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.DeviceType.yml\" sourcestartlinenumber=\"1\">Type of StreamDeck hardware device, currently two are supported (classic and mini)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.RegistrationInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.RegistrationInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck app and StreamDeck hardware device that the plugin is communicating with</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckApplicationInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.yml\" sourcestartlinenumber=\"1\">Class which holds information on the StreamDeck hardware device</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceSize.yml\" sourcestartlinenumber=\"1\">Layout of the keys on the StreamDeck hardware device</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.Registration.StreamDeckPluginInfo.yml\" sourcestartlinenumber=\"1\">Holds general information on the StreamDeck App we're communicating with</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.Registration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.Registration",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.SdkTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.SdkTarget.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.SdkTarget",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.SdkTarget.yml\" sourcestartlinenumber=\"1\">Target to send Title/Image to</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.StreamDeckConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.StreamDeckConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication.StreamDeckConnection",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Communication.StreamDeckConnection.yml\" sourcestartlinenumber=\"1\">Underlying object that communicates with the stream deck app</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Communication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Communication.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Communication",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.BaseComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.BaseComponent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.BaseComponent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Button.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Button.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Button",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Button.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-button&gt; component rendering of localized content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.BaseCalendar",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.BaseCalendar.yml\" sourcestartlinenumber=\"1\">The common properties for all calendar input types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Date.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Date.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.Date",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Date.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;date&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;date&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.DateTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.DateTime.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.DateTime",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.DateTime.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;datetime-local&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;datetime-local&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Month.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Month.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.Month",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Month.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;month&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;month&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Time.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.Time",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Time.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;time&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;time&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.TimeTypes",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.TimeTypes.yml\" sourcestartlinenumber=\"1\">Contains all the valid values for the &quot;type&quot; attribute of &lt;sdpi-calendar&gt; components.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Week.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.Week.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar.Week",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Calendar.Week.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-calendar type=&quot;week&quot;&gt; component provides a styled wrapper of &lt;input type=&quot;week&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Calendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Calendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Calendar",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Checkbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Checkbox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Checkbox",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Checkbox.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox&gt; component provides a styled wrapper of &lt;input type=&quot;checkbox&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.CheckboxList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.CheckboxList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.CheckboxList",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.CheckboxList.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-checkbox-list&gt; component provides a way of rendering multiple &lt;sdpi-checkbox&gt; components\nthat represent a single value within the settings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Color.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Color",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Color.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-color&gt; component provides a styled wrapper of &lt;input type=&quot;color&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Delegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Delegate.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Delegate",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Delegate.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-delegate&gt; component enables the invocation of a sendToPlugin event, allowing for\nthe persisted setting to be delegated to the plugin, and then rendered within this component.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.File.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.File.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.File",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.File.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-file&gt; component provides a styled wrapper of &lt;input type=&quot;file&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.LocalizedContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.LocalizedContent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.LocalizedContent",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.LocalizedContent.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-i18n&gt; component provides rendering of localized content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Password.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Password.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Password",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Password.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-password&gt; component provides a styled wrapper of &lt;input type=&quot;password&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Radio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Radio.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Radio",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Radio.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-radio&gt; component provides a styled wrapper of &lt;input type=&quot;radio&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Range.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Range.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Range",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Range.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-range&gt; component provides a styled wrapper of &lt;input type=&quot;range&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Select.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Select.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Select",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Select.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-select&gt; component provides a styled wrapper of &lt;input type=&quot;select&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Settings.DataSourceSettings",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Settings.DataSourceSettings.yml\" sourcestartlinenumber=\"1\">Allows the possible values of a setting to be populated from an external data source.\nSee the <a href=\"https://sdpi-components.dev/docs/helpers/data-source\">SDPI component docs.</a></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.OptionSetting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.OptionSetting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Settings.OptionSetting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.PersistenceSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.PersistenceSettings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Settings.PersistenceSettings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Settings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Settings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.TextArea.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.TextArea.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.TextArea",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.TextArea.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-textarea&gt; component provides a styled wrapper of &lt;textarea&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.Textfield.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.Textfield.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components.Textfield",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Components.Textfield.yml\" sourcestartlinenumber=\"1\">The &lt;sdpi-text&gt; component provides a styled wrapper of &lt;input type=&quot;text&quot;&gt;.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Components.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Components.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Components",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.ISettingsPopulatable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.ISettingsPopulatable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.ISettingsPopulatable",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.ISettingsPopulatable.yml\" sourcestartlinenumber=\"1\">Implemented by settings classes that support AOT-compatible JSON merge/patch population.\nApply <xref href=\"Cmpnnt.SdTools.Attributes.SdSettingsAttribute\" data-throw-if-not-resolved=\"false\"></xref> to a <code>partial</code> settings\nclass and the source generator will implement this interface automatically.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators.ManifestModelSourceGenerator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.PluginRegistrar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.PluginRegistrar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators.PluginRegistrar",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators.Sdpi.SdpiGenerator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.Sdpi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators.Sdpi",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators.SettingsPopulatorGenerator",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.SourceGenerators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.SourceGenerators.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.SourceGenerators",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.ExtensionMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.ExtensionMethods.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.ExtensionMethods",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.ExtensionMethods.yml\" sourcestartlinenumber=\"1\">Extension methods for various objects</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.GlobalSettingsManager",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.GlobalSettingsManager.yml\" sourcestartlinenumber=\"1\">Helper class which allows fetching the GlobalSettings of a plugin</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.GraphicsTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.GraphicsTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.GraphicsTools",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.GraphicsTools.yml\" sourcestartlinenumber=\"1\">Library of tools used to manipulate graphics</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.IUpdateHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.IUpdateHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.IUpdateHandler",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.IUpdateHandler.yml\" sourcestartlinenumber=\"1\">Interface for a plugin update handler</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.Logger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.Logger",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.Logger.yml\" sourcestartlinenumber=\"1\">Log4Net logger helper class</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.PluginUpdateInfo",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.PluginUpdateInfo.yml\" sourcestartlinenumber=\"1\">Response to an update request</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.PluginUpdateStatus",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.PluginUpdateStatus.yml\" sourcestartlinenumber=\"1\">Status of update request</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.RandomGenerator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.RandomGenerator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.RandomGenerator",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.RandomGenerator.yml\" sourcestartlinenumber=\"1\">Helper class for generating random numbers</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.Tools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.Tools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.Tools",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.Tools.yml\" sourcestartlinenumber=\"1\">Set of common utilities used by various plugins\nCurrently the class mostly focuses on image-related functions that will be passed to the StreamDeck key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.TracingLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.TracingLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities.TracingLevel",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Utilities.TracingLevel.yml\" sourcestartlinenumber=\"1\">Tracing levels used for Logger</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Utilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Utilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleHorizontalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleParameters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Wrappers.TitleParameters",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleParameters.yml\" sourcestartlinenumber=\"1\">Class holding all the Title Information set by a user in the Property Inspector</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.SdTools.Wrappers.TitleVerticalAlignment.yml\" sourcestartlinenumber=\"1\">Enum for the alignment of the Title text on the key</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.Wrappers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.Wrappers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools.Wrappers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.SdTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.SdTools.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.SdTools",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/references.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/references.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

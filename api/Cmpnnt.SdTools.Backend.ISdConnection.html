@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface ISdConnection | PIA Sharp </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ISdConnection | PIA Sharp ">
+      
+      <meta name="description" content="Interface for a Stream Deck connection. Provides outbound API methods to send commands to the Stream Deck app. Incoming events are delivered via interface methods on ICommonPluginFunctions and its extensions.">
+      <link rel="icon" href="../images/favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/cmpnnt/pia-sharp/new/main/apiSpec/new?filename=Cmpnnt_SdTools_Backend_ISdConnection.md&amp;value=---%0Auid%3A%20Cmpnnt.SdTools.Backend.ISdConnection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Cmpnnt.SdTools.Backend.ISdConnection">
+
+
+
+  <h1 id="Cmpnnt_SdTools_Backend_ISdConnection" data-uid="Cmpnnt.SdTools.Backend.ISdConnection" class="text-break">
+Interface ISdConnection  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Cmpnnt.html">Cmpnnt</a>.<a class="xref" href="Cmpnnt.SdTools.html">SdTools</a>.<a class="xref" href="Cmpnnt.SdTools.Backend.html">Backend</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>StreamDeckTools.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface for a Stream Deck connection. Provides outbound API methods to send
+commands to the Stream Deck app. Incoming events are delivered via interface
+methods on ICommonPluginFunctions and its extensions.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISdConnection : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_ContextId_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ContextId*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_ContextId" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ContextId">
+  ContextId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An opaque value identifying the plugin instance. Received during the Registration procedure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+string ContextId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_DeviceId_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.DeviceId*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_DeviceId" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.DeviceId">
+  DeviceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An opaque value identifying the device the plugin is launched on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+string DeviceId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_DeviceInfo_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.DeviceInfo*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_DeviceInfo" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.DeviceInfo">
+  DeviceInfo()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the Stream Deck device's info</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">StreamDeckDeviceInfo DeviceInfo()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Cmpnnt.SdTools.Communication.Registration.StreamDeckDeviceInfo.html">StreamDeckDeviceInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_GetGlobalSettingsAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.GetGlobalSettingsAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_GetGlobalSettingsAsync" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.GetGlobalSettingsAsync">
+  GetGlobalSettingsAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Requests global plugin settings, triggering a ReceivedGlobalSettings call</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task GetGlobalSettingsAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_GetSettingsAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.GetSettingsAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_GetSettingsAsync" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.GetSettingsAsync">
+  GetSettingsAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tells Stream Deck to return the current plugin settings via the ReceivedSettings function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task GetSettingsAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_LogSdMessage_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.LogSdMessage*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_LogSdMessage_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.LogSdMessage(System.String)">
+  LogSdMessage(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add a message to the Stream Deck log</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task LogSdMessage(string message)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_OpenUrlAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.OpenUrlAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_OpenUrlAsync_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.OpenUrlAsync(System.String)">
+  OpenUrlAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Opens a URI in the user's browser</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task OpenUrlAsync(string uri)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uri</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_OpenUrlAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.OpenUrlAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_OpenUrlAsync_System_Uri_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.OpenUrlAsync(System.Uri)">
+  OpenUrlAsync(Uri)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Opens a URI in the user's browser</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task OpenUrlAsync(Uri uri)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uri</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SendToPropertyInspectorAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SendToPropertyInspectorAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SendToPropertyInspectorAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SendToPropertyInspectorAsync(System.Text.Json.JsonElement)">
+  SendToPropertyInspectorAsync(JsonElement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send settings to the PropertyInspector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SendToPropertyInspectorAsync(JsonElement settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>settings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetDefaultImageAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetDefaultImageAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetDefaultImageAsync" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetDefaultImageAsync">
+  SetDefaultImageAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the default image for this state, as configured in the manifest</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetDefaultImageAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
+  SetFeedbackAsync(Dictionary&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the values of touchpad layouts items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetFeedbackAsync(Dictionary&lt;string, string&gt; dictKeyValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dictKeyValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_System_String_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync(System.String,System.String)">
+  SetFeedbackAsync(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value of a single touchpad layout item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetFeedbackAsync(string layoutItemKey, string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layoutItemKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackAsync(System.Text.Json.JsonElement)">
+  SetFeedbackAsync(JsonElement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the values of touchpad layouts items using a preset JsonElement</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetFeedbackAsync(JsonElement feedbackPayload)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>feedbackPayload</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackLayoutAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackLayoutAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetFeedbackLayoutAsync_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetFeedbackLayoutAsync(System.String)">
+  SetFeedbackLayoutAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the current Stream Deck+ touch display layout</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetFeedbackLayoutAsync(string layout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layout</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetGlobalSettingsAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetGlobalSettingsAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetGlobalSettingsAsync_System_Text_Json_JsonElement_System_Boolean_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetGlobalSettingsAsync(System.Text.Json.JsonElement,System.Boolean)">
+  SetGlobalSettingsAsync(JsonElement, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists your global plugin settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetGlobalSettingsAsync(JsonElement settings, bool triggerDidReceiveGlobalSettings = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>settings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a></dt>
+    <dd></dd>
+    <dt><code>triggerDidReceiveGlobalSettings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetImageAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetImageAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetImageAsync_SkiaSharp_SKData_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetImageAsync(SkiaSharp.SKData,System.Nullable{System.Int32},System.Boolean)">
+  SetImageAsync(SKData, int?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets an image on the StreamDeck key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetImageAsync(SKData data, int? state = null, bool forceSendToStreamdeck = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/skiasharp.skdata">SKData</a></dt>
+    <dd></dd>
+    <dt><code>state</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+    <dt><code>forceSendToStreamdeck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetImageAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetImageAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetImageAsync_System_String_System_Nullable_System_Int32__System_Boolean_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetImageAsync(System.String,System.Nullable{System.Int32},System.Boolean)">
+  SetImageAsync(string, int?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets an image on the StreamDeck key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetImageAsync(string base64Image, int? state = null, bool forceSendToStreamdeck = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>base64Image</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>state</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+    <dt><code>forceSendToStreamdeck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetSettingsAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetSettingsAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetSettingsAsync_System_Text_Json_JsonElement_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetSettingsAsync(System.Text.Json.JsonElement)">
+  SetSettingsAsync(JsonElement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Persists your plugin settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetSettingsAsync(JsonElement settings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>settings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetStateAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetStateAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetStateAsync_System_Nullable_System_UInt32__" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetStateAsync(System.Nullable{System.UInt32})">
+  SetStateAsync(uint?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the plugin to a specific state which is pre-configured in the manifest file</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetStateAsync(uint? state)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>state</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SetTitleAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetTitleAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SetTitleAsync_System_String_System_Nullable_System_Int32__" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SetTitleAsync(System.String,System.Nullable{System.Int32})">
+  SetTitleAsync(string, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets a title on the StreamDeck key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SetTitleAsync(string title, int? state = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>state</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_ShowAlert_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ShowAlert*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_ShowAlert" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ShowAlert">
+  ShowAlert()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows the Alert (Yellow Triangle) on the StreamDeck key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task ShowAlert()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_ShowOk_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ShowOk*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_ShowOk" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.ShowOk">
+  ShowOk()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows the Success (Green checkmark) on the StreamDeck key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task ShowOk()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SwitchProfileAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SwitchProfileAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SwitchProfileAsync_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SwitchProfileAsync(System.String)">
+  SwitchProfileAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Switches to one of the plugin's built-in profiles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SwitchProfileAsync(string profileName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>profileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_Backend_ISdConnection_SwitchProfileAsync_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SwitchProfileAsync*"></a>
+
+  <h3 id="Cmpnnt_SdTools_Backend_ISdConnection_SwitchProfileAsync_System_String_System_String_" data-uid="Cmpnnt.SdTools.Backend.ISdConnection.SwitchProfileAsync(System.String,System.String)">
+  SwitchProfileAsync(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Switches to one of the plugin's built-in profiles on a specific device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task SwitchProfileAsync(string profileName, string deviceId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>profileName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>deviceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools/Backend/ISDConnection.cs/#L22" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
