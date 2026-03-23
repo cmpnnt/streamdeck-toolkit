@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper" data-uid="Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper" class="text-break">
-Class CommandLineWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L9"><i class="bi bi-code-slash"></i></a>
+Class CommandLineWrapper  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -156,7 +156,7 @@ Class CommandLineWrapper  <a class="header-action link-secondary" title="View so
 
   <h3 id="Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_Execute_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.Execute(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
   Execute(string, string, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Wraps the system command line and executes the command passed to it.</p>
@@ -186,8 +186,39 @@ Class CommandLineWrapper  <a class="header-action link-secondary" title="View so
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>)&gt;</dt>
-    <dd><p>A <code>Task&lt;string&gt;</code> containing command output.</p>
+    <dd><p>A <code>Task&lt;(bool, string)&gt;</code> containing command output.</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_GetOsPlatform_" data-uid="Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform*"></a>
+
+  <h3 id="Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_GetOsPlatform" data-uid="Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform">
+  GetOsPlatform()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static OSPlatform GetOsPlatform()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.osplatform">OSPlatform</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -204,7 +235,7 @@ Class CommandLineWrapper  <a class="header-action link-secondary" title="View so
 
   <h3 id="Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_Run_System_String_System_String_System_Threading_CancellationToken_" data-uid="Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.Run(System.String,System.String,System.Threading.CancellationToken)">
   Run(string, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -244,7 +275,7 @@ Class CommandLineWrapper  <a class="header-action link-secondary" title="View so
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L9" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-tools/blob/main/Cmpnnt.SdTools.BuildTasks/Utilities/CommandLineWrapper.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

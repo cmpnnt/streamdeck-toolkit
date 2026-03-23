@@ -2282,6 +2282,19 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.Execute
   nameWithType: CommandLineWrapper.Execute
+- uid: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform
+  name: GetOsPlatform()
+  href: api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.html#Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_GetOsPlatform
+  commentId: M:Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform
+  fullName: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform()
+  nameWithType: CommandLineWrapper.GetOsPlatform()
+- uid: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform*
+  name: GetOsPlatform
+  href: api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.html#Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_GetOsPlatform_
+  commentId: Overload:Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform
+  isSpec: "True"
+  fullName: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.GetOsPlatform
+  nameWithType: CommandLineWrapper.GetOsPlatform
 - uid: Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.Run(System.String,System.String,System.Threading.CancellationToken)
   name: Run(string, string, CancellationToken)
   href: api/Cmpnnt.SdTools.BuildTasks.Utilities.CommandLineWrapper.html#Cmpnnt_SdTools_BuildTasks_Utilities_CommandLineWrapper_Run_System_String_System_String_System_Threading_CancellationToken_
