@@ -1,4 +1,9 @@
 
+## [v1.0.1] - 2026-03-23
+### :bug: Bug Fixes
+- [`5759799`](https://github.com/cmpnnt/streamdeck-tools/commit/5759799d70a5a4caee0ae6e7bc3466a2b5671da4) - **build**: replace Environment.OSVersion with RuntimeInformation for macOS compatibility *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.0.0] - 2026-03-23
 ### :boom: BREAKING CHANGES
 - due to [`995af06`](https://github.com/cmpnnt/streamdeck-tools/commit/995af06e73e211fd6e8d2b07d9175bf74b4d4657) - simplify event routing and fix AOT-safe BaseEvent deserialization *(commit by [@cmpnnt](https://github.com/cmpnnt))*:
@@ -41,3 +46,4 @@
 - [`8054a9f`](https://github.com/cmpnnt/streamdeck-tools/commit/8054a9f2ee190af25c341570a5b5ee32817b7d08) - add kill-msbuild.ps1 for Rider's nonsense *(commit by [@cmpnnt](https://github.com/cmpnnt))*
 
 [v1.0.0]: https://github.com/cmpnnt/streamdeck-tools/compare/v0.1.0...v1.0.0
+[v1.0.1]: https://github.com/cmpnnt/streamdeck-tools/compare/v1.0.0...v1.0.1
