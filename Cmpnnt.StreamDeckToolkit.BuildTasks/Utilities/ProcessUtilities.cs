@@ -109,7 +109,7 @@ public partial class ProcessUtilities(string pluginName, Task task)
         (bool success, string output) result = CommandLineWrapper.Execute("streamdeck", $"link {buildDir}", true).Result;
         if (!result.success)
         {
-            logger.LogError("Failed linking plugin. The link might already exist.");
+            logger.LogWarning("Failed linking plugin. The link might already exist.");
         }
         
         return true;
