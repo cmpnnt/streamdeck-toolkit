@@ -66,6 +66,15 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   
+  <!-- Expose MSBuild properties to source generators -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="AssemblyName" />
+    <CompilerVisibleProperty Include="Version" />
+    <CompilerVisibleProperty Include="Authors" />
+    <CompilerVisibleProperty Include="Description" />
+    <CompilerVisibleProperty Include="PackageProjectUrl" />
+  </ItemGroup>
+
   <!-- References -->
   <ItemGroup>
     <!-- <Analyzer Include="..\Cmpnnt.StreamDeckToolkit.SourceGenerators\bin\$(Configuration)\net8.0\Cmpnnt.StreamDeckToolkit.SourceGenerators.dll" />-->

@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Cmpnnt.StreamDeckToolkit.Attributes;
 using Cmpnnt.StreamDeckToolkit.Actions;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 using Cmpnnt.StreamDeckToolkit.Runtime;
@@ -10,6 +11,12 @@ using SkiaSharp;
 
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
+    [StreamDeckAction(
+        Name = "SDTools File Writer",
+        Tooltip = "Writes text to a file using SDTools",
+        Icon = "Images/pluginAction",
+        SupportedInMultiActions = true
+    )]
     public partial class PluginAction2 : KeyAndEncoderBase
     {
         #region Private Members

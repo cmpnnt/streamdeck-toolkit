@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
+using Cmpnnt.StreamDeckToolkit.SourceGenerators.Templates;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
 
 namespace Cmpnnt.StreamDeckToolkit.SourceGenerators;
@@ -15,332 +16,277 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
     private const string COMMON_PLUGIN_FUNCTIONS = "Cmpnnt.StreamDeckToolkit.Actions.ICommonPluginFunctions";
     private const string KEYPAD_PLUGIN = "Cmpnnt.StreamDeckToolkit.Actions.IKeypadPlugin";
     private const string ENCODER_PLUGIN = "Cmpnnt.StreamDeckToolkit.Actions.IEncoderPlugin";
+    private const string MANIFEST_CONFIG_BASE = "Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase";
+    private const string STREAM_DECK_PLUGIN_ATTR = "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute";
+    private const string STREAM_DECK_ACTION_ATTR = "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        // Debugger.Launch(); // Uncomment to debug
+        var msbuildProps = context.AnalyzerConfigOptionsProvider.Select(
+            static (opts, _) => GetMsbuildProps(opts));
 
-        // Find all class declarations potentially inheriting from the target interface
-        IncrementalValuesProvider<ClassDeclarationSyntax> classDeclarations = context.SyntaxProvider
-            .CreateSyntaxProvider(
-                predicate: static (s, _) => IsSyntaxTargetForGeneration(s),
-                transform: static (ctx, _) => GetSemanticTargetForGeneration(ctx))
-            .Where(static m => m is not null)!;
+        var compilationAndProps = context.CompilationProvider.Combine(msbuildProps);
 
-        // Combine classes with compilation
-        IncrementalValueProvider<(Compilation, System.Collections.Immutable.ImmutableArray<ClassDeclarationSyntax>)> compilationAndClasses =
-            context.CompilationProvider.Combine(classDeclarations.Collect());
-
-        // Register the generation function
-        context.RegisterSourceOutput(compilationAndClasses,
+        context.RegisterSourceOutput(compilationAndProps,
             static (spc, source) => Execute(source.Item1, source.Item2, spc));
     }
 
-    static bool IsSyntaxTargetForGeneration(SyntaxNode node) =>
-        node is ClassDeclarationSyntax { BaseList.Types.Count: > 0 };
-
-    static ClassDeclarationSyntax? GetSemanticTargetForGeneration(GeneratorSyntaxContext context) =>
-        context.Node as ClassDeclarationSyntax;
-
-    static void Execute(Compilation compilation, System.Collections.Immutable.ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext context)
+    private static MsbuildProps GetMsbuildProps(AnalyzerConfigOptionsProvider opts)
     {
-        if (classes.IsDefaultOrEmpty)
-        {
-            return;
-        }
-
-        var pluginActions = new List<ActionInfo>();
-        string? firstNamespace = null;
-
-        INamedTypeSymbol? commonInterfaceSymbol = compilation.GetTypeByMetadataName(COMMON_PLUGIN_FUNCTIONS);
-        INamedTypeSymbol? keypadInterfaceSymbol = compilation.GetTypeByMetadataName(KEYPAD_PLUGIN);
-        INamedTypeSymbol? encoderInterfaceSymbol = compilation.GetTypeByMetadataName(ENCODER_PLUGIN);
-
-        if (commonInterfaceSymbol == null)
-        {
-            return;
-        }
-
-        // Analyze classes
-        foreach (ClassDeclarationSyntax classDec in classes)
-        {
-            SemanticModel semanticModel = compilation.GetSemanticModel(classDec.SyntaxTree);
-            if (semanticModel.GetDeclaredSymbol(classDec) is not { IsAbstract: false } classSymbol)
-            {
-                continue; // Ignore abstract classes
-            }
-            if (!ImplementsInterface(classSymbol, commonInterfaceSymbol))
-            {
-                continue;
-            }
-            
-            string fullClassName = classSymbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat).Replace("global::", "");
-            string namespaceName = classSymbol.ContainingNamespace?.ToDisplayString() ?? string.Empty;
-
-            firstNamespace ??= string.IsNullOrEmpty(namespaceName) ? null : namespaceName;
-
-            bool isKeypad = keypadInterfaceSymbol != null && ImplementsInterface(classSymbol, keypadInterfaceSymbol);
-            bool isEncoder = encoderInterfaceSymbol != null && ImplementsInterface(classSymbol, encoderInterfaceSymbol);
-
-            pluginActions.Add(new ActionInfo(fullClassName, namespaceName, isKeypad, isEncoder));
-        }
-
-        if (pluginActions.Count == 0) return; // No concrete actions found
-        
-        var sourceBuilder = new StringBuilder();
-        BuildSource(sourceBuilder, pluginActions, firstNamespace);
-
-        context.AddSource("GeneratedManifestModel.g.cs", SourceText.From(sourceBuilder.ToString(), Encoding.UTF8));
-    }
-    
-    private static void BuildSource(StringBuilder sb, List<ActionInfo> actions, string? rootNamespace)
-    {
-        /* TODO: Manifest generation is not finished. This is boilerplate stuff.
-         The properties need to be populated with user values. */
-        sb.AppendLine("""
-                      // <auto-generated/>
-                      // DO NOT MODIFY
-
-                      using System;
-                      using System.Text.Json.Serialization;
-                      using System.Collections.Generic;
-
-                      namespace GeneratedManifest
-                      {
-                          #nullable enable
-                          internal class ManifestRoot
-                          {
-                              [JsonPropertyName("$schema")]
-                              public string Schema { get; set; } = "https://schemas.elgato.com/streamdeck/plugins/manifest.json";
-                              [JsonPropertyName("Actions")]
-                              public List<ManifestAction> Actions { get; set; } = new List<ManifestAction>();
-                              [JsonPropertyName("Author")]
-                              public string Author { get; set; } = "Cmpnnt";
-                              [JsonPropertyName("Description")]
-                              public string Description { get; set; } = "Sample Plugin to test SDTools";
-                              [JsonPropertyName("Name")]
-                              public string Name { get; set; } = "SDTools Sample Plugin";
-                              [JsonPropertyName("Icon")]
-                              public string Icon { get; set; } = "Images/pluginIcon";
-                              [JsonPropertyName("URL")]
-                              public string Url { get; set; } = "https://Cmpnnt.dev/";
-                              [JsonPropertyName("Version")]
-                              public string Version { get; set; } = "0.1.0.1";
-                              [JsonPropertyName("CodePath")]
-                              public string? CodePath { get; set; } // Set below
-                              [JsonPropertyName("CodePathMac")]
-                              public string? CodePathMac { get; set; } // Set below
-                              [JsonPropertyName("Category")]
-                              public string Category { get; set; } = "SDTools Sample Plugin";
-                              [JsonPropertyName("CategoryIcon")]
-                              public string CategoryIcon { get; set; } = "Images/categoryIcon";
-                              [JsonPropertyName("OS")]
-                              public List<OsInfo> Os { get; set; } = new List<OsInfo>();
-                              [JsonPropertyName("SDKVersion")]
-                              public int SdkVersion { get; set; } = 2;
-                              [JsonPropertyName("Software")]
-                              public SoftwareInfo Software { get; set; } = new SoftwareInfo();
-                              [JsonPropertyName("UUID")]
-                              public string? Uuid { get; set; } // Set below
-                          }
-                      
-                          internal class ManifestAction
-                          {
-                              [JsonPropertyName("Icon")]
-                              public string Icon { get; set; } = "Images/icon";
-                              [JsonPropertyName("Name")]
-                              public string Name { get; set; } = "SDTools Test"; // Default
-                              [JsonPropertyName("Controllers")]
-                              public List<string> Controllers { get; set; } = new List<string>(); // Set below
-                              [JsonPropertyName("Encoder")]
-                              public EncoderInfo? Encoder { get; set; } = new EncoderInfo(); // Default based on template
-                              [JsonPropertyName("States")]
-                              public List<StateInfo> States { get; set; } = new List<StateInfo> { new StateInfo() };
-                              [JsonPropertyName("SupportedInMultiActions")]
-                              public bool SupportedInMultiActions { get; set; } = true;
-                              [JsonPropertyName("Tooltip")]
-                              public string Tooltip { get; set; } = "Sample Plugin to Test SDTools"; // Default
-                              [JsonPropertyName("PropertyInspectorPath")]
-                              public string PropertyInspectorPath { get; set; } = "PropertyInspector/index.html";
-                              [JsonPropertyName("UUID")]
-                              public string? Uuid { get; set; } // Set below
-                          }
-
-                          internal class OsInfo
-                          {
-                              [JsonPropertyName("Platform")]
-                              public string Platform { get; set; } = string.Empty;
-                              [JsonPropertyName("MinimumVersion")]
-                              public string MinimumVersion { get; set; } = string.Empty;
-                          }
-                      
-                          internal class SoftwareInfo
-                          {
-                              [JsonPropertyName("MinimumVersion")]
-                              public string MinimumVersion { get; set; } = "6.4";
-                          }
-                      
-                           internal class EncoderInfo
-                          {
-                              [JsonPropertyName("layout")]
-                              public string Layout { get; set; } = "$B1";
-                              [JsonPropertyName("TriggerDescription")]
-                              public EncoderTriggerDescription TriggerDescription { get; set; } = new EncoderTriggerDescription();
-                          }
-                      
-                           internal class EncoderTriggerDescription
-                          {
-                              [JsonPropertyName("Push")]
-                              public string Push { get; set; } = "Play / Pause";
-                              [JsonPropertyName("Rotate")]
-                              public string Rotate { get; set; } = "Adjust Volume";
-                              [JsonPropertyName("Touch")]
-                              public string Touch { get; set; } = "Play / Pause";
-                              [JsonPropertyName("LongTouch")]
-                              public string LongTouch { get; set; } = "Skip Track";
-                          }
-                      
-                           internal class StateInfo
-                          {
-                              [JsonPropertyName("Image")]
-                              public string Image { get; set; } = "Images/pluginAction";
-                              [JsonPropertyName("TitleAlignment")]
-                              public string TitleAlignment { get; set; } = "middle";
-                              [JsonPropertyName("FontSize")]
-                              public int FontSize { get; set; } = 12;
-                          }
-                      
-                          /// <summary>
-                          /// Provides access to the manifest data derived at compile time.
-                          /// </summary>
-                          internal static class ManifestProvider
-                          {
-                              private static readonly ManifestRoot _manifestData = CreateManifestData();
-                      
-                              /// <summary>
-                              /// Gets the pre-populated manifest data object.
-                              /// </summary>
-                              public static ManifestRoot GetManifestData() => _manifestData;
-                      
-                              private static ManifestRoot CreateManifestData()
-                              {
-                                  var root = new ManifestRoot();
-                      
-                                  // Set Root UUID and CodePath based on first namespace found
-
-                      """); // End initial part of generated file string
-
-        // Set Root UUID and CodePath
-        var rootUuid = "com.example.myplugin";
-        if (!string.IsNullOrEmpty(rootNamespace))
-        {
-            rootUuid = $"{rootNamespace?.ToLowerInvariant()}";
-        }
-        sb.AppendLine($"""            root.Uuid = "{EscapeString(rootUuid)}";""");
-        sb.AppendLine($"""            root.CodePath = "{EscapeString(rootUuid)}.exe"; // Default CodePath based on UUID""");
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            sb.AppendLine($"""            root.CodePathMac = "{EscapeString(rootUuid)}"; // CodePath for macOS""");
-            sb.AppendLine("""            root.Os = new List<OsInfo> { new OsInfo { Platform = "mac", MinimumVersion = "12" } };""");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            sb.AppendLine("""            root.Os = new List<OsInfo> { new OsInfo { Platform = "windows", MinimumVersion = "10" } };""");
-        }
-
-        // Add Actions
-        sb.AppendLine();
-        sb.AppendLine("            // Add Actions");
-        foreach (ActionInfo? action in actions)
-        {
-            sb.AppendLine("            {"); // Start action block
-            sb.AppendLine("                var action = new ManifestAction();");
-            
-            // Set UUID and inspector html file path
-            sb.AppendLine($"""                action.Uuid = "{EscapeString(action.FullClassName.ToLowerInvariant())}";""");
-            sb.AppendLine($"""                action.PropertyInspectorPath = "PropertyInspector/{EscapeString(action.ClassName)}.html";""");
-
-            // Set Controllers
-            sb.Append("                action.Controllers = new List<string> { ");
-            List<string> controllers = [];
-            if (action.IsKeypad)
-            {
-                controllers.Add("\"Keypad\"");
-            }
-            if (action.IsEncoder)
-            {
-                controllers.Add("\"Encoder\"");
-            }
-            sb.Append(string.Join(", ", controllers));
-            sb.AppendLine(" };");
-            
-            // Set name and tooltip
-            sb.AppendLine($"""                action.Name = "{EscapeString(action.ClassName)}";""");
-            sb.AppendLine($"""                action.Tooltip = "Action for {EscapeString(action.ClassName)}";""");
-            sb.AppendLine("                root.Actions.Add(action);");
-            sb.AppendLine("            }"); // End action block
-            sb.AppendLine();
-        }
-
-        // Finish Provider Class
-        sb.AppendLine("""
-                      
-                                  return root;
-                              }
-                          }
-                      }
-                      """); // End namespace GeneratedManifest
-
+        opts.GlobalOptions.TryGetValue("build_property.AssemblyName", out var assemblyName);
+        opts.GlobalOptions.TryGetValue("build_property.Version", out var version);
+        opts.GlobalOptions.TryGetValue("build_property.Authors", out var authors);
+        opts.GlobalOptions.TryGetValue("build_property.Description", out var description);
+        opts.GlobalOptions.TryGetValue("build_property.PackageProjectUrl", out var packageProjectUrl);
+        // MSBuild returns "" for unset properties; normalise to null so the template can use ?? cleanly
+        return new MsbuildProps(
+            NullIfEmpty(assemblyName),
+            NullIfEmpty(version),
+            NullIfEmpty(authors),
+            NullIfEmpty(description),
+            NullIfEmpty(packageProjectUrl));
     }
 
+    private static string? NullIfEmpty(string? s) => string.IsNullOrEmpty(s) ? null : s;
 
-    // Helper Methods
-    static bool ImplementsInterface(INamedTypeSymbol? classSymbol, INamedTypeSymbol? interfaceSymbol)
+    private static void Execute(Compilation compilation, MsbuildProps msbuildProps, SourceProductionContext context)
     {
-        if (classSymbol == null || interfaceSymbol == null)
-        {
-            return false;
-        }
-        if (interfaceSymbol.TypeKind != TypeKind.Interface)
-        {
-            return false;
-        }
+        INamedTypeSymbol? commonInterface = compilation.GetTypeByMetadataName(COMMON_PLUGIN_FUNCTIONS);
+        INamedTypeSymbol? keypadInterface = compilation.GetTypeByMetadataName(KEYPAD_PLUGIN);
+        INamedTypeSymbol? encoderInterface = compilation.GetTypeByMetadataName(ENCODER_PLUGIN);
 
-        // Check direct interfaces and all base interfaces
-        return classSymbol.AllInterfaces.Any(i => SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, interfaceSymbol.OriginalDefinition));
+        if (commonInterface == null) return;
+
+        PluginAttrData? pluginAttr = GetPluginAttribute(compilation);
+        List<ActionInfo> actions = GetActionInfos(compilation, commonInterface, keypadInterface, encoderInterface);
+
+        if (actions.Count == 0) return;
+
+        string? configClassName = GetConfigClassName(compilation);
+
+        var input = new ManifestGeneratorInput(msbuildProps, pluginAttr, actions.ToImmutableArray(), configClassName);
+        string source = ManifestProviderTemplate.Generate(input);
+        context.AddSource("GeneratedManifestModel.g.cs", SourceText.From(source, Encoding.UTF8));
     }
 
-    // Escapes a string for embedding within a C# string literal
-    static string EscapeString(string? value)
+    private static PluginAttrData? GetPluginAttribute(Compilation compilation)
     {
-        return value == null ? string.Empty :
-            // Basic escaping for quotes and backslashes
-            value.Replace("\\", "\\\\").Replace(@"\", @"\\");
+        // Check assembly-level attribute first
+        AttributeData? attrData = FindAttribute(compilation.Assembly.GetAttributes(), STREAM_DECK_PLUGIN_ATTR);
+
+        // Fall back to class-level attribute
+        if (attrData == null)
+        {
+            foreach (SyntaxTree syntaxTree in compilation.SyntaxTrees)
+            {
+                SemanticModel semanticModel = compilation.GetSemanticModel(syntaxTree);
+                foreach (ClassDeclarationSyntax classDecl in syntaxTree.GetRoot()
+                             .DescendantNodes().OfType<ClassDeclarationSyntax>())
+                {
+                    if (semanticModel.GetDeclaredSymbol(classDecl) is INamedTypeSymbol classSymbol)
+                    {
+                        attrData = FindAttribute(classSymbol.GetAttributes(), STREAM_DECK_PLUGIN_ATTR);
+                        if (attrData != null) break;
+                    }
+                }
+                if (attrData != null) break;
+            }
+        }
+
+        return attrData != null ? ParsePluginAttrData(attrData) : null;
     }
 
-    // Simple record to hold action info
-    private record ActionInfo(string FullClassName, string Namespace, bool IsKeypad, bool IsEncoder)
+    private static PluginAttrData ParsePluginAttrData(AttributeData attrData)
     {
-        // Gets the simple class name without the namespace
-        public string ClassName => FullClassName.Contains('.') ? FullClassName.Substring(FullClassName.LastIndexOf('.') + 1) : FullClassName;
-        public string FullClassName { get; } = FullClassName;
-        public string Namespace { get; } = Namespace;
-        public bool IsKeypad { get; } = IsKeypad;
-        public bool IsEncoder { get; } = IsEncoder;
+        var args = attrData.NamedArguments.ToDictionary(kv => kv.Key, kv => kv.Value);
+
+        string? GetString(string name) => args.TryGetValue(name, out var v) ? v.Value as string : null;
+        int GetInt(string name, int defaultVal) =>
+            args.TryGetValue(name, out var v) && v.Value is int i ? i : defaultVal;
+
+        int softwareOrdinal = GetInt("SoftwareMinVersion", 0);
+        string[] versionStrings = ["6.4", "6.5", "6.6", "6.7", "6.8", "6.9", "7.0", "7.1", "7.2", "7.3"];
+        string softwareMinVersion = softwareOrdinal >= 0 && softwareOrdinal < versionStrings.Length
+            ? versionStrings[softwareOrdinal] : "6.4";
+
+        return new PluginAttrData(
+            GetString("Name"),
+            GetString("UUID"),
+            GetString("Category"),
+            GetString("CategoryIcon"),
+            GetString("Icon"),
+            GetString("SupportURL"),
+            GetString("URL"),
+            GetInt("SDKVersion", 2),
+            softwareMinVersion,
+            GetString("WindowsMinVersion"),
+            GetString("MacMinVersion"),
+            GetString("PropertyInspectorPath"),
+            GetString("CodePathWin"),
+            GetString("CodePathMac")
+        );
+    }
+
+    private static List<ActionInfo> GetActionInfos(
+        Compilation compilation,
+        INamedTypeSymbol commonInterface,
+        INamedTypeSymbol? keypadInterface,
+        INamedTypeSymbol? encoderInterface)
+    {
+        var results = new List<ActionInfo>();
+
+        foreach (SyntaxTree syntaxTree in compilation.SyntaxTrees)
+        {
+            SemanticModel semanticModel = compilation.GetSemanticModel(syntaxTree);
+            foreach (ClassDeclarationSyntax classDecl in syntaxTree.GetRoot()
+                         .DescendantNodes().OfType<ClassDeclarationSyntax>())
+            {
+                if (semanticModel.GetDeclaredSymbol(classDecl) is not INamedTypeSymbol classSymbol)
+                    continue;
+                if (classSymbol.IsAbstract || classSymbol.IsStatic)
+                    continue;
+                if (!classSymbol.AllInterfaces.Any(i =>
+                        SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, commonInterface.OriginalDefinition)))
+                    continue;
+
+                bool isKeypad = keypadInterface != null && classSymbol.AllInterfaces.Any(i =>
+                    SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, keypadInterface.OriginalDefinition));
+                bool isEncoder = encoderInterface != null && classSymbol.AllInterfaces.Any(i =>
+                    SymbolEqualityComparer.Default.Equals(i.OriginalDefinition, encoderInterface.OriginalDefinition));
+
+                string fullClassName = classSymbol
+                    .ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)
+                    .Replace("global::", "");
+
+                AttributeData? actionAttr = FindAttribute(classSymbol.GetAttributes(), STREAM_DECK_ACTION_ATTR);
+
+                results.Add(new ActionInfo(
+                    fullClassName,
+                    isKeypad,
+                    isEncoder,
+                    actionAttr != null ? ParseActionAttrData(actionAttr) : null));
+            }
+        }
+
+        return results;
+    }
+
+    private static ActionAttrData ParseActionAttrData(AttributeData attrData)
+    {
+        var args = attrData.NamedArguments.ToDictionary(kv => kv.Key, kv => kv.Value);
+
+        string? GetString(string name) => args.TryGetValue(name, out var v) ? v.Value as string : null;
+        bool? GetBool(string name) => args.TryGetValue(name, out var v) && v.Value is bool b ? b : null;
+
+        return new ActionAttrData(
+            GetString("Name"),
+            GetString("Tooltip"),
+            GetString("Icon"),
+            GetString("PropertyInspectorPath"),
+            GetString("SupportURL"),
+            GetBool("SupportedInMultiActions"),
+            GetBool("SupportedInKeyLogicActions"),
+            GetBool("DisableAutomaticStates"),
+            GetBool("DisableCaching"),
+            GetBool("UserTitleEnabled"),
+            GetBool("VisibleInActionsList")
+        );
+    }
+
+    private static string? GetConfigClassName(Compilation compilation)
+    {
+        foreach (SyntaxTree syntaxTree in compilation.SyntaxTrees)
+        {
+            SemanticModel semanticModel = compilation.GetSemanticModel(syntaxTree);
+            foreach (ClassDeclarationSyntax classDecl in syntaxTree.GetRoot()
+                         .DescendantNodes().OfType<ClassDeclarationSyntax>())
+            {
+                if (semanticModel.GetDeclaredSymbol(classDecl) is not INamedTypeSymbol classSymbol)
+                    continue;
+                if (classSymbol.IsAbstract)
+                    continue;
+
+                INamedTypeSymbol? baseType = classSymbol.BaseType;
+                while (baseType != null)
+                {
+                    if (baseType.ToDisplayString() == MANIFEST_CONFIG_BASE)
+                    {
+                        return classSymbol
+                            .ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)
+                            .Replace("global::", "");
+                    }
+                    baseType = baseType.BaseType;
+                }
+            }
+        }
+        return null;
+    }
+
+    private static AttributeData? FindAttribute(ImmutableArray<AttributeData> attrs, string fullName)
+    {
+        foreach (AttributeData attr in attrs)
+        {
+            if (attr.AttributeClass?.ToDisplayString() == fullName)
+                return attr;
+        }
+        return null;
     }
 }
 
-/* TODO:
-    - Look at a full manifest example from Elgato and make sure my sample has every property.
-    - Add new attribute to the Program.cs for the sample plugin for the MinimumVersion property.
-    - Get OS value from C# code and add it to the OS Platform property. Not sure yet what to do about the MinimumVersion property.
-        It could be defaulted to the minimum OS version supported by both .NET and the stream deck for that OS.
-        Another attribute on the Program.cs class could specify OSes and versions if you don't want the default.
-    - Get Version, Author and Description from the csproj MSBuild properties
-    - SDKVersion, Category, Icon, Name and CategoryIcon need to be populated some other way.
-    - The Plugin, Category and Action icons can be gotten from a folder in the sample plugin directory called `icons`.
-        They'd have to be named the same as the plugin actions. The logic in the generator would be, if the icons are present,
-        use the path to the images/icons directory. If not, use the bundled icon.
-    - For the actions, we need to source the values for the Encoder and States objects and the SupportedInMultiActions, 
-        and Tooltip properties. the PropertyInspectorPath and UUID are already source generated. 
- */
+// Input records — internal so ManifestProviderTemplate can access them from the same assembly
+
+internal sealed record MsbuildProps(
+    string? AssemblyName,
+    string? Version,
+    string? Authors,
+    string? Description,
+    string? PackageProjectUrl);
+
+internal sealed record PluginAttrData(
+    string? Name,
+    string? Uuid,
+    string? Category,
+    string? CategoryIcon,
+    string? Icon,
+    string? SupportUrl,
+    string? Url,
+    int SdkVersion,
+    string SoftwareMinVersion,
+    string? WindowsMinVersion,
+    string? MacMinVersion,
+    string? PropertyInspectorPath,
+    string? CodePathWin,
+    string? CodePathMac);
+
+internal sealed record ActionAttrData(
+    string? Name,
+    string? Tooltip,
+    string? Icon,
+    string? PropertyInspectorPath,
+    string? SupportUrl,
+    bool? SupportedInMultiActions,
+    bool? SupportedInKeyLogicActions,
+    bool? DisableAutomaticStates,
+    bool? DisableCaching,
+    bool? UserTitleEnabled,
+    bool? VisibleInActionsList);
+
+internal sealed record ActionInfo(
+    string FullClassName,
+    bool IsKeypad,
+    bool IsEncoder,
+    ActionAttrData? AttrData)
+{
+    public string ClassName =>
+        FullClassName.Contains('.')
+            ? FullClassName.Substring(FullClassName.LastIndexOf('.') + 1)
+            : FullClassName;
+
+    public string ActionUuid => FullClassName.ToLowerInvariant();
+}
+
+internal sealed record ManifestGeneratorInput(
+    MsbuildProps MsbuildProps,
+    PluginAttrData? PluginAttr,
+    ImmutableArray<ActionInfo> Actions,
+    string? ConfigClassName);

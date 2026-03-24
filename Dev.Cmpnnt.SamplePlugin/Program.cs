@@ -1,5 +1,17 @@
-﻿using Cmpnnt.StreamDeckToolkit.Runtime;
+﻿using Cmpnnt.StreamDeckToolkit.Attributes;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.SourceGenerators;
+
+[assembly: StreamDeckPlugin(
+    Name = "SDTools Sample Plugin",
+    UUID = "com.cmpnnt.streamdecktoolkit.sampleplugin",
+    Category = "SDTools Sample Plugin",
+    CategoryIcon = "Images/categoryIcon",
+    Icon = "Images/pluginIcon",
+    SDKVersion = 2,
+    SoftwareMinVersion = SoftwareMinVersion.V6_4,
+    WindowsMinVersion = "10"
+)]
 
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {

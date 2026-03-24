@@ -3,15 +3,6 @@ using Cmpnnt.StreamDeckToolkit.Attributes;
 
 namespace Cmpnnt.StreamDeckToolkit.Components.Settings;
 
-/* TODO: I think the way to implement the property inspector/settings is to create these C# classes to generate the
- property inspector components, and then to have another set of classes that represents the JSON that you know is
- going to get generated. So, if you have a checkbox defined as  `Checkbox cb = new { Setting = "IsOkay" }`,
- then you'd have to have a class for that to be serialized into, like `public record HowAreYou(bool IsOkay)`,
- because the json returned from the streamdeck will be `{"IsOkay": true}`. These settings records can
- be source generated when the property inspector is source generated. */
-    
-// TODO: Implement the source generation for the property inspector and log the output sent to the plugin.
-
 /// <summary>
 /// Allows the possible values of a setting to be populated from an external data source.
 /// See the <see href="https://sdpi-components.dev/docs/helpers/data-source">SDPI component docs.</see>

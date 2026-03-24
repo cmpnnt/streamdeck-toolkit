@@ -20,7 +20,7 @@ public class LinkPlugin : Task
     
     public override bool Execute()
     {
-        // TODO: This is an `AfterBuild` task to replace the install script. First, it
+        // This is an `AfterBuild` task to replace the install script. First, it
         // checks if the CLI app exists, and skip the task if not. It then deletes the
         // existing link in the SD plugins directory, if present, and recreates it with
         // the build output path (using the SD cli). It should have default plugin paths

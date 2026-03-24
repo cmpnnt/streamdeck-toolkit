@@ -14,6 +14,12 @@ using SkiaSharp;
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     [SdpiOutputDirectory("PropertyInspector/")]
+    [StreamDeckAction(
+        Name = "SDTools Checkbox Demo",
+        Tooltip = "Demonstrates checkbox list component in SDTools",
+        Icon = "Images/pluginAction",
+        SupportedInMultiActions = true
+    )]
     public partial class PluginAction3 : KeyAndEncoderBase
     {
         public TextArea ta = new()

@@ -167,7 +167,10 @@ SdWrapper.Run(args, new PluginActionIdRegistry());
 ## 2. ManifestModelSourceGenerator
 
 - **File:** `ManifestGenerator.cs`
+- **Template:** `Templates/ManifestProviderTemplate.cs`
 - **Generated file:** `GeneratedManifestModel.g.cs`
+
+> For full usage instructions, attribute reference, and examples see **[ManifestGeneration.md](ManifestGeneration.md)**.
 
 ### Problem
 
@@ -177,49 +180,64 @@ Stream Deck plugins require a `manifest.json` describing the plugin's actions, t
 
 ```mermaid
 flowchart TD
-    A["CreateSyntaxProvider: find classes with base lists"] --> B["Filter: implements ICommonPluginFunctions?"]
-    B --> C["Also check IKeypadPlugin / IEncoderPlugin"]
-    C --> D["Collect ActionInfo records\n(FullClassName, Namespace, IsKeypad, IsEncoder)"]
-    D --> E["BuildSource: emit ManifestRoot, ManifestAction,\nand ManifestProvider with pre-populated data"]
+    A["AnalyzerConfigOptionsProvider: read MSBuild properties\n(AssemblyName, Version, Authors, Description, PackageProjectUrl)"] --> E
+    B["Scan assembly + class attributes for\n[StreamDeckPlugin(...)]"] --> E
+    C["Scan all classes implementing ICommonPluginFunctions\n→ also check IKeypadPlugin / IEncoderPlugin\n→ read [StreamDeckAction(...)] per class"] --> E
+    D["Find ManifestConfigBase subclass (POCO)\n→ capture fully-qualified class name"] --> E
+    E["ManifestProviderTemplate.Generate(input)\n→ emit GeneratedManifestModel.g.cs"]
 ```
 
-1. Finds all concrete (non-abstract) classes implementing `ICommonPluginFunctions`.
-2. For each, checks whether it also implements `IKeypadPlugin` and/or `IEncoderPlugin` — these determine the `Controllers` array in the manifest.
-3. Emits a `GeneratedManifest` namespace containing:
-   - Data-model classes (`ManifestRoot`, `ManifestAction`, `OsInfo`, `SoftwareInfo`, `EncoderInfo`, `StateInfo`, etc.) with `[JsonPropertyName]` attributes matching the Elgato manifest schema.
-   - A `ManifestProvider` static class that pre-populates a `ManifestRoot` object with the discovered actions.
+Values are resolved in priority order: **POCO > attribute > MSBuild > convention**.
+
+1. **MSBuild props**: `AssemblyName`, `Version`, `Authors`, `Description`, and `PackageProjectUrl` are read via `CompilerVisibleProperty` items.
+2. **`[StreamDeckPlugin]`**: Assembly- or class-level attribute that overrides MSBuild values for plugin-level fields (name, UUID, icons, OS versions, etc.).
+3. **Action discovery**: Scans all non-abstract classes implementing `ICommonPluginFunctions`. For each, checks `IKeypadPlugin` / `IEncoderPlugin` to populate the `Controllers` array, and reads `[StreamDeckAction]` for per-action overrides.
+4. **`ManifestConfigBase` subclass**: If a concrete subclass is found in the compilation, its fully-qualified name is captured. The template emits `var userConfig = new UserConfigClass();` inside `GetManifestData()`, and applies `DefaultStates`, `DefaultEncoder`, `ApplicationsToMonitor`, and `Profiles` from it — these take highest priority.
+5. The template emits a `GeneratedManifest.ManifestProvider` class. A separate MSBuild task (`GenerateManifest`) loads the compiled plugin DLL, calls `ManifestProvider.GetManifestData()` via reflection, and serializes the result to `manifest.json`.
 
 ### Generated output (sample)
 
 ```csharp
 // GeneratedManifestModel.g.cs (abridged)
-internal static class ManifestProvider
+namespace GeneratedManifest
 {
-    public static ManifestRoot GetManifestData() => _manifestData;
-
-    private static ManifestRoot CreateManifestData()
+    internal static class ManifestProvider
     {
-        var root = new ManifestRoot();
-        root.Uuid = "cmpnnt.sdtools.sampleplugin";
-        root.CodePath = "cmpnnt.sdtools.sampleplugin.exe";
-
+        public static ManifestRoot GetManifestData()
         {
-            var action = new ManifestAction();
-            action.Uuid = "cmpnnt.sdtools.sampleplugin.pluginaction";
-            action.PropertyInspectorPath = "PropertyInspector/PluginAction.html";
-            action.Controllers = new List<string> { "Keypad", "Encoder" };
-            action.Name = "PluginAction";
-            root.Actions.Add(action);
+            var root = new ManifestRoot();
+            var userConfig = new MyPlugin.SampleManifestConfig();
+
+            root.Name = "SDTools Sample Plugin";
+            root.Version = "1.0.0";
+            root.Uuid = "com.cmpnnt.streamdecktoolkit.sampleplugin";
+            root.CodePathWin = "sampleplugin.exe";
+            root.OS = [new ManifestOS { Platform = "windows", MinimumVersion = "10" }];
+            root.Software = new ManifestSoftware { MinimumVersion = "6.4" };
+            root.SDKVersion = 2;
+            root.ApplicationsToMonitor = userConfig.ApplicationsToMonitor;
+            root.Profiles = userConfig.Profiles;
+
+            {
+                var action = new ManifestAction();
+                action.Name = "SDTools Test";
+                action.Uuid = "com.cmpnnt.streamdecktoolkit.sampleplugin.pluginaction";
+                action.Icon = "Images/pluginAction";
+                action.PropertyInspectorPath = "PropertyInspector/PluginAction.html";
+                action.Controllers = ["Keypad"];
+                action.Tooltip = "Sample action demonstrating SDTools";
+                action.SupportedInMultiActions = true;
+                action.States = userConfig.DefaultStates != null
+                    ? [..userConfig.DefaultStates]
+                    : [new ManifestStateConfig { Image = "Images/pluginAction" }];
+                root.Actions.Add(action);
+            }
+            // ... one block per action class
+            return root;
         }
-        // ... one block per action class
-        return root;
     }
 }
 ```
-
-### Status
-
-This generator is partially implemented. The TODO comments at the bottom of `ManifestGenerator.cs` list remaining work: pulling Version/Author/Description from MSBuild properties, generating OS info from the runtime, sourcing icons, and populating Encoder/States from attributes.
 
 ---
 
