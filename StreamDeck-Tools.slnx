@@ -1,0 +1,25 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="Cmpnnt.StreamDeckToolkit.BuildTasks/Cmpnnt.StreamDeckToolkit.BuildTasks.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="Cmpnnt.StreamDeckToolkit.SourceGenerators/Cmpnnt.StreamDeckToolkit.SourceGenerators.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="Cmpnnt.StreamDeckToolkit.Tests/Cmpnnt.StreamDeckToolkit.Tests.csproj" />
+  <Project Path="Cmpnnt.StreamDeckToolkit/Cmpnnt.StreamDeckToolkit.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Build Solution="Release|x64" Project="false" />
+  </Project>
+  <Project Path="Dev.Cmpnnt.SamplePlugin/Dev.Cmpnnt.SamplePlugin.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>
