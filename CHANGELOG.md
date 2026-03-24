@@ -1,4 +1,12 @@
 
+## [v1.1.0] - 2026-03-24
+### :sparkles: New Features
+- [`ee42481`](https://github.com/cmpnnt/streamdeck-toolkit/commit/ee42481076d2469f9e50f74f22db5fa7a5548b7c) - **manifest**: implement automatic manifest.json generation from source *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+### :wrench: Chores
+- [`722be73`](https://github.com/cmpnnt/streamdeck-toolkit/commit/722be733d010bea2bcc3ce17b48d883962cd7ec9) - **docs**: remove old documentation and CI configuration files *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.0.3] - 2026-03-23
 ### :recycle: Refactors
 - [`6e6fdab`](https://github.com/cmpnnt/streamdeck-toolkit/commit/6e6fdabb77ebcbde8f20435d90b5f718aaa5fc3d) - reorganize Cmpnnt.StreamDeckToolkit directory structure *(commit by [@cmpnnt](https://github.com/cmpnnt))*
@@ -62,3 +70,4 @@
 [v1.0.1]: https://github.com/cmpnnt/streamdeck-tools/compare/v1.0.0...v1.0.1
 [v1.0.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.1...v1.0.2
 [v1.0.3]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.2...v1.0.3
+[v1.1.0]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.3...v1.1.0
