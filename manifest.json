@@ -208,6 +208,48 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.yml\" sourcestartlinenumber=\"1\">Minimum Stream Deck software version required by the plugin.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute.yml\" sourcestartlinenumber=\"1\">Configures action-level manifest properties for a plugin action class.\nControllers (<code>Keypad</code>, <code>Encoder</code>) are derived automatically from the implemented interfaces\nand do not need to be specified here.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute.yml\" sourcestartlinenumber=\"1\">Configures plugin-level manifest properties. Values set here override MSBuild properties\nbut are overridden by <xref href=\"Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase\" data-throw-if-not-resolved=\"false\"></xref>.\nApply to the assembly (<code>[assembly: StreamDeckPlugin(...)]</code>) or to any class in the project.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Attributes.yml",
       "output": {
         ".html": {
@@ -1423,6 +1465,160 @@
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.ISettingsPopulatable",
       "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.ISettingsPopulatable.yml\" sourcestartlinenumber=\"1\">Implemented by settings classes that support AOT-compatible JSON merge/patch population.\nApply <xref href=\"Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute\" data-throw-if-not-resolved=\"false\"></xref> to a <code>partial</code> settings\nclass and the source generator will implement this interface automatically.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase",
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.yml\" sourcestartlinenumber=\"1\">Base class for providing manifest configuration that cannot be derived from code or MSBuild properties.\nSubclass this in your plugin project to supply default states, encoder configuration, application\nmonitoring, and profile settings. Values from this class take highest priority — they override\nboth <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes and MSBuild properties.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Manifest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Cmpnnt.StreamDeckToolkit.Manifest",
+      "Summary": null
     },
     {
       "type": "ManagedReference",

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Namespace Cmpnnt.StreamDeckToolkit.Attributes | PIA Sharp </title>
+      <title>Namespace Cmpnnt.StreamDeckToolkit.Manifest | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Attributes | PIA Sharp ">
+      <meta name="title" content="Namespace Cmpnnt.StreamDeckToolkit.Manifest | PIA Sharp ">
       
       
       <link rel="icon" href="../images/favicon.ico">
@@ -84,9 +84,9 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Cmpnnt.StreamDeckToolkit.Attributes">
+        <article data-uid="Cmpnnt.StreamDeckToolkit.Manifest">
 
-  <h1 id="Cmpnnt_StreamDeckToolkit_Attributes" data-uid="Cmpnnt.StreamDeckToolkit.Attributes" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Attributes</h1>
+  <h1 id="Cmpnnt_StreamDeckToolkit_Manifest" data-uid="Cmpnnt.StreamDeckToolkit.Manifest" class="text-break">Namespace Cmpnnt.StreamDeckToolkit.Manifest</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
@@ -95,51 +95,48 @@
 Classes
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.FilenamePropertyAttribute.html">FilenamePropertyAttribute</a></dt>
-      <dd><p>FilenamePropertyAttribute - Used to indicate the current property holds a file name.
-This will allow StreamDeck Utilities to strip the mandatory &quot;C:\fakepath&quot; added by the SDK</p>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.html">ManifestAction</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.html">ManifestApplicationsToMonitor</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html">ManifestConfigBase</a></dt>
+      <dd><p>Base class for providing manifest configuration that cannot be derived from code or MSBuild properties.
+Subclass this in your plugin project to supply default states, encoder configuration, application
+monitoring, and profile settings. Values from this class take highest priority — they override
+both <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes and MSBuild properties.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.SdSettingsAttribute.html">SdSettingsAttribute</a></dt>
-      <dd><p>Marks a settings class for AOT-compatible source-generated JSON population.
-The class must also be declared as <code>partial</code> for the source generator to implement it
-<a class="xref" href="Cmpnnt.StreamDeckToolkit.ISettingsPopulatable.html">ISettingsPopulatable</a>.</p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.html">ManifestEncoderConfig</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute.html">SdpiOutputDirectoryAttribute</a></dt>
-      <dd><p>SdpiOutputDirectoryAttribute - Specifies the output directory for the generated SDPI HTML file.
-The HTML filename will be the name of the decorated class with a .html extension.
-Defaults to <code>PropertyInspector/</code></p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.html">ManifestOS</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.SdpiPropertyNameAttribute.html">SdpiPropertyNameAttribute</a></dt>
-      <dd><p>SdpiPropertyNameAttribute - Specifies the name of an SDPI property on a class property.</p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.html">ManifestProfile</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute.html">StreamDeckActionAttribute</a></dt>
-      <dd><p>Configures action-level manifest properties for a plugin action class.
-Controllers (<code>Keypad</code>, <code>Encoder</code>) are derived automatically from the implemented interfaces
-and do not need to be specified here.</p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.html">ManifestRoot</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute.html">StreamDeckPluginAttribute</a></dt>
-      <dd><p>Configures plugin-level manifest properties. Values set here override MSBuild properties
-but are overridden by <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html">ManifestConfigBase</a>.
-Apply to the assembly (<code>[assembly: StreamDeckPlugin(...)]</code>) or to any class in the project.</p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.html">ManifestSoftware</a></dt>
+      <dd></dd>
     </dl>
-    <h3 id="enums">
-Enums
-</h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.html">SoftwareMinVersion</a></dt>
-      <dd><p>Minimum Stream Deck software version required by the plugin.</p>
-</dd>
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.html">ManifestStateConfig</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.html">ManifestTriggerDescription</a></dt>
+      <dd></dd>
     </dl>
 
 
