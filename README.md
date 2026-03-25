@@ -51,3 +51,7 @@ Questions about plugins that use this toolkit should first be directed toward th
 
 - Add more tests.
 - More functional (manual) testing.
+
+## Shoutouts and Thanks
+- [BarRaider's streamdeck-tools](https://github.com/BarRaider/streamdeck-tools): This project is based on BarRaider's fantastic streamdeck-tools, on which 
+many Stream Deck plugins are based. Thank you for maintaining streamdeck-tools over the years. I learned a lot from pouring through your work!
