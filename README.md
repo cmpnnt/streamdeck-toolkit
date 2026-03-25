@@ -4,9 +4,21 @@
 
 > A C# library that manages communication with the Stream Deck, allowing you to focus on actually writing your plugin's logic.
 
+## ⚠️ WIP ⚠️
+
+This toolkit is still a work in progress. It is useable and is currently feature complete for my needs,
+but there might still be some bugs or rough edges. If you encounter any issues or want to request a feature,
+please head to the [Discussions](https://github.com/cmpnnt/streamdeck-tools/discussions) section.
+
+Expect breaking changes soon, especially around naming. I intend to move away from the "streamdeck" and "sd" naming conventions.
+
 ![.NET 10.0.201](https://img.shields.io/badge/.NET-10.0-purple) ![SDK 6.7.0](https://img.shields.io/badge/SDK-6.7.0-blue) [![.NET](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml)
 
 ## Getting Started
+
+There is currently no NuGet package, so you'll have to clone the repository. I suggest starting with the 
+[sample plugin](https://github.com/cmpnnt/streamdeck-toolkit/tree/main/Dev.Cmpnnt.SamplePlugin) as your base.
+
 - Take a look at the [wiki](https://github.com/cmpnnt/streamdeck-toolkit/wiki) for usage instructions and examples.
 - Full API documentation can be found [here](https://cmpnnt.github.io/streamdeck-toolkit/), if you're into that sort of thing.
 
@@ -29,8 +41,13 @@ Questions about plugins that use this toolkit should first be directed toward th
 - Large set of helper functions to simplify creating images and sending them to the Stream Deck.
 - NLog for logging. 
 
-## Known issues and TODO
+## Known issues
 - Jetbrains Rider might occasionally hold onto the MSBuild tasks and prevent the solution from building. If this happens, use
 [kill-msbuild.ps1](kill-msbuild.ps1) and try rebuilding.
 - Update to latest Stream Deck SDK and add new devices.
 - Complete incompatibility with BarRaider's streamdeck-tools, on which this is based.
+
+## TODO:
+
+- Add more tests.
+- More functional (manual) testing.
