@@ -20,7 +20,7 @@ There is currently no NuGet package, so you'll have to clone the repository. I s
 [sample plugin](https://github.com/cmpnnt/streamdeck-toolkit/tree/main/Dev.Cmpnnt.SamplePlugin) as your base.
 
 - Take a look at the [wiki](https://github.com/cmpnnt/streamdeck-toolkit/wiki) for usage instructions and examples.
-- Full API documentation can be found [here](https://cmpnnt.github.io/streamdeck-toolkit/), if you're into that sort of thing.
+- Full API documentation can be found [here](https://cmpnnt.github.io/streamdeck-toolkit/api/index.html), if you're into that sort of thing.
 
 ## Discussion and Support
 **Discussions:** [Start here](https://github.com/cmpnnt/streamdeck-tools/discussions) for support and general questions about the toolkit.
