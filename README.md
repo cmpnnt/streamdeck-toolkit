@@ -6,14 +6,9 @@
 
 ![.NET 10.0](https://img.shields.io/badge/.NET-10.0-purple) ![SDK 6.7.0](https://img.shields.io/badge/SDK-6.7.0-blue) [![.NET](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cmpnnt/streamdeck-tools/actions/workflows/dotnet.yml)
 
-### Stream Deck+ Support
-> TODO: Move this to the wiki
-Derive from either `KeypadBase` (if you don't support dials), `EncoderBase` (for only dials), `KeyAndEncoderBase` (for both keys and dials)
-
 ## Getting Started
-> TODO: Go public and set up the wiki. Write the wiki content first.
-- Take a look at the [wiki](https://github.com/BarRaider/streamdeck-tools/wiki) for usage instructions and examples.
-- Full API documentation can be found [here](TODO), if you're into that sort of thing.
+- Take a look at the [wiki](https://github.com/cmpnnt/streamdeck-toolkit/wiki) for usage instructions and examples.
+- Full API documentation can be found [here](https://cmpnnt.github.io/streamdeck-toolkit/), if you're into that sort of thing.
 
 ## Discussion and Support
 **Discussions:** [Start here](https://github.com/cmpnnt/streamdeck-tools/discussions) for support and general questions about the toolkit.
