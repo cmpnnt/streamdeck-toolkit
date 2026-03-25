@@ -49,6 +49,8 @@ Questions about plugins that use this toolkit should first be directed toward th
 
 ## TODO:
 
+- Update to latest Stream Deck SDK.
+- Better documentation for SDPI (property inspector) generation
 - Add more tests.
 - More functional (manual) testing.
 

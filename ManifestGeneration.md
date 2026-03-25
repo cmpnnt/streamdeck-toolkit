@@ -26,20 +26,15 @@ The `ManifestModelSourceGenerator` automatically produces a valid `manifest.json
 
 ## How it works
 
-```
-[StreamDeckPlugin] attribute   MSBuild properties     ManifestConfigBase subclass
-         │                            │                         │
-         ▼                            ▼                         ▼
-  ManifestModelSourceGenerator  (source generator)
-         │
-         ▼
-  GeneratedManifestModel.g.cs   ← compiled into plugin DLL
-         │
-         ▼ (AfterBuild MSBuild target)
-  GenerateManifest task  ─── reflection call to ManifestProvider.GetManifestData()
-         │
-         ▼
-  manifest.json   ← written to plugin output directory
+```mermaid
+flowchart TD
+    A["[StreamDeckPlugin] attribute"]  --> D
+    B["MSBuild properties"]            --> D
+    C["ManifestConfigBase subclass"]   --> D
+    D["ManifestModelSourceGenerator\n(source generator)"]
+    D --> E["GeneratedManifestModel.g.cs\ncompiled into plugin DLL"]
+    E --> F["GenerateManifest task\nAfterBuild MSBuild target"]
+    F -->|"reflection · ManifestProvider.GetManifestData()"| G["manifest.json\nwritten to plugin output directory"]
 ```
 
 The source generator runs during compilation and emits a `GeneratedManifest.ManifestProvider` class. After the build completes, the `GenerateManifest` MSBuild task loads the compiled plugin DLL, calls `ManifestProvider.GetManifestData()` via reflection, and serializes the result to `manifest.json`.
