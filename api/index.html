@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>PIA Sharp API Reference | PIA Sharp </title>
+      <title>Cmpnnt.StreamDeckToolkit API Reference | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="PIA Sharp API Reference | PIA Sharp ">
+      <meta name="title" content="Cmpnnt.StreamDeckToolkit API Reference | PIA Sharp ">
       
       
       <link rel="icon" href="../images/favicon.ico">
@@ -85,62 +85,173 @@
         </div>
 
         <article data-uid="">
-<h1 id="pia-sharp-api-reference">PIA Sharp API Reference</h1>
+<h1 id="cmpnntstreamdecktoolkit-api-reference">Cmpnnt.StreamDeckToolkit API Reference</h1>
 
-<p>This section contains detailed information about the public classes, methods and enums found in <code>Cmpnnt.Pia</code>.</p>
-<p>Here's a quick rundown of the available methods exposed by <code>Cmpnnt.Pia.Ctl</code>, which are the core of this library. Full API
-documentation for them is available under <a href="Cmpnnt.Pia.Ctl.PiaCtl.yml">Cmpnnt.Pia.Ctl.PiaCtl</a></p>
-<h2 id="general">General</h2>
+<p>This section contains detailed API documentation for the <code>Cmpnnt.StreamDeckToolkit</code> library.</p>
+<h2 id="entry-point">Entry point</h2>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Toolkit.Run(args, registry)</code></td>
+<td>Starts the plugin and connects to the Stream Deck software</td>
+</tr>
+</tbody>
+</table>
+<h2 id="action-base-classes">Action base classes</h2>
+<p>Derive from one of these abstract classes depending on the hardware your action targets.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Controllers</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeypadBase</code></td>
+<td><code>[&quot;Keypad&quot;]</code></td>
+<td>Key/button actions only</td>
+</tr>
+<tr>
+<td><code>EncoderBase</code></td>
+<td><code>[&quot;Encoder&quot;]</code></td>
+<td>Dial/touchpad actions only</td>
+</tr>
+<tr>
+<td><code>KeyAndEncoderBase</code></td>
+<td><code>[&quot;Keypad&quot;, &quot;Encoder&quot;]</code></td>
+<td>Actions that support both</td>
+</tr>
+</tbody>
+</table>
+<h2 id="outbound-connection-ioutboundconnection">Outbound connection (<code>IOutboundConnection</code>)</h2>
+<p>Methods available on the <code>Connection</code> property inside every action class.</p>
+<h3 id="settings">Settings</h3>
 <ul>
-<li>Login</li>
-<li>Logout</li>
-<li>Connect</li>
-<li>Disconnect</li>
-<li>ResetSettings</li>
+<li><code>SetSettingsAsync</code></li>
+<li><code>GetSettingsAsync</code></li>
+<li><code>SetGlobalSettingsAsync</code></li>
+<li><code>GetGlobalSettingsAsync</code></li>
 </ul>
-<h2 id="dedicated-ip">Dedicated IP</h2>
+<h3 id="ui">UI</h3>
 <ul>
-<li>AddDedicatedIp</li>
-<li>RemoveDedicatedIp</li>
+<li><code>SetTitleAsync</code></li>
+<li><code>SetImageAsync</code></li>
+<li><code>SetDefaultImageAsync</code></li>
+<li><code>SetStateAsync</code></li>
+<li><code>ShowAlert</code></li>
+<li><code>ShowOk</code></li>
 </ul>
-<h2 id="background">Background</h2>
+<h3 id="dial-feedback">Dial feedback</h3>
 <ul>
-<li>BackgroundEnable</li>
-<li>BackgroundDisable</li>
+<li><code>SetFeedbackAsync</code></li>
+<li><code>SetFeedbackLayoutAsync</code></li>
 </ul>
-<h2 id="setters">Setters</h2>
+<h3 id="navigation">Navigation</h3>
 <ul>
-<li>SetAllowLan</li>
-<li>SetDebugLogin</li>
-<li>SetProtocol</li>
-<li>SetRegion</li>
-<li>SetRequestPortForward</li>
+<li><code>SwitchProfileAsync</code></li>
+<li><code>OpenUrlAsync</code></li>
 </ul>
-<h2 id="getters">Getters</h2>
+<h3 id="property-inspector">Property inspector</h3>
 <ul>
-<li>GetAllowLan</li>
-<li>GetConnectionState</li>
-<li>GetDebugLogging</li>
-<li>GetPortForward</li>
-<li>GetProtocol</li>
-<li>GetPubIp</li>
-<li>GetRegion</li>
-<li>GetRegions</li>
-<li>GetRequestPortForward</li>
-<li>GetVpnIp</li>
+<li><code>SendToPropertyInspectorAsync</code></li>
 </ul>
-<h2 id="monitoring">Monitoring</h2>
+<h3 id="diagnostics">Diagnostics</h3>
 <ul>
-<li>MonitorAllowLan</li>
-<li>MonitorConnectionState</li>
-<li>MonitorDebugLogging</li>
-<li>MonitorPortForward</li>
-<li>MonitorProtocol</li>
-<li>MonitorPubIp</li>
-<li>MonitorRegion</li>
-<li>MonitorRequestPortForward</li>
-<li>MonitorVpnIp</li>
+<li><code>LogSdMessage</code></li>
 </ul>
+<h2 id="attributes">Attributes</h2>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Target</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[StreamDeckPlugin]</code></td>
+<td>Assembly or class</td>
+<td>Plugin-level metadata (name, UUID, icons, OS versions)</td>
+</tr>
+<tr>
+<td><code>[StreamDeckAction]</code></td>
+<td>Action class</td>
+<td>Action-level metadata (name, tooltip, icon, capabilities)</td>
+</tr>
+<tr>
+<td><code>[SdSettings]</code></td>
+<td>Partial settings class</td>
+<td>Generates AOT-safe <code>PopulateFromJson</code> implementation</td>
+</tr>
+<tr>
+<td><code>[FilenameProperty]</code></td>
+<td><code>string</code> property</td>
+<td>Strips the <code>C:\fakepath\</code> prefix added by Stream Deck</td>
+</tr>
+<tr>
+<td><code>[SdpiOutputDirectory]</code></td>
+<td>Action class</td>
+<td>Tells the SDPI generator where to write the HTML file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manifest-manifestconfigbase">Manifest (<code>ManifestConfigBase</code>)</h2>
+<p>Subclass <code>ManifestConfigBase</code> to supply values that cannot be expressed as attribute arguments.</p>
+<ul>
+<li><code>DefaultStates</code> — <code>ManifestStateConfig[]</code></li>
+<li><code>DefaultEncoder</code> — <code>ManifestEncoderConfig</code></li>
+<li><code>ApplicationsToMonitor</code> — <code>ManifestApplicationsToMonitor</code></li>
+<li><code>Profiles</code> — <code>ManifestProfile[]</code></li>
+</ul>
+<h2 id="sdpi-components">SDPI components</h2>
+<p>Declare these as fields on an action class decorated with <code>[SdpiOutputDirectory]</code> to generate property inspector HTML.</p>
+<ul>
+<li><code>Textfield</code></li>
+<li><code>TextArea</code></li>
+<li><code>Password</code></li>
+<li><code>Select</code></li>
+<li><code>Checkbox</code></li>
+<li><code>CheckboxList</code></li>
+<li><code>Radio</code></li>
+<li><code>Range</code></li>
+<li><code>Color</code></li>
+<li><code>File</code></li>
+<li><code>Button</code></li>
+<li><code>Delegate</code></li>
+<li><code>Date</code> / <code>Time</code> / <code>DateTime</code> / <code>Month</code> / <code>Week</code></li>
+</ul>
+<h2 id="utilities">Utilities</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Logger.Instance</code></td>
+<td>Singleton logger (<code>LogMessage(TracingLevel, string)</code>)</td>
+</tr>
+<tr>
+<td><code>GlobalSettingsManager.Instance</code></td>
+<td>Read/write global plugin settings</td>
+</tr>
+<tr>
+<td><code>Tools</code></td>
+<td>Image encoding, key image generation, filename helpers, formatting, hashing</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

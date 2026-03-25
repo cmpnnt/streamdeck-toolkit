@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>PIA Sharp | PIA Sharp </title>
+      <title>Quick Start: Building a Stream Deck Plugin | PIA Sharp </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="PIA Sharp | PIA Sharp ">
+      <meta name="title" content="Quick Start: Building a Stream Deck Plugin | PIA Sharp ">
       
       
       <link rel="icon" href="images/favicon.ico">
@@ -71,95 +71,355 @@
         </div>
 
         <article data-uid="">
-<h1 id="pia-sharp">PIA Sharp</h1>
+<h1 id="quick-start-building-a-stream-deck-plugin">Quick Start: Building a Stream Deck Plugin</h1>
 
-<p>For basic installation instructions, see the <a href="https://github.com/cmpnnt/pia-sharp#readme">main readme</a>.</p>
-<h2 id="compatibility">Compatibility</h2>
-<p>PIA Sharp's main package, <code>Cmpnnt.Pia.Ctl</code>, has been tested against version <code>3.3.1</code> on Windows and Linux (MacOS compatibility is on the roadmap).
-It provides access to every <code>piactl</code> command available in those version on those systems. It might also work on other
-versions of <code>piactl</code>, provided they expose the same commands with the same parameters. However, this hasn't
-been tested and nothing is guaranteed.</p>
-<h2 id="setup">Setup</h2>
-<p>You must have a Private Internet Access account and the <code>piactl</code> command line application installed on your system.
-This is included with their desktop GUI application.</p>
-<p>There are two ways to use <code>Cmpnnt.Pia.Ctl</code>: <a href="#dependency-injection">Dependency Injection</a> and simple <a href="#instantiation">instantiation</a></p>
-<h3 id="dependency-injection">Dependency Injection</h3>
-<p>There's a separate dependency injection library you can use if you require DI. Add a reference to
-<a href="https://nuget.org/packages/cmpnnt.pia.dependencyinjection">Cmpnnt.Pia.DependencyInjection</a> and include it in your DI container by adding
-a call to <code>services.AddPiaCtl()</code> under <code>ConfigureServices</code>.</p>
-<div class="NOTE">
-<h5>Note</h5>
-<p>Note: The dependency injection package registers <code>PiaCtl</code> as a singleton.</p>
-</div>
-<p>Here's a basic example. You can find the runnable code in the <a href="https://github.com/cmpnnt/pia-sharp/tree/main/Cmpnnt.Pia.Examples">examples project</a>.</p>
-<pre><code class="lang-csharp">using IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =&gt;
-    {
-        services.AddPiaCtl();
-        services.AddScoped&lt;SomeClass&gt;();
-    })
-    .ConfigureLogging(options =&gt;
-    {
-        options.ClearProviders();
-        options.AddConsole();
-    })
-    .Build();
+<p>This guide walks through creating a plugin from scratch using <code>streamdeck-toolkit</code>. The build system, manifest, and property inspector HTML are all generated automatically — you write C# and the tooling handles the rest.</p>
+<hr>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET 10 SDK</li>
+<li>Stream Deck software installed</li>
+<li>Stream Deck CLI (<code>streamdeck</code>) on your PATH</li>
+</ul>
+<hr>
+<h2 id="1-project-setup">1. Project setup</h2>
+<p>Create a new console app and configure the <code>.csproj</code>:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot; InitialTargets=&quot;BuildTasks&quot;&gt;
+
+  &lt;!-- Load custom MSBuild tasks from the BuildTasks assembly --&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.CloseStreamDeck&quot;   TaskFactory=&quot;TaskHostFactory&quot; AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest&quot;  AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml&quot;   TaskFactory=&quot;TaskHostFactory&quot; AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin&quot;        TaskFactory=&quot;TaskHostFactory&quot; AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin&quot;     TaskFactory=&quot;TaskHostFactory&quot; AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+  &lt;UsingTask TaskName=&quot;Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck&quot;    TaskFactory=&quot;TaskHostFactory&quot; AssemblyFile=&quot;$(TaskAssemblyPath)&quot; /&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;net10.0&lt;/TargetFramework&gt;
+    &lt;LangVersion&gt;14&lt;/LangVersion&gt;
+    &lt;PublishAot&gt;true&lt;/PublishAot&gt;
+    &lt;AssemblyName&gt;com.mycompany.myplugin&lt;/AssemblyName&gt;
+    &lt;Version&gt;1.0.0&lt;/Version&gt;
+    &lt;Authors&gt;Your Name&lt;/Authors&gt;
+    &lt;Description&gt;A plugin that does something useful.&lt;/Description&gt;
+    &lt;PackageProjectUrl&gt;https://example.com/myplugin&lt;/PackageProjectUrl&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;!-- Derive output paths from the assembly name --&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TaskAssemblyPath&gt;path\to\Cmpnnt.StreamDeckToolkit.BuildTasks.dll&lt;/TaskAssemblyPath&gt;
+    &lt;AssemblyNameLower&gt;$([System.String]::Copy('$(AssemblyName)').ToLowerInvariant())&lt;/AssemblyNameLower&gt;
+    &lt;OutDir&gt;bin\$(Configuration)\$(Platform)\$(AssemblyNameLower).sdPlugin\&lt;/OutDir&gt;
+    &lt;BaseDir&gt;$(MSBuildThisFileDirectory)bin\$(Configuration)\$(Platform)&lt;/BaseDir&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;!-- Expose MSBuild properties to source generators --&gt;
+  &lt;ItemGroup&gt;
+    &lt;CompilerVisibleProperty Include=&quot;AssemblyName&quot; /&gt;
+    &lt;CompilerVisibleProperty Include=&quot;Version&quot; /&gt;
+    &lt;CompilerVisibleProperty Include=&quot;Authors&quot; /&gt;
+    &lt;CompilerVisibleProperty Include=&quot;Description&quot; /&gt;
+    &lt;CompilerVisibleProperty Include=&quot;PackageProjectUrl&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;!-- Copy images and property inspector files to output --&gt;
+  &lt;ItemGroup&gt;
+    &lt;Content Include=&quot;Images\**\*.png&quot;&gt;
+      &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;
+    &lt;/Content&gt;
+    &lt;Content Include=&quot;PropertyInspector\**\*.*&quot;&gt;
+      &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;
+    &lt;/Content&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;!-- Source generators run as an analyzer, not a compile-time reference --&gt;
+  &lt;ItemGroup&gt;
+    &lt;ProjectReference Include=&quot;..\..\Cmpnnt.StreamDeckToolkit.SourceGenerators\...&quot;
+                      ReferenceOutputAssembly=&quot;false&quot; OutputItemType=&quot;Analyzer&quot; /&gt;
+    &lt;ProjectReference Include=&quot;..\..\Cmpnnt.StreamDeckToolkit.BuildTasks\...&quot;
+                      ReferenceOutputAssembly=&quot;false&quot; /&gt;
+    &lt;ProjectReference Include=&quot;..\..\Cmpnnt.StreamDeckToolkit\...&quot; /&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;!-- Required for SDPI HTML extraction (see section 5) --&gt;
+  &lt;PropertyGroup&gt;
+    &lt;EmitCompilerGeneratedFiles&gt;true&lt;/EmitCompilerGeneratedFiles&gt;
+    &lt;CompilerGeneratedFilesOutputPath&gt;$(BaseIntermediateOutputPath)Generated&lt;/CompilerGeneratedFilesOutputPath&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;!-- Build targets (see section 6) --&gt;
+  &lt;Target Name=&quot;BuildTasks&quot;&gt;
+    &lt;MSBuild Projects=&quot;path\to\Cmpnnt.StreamDeckToolkit.BuildTasks.csproj&quot; /&gt;
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;CloseStreamDeck&quot; BeforeTargets=&quot;BeforeBuild&quot; Condition=&quot;'$(DesignTimeBuild)' != 'true'&quot;&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.CloseStreamDeck PluginName=&quot;$(AssemblyName)&quot; /&gt;
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;GenerateManifest&quot; AfterTargets=&quot;Build&quot; Condition=&quot;'$(DesignTimeBuild)' != 'true'&quot;&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest
+        PluginAssemblyPath=&quot;$(BaseDir)\$(AssemblyNameLower).sdPlugin\$(AssemblyNameLower).dll&quot;
+        OutputManifestPath=&quot;$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json&quot; /&gt;
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;RenameOutputDirectory&quot; AfterTargets=&quot;Build&quot; DependsOnTargets=&quot;GenerateManifest&quot; Condition=&quot;'$(DesignTimeBuild)' != 'true'&quot;&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin    Condition=&quot;'$(Configuration)' == 'Debug'&quot;   BuildDir=&quot;$(BaseDir)\$(AssemblyNameLower).sdPlugin&quot; PluginName=&quot;$(AssemblyNameLower)&quot; /&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin Condition=&quot;'$(Configuration)' == 'Release'&quot; BuildDir=&quot;$(BaseDir)\$(AssemblyNameLower).sdPlugin&quot; /&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck /&gt;
+  &lt;/Target&gt;
+  &lt;Target Name=&quot;WriteSdpiHtmlOutput&quot; AfterTargets=&quot;CoreCompile&quot; Condition=&quot;'$(DesignTimeBuild)' != 'true'&quot;&gt;
+    &lt;ItemGroup&gt;
+      &lt;SdpiGeneratedFile Include=&quot;$(CompilerGeneratedFilesOutputPath)\**\GeneratedSdpiComponents.g.cs&quot; /&gt;
+    &lt;/ItemGroup&gt;
+    &lt;Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml
+        Condition=&quot;'@(SdpiGeneratedFile)' != ''&quot;
+        GeneratedFile=&quot;@(SdpiGeneratedFile)&quot;&gt;
+      &lt;Output TaskParameter=&quot;GeneratedHtmlFiles&quot; ItemName=&quot;SdpiHtmlFiles&quot; /&gt;
+    &lt;/Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml&gt;
+    &lt;Copy SourceFiles=&quot;@(SdpiHtmlFiles)&quot;
+          DestinationFiles=&quot;@(SdpiHtmlFiles-&gt;'$(OutDir)%(Identity)')&quot;
+          SkipUnchangedFiles=&quot;true&quot;
+          Condition=&quot;'@(SdpiHtmlFiles)' != ''&quot; /&gt;
+  &lt;/Target&gt;
+
+&lt;/Project&gt;
 </code></pre>
-<h4 id="configuration">Configuration</h4>
-<p>You can also pass a lambda function to <code>AddPiaCtl</code> to configure the path to your system's <code>piactl</code> application, if it differs
-from the default. On Windows, the default location is <code>C:\Program Files\Private Internet Access\piactl.exe</code>.</p>
-<pre><code class="lang-csharp">using IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =&gt;
+<hr>
+<h2 id="2-entry-point">2. Entry point</h2>
+<p>In <code>Program.cs</code>, declare plugin-level metadata with <code>[StreamDeckPlugin]</code> and pass the source-generated <code>PluginActionIdRegistry</code> to <code>Toolkit.Run</code>. The registry is generated automatically — you never write it by hand.</p>
+<pre><code class="lang-csharp">using Cmpnnt.StreamDeckToolkit.Attributes;
+using Cmpnnt.StreamDeckToolkit.Enums;
+using Cmpnnt.StreamDeckToolkit.Runtime;
+
+[assembly: StreamDeckPlugin(
+    Name             = &quot;My Plugin&quot;,
+    UUID             = &quot;com.mycompany.myplugin&quot;,
+    Category         = &quot;My Category&quot;,
+    CategoryIcon     = &quot;Images/categoryIcon&quot;,
+    Icon             = &quot;Images/pluginIcon&quot;,
+    SDKVersion       = 2,
+    SoftwareMinVersion = SoftwareMinVersion.V6_5,
+    WindowsMinVersion  = &quot;10&quot;,
+    MacMinVersion      = &quot;12&quot;
+)]
+
+class Program
+{
+    static void Main(string[] args) =&gt; Toolkit.Run(args, new PluginActionIdRegistry());
+}
+</code></pre>
+<p><code>PluginActionIdRegistry</code> is generated by the <code>PluginRegistrar</code> source generator. It scans all classes that implement <code>ICommonPluginFunctions</code> (i.e. subclass <code>KeypadBase</code>, <code>EncoderBase</code>, or <code>KeyAndEncoderBase</code>) and emits a <code>FrozenDictionary</code> of action-ID → constructor factory. See <a href="https://github.com/cmpnnt/streamdeck-toolkit/wiki/Source-Generators#1-pluginregistrar">SourceGenerators.md — PluginRegistrar</a>.</p>
+<hr>
+<h2 id="3-create-an-action">3. Create an action</h2>
+<p>Subclass one of the base action classes and apply <code>[StreamDeckAction]</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Base class</th>
+<th>Controllers entry</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KeypadBase</code></td>
+<td><code>[&quot;Keypad&quot;]</code></td>
+<td>Key/button only</td>
+</tr>
+<tr>
+<td><code>EncoderBase</code></td>
+<td><code>[&quot;Encoder&quot;]</code></td>
+<td>Dial/touchpad only</td>
+</tr>
+<tr>
+<td><code>KeyAndEncoderBase</code></td>
+<td><code>[&quot;Keypad&quot;, &quot;Encoder&quot;]</code></td>
+<td>Both</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-csharp">using Cmpnnt.StreamDeckToolkit.Actions;
+using Cmpnnt.StreamDeckToolkit.Attributes;
+using Cmpnnt.StreamDeckToolkit.Connections;
+using Cmpnnt.StreamDeckToolkit.Payloads;
+
+[StreamDeckAction(
+    Name                  = &quot;My Action&quot;,
+    Tooltip               = &quot;Does something useful&quot;,
+    Icon                  = &quot;Images/pluginAction&quot;,
+    SupportedInMultiActions = true
+)]
+public partial class MyAction : KeypadBase
+{
+    private MyActionSettings settings;
+
+    public MyAction(IOutboundConnection connection, InitialPayload payload)
+        : base(connection, payload)
     {
-        services.AddPiaCtl(options =&gt;
+        settings = payload.Settings?.Deserialize(MySerializerContext.Default.MyActionSettings)
+                   ?? MyActionSettings.CreateDefaultSettings();
+    }
+
+    public override void KeyPressed(KeyPayload payload) { /* ... */ }
+    public override void KeyReleased(KeyPayload payload) { /* ... */ }
+    public override void ReceivedSettings(ReceivedSettingsPayload payload)
+    {
+        settings.PopulateFromJson(payload.Settings);
+        SaveSettings();
+    }
+    public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
+    public override void OnTick() { }
+    public override void Dispose() { }
+}
+</code></pre>
+<p>The action's UUID is derived automatically from its fully-qualified class name (lowercased). For the class above in namespace <code>MyCompany.MyPlugin</code>, the UUID would be <code>mycompany.myplugin.myaction</code>. You never set it manually.</p>
+<hr>
+<h2 id="4-settings">4. Settings</h2>
+<p>Settings classes must be <code>partial</code> and carry <code>[SdSettings]</code>. The source generator implements <code>ISettingsPopulatable</code>, which provides an AOT-safe <code>PopulateFromJson(JsonElement)</code> method that merges only the properties present in the incoming JSON (patch semantics, not full replacement).</p>
+<pre><code class="lang-csharp">using System.Text.Json.Serialization;
+using Cmpnnt.StreamDeckToolkit.Attributes;
+
+[SdSettings]
+internal partial class MyActionSettings
+{
+    public static MyActionSettings CreateDefaultSettings() =&gt;
+        new() { Name = string.Empty, Enabled = false };
+
+    public string Name    { get; set; }
+    public bool   Enabled { get; set; }
+
+    // Use [FilenameProperty] for file-picker inputs — strips the &quot;C:\fakepath\&quot; prefix
+    [FilenameProperty]
+    [JsonPropertyName(&quot;outputFile&quot;)]
+    public string OutputFile { get; set; }
+}
+</code></pre>
+<p>Register all settings types in a <code>JsonSerializerContext</code> for AOT-safe deserialization:</p>
+<pre><code class="lang-csharp">using System.Text.Json.Serialization;
+
+[JsonSourceGenerationOptions(PropertyNameCaseInsensitive = true)]
+[JsonSerializable(typeof(MyActionSettings))]
+internal partial class MySerializerContext : JsonSerializerContext { }
+</code></pre>
+<p>See <a href="https://github.com/cmpnnt/streamdeck-toolkit/wiki/Source-Generators#3-settingspopulatorgenerator">SourceGenerators.md — SettingsPopulatorGenerator</a> for the full type-handling table and diagnostics.</p>
+<hr>
+<h2 id="5-property-inspector-sdpi">5. Property inspector (SDPI)</h2>
+<p>Declare SDPI UI components as fields on your action class and apply <code>[SdpiOutputDirectory]</code>. The <code>SdpiGenerator</code> source generator emits the corresponding HTML document to <code>PropertyInspector/{ClassName}.html</code> automatically — no hand-authored HTML needed.</p>
+<pre><code class="lang-csharp">using Cmpnnt.StreamDeckToolkit.Attributes;
+using Cmpnnt.StreamDeckToolkit.Components;
+using Cmpnnt.StreamDeckToolkit.Components.Models;
+
+[SdpiOutputDirectory(&quot;PropertyInspector/&quot;)]
+[StreamDeckAction(Name = &quot;My Action&quot;, Icon = &quot;Images/pluginAction&quot;)]
+public partial class MyAction : KeypadBase
+{
+    public Textfield nameField = new()
+    {
+        Label   = &quot;Name&quot;,
+        Setting = &quot;name&quot;,
+    };
+
+    public Select modeSelect = new()
+    {
+        Label   = &quot;Mode&quot;,
+        Setting = &quot;mode&quot;,
+        DataSourceSettings = new DataSourceSettings
         {
-            options.PiaPath = @&quot;C:\path\to\piactl.exe&quot;;
-        });
-        services.AddScoped&lt;SomeClass&gt;();
-    })
-    .ConfigureLogging(options =&gt;
+            Options =
+            [
+                new OptionSetting { Value = &quot;fast&quot;,  Label = &quot;Fast&quot;  },
+                new OptionSetting { Value = &quot;slow&quot;,  Label = &quot;Slow&quot;  },
+            ]
+        }
+    };
+
+    // ... constructor, event handlers
+}
+</code></pre>
+<p>The <code>ExtractSdpiHtml</code> build task reads the generated C# constants and writes the final <code>.html</code> files to your plugin output directory. The manifest generator uses the same <code>PropertyInspector/{ClassName}.html</code> convention by default, so the two are automatically consistent.</p>
+<p>Supported components: <code>TextArea</code>, <code>Textfield</code>, <code>Password</code>, <code>Checkbox</code>, <code>CheckboxList</code>, <code>Radio</code>, <code>Select</code>, <code>Button</code>, <code>File</code>, <code>Color</code>, <code>Range</code>, <code>Date/Time/Month/Week</code>. See <a href="https://github.com/cmpnnt/streamdeck-toolkit/wiki/Source-Generators#4-sdpigenerator">SourceGenerators.md — SdpiGenerator</a> for the full list.</p>
+<hr>
+<h2 id="6-manifest-generation">6. Manifest generation</h2>
+<p>You never write <code>manifest.json</code> by hand. It is generated from three layers (highest priority first):</p>
+<pre><code>ManifestConfigBase  &gt;  [StreamDeckPlugin] / [StreamDeckAction]  &gt;  MSBuild  &gt;  Convention
+</code></pre>
+<p>For complex nested values (<code>States</code>, <code>Encoder</code>, <code>ApplicationsToMonitor</code>, <code>Profiles</code>) that cannot be expressed as attribute arguments, subclass <code>ManifestConfigBase</code>:</p>
+<pre><code class="lang-csharp">using Cmpnnt.StreamDeckToolkit.Manifest;
+
+internal class PluginManifestConfig : ManifestConfigBase
+{
+    public override ManifestStateConfig[] DefaultStates =&gt;
+    [
+        new ManifestStateConfig { Image = &quot;Images/pluginAction&quot;, TitleAlignment = &quot;middle&quot; }
+    ];
+
+    public override ManifestEncoderConfig DefaultEncoder =&gt; new()
     {
-        options.ClearProviders();
-        options.AddConsole();
-    })
-    .Build();
+        Layout = &quot;$B1&quot;,
+        TriggerDescription = new ManifestTriggerDescription
+        {
+            Rotate = &quot;Adjust level&quot;,
+            Push   = &quot;Reset&quot;,
+        }
+    };
+
+    public override ManifestApplicationsToMonitor ApplicationsToMonitor =&gt; new()
+    {
+        Windows = [&quot;myapp.exe&quot;],
+        Mac     = [&quot;com.example.myapp&quot;],
+    };
+}
 </code></pre>
-<h3 id="instantiation">Instantiation</h3>
-<p>If you don't need DI, you can use the command-line wrapper by itself by including a reference to <code>Cmpnnt.Pia.Ctl</code>, available as a
-<a href="https://nuget.org/packages/cmpnnt.pia.ctl">nuget package</a>.</p>
-<pre><code class="lang-csharp">PiaCtl pia = new PiaCtl();
-PiaResults results = await pia.GetRegions();
-Console.WriteLine(results);
-</code></pre>
-<h2 id="usage">Usage</h2>
-<p>Full API documentation is available in the <a href="api/index.html">API Reference</a>.</p>
-<h3 id="commands">Commands</h3>
-<blockquote>
-<p>TODO: Add link to developer documentation</p>
-</blockquote>
-<p><code>Cmpnnt.Pia.Ctl</code> allows access to every command exposed by <code>piactl</code>. The methods are all asynchronous, but don't include the <code>async</code> suffix.
-The available commands are as follows. See <a href="http://todo">the API reference</a> for detailed developer documentation.</p>
-<h3 id="results-command-line-output">Results (command line output)</h3>
-<p>All <code>PiaCtl</code> commands return a <code>Task&lt;PiaResults&gt;</code>, which contains a <code>Status</code> enum indicating the result of the operation and a <code>List&lt;string&gt;</code>
-for each of stdout and stderr output. The <code>ToString()</code> method has been overridden to return a JSON-formatted string with that information
-(using source generation for the JSON serialization).</p>
-<h2 id="compiling">Compiling</h2>
-<p>Because <code>Cmpnnt.Pia.Ctl</code> is a .NET 7 Native AOT library, it requires additional tooling to compile.</p>
-<h3 id="windows">Windows</h3>
-<p>On <em>Windows</em>, install
-<a href="http://visualstudio.com">Visual Studio 2022</a> with the Desktop Development for C++ workload.</p>
-<h3 id="linux">Linux</h3>
-<p>On <em>Linux</em>, install the following packages, depending on your distribution:</p>
-<p>Ubuntu 18.04+</p>
-<pre><code class="lang-shell">sudo apt-get install clang zlib1g-dev
-</code></pre>
-<p>Alpine 3.15+</p>
-<pre><code class="lang-shell">sudo apk add clang build-base zlib-dev
-</code></pre>
-<h3 id="macos">MacOS</h3>
-<p>To compile on MacOS, you'll need to install the latest <a href="https://developer.apple.com/download/">Command Line Tools for XCode</a>.</p>
-<h2 id="references">References</h2>
-<p>Links to various articles and documentation referenced while building this project can be found <a href="articles/references.html">here</a></p>
+<p>After the build completes, the <code>GenerateManifest</code> MSBuild task loads the compiled plugin DLL, calls the generated <code>ManifestProvider.GetManifestData()</code> via reflection, and serializes the result to <code>manifest.json</code> in the plugin output directory.</p>
+<p>See <a href="ManifestGeneration.md">ManifestGeneration.md</a> for the full attribute and property reference.</p>
+<hr>
+<h2 id="7-build-behaviour">7. Build behaviour</h2>
+<p>The <code>.csproj</code> targets wire together a complete plugin development workflow:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Task</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BeforeBuild</code></td>
+<td><code>CloseStreamDeck</code></td>
+<td>Kills the Stream Deck app and your plugin process so their binaries can be overwritten</td>
+</tr>
+<tr>
+<td><code>CoreCompile</code></td>
+<td>Source generators</td>
+<td>Emit <code>PluginActionIdRegistry.g.cs</code>, <code>GeneratedManifestModel.g.cs</code>, <code>*.PopulateFromJson.g.cs</code>, <code>GeneratedSdpiComponents.g.cs</code></td>
+</tr>
+<tr>
+<td><code>AfterCoreCompile</code></td>
+<td><code>ExtractSdpiHtml</code></td>
+<td>Reads <code>GeneratedSdpiComponents.g.cs</code>, writes <code>.html</code> files to the plugin output directory</td>
+</tr>
+<tr>
+<td><code>AfterBuild</code></td>
+<td><code>GenerateManifest</code></td>
+<td>Loads the compiled DLL, calls <code>ManifestProvider.GetManifestData()</code>, writes <code>manifest.json</code></td>
+</tr>
+<tr>
+<td><code>AfterBuild</code> (Debug)</td>
+<td><code>LinkPlugin</code></td>
+<td>Runs <code>streamdeck link</code> to symlink the build directory into the Stream Deck plugins folder — no manual copy needed on each rebuild</td>
+</tr>
+<tr>
+<td><code>AfterBuild</code> (Release)</td>
+<td><code>PackagePlugin</code></td>
+<td>Runs <code>streamdeck pack</code> to produce an installable <code>.sdPlugin</code> archive</td>
+</tr>
+<tr>
+<td><code>AfterBuild</code></td>
+<td><code>OpenStreamDeck</code></td>
+<td>Restarts the Stream Deck app so it picks up the updated plugin</td>
+</tr>
+</tbody>
+</table>
+<p>On a Debug build you can simply hit <strong>Build</strong> in your IDE and Stream Deck will reload the plugin automatically.</p>
 
 </article>
 
