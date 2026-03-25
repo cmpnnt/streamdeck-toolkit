@@ -9,7 +9,7 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
     /// <summary>
     /// * Configuration Instructions: TODO
     /// </summary>
-    public static class SdWrapper
+    public static class Toolkit
     {
         // Handles all the communication with the plugin
         private static PluginContainer _container;
@@ -23,7 +23,6 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
         /// *************************************************************************/
         /// <summary>
         /// Library's main initialization point. 
-        /// Pass the args from your Main function and a list of supported PluginActionIds, the framework will handle the rest.
         /// </summary>
         /// <param name="args"></param>
         /// <param name="registry"></param>
