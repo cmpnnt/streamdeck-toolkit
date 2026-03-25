@@ -12,8 +12,8 @@ using SkiaSharp;
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     [StreamDeckAction(
-        Name = "SDTools File Writer",
-        Tooltip = "Writes text to a file using SDTools",
+        Name = "SDTools Test",
+        Tooltip = "Sample action demonstrating SDTools",
         Icon = "Images/pluginAction",
         SupportedInMultiActions = true
     )]
@@ -25,6 +25,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 
         public PluginAction2(IOutboundConnection connection, InitialPayload payload) : base(connection, payload)
         {
+            // TODO: Examine why this .HasValue pattern is necessary and potentially change in all three actions
             settings = (payload.Settings == null || !payload.Settings.HasValue) ?
                 PluginAction2Settings.CreateDefaultSettings() :
                 payload.Settings.Value.Deserialize(SamplePluginSerializerContext.Default.PluginAction2Settings);
@@ -52,6 +53,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
             Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: PropertyInspectorDidAppearEvent");
         }
 
+        // TODO: Move Dispose to the bottom in all three plugin actions
         public override void Dispose()
         {
             Logger.Instance.LogMessage(TracingLevel.Info, $"Destructor called");

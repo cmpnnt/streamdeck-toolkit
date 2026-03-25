@@ -20,8 +20,11 @@
     <Platforms>AnyCPU;x64;ARM64</Platforms>
     <AssemblyName>Cmpnnt.StreamDeckToolkit.SamplePlugin</AssemblyName>
     <RootNamespace>Cmpnnt.StreamDeckToolkit.SamplePlugin</RootNamespace>
+    <Authors>Cmpnnt</Authors>
     <Company>Cmpnnt.StreamDeckToolkit.SamplePlugin</Company>
     <Product>Cmpnnt.StreamDeckToolkit.SamplePlugin</Product>
+    <Version>1.1.0</Version>
+    <PackageProjectUrl>https://github.com/cmpnnt/streamdeck-toolkit</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup>
     <TaskAssemblyPath>$(MSBuildThisFileDirectory)..\Cmpnnt.StreamDeckToolkit.BuildTasks\bin\$(Configuration)\$(Platform)\Cmpnnt.StreamDeckToolkit.BuildTasks.dll</TaskAssemblyPath>

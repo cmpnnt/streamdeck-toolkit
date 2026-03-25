@@ -4,8 +4,8 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     /// <summary>
     /// Provides manifest configuration that cannot be expressed through attributes or MSBuild properties.
-    /// Override properties here to supply states, encoder settings, monitored applications, and profiles.
-    /// These values take highest priority and override attribute and MSBuild values.
+    /// Override properties here to supply states, encoder settings, monitored applications and profiles.
+    /// These values take the highest priority and override attribute and MSBuild values.
     /// </summary>
     internal class SampleManifestConfig : ManifestConfigBase
     {

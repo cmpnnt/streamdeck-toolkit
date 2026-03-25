@@ -15,8 +15,8 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 {
     [SdpiOutputDirectory("PropertyInspector/")]
     [StreamDeckAction(
-        Name = "SDTools Test",
-        Tooltip = "Sample action demonstrating SDTools",
+        Name = "SDTools File Writer",
+        Tooltip = "Writes text to a file using SDTools",
         Icon = "Images/pluginAction",
         SupportedInMultiActions = true
     )]

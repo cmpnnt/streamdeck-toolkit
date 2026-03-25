@@ -4,13 +4,13 @@ using Cmpnnt.StreamDeckToolkit.SourceGenerators;
 
 [assembly: StreamDeckPlugin(
     Name = "SDTools Sample Plugin",
-    UUID = "com.cmpnnt.streamdecktoolkit.sampleplugin",
     Category = "SDTools Sample Plugin",
     CategoryIcon = "Images/categoryIcon",
     Icon = "Images/pluginIcon",
     SDKVersion = 2,
     SoftwareMinVersion = SoftwareMinVersion.V6_4,
-    WindowsMinVersion = "10"
+    WindowsMinVersion = "10",
+    MacMinVersion = "12"
 )]
 
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
@@ -25,3 +25,13 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
         }
     }
 }
+
+/*
+ * TODO:
+ * - Implement the file-writing for one of the sample actions.
+ * - Demonstrate global settings. Maybe set a value and then dig that value out and prepend it to whatever
+ *     is being written to the text file by the action.
+ * - Test all of the possible manifest generation options on both platforms
+ * - Update CommandLineWrapper.GetOsPlatform() methods that use it. GetOsPlatform needs to support Linux
+ *     for the CI pipeline but the callers would then need to throw each time the platform isn't Mac or Windows
+*/
