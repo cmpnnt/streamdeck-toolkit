@@ -1692,17 +1692,17 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper",
-      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.SdWrapper.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
+      "Title": "Cmpnnt.StreamDeckToolkit.Runtime.Toolkit",
+      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
     },
     {
       "type": "ManagedReference",
@@ -1804,30 +1804,30 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.MyTestClass.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientEventTests.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.MyTestClass.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientEventTests.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Tests.MyTestClass",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientEventTests",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests.yml",
+      "source_relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientLifecycleTests.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests.html"
+          "relative_path": "api/Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientLifecycleTests.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientTests",
+      "Title": "Cmpnnt.StreamDeckToolkit.Tests.SdWebSocketClientLifecycleTests",
       "Summary": null
     },
     {
