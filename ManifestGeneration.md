@@ -145,7 +145,7 @@ class Program { ... }
 | `SupportURL` | `string` | Support page URL | omitted |
 | `PropertyInspectorPath` | `string` | Global default property inspector path | per-action convention |
 | `CodePathWin` | `string` | Windows executable name override | `"{assemblyname}.exe"` |
-| `CodePathMac` | `string` | macOS executable name for `CodePathMac` field | omitted |
+| `CodePathMac` | `string` | macOS executable name override | `"{assemblyname}"` when `MacMinVersion` is set, otherwise omitted |
 
 #### `SoftwareMinVersion` enum values
 
@@ -181,23 +181,23 @@ Apply to each plugin action class. The generator reads it alongside the interfac
 public partial class RecordAction : KeypadBase { ... }
 ```
 
-Boolean properties are **only emitted to the manifest when explicitly set** — if you don't set `VisibleInActionsList`, Stream Deck uses its own default (`true`) and nothing is written to the manifest for that field.
-
 #### All properties
 
-| Property | Type | Description |
-|---|---|---|
-| `Name` | `string` | Display name of the action. Defaults to the class name. |
-| `Tooltip` | `string` | Tooltip shown on hover in Stream Deck. |
-| `Icon` | `string` | Action icon path (no extension). Defaults to `"Images/pluginIcon"`. |
-| `PropertyInspectorPath` | `string` | Property inspector HTML path. Defaults to `"PropertyInspector/{ClassName}.html"`. |
-| `SupportURL` | `string` | Action-specific support URL. |
-| `SupportedInMultiActions` | `bool` | Whether the action can be used in multi-actions. |
-| `SupportedInKeyLogicActions` | `bool` | Whether the action can be used in key logic actions. |
-| `DisableAutomaticStates` | `bool` | Disables automatic state management. |
-| `DisableCaching` | `bool` | Disables image caching for this action. |
-| `UserTitleEnabled` | `bool` | Whether the user can set a custom title. |
-| `VisibleInActionsList` | `bool` | Whether the action appears in the action list. |
+| Property | Type | Description | Default |
+|---|---|---|---|
+| `Name` | `string` | Display name of the action in Stream Deck | Class name |
+| `Tooltip` | `string` | Tooltip shown on hover in Stream Deck | omitted |
+| `Icon` | `string` | Action icon path (no extension) | `"Images/pluginIcon"` |
+| `PropertyInspectorPath` | `string` | Property inspector HTML path | `"PropertyInspector/{ClassName}.html"` |
+| `SupportURL` | `string` | Action-specific support URL | omitted |
+| `SupportedInMultiActions` | `bool` | Whether the action can be used in multi-actions | omitted (SD assumes `true`) |
+| `SupportedInKeyLogicActions` | `bool` | Whether the action can be used in key logic actions | omitted (SD assumes `true`) |
+| `DisableAutomaticStates` | `bool` | Disables automatic state management | omitted (SD assumes `false`) |
+| `DisableCaching` | `bool` | Disables image caching for this action | omitted (SD assumes `false`) |
+| `UserTitleEnabled` | `bool` | Whether the user can set a custom title | omitted (SD assumes `true`) |
+| `VisibleInActionsList` | `bool` | Whether the action appears in the action list | omitted (SD assumes `true`) |
+
+Boolean properties are **only written to the manifest when explicitly set** — omitted fields let Stream Deck apply its own defaults (shown above).
 
 #### PropertyInspectorPath convention
 
@@ -362,7 +362,7 @@ These are computed from the code and cannot be overridden:
 |---|---|---|
 | Action `UUID` | Lowercase fully-qualified class name | `"com.mycompany.myplugin.recordaction"` |
 | Plugin `UUID` | `[StreamDeckPlugin(UUID = ...)]` or lowercase assembly name | `"com.mycompany.myplugin"` |
-| `CodePath` | `"{assemblyname}.exe"` or `CodePathWin` attribute | `"com.mycompany.myplugin.exe"` |
+| `CodePath` | Mac-only: `"{assemblyname}"` (or `CodePathMac`); otherwise `"{assemblyname}.exe"` (or `CodePathWin`) | `"com.mycompany.myplugin.exe"` |
 | `Controllers` | Interfaces implemented by the action class | `["Keypad"]`, `["Encoder"]`, or `["Keypad", "Encoder"]` |
 | Action `PropertyInspectorPath` | `"PropertyInspector/{ClassName}.html"` or attribute override | `"PropertyInspector/RecordAction.html"` |
 
@@ -580,8 +580,8 @@ Quick reference for which source controls each manifest field.
 | `Author` | MSBuild `Authors` → assembly name |
 | `Category` | `[StreamDeckPlugin(Category)]` |
 | `CategoryIcon` | `[StreamDeckPlugin(CategoryIcon)]` |
-| `CodePath` | `[StreamDeckPlugin(CodePathWin)]` → `"{assemblyname}.exe"` |
-| `CodePathMac` | `[StreamDeckPlugin(CodePathMac)]` |
+| `CodePath` | Mac-only: `[StreamDeckPlugin(CodePathMac)]` → `"{assemblyname}"`; otherwise: `[StreamDeckPlugin(CodePathWin)]` → `"{assemblyname}.exe"` |
+| `CodePathMac` | `[StreamDeckPlugin(CodePathMac)]` → `"{assemblyname}"` when both platforms configured; omitted for Mac-only |
 | `Description` | MSBuild `Description` |
 | `Icon` | `[StreamDeckPlugin(Icon)]` → `"Images/pluginIcon"` |
 | `Name` | `[StreamDeckPlugin(Name)]` → MSBuild `AssemblyName` |

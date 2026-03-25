@@ -26,8 +26,13 @@ internal static class ManifestProviderTemplate
         string softwareMin = pluginAttr?.SoftwareMinVersion ?? "6.4";
         string? windowsMin = pluginAttr?.WindowsMinVersion;
         string? macMin = pluginAttr?.MacMinVersion;
-        string codePath = pluginAttr?.CodePathWin ?? $"{assemblyNameLower}.exe";
-        string? codePathMac = pluginAttr?.CodePathMac;
+        bool macOnly = macMin != null && windowsMin == null;
+        string codePath = macOnly
+            ? (pluginAttr?.CodePathMac ?? assemblyNameLower)
+            : (pluginAttr?.CodePathWin ?? $"{assemblyNameLower}.exe");
+        string? codePathMac = macOnly
+            ? null
+            : (pluginAttr?.CodePathMac ?? (macMin != null ? assemblyNameLower : null));
         string? globalPropertyInspectorPath = pluginAttr?.PropertyInspectorPath;
 
         var sb = new StringBuilder();
