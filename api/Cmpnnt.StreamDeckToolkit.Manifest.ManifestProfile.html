@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ManifestProfile | PIA Sharp ">
       
-      
+      <meta name="description" content="Describes a Stream Deck profile bundled with the plugin. Supply instances via .">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile" class="text-break">
-Class ManifestProfile  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class ManifestProfile  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,9 @@ Class ManifestProfile  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Describes a Stream Deck profile bundled with the plugin.
+Supply instances via <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html#Cmpnnt_StreamDeckToolkit_Manifest_ManifestConfigBase_Profiles">Profiles</a>.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -156,10 +158,12 @@ Class ManifestProfile  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile_AutoInstall" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.AutoInstall">
   AutoInstall
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>true</code>, the profile is automatically installed when the plugin is installed.
+Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -189,10 +193,12 @@ public bool? AutoInstall { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile_DeviceType" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.DeviceType">
   DeviceType
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The numeric device type this profile targets.
+Corresponds to the <a class="xref" href="Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType.html">DeviceType</a> enum values.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -221,10 +227,12 @@ public int DeviceType { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile_DontAutoSwitchWhenInstalled" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.DontAutoSwitchWhenInstalled">
   DontAutoSwitchWhenInstalled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>true</code>, Stream Deck does not automatically switch to this profile after installation.
+Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -254,10 +262,11 @@ public bool? DontAutoSwitchWhenInstalled { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile_Name" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The file name of the profile (without the <code>.streamDeckProfile</code> extension).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -286,10 +295,12 @@ public string Name { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestProfile_Readonly" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.Readonly">
   Readonly
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>true</code>, the user cannot modify this profile.
+Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -319,7 +330,7 @@ public bool? Readonly { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestProfile.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

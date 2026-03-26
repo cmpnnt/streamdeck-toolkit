@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ManifestAction | PIA Sharp ">
       
-      
+      <meta name="description" content="Represents a single action entry within a Stream Deck plugin manifest. Populated automatically by the manifest source generator from [StreamDeckAction] attributes.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction" class="text-break">
-Class ManifestAction  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class ManifestAction  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,9 @@ Class ManifestAction  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents a single action entry within a Stream Deck plugin manifest.
+Populated automatically by the manifest source generator from <code>[StreamDeckAction]</code> attributes.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -156,10 +158,12 @@ Class ManifestAction  <a class="header-action link-secondary" title="View source
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_Controllers" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Controllers">
   Controllers
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L16"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Controller types supported by this action (e.g. <code>&quot;Keypad&quot;</code>, <code>&quot;Encoder&quot;</code>).
+Derived automatically from the interfaces implemented by the action class. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -189,10 +193,11 @@ public string[]? Controllers { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_DisableAutomaticStates" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.DisableAutomaticStates">
   DisableAutomaticStates
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>true</code>, disables automatic state management for this action. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -222,10 +227,11 @@ public bool? DisableAutomaticStates { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_DisableCaching" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.DisableCaching">
   DisableCaching
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>true</code>, disables image caching for this action. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -255,10 +261,11 @@ public bool? DisableCaching { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_Encoder" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Encoder">
   Encoder
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Encoder (dial) configuration for Stream Deck+ actions. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -288,10 +295,11 @@ public ManifestEncoderConfig? Encoder { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_Icon" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Icon">
   Icon
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Path to the action icon (without extension).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -320,10 +328,11 @@ public string Icon { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_Name" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Display name of the action shown in Stream Deck.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -352,10 +361,11 @@ public string Name { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_PropertyInspectorPath" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.PropertyInspectorPath">
   PropertyInspectorPath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Path to the property inspector HTML file for this action. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -385,10 +395,11 @@ public string? PropertyInspectorPath { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_States" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.States">
   States
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The visual states of this action (e.g. on/off). Defaults to a single state.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -417,10 +428,11 @@ public ManifestStateConfig[] States { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_SupportURL" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportURL">
   SupportURL
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L63"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>URL for the action's support page. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -450,10 +462,11 @@ public string? SupportURL { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_SupportedInKeyLogicActions" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportedInKeyLogicActions">
   SupportedInKeyLogicActions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>false</code>, prevents use in Stream Deck key logic actions. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -483,10 +496,11 @@ public bool? SupportedInKeyLogicActions { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_SupportedInMultiActions" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportedInMultiActions">
   SupportedInMultiActions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>false</code>, prevents use in multi-actions. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -516,10 +530,11 @@ public bool? SupportedInMultiActions { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_Tooltip" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Tooltip">
   Tooltip
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Tooltip shown when hovering over the action in Stream Deck. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -549,10 +564,11 @@ public string? Tooltip { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_UUID" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.UUID">
   UUID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Unique action identifier in reverse-domain format (e.g. <code>&quot;com.mycompany.myplugin.myaction&quot;</code>).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -581,10 +597,11 @@ public string UUID { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_UserTitleEnabled" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.UserTitleEnabled">
   UserTitleEnabled
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>false</code>, prevents the user from setting a custom title. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -614,10 +631,11 @@ public bool? UserTitleEnabled { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestAction_VisibleInActionsList" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.VisibleInActionsList">
   VisibleInActionsList
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L82"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>When <code>false</code>, hides the action from the Stream Deck action list. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -647,7 +665,7 @@ public bool? VisibleInActionsList { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestAction.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

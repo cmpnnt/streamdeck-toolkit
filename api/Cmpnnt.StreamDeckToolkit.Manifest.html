@@ -96,11 +96,15 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.html">ManifestAction</a></dt>
-      <dd></dd>
+      <dd><p>Represents a single action entry within a Stream Deck plugin manifest.
+Populated automatically by the manifest source generator from <code>[StreamDeckAction]</code> attributes.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.html">ManifestApplicationsToMonitor</a></dt>
-      <dd></dd>
+      <dd><p>Specifies the applications whose launch and termination events the plugin wants to receive.
+Supply an instance via <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html#Cmpnnt_StreamDeckToolkit_Manifest_ManifestConfigBase_ApplicationsToMonitor">ApplicationsToMonitor</a>.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html">ManifestConfigBase</a></dt>
@@ -112,31 +116,44 @@ both <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes 
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.html">ManifestEncoderConfig</a></dt>
-      <dd></dd>
+      <dd><p>Configures the Stream Deck+ encoder (dial) appearance for an action.
+Set via <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html#Cmpnnt_StreamDeckToolkit_Manifest_ManifestConfigBase_DefaultEncoder">DefaultEncoder</a> or per-action in the manifest.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.html">ManifestOS</a></dt>
-      <dd></dd>
+      <dd><p>Specifies a supported OS platform and its minimum required version.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.html">ManifestProfile</a></dt>
-      <dd></dd>
+      <dd><p>Describes a Stream Deck profile bundled with the plugin.
+Supply instances via <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html#Cmpnnt_StreamDeckToolkit_Manifest_ManifestConfigBase_Profiles">Profiles</a>.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.html">ManifestRoot</a></dt>
-      <dd></dd>
+      <dd><p>Represents the root structure of a Stream Deck plugin manifest (<code>manifest.json</code>).
+Populated by the manifest source generator at build time; use <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html">ManifestConfigBase</a>
+and the <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes to control the output.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.html">ManifestSoftware</a></dt>
-      <dd></dd>
+      <dd><p>Specifies the minimum required Stream Deck software version.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.html">ManifestStateConfig</a></dt>
-      <dd></dd>
+      <dd><p>Configures the appearance of a single action state in the Stream Deck manifest.
+A state controls the image, title, and font displayed on the key for that state.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.html">ManifestTriggerDescription</a></dt>
-      <dd></dd>
+      <dd><p>Human-readable descriptions of the dial's trigger interactions shown in the Stream Deck UI.
+All fields are optional and omitted when <code>null</code>.</p>
+</dd>
     </dl>
 
 

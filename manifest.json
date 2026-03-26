@@ -1086,7 +1086,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Components.BaseComponent",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.BaseComponent.yml\" sourcestartlinenumber=\"1\">Base class for all SDPI Property Inspector components. Provides the common properties shared by\nevery component: label, setting key, current value, default value, and disabled state.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1380,7 +1380,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting.yml\" sourcestartlinenumber=\"1\">Represents a single selectable option in a <xref href=\"Cmpnnt.StreamDeckToolkit.Components.Select\" data-throw-if-not-resolved=\"false\"></xref>, <xref href=\"Cmpnnt.StreamDeckToolkit.Components.CheckboxList\" data-throw-if-not-resolved=\"false\"></xref>,\nor <xref href=\"Cmpnnt.StreamDeckToolkit.Components.Radio\" data-throw-if-not-resolved=\"false\"></xref> component. Rendered as an <code>&lt;option&gt;</code> element in the generated HTML.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1394,7 +1394,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.yml\" sourcestartlinenumber=\"1\">Controls how and where a component's value is persisted in the Stream Deck settings.\nWhen <xref href=\"Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.Setting\" data-throw-if-not-resolved=\"false\"></xref> is empty the parent component's <code>Setting</code> key is used.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1478,7 +1478,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.yml\" sourcestartlinenumber=\"1\">Represents a single action entry within a Stream Deck plugin manifest.\nPopulated automatically by the manifest source generator from <code>[StreamDeckAction]</code> attributes.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1492,7 +1492,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.yml\" sourcestartlinenumber=\"1\">Specifies the applications whose launch and termination events the plugin wants to receive.\nSupply an instance via <xref href=\"Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.ApplicationsToMonitor\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1520,7 +1520,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.yml\" sourcestartlinenumber=\"1\">Configures the Stream Deck+ encoder (dial) appearance for an action.\nSet via <xref href=\"Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.DefaultEncoder\" data-throw-if-not-resolved=\"false\"></xref> or per-action in the manifest.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1534,7 +1534,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.yml\" sourcestartlinenumber=\"1\">Specifies a supported OS platform and its minimum required version.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1548,7 +1548,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.yml\" sourcestartlinenumber=\"1\">Describes a Stream Deck profile bundled with the plugin.\nSupply instances via <xref href=\"Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.Profiles\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1562,7 +1562,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.yml\" sourcestartlinenumber=\"1\">Represents the root structure of a Stream Deck plugin manifest (<code>manifest.json</code>).\nPopulated by the manifest source generator at build time; use <xref href=\"Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase\" data-throw-if-not-resolved=\"false\"></xref>\nand the <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes to control the output.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1576,7 +1576,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.yml\" sourcestartlinenumber=\"1\">Specifies the minimum required Stream Deck software version.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1590,7 +1590,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.yml\" sourcestartlinenumber=\"1\">Configures the appearance of a single action state in the Stream Deck manifest.\nA state controls the image, title, and font displayed on the key for that state.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1604,7 +1604,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.yml\" sourcestartlinenumber=\"1\">Human-readable descriptions of the dial's trigger interactions shown in the Stream Deck UI.\nAll fields are optional and omitted when <code>null</code>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1702,7 +1702,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Runtime.Toolkit",
-      "Summary": "<ul sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml\" sourcestartlinenumber=\"1\">\n<li sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml\" sourcestartlinenumber=\"1\">Configuration Instructions: TODO</li>\n</ul>\n"
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.yml\" sourcestartlinenumber=\"1\">Main entry point for the Stream Deck plugin toolkit.\nCall <xref href=\"Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.Run(System.String%5b%5d%2cCmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry%2cCmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler)\" data-throw-if-not-resolved=\"false\"></xref> from your plugin's <code>Main</code> method to connect to the Stream Deck app.</p>\n"
     },
     {
       "type": "ManagedReference",

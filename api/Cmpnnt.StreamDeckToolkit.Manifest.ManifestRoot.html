@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ManifestRoot | PIA Sharp ">
       
-      
+      <meta name="description" content="Represents the root structure of a Stream Deck plugin manifest (manifest.json). Populated by the manifest source generator at build time; use  and the [StreamDeckPlugin]/[StreamDeckAction] attributes to control the output.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot" class="text-break">
-Class ManifestRoot  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L7"><i class="bi bi-code-slash"></i></a>
+Class ManifestRoot  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,10 @@ Class ManifestRoot  <a class="header-action link-secondary" title="View source" 
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents the root structure of a Stream Deck plugin manifest (<code>manifest.json</code>).
+Populated by the manifest source generator at build time; use <a class="xref" href="Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.html">ManifestConfigBase</a>
+and the <code>[StreamDeckPlugin]</code>/<code>[StreamDeckAction]</code> attributes to control the output.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -156,10 +159,11 @@ Class ManifestRoot  <a class="header-action link-secondary" title="View source" 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Actions" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Actions">
   Actions
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L19"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The list of actions provided by this plugin.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -188,10 +192,12 @@ public List&lt;ManifestAction&gt; Actions { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_ApplicationsToMonitor" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.ApplicationsToMonitor">
   ApplicationsToMonitor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L26"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Applications whose launch and termination events the plugin wants to receive.
+Omitted from the manifest when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -221,10 +227,11 @@ public ManifestApplicationsToMonitor? ApplicationsToMonitor { get; set; }</code>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Author" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Author">
   Author
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L31"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The author of the plugin (maps to the MSBuild <code>Authors</code> property).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -253,10 +260,11 @@ public string Author { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Category" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Category">
   Category
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Category label shown in the Stream Deck action list. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -286,10 +294,11 @@ public string? Category { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_CategoryIcon" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CategoryIcon">
   CategoryIcon
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Path to the category icon (without extension). Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -319,10 +328,11 @@ public string? CategoryIcon { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_CodePath" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePath">
   CodePath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Relative path to the plugin executable (e.g. <code>myplugin.exe</code> on Windows).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -351,10 +361,11 @@ public string CodePath { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_CodePathMac" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePathMac">
   CodePathMac
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>macOS-specific executable path override. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -384,10 +395,11 @@ public string? CodePathMac { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_CodePathWin" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePathWin">
   CodePathWin
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Windows-specific executable path override. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -417,10 +429,11 @@ public string? CodePathWin { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_DefaultWindowSize" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.DefaultWindowSize">
   DefaultWindowSize
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Default size of the plugin window, as <code>[width, height]</code>. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -450,10 +463,11 @@ public int[]? DefaultWindowSize { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Description" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Description">
   Description
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Plugin description (maps to the MSBuild <code>Description</code> property).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -482,10 +496,11 @@ public string Description { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Icon" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Icon">
   Icon
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Path to the plugin icon (without extension).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -514,10 +529,11 @@ public string Icon { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Name" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Name">
   Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L72"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Display name of the plugin shown in Stream Deck.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -546,10 +562,11 @@ public string Name { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_OS" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.OS">
   OS
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>List of supported operating systems and their minimum versions.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -578,10 +595,11 @@ public List&lt;ManifestOS&gt; OS { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Profiles" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Profiles">
   Profiles
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stream Deck profiles bundled with the plugin. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -611,10 +629,11 @@ public List&lt;ManifestProfile&gt;? Profiles { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_PropertyInspectorPath" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.PropertyInspectorPath">
   PropertyInspectorPath
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Default property inspector HTML path for all actions. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -644,10 +663,11 @@ public string? PropertyInspectorPath { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_SDKVersion" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.SDKVersion">
   SDKVersion
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L90"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stream Deck SDK version targeted by this plugin (must be 2 or 3).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -676,10 +696,11 @@ public int SDKVersion { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Schema" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Schema">
   Schema
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>JSON schema URL for the manifest.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -708,10 +729,11 @@ public string Schema { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Software" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Software">
   Software
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L94"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Minimum required Stream Deck software version.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -740,10 +762,11 @@ public ManifestSoftware Software { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_SupportURL" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.SupportURL">
   SupportURL
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L98"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>URL for the plugin's support page. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -773,10 +796,11 @@ public string? SupportURL { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_URL" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.URL">
   URL
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>URL for the plugin's website. Omitted when <code>null</code>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -806,10 +830,11 @@ public string? URL { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_UUID" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.UUID">
   UUID
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L108"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Unique plugin identifier in reverse-domain format (e.g. <code>&quot;com.mycompany.myplugin&quot;</code>).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -838,10 +863,11 @@ public string UUID { get; set; }</code></pre>
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Manifest_ManifestRoot_Version" data-uid="Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Version">
   Version
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Plugin version string (maps to the MSBuild <code>Version</code> property).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -870,7 +896,7 @@ public string Version { get; set; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L7" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Manifest/ManifestRoot.cs/#L12" class="edit-link">Edit this page</a>
         </div>
 
 

@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Toolkit | PIA Sharp ">
       
-      <meta name="description" content="Configuration Instructions: TODO">
+      <meta name="description" content="Main entry point for the Stream Deck plugin toolkit. Call  from your plugin&#39;s Main method to connect to the Stream Deck app.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_StreamDeckToolkit_Runtime_Toolkit" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.Toolkit" class="text-break">
-Class Toolkit  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Class Toolkit  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,9 +97,8 @@ Class Toolkit  <a class="header-action link-secondary" title="View source" href=
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><ul>
-<li>Configuration Instructions: TODO</li>
-</ul>
+  <div class="markdown summary"><p>Main entry point for the Stream Deck plugin toolkit.
+Call <a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.html#Cmpnnt_StreamDeckToolkit_Runtime_Toolkit_Run_System_String___Cmpnnt_StreamDeckToolkit_Runtime_IPluginActionRegistry_Cmpnnt_StreamDeckToolkit_Utilities_IUpdateHandler_">Run(string[], IPluginActionRegistry, IUpdateHandler)</a> from your plugin's <code>Main</code> method to connect to the Stream Deck app.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -159,10 +158,12 @@ Class Toolkit  <a class="header-action link-secondary" title="View source" href=
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_Toolkit_Run_System_String___Cmpnnt_StreamDeckToolkit_Runtime_IPluginActionRegistry_Cmpnnt_StreamDeckToolkit_Utilities_IUpdateHandler_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.Run(System.String[],Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry,Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler)">
   Run(string[], IPluginActionRegistry, IUpdateHandler)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Library's main initialization point.</p>
+  <div class="markdown level1 summary"><p>Connects the plugin to the Stream Deck app and begins processing events.
+Call this from your plugin's <code>Main</code> method, passing the command-line arguments
+supplied by Stream Deck at launch.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -173,11 +174,14 @@ Class Toolkit  <a class="header-action link-secondary" title="View source" href=
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
+    <dd><p>Command-line arguments passed by the Stream Deck app.</p>
+</dd>
     <dt><code>registry</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry.html">IPluginActionRegistry</a></dt>
-    <dd></dd>
+    <dd><p>Registry that maps action UUIDs to action instances.</p>
+</dd>
     <dt><code>updateHandler</code> <a class="xref" href="Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler.html">IUpdateHandler</a></dt>
-    <dd></dd>
+    <dd><p>Optional handler for plugin update notifications.</p>
+</dd>
   </dl>
 
 
@@ -195,7 +199,7 @@ Class Toolkit  <a class="header-action link-secondary" title="View source" href=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/Toolkit.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 
