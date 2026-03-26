@@ -19,6 +19,28 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
     private const string MANIFEST_CONFIG_BASE = "Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase";
     private const string STREAM_DECK_PLUGIN_ATTR = "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckPluginAttribute";
     private const string STREAM_DECK_ACTION_ATTR = "Cmpnnt.StreamDeckToolkit.Attributes.StreamDeckActionAttribute";
+    private const string SDPI_OUTPUT_DIRECTORY_ATTR = "Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute";
+
+    private static readonly HashSet<string> SdpiComponentTypeNames =
+    [
+        "Cmpnnt.StreamDeckToolkit.Components.TextArea",
+        "Cmpnnt.StreamDeckToolkit.Components.Textfield",
+        "Cmpnnt.StreamDeckToolkit.Components.Checkbox",
+        "Cmpnnt.StreamDeckToolkit.Components.CheckboxList",
+        "Cmpnnt.StreamDeckToolkit.Components.Button",
+        "Cmpnnt.StreamDeckToolkit.Components.Calendar.Date",
+        "Cmpnnt.StreamDeckToolkit.Components.Calendar.DateTime",
+        "Cmpnnt.StreamDeckToolkit.Components.Calendar.Month",
+        "Cmpnnt.StreamDeckToolkit.Components.Calendar.Time",
+        "Cmpnnt.StreamDeckToolkit.Components.Calendar.Week",
+        "Cmpnnt.StreamDeckToolkit.Components.Color",
+        "Cmpnnt.StreamDeckToolkit.Components.Delegate",
+        "Cmpnnt.StreamDeckToolkit.Components.File",
+        "Cmpnnt.StreamDeckToolkit.Components.Password",
+        "Cmpnnt.StreamDeckToolkit.Components.Radio",
+        "Cmpnnt.StreamDeckToolkit.Components.Range",
+        "Cmpnnt.StreamDeckToolkit.Components.Select",
+    ];
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -160,11 +182,16 @@ public class ManifestModelSourceGenerator : IIncrementalGenerator
 
                 AttributeData? actionAttr = FindAttribute(classSymbol.GetAttributes(), STREAM_DECK_ACTION_ATTR);
 
+                bool hasSdpiHtml = FindAttribute(classSymbol.GetAttributes(), SDPI_OUTPUT_DIRECTORY_ATTR) != null
+                    && classSymbol.GetMembers().OfType<IFieldSymbol>()
+                        .Any(f => SdpiComponentTypeNames.Contains(f.Type.ToDisplayString()));
+
                 results.Add(new ActionInfo(
                     fullClassName,
                     isKeypad,
                     isEncoder,
-                    actionAttr != null ? ParseActionAttrData(actionAttr) : null));
+                    actionAttr != null ? ParseActionAttrData(actionAttr) : null,
+                    hasSdpiHtml));
             }
         }
 
@@ -275,7 +302,8 @@ internal sealed record ActionInfo(
     string FullClassName,
     bool IsKeypad,
     bool IsEncoder,
-    ActionAttrData? AttrData)
+    ActionAttrData? AttrData,
+    bool HasSdpiHtml)
 {
     public string ClassName =>
         FullClassName.Contains('.')

@@ -9,7 +9,8 @@ internal static class ManifestProviderTemplate
     {
         var (msbuild, pluginAttr, actions, configClassName) = input;
 
-        string assemblyNameLower = (msbuild.AssemblyName ?? "plugin").ToLowerInvariant();
+        string assemblyName = (msbuild.AssemblyName ?? "plugin");
+        string assemblyNameLower = assemblyName.ToLowerInvariant();
 
         // Resolve plugin-level values: attribute > MSBuild > convention
         string pluginUuid = pluginAttr?.Uuid ?? assemblyNameLower;
@@ -28,11 +29,11 @@ internal static class ManifestProviderTemplate
         string? macMin = pluginAttr?.MacMinVersion;
         bool macOnly = macMin != null && windowsMin == null;
         string codePath = macOnly
-            ? (pluginAttr?.CodePathMac ?? assemblyNameLower)
-            : (pluginAttr?.CodePathWin ?? $"{assemblyNameLower}.exe");
+            ? (pluginAttr?.CodePathMac ?? assemblyName)
+            : (pluginAttr?.CodePathWin ?? $"{assemblyName}.exe");
         string? codePathMac = macOnly
             ? null
-            : (pluginAttr?.CodePathMac ?? (macMin != null ? assemblyNameLower : null));
+            : (pluginAttr?.CodePathMac ?? (macMin != null ? assemblyName : null));
         string? globalPropertyInspectorPath = pluginAttr?.PropertyInspectorPath;
 
         var sb = new StringBuilder();
@@ -105,16 +106,17 @@ internal static class ManifestProviderTemplate
             ActionAttrData? attr = action.AttrData;
             string actionName = attr?.Name ?? action.ClassName;
             string actionIcon = attr?.Icon ?? "Images/pluginIcon";
-            string propertyInspectorPath = attr?.PropertyInspectorPath
+            string? propertyInspectorPath = attr?.PropertyInspectorPath
                 ?? globalPropertyInspectorPath
-                ?? $"PropertyInspector/{action.ClassName}.html";
+                ?? (action.HasSdpiHtml ? $"PropertyInspector/{action.ClassName}.html" : null);
 
             sb.AppendLine("            {");
             sb.AppendLine("                var action = new ManifestAction();");
             sb.AppendLine($"                action.UUID = {Q(action.ActionUuid)};");
             sb.AppendLine($"                action.Name = {Q(actionName)};");
             sb.AppendLine($"                action.Icon = {Q(actionIcon)};");
-            sb.AppendLine($"                action.PropertyInspectorPath = {Q(propertyInspectorPath)};");
+            if (propertyInspectorPath != null)
+                sb.AppendLine($"                action.PropertyInspectorPath = {Q(propertyInspectorPath)};");
 
             // Controllers derived from interfaces
             var controllers = new List<string>();
