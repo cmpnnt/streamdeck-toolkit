@@ -48,7 +48,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
-        <PackageReference Include="NLog" Version="5.2.8" />
+        <PackageReference Include="NLog" Version="6.1.1" />
         <PackageReference Include="SkiaSharp" Version="2.88.8" />
     </ItemGroup>
     <ItemGroup>

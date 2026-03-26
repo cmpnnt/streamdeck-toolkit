@@ -62,7 +62,7 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
         private Logger()
         {
             var config = new NLog.Config.LoggingConfiguration();
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "pluginlog.log", ArchiveEvery=NLog.Targets.FileArchivePeriod.Day, MaxArchiveFiles=3, ArchiveFileName="archive/log.{###}.log", ArchiveNumbering=NLog.Targets.ArchiveNumberingMode.Rolling, Layout = "${longdate}|${level:uppercase=true}|${processname}|${threadid}|${message}" };
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "pluginlog.log", ArchiveEvery=NLog.Targets.FileArchivePeriod.Day, MaxArchiveFiles=3, ArchiveFileName="archive/log.{###}.log", ArchiveSuffixFormat = ".{#}", Layout = "${longdate}|${level:uppercase=true}|${processname}|${threadid}|${message}" };
             config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
             LogManager.Configuration = config;
             log = LogManager.GetCurrentClassLogger();
