@@ -1632,7 +1632,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.yml\" sourcestartlinenumber=\"1\">Default <xref href=\"Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket\" data-throw-if-not-resolved=\"false\"></xref> implementation backed by <xref href=\"System.Net.WebSockets.ClientWebSocket\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -1646,7 +1646,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api/Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.yml\" sourcestartlinenumber=\"1\">Abstraction over <xref href=\"System.Net.WebSockets.ClientWebSocket\" data-throw-if-not-resolved=\"false\"></xref> to enable testing and injection.</p>\n"
     },
     {
       "type": "ManagedReference",

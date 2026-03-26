@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IClientWebSocket | PIA Sharp ">
       
-      
+      <meta name="description" content="Abstraction over  to enable testing and injection.">
       <link rel="icon" href="../images/favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -89,7 +89,7 @@
 
 
   <h1 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket" class="text-break">
-Interface IClientWebSocket  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L8"><i class="bi bi-code-slash"></i></a>
+Interface IClientWebSocket  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L9"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
   <dl><dt>Assembly</dt><dd>StreamDeckToolkit.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Abstraction over <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.websockets.clientwebsocket">ClientWebSocket</a> to enable testing and injection.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -131,10 +132,11 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket_State" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.State">
   State
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L12"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the current state of the WebSocket connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -166,10 +168,11 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket_CloseAsync_System_Net_WebSockets_WebSocketCloseStatus_System_String_System_Threading_CancellationToken_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)">
   CloseAsync(WebSocketCloseStatus, string, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Closes the WebSocket connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -206,10 +209,11 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket_ConnectAsync_System_Uri_System_Threading_CancellationToken_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
   ConnectAsync(Uri, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Connects to the specified URI.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -244,10 +248,11 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket_ReceiveAsync_System_ArraySegment_System_Byte__System_Threading_CancellationToken_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.ReceiveAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
   ReceiveAsync(ArraySegment&lt;byte&gt;, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L21"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Receives data from the WebSocket connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -282,10 +287,11 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 
   <h3 id="Cmpnnt_StreamDeckToolkit_Runtime_IClientWebSocket_SendAsync_System_ArraySegment_System_Byte__System_Net_WebSockets_WebSocketMessageType_System_Boolean_System_Threading_CancellationToken_" data-uid="Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.SendAsync(System.ArraySegment{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)">
   SendAsync(ArraySegment&lt;byte&gt;, WebSocketMessageType, bool, CancellationToken)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sends data over the WebSocket connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -324,7 +330,7 @@ Interface IClientWebSocket  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L8" class="edit-link">Edit this page</a>
+          <a href="https://github.com/cmpnnt/streamdeck-toolkit/blob/main/Cmpnnt.StreamDeckToolkit/Runtime/IClientWebSocket.cs/#L9" class="edit-link">Edit this page</a>
         </div>
 
 
