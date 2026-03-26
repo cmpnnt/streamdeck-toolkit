@@ -48,15 +48,15 @@ public static class CommandLineWrapper
         {
             if (!string.IsNullOrEmpty(e.Data))
             {
-               output.Append(e.Data.Trim());
+               output.AppendLine(e.Data.Trim());
             }
         };
-        
+
         proc.ErrorDataReceived += (_, e) =>
         {
             if (!string.IsNullOrEmpty(e.Data))
             {
-                error.Append($"{e.Data.Trim()} ");
+                error.AppendLine(e.Data.Trim());
             }
         };
 

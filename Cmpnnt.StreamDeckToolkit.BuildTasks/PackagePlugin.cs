@@ -23,13 +23,11 @@ public class PackagePlugin : Task
     {
         ProcessUtilities pu = new("", this);
 
-        if (pu.IsRunning("StreamDeck"))
-        {
-            Log.LogError("StreamDeck is running. Please close the application before continuing.");
-            return false;
-        }
+        if (!pu.IsRunning("StreamDeck")) return pu.FindCli() && pu.PackPlugin(BuildDir, BuildDir);
         
-        return pu.FindCli() && pu.PackPlugin(BuildDir, OutputDir);
+        Log.LogError("StreamDeck is running. Please close the application before continuing.");
+        return false;
+
     }
     
     // TODO: Note the default directories for the packaged plugin in the documentation.
@@ -40,6 +38,7 @@ public class PackagePlugin : Task
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             return @$"{appData}\Elgato\StreamDeck\Plugins";
         }
+        
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
             return "~/Library/Application Support/Elgato/StreamDeck/Plugins";

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="BuildTasks" >
+<Project Sdk="Microsoft.NET.Sdk" InitialTargets="BuildTasks" >
   <!-- Tasks -->
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.SetOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.RenameOutputDirectory" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
@@ -16,6 +16,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <LangVersion>14</LangVersion>
     <PublishAot>true</PublishAot>
+    <StripSymbols>true</StripSymbols>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Platforms>AnyCPU;x64;ARM64</Platforms>
     <AssemblyName>Cmpnnt.StreamDeckToolkit.SamplePlugin</AssemblyName>
@@ -23,7 +24,7 @@
     <Authors>Cmpnnt</Authors>
     <Company>Cmpnnt.StreamDeckToolkit.SamplePlugin</Company>
     <Product>Cmpnnt.StreamDeckToolkit.SamplePlugin</Product>
-    <Version>1.1.0</Version>
+    <Version>1.1.2.1</Version>
     <PackageProjectUrl>https://github.com/cmpnnt/streamdeck-toolkit</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup>
@@ -47,9 +48,19 @@
             PluginAssemblyPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\$(AssemblyNameLower).dll"
             OutputManifestPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" />
   </Target>
-  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest" Condition="'$(DesignTimeBuild)' != 'true'">
-    <Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin Condition="'$(Configuration)' == 'Debug'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
-    <Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin Condition="'$(Configuration)' == 'Release'"  BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" />
+  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck />
+  </Target>
+  <Target Name="PackageAndInstall" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release' AND '$(DesignTimeBuild)' != 'true'">
+    <PropertyGroup>
+      <!-- Compute bin\Release\win-x64\<name>.sdPlugin\ from bin\Release\win-x64\publish\ -->
+      <_SdPluginPublishDir>$([System.IO.Path]::Combine($([System.IO.Path]::GetDirectoryName($([System.IO.Path]::GetDirectoryName('$(PublishDir)')))), '$(AssemblyNameLower).sdPlugin'))\</_SdPluginPublishDir>
+    </PropertyGroup>
+    <Copy SourceFiles="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" DestinationFolder="$(PublishDir)" />
+    <Delete Files="$(PublishDir)$(AssemblyName).pdb" />
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.RenameOutputDirectory OldPath="$(PublishDir)" NewPath="$(_SdPluginPublishDir)" />
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin BuildDir="$(_SdPluginPublishDir)" />
     <Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck />
   </Target>
   
