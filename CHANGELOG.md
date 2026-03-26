@@ -1,4 +1,14 @@
 
+## [v1.1.2] - 2026-03-26
+### :bug: Bug Fixes
+- [`d062988`](https://github.com/cmpnnt/streamdeck-toolkit/commit/d062988aa7170f8fd3af1a28bb7283821b791e21) - **AOT**: upgrade to NLog 6.x *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+- [`8eb27e6`](https://github.com/cmpnnt/streamdeck-toolkit/commit/8eb27e6c7f30b81d4aa3a74743d1860ba41101ce) - **build**: fix compiled binary name casing *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+### :wrench: Chores
+- [`b284f2b`](https://github.com/cmpnnt/streamdeck-toolkit/commit/b284f2bf428b976f867ee0f22c00cb34a8bf1dfa) - **issues**: update issue template *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+- [`9fc3c35`](https://github.com/cmpnnt/streamdeck-toolkit/commit/9fc3c3561c219a7346fc01f222fcc423f3013b0e) - **sample plugin**: remove MacMinVersion *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.1.0] - 2026-03-24
 ### :sparkles: New Features
 - [`ee42481`](https://github.com/cmpnnt/streamdeck-toolkit/commit/ee42481076d2469f9e50f74f22db5fa7a5548b7c) - **manifest**: implement automatic manifest.json generation from source *(commit by [@cmpnnt](https://github.com/cmpnnt))*
@@ -71,3 +81,4 @@
 [v1.0.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.1...v1.0.2
 [v1.0.3]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.2...v1.0.3
 [v1.1.0]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.3...v1.1.0
+[v1.1.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.1.1...v1.1.2
