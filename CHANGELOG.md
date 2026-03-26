@@ -1,4 +1,9 @@
 
+## [v1.1.3] - 2026-03-26
+### :bug: Bug Fixes
+- [`cb97c8b`](https://github.com/cmpnnt/streamdeck-toolkit/commit/cb97c8b1bb7334bbfdfcc59b2d69d80b1086f052) - **build**: fix publish/package plugin msbuild *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.1.2] - 2026-03-26
 ### :bug: Bug Fixes
 - [`d062988`](https://github.com/cmpnnt/streamdeck-toolkit/commit/d062988aa7170f8fd3af1a28bb7283821b791e21) - **AOT**: upgrade to NLog 6.x *(commit by [@cmpnnt](https://github.com/cmpnnt))*
@@ -82,3 +87,4 @@
 [v1.0.3]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.2...v1.0.3
 [v1.1.0]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.3...v1.1.0
 [v1.1.2]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.1.1...v1.1.2
+[v1.1.3]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.1.2...v1.1.3
