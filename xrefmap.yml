@@ -4899,6 +4899,22 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.DeviceInfo
   nameWithType: StreamDeckOptions.DeviceInfo
+- uid: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse(System.String[])
+  name: Parse(string[])
+  href: api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.html#Cmpnnt_StreamDeckToolkit_Communication_Registration_StreamDeckOptions_Parse_System_String___
+  commentId: M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse(System.String[])
+  name.vb: Parse(String())
+  fullName: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse(string[])
+  fullName.vb: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse(String())
+  nameWithType: StreamDeckOptions.Parse(string[])
+  nameWithType.vb: StreamDeckOptions.Parse(String())
+- uid: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse*
+  name: Parse
+  href: api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.html#Cmpnnt_StreamDeckToolkit_Communication_Registration_StreamDeckOptions_Parse_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse
+  nameWithType: StreamDeckOptions.Parse
 - uid: Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.PluginUuid
   name: PluginUuid
   href: api/Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.html#Cmpnnt_StreamDeckToolkit_Communication_Registration_StreamDeckOptions_PluginUuid
