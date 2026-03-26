@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using Cmpnnt.StreamDeckToolkit.Utilities;
-using CommandLine;
-using RegistrationSerializerContext = Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationSerializerContext;
 
 namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
 {
@@ -18,25 +15,21 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
         /// <summary>
         /// Port to communicate with the StreamDeck app
         /// </summary>
-        [Option("port", Required = true, HelpText = "The websocket port to connect to", SetName = "port")]
         public int Port { get; set; }
 
         /// <summary>
         /// UUID of the plugin
         /// </summary>
-        [Option("pluginUUID", Required = true, HelpText = "The UUID of the plugin")]
         public string PluginUuid { get; set; }
 
         /// <summary>
         /// Name of the event we should pass to the StreamDeck app to register
         /// </summary>
-        [Option("registerEvent", Required = true, HelpText = "The event triggered when the plugin is registered?")]
         public string RegisterEvent { get; set; }
 
         /// <summary>
         /// Raw information in JSON format which we will parse into the DeviceInfo property
         /// </summary>
-        [Option("info", Required = true, HelpText = "Extra JSON launch data")]
         public string RawInfo { get; set; }
 
         /// <summary>
@@ -86,5 +79,39 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
 
         /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckOptions() {}
+
+        /// <summary>
+        /// Parses Stream Deck launch arguments into a <see cref="StreamDeckOptions"/> instance.
+        /// Handles both single-dash and double-dash prefixes and is case-insensitive.
+        /// Unknown arguments are ignored.
+        /// </summary>
+        public static StreamDeckOptions Parse(string[] args)
+        {
+            var options = new StreamDeckOptions();
+            for (int i = 0; i < args.Length - 1; i++)
+            {
+                if (!args[i].StartsWith('-')) continue;
+                string key = args[i].TrimStart('-');
+                string value = args[i + 1];
+                i++;
+
+                switch (key.ToLowerInvariant())
+                {
+                    case "port":
+                        if (int.TryParse(value, out int port)) options.Port = port;
+                        break;
+                    case "pluginuuid":
+                        options.PluginUuid = value;
+                        break;
+                    case "registerevent":
+                        options.RegisterEvent = value;
+                        break;
+                    case "info":
+                        options.RawInfo = value;
+                        break;
+                }
+            }
+            return options;
+        }
     }
 }

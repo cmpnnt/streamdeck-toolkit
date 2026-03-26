@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Cmpnnt.StreamDeckToolkit.Communication.Registration;
 using Cmpnnt.StreamDeckToolkit.Utilities;
-using CommandLine;
 
 namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
@@ -41,37 +40,20 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
             Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin Loading - Args: {string.Join(" ", args)}");
             #endif
 
-            // The command line args parser expects all args to use `--`, so, let's append
-            for (var count = 0; count < args.Length; count++)
-            {
-                if (args[count].StartsWith('-') && !args[count].StartsWith("--"))
-                {
-                    args[count] = $"-{args[count]}";
-                }
-            }
-
-            var parser = new Parser((with) =>
-            {
-                with.EnableDashDash = true;
-                with.CaseInsensitiveEnumValues = true;
-                with.CaseSensitive = false;
-                with.IgnoreUnknownArguments = true;
-                with.HelpWriter = Console.Error;
-            });
-
-            ParserResult<StreamDeckOptions> options = parser.ParseArguments<StreamDeckOptions>(args);
-            options.WithParsed(async void (o) =>
+            StreamDeckOptions options = StreamDeckOptions.Parse(args);
+            async void RunAsync()
             {
                 try
                 {
-                    await RunPlugin(o, registry, updateHandler);
+                    await RunPlugin(options, registry, updateHandler);
                 }
                 catch (Exception ex)
                 {
                     Logger.Instance.LogMessage(TracingLevel.Fatal,
                         $"Plugin crashed with the following message: {ex.Message}");
                 }
-            });
+            }
+            RunAsync();
         }
 
         private static async Task RunPlugin(StreamDeckOptions options, IPluginActionRegistry registry, IUpdateHandler updateHandler)

@@ -2217,6 +2217,13 @@
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.#ctor">
             <summary>Default constructor for object initializer usage.</summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.Parse(System.String[])">
+            <summary>
+            Parses Stream Deck launch arguments into a <see cref="T:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions"/> instance.
+            Handles both single-dash and double-dash prefixes and is case-insensitive.
+            Unknown arguments are ignored.
+            </summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo">
             <summary>
             Holds general information on the StreamDeck App we're communicating with
