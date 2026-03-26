@@ -28,6 +28,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
         /// </summary>
         public int DevicePixelRatio { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public RegistrationInfo(StreamDeckApplicationInfo application, StreamDeckDeviceInfo[] devices, StreamDeckPluginInfo plugin)
         {
@@ -36,6 +37,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             Plugin = plugin;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public RegistrationInfo() { }
 
         /// <summary>

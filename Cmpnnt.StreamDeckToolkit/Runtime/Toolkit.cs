@@ -7,7 +7,8 @@ using CommandLine;
 namespace Cmpnnt.StreamDeckToolkit.Runtime
 {
     /// <summary>
-    /// * Configuration Instructions: TODO
+    /// Main entry point for the Stream Deck plugin toolkit.
+    /// Call <see cref="Run"/> from your plugin's <c>Main</c> method to connect to the Stream Deck app.
     /// </summary>
     public static class Toolkit
     {
@@ -22,11 +23,13 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
         ///     - https://github.com/SaviorXTanren/mixer-mixitup/
         /// *************************************************************************/
         /// <summary>
-        /// Library's main initialization point. 
+        /// Connects the plugin to the Stream Deck app and begins processing events.
+        /// Call this from your plugin's <c>Main</c> method, passing the command-line arguments
+        /// supplied by Stream Deck at launch.
         /// </summary>
-        /// <param name="args"></param>
-        /// <param name="registry"></param>
-        /// /// <param name="updateHandler"></param>
+        /// <param name="args">Command-line arguments passed by the Stream Deck app.</param>
+        /// <param name="registry">Registry that maps action UUIDs to action instances.</param>
+        /// <param name="updateHandler">Optional handler for plugin update notifications.</param>
         public static void Run(string[] args, IPluginActionRegistry registry, IUpdateHandler updateHandler = null)
         {
             Logger.Instance.LogMessage(TracingLevel.Info,

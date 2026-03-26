@@ -34,13 +34,15 @@ public class Delegate
     public bool Disabled { get; set; }
     
     /// <summary>
-    /// 
+    /// When <c>true</c>, formats the value using the component's built-in type formatter
+    /// before displaying it. Maps to the <c>format-type</c> HTML attribute.
     /// </summary>
     [SdpiPropertyName("format-type")]
     public bool FormatType { get; set; }
-    
+
     /// <summary>
-    /// 
+    /// The name of the <c>sendToPlugin</c> event that the property inspector fires when requesting
+    /// the delegated value from the plugin. The plugin should respond via <c>sendToPropertyInspector</c>.
     /// </summary>
     public string Invoke { get; set; } = string.Empty;
     

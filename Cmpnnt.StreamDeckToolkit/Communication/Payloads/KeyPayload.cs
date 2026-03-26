@@ -51,6 +51,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             IsInMultiAction = isInMultiAction;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public KeyPayload() { }
     }
 }

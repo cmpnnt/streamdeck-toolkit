@@ -55,6 +55,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             DeviceInfo = deviceInfo;
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public InitialPayload(JsonElement? settings, KeyCoordinates coordinates, uint? state, bool isInMultiAction, string controller, RegistrationInfo deviceInfo)
         {
@@ -66,6 +67,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             DeviceInfo = deviceInfo;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public InitialPayload() {}
     }
 }

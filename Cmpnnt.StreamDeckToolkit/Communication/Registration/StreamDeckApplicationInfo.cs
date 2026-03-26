@@ -22,6 +22,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
         /// </summary>
         public string Version { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public StreamDeckApplicationInfo(string language, string platform, string version)
         {
@@ -30,6 +31,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             Version = version;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckApplicationInfo() { }
 
         /// <summary>

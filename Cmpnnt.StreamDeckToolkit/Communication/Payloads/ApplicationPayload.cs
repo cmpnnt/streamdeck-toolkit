@@ -22,6 +22,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Application = application;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public ApplicationPayload() {}
     }
 }

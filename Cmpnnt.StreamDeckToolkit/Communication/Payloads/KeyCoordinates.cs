@@ -19,6 +19,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         [JsonPropertyName("row")]
         public int Row { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public KeyCoordinates(int column, int row)
         {
@@ -26,6 +27,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Row = row;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public KeyCoordinates() { }
     }
 }

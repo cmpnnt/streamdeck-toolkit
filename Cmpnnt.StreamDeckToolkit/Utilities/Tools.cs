@@ -40,6 +40,11 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
             return ImageToBase64(image, addHeaderPrefix);
         }
 
+        /// <summary>
+        /// Opens an image file and returns it as an <see cref="SKImage"/>.
+        /// </summary>
+        /// <param name="fileName">Path to the image file to open.</param>
+        /// <returns>An <see cref="SKImage"/> decoded from the file, or <c>null</c> if the file cannot be read.</returns>
         public static SKImage OpenImageFromFile(string fileName)
         {
             return SKImage.FromEncodedData(fileName);

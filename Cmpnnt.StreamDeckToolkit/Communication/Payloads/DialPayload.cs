@@ -36,6 +36,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Controller = controller;
         }
         
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public DialPayload(string controller, JsonElement? settings, KeyCoordinates coordinates)
         {
@@ -44,6 +45,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Coordinates = coordinates;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public DialPayload() {}
     }
 }

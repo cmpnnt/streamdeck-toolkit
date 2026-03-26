@@ -29,6 +29,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             Columns = columns;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckDeviceSize() { }
 
         /// <summary>

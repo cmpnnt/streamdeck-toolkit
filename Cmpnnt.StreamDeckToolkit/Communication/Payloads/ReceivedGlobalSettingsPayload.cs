@@ -14,12 +14,14 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         [JsonPropertyName("settings")]
         public JsonElement Settings { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public ReceivedGlobalSettingsPayload(JsonElement settings)
         {
             Settings = settings;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public ReceivedGlobalSettingsPayload() {}
     }
 }

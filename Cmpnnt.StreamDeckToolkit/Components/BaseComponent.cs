@@ -1,5 +1,9 @@
 ﻿namespace Cmpnnt.StreamDeckToolkit.Components;
 
+/// <summary>
+/// Base class for all SDPI Property Inspector components. Provides the common properties shared by
+/// every component: label, setting key, current value, default value, and disabled state.
+/// </summary>
 public class BaseComponent
 {
     /// <summary>

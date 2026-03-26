@@ -545,6 +545,36 @@
         <member name="T:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion">
             <summary>Minimum Stream Deck software version required by the plugin.</summary>
         </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_4">
+            <summary>Stream Deck software version 6.4.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_5">
+            <summary>Stream Deck software version 6.5.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_6">
+            <summary>Stream Deck software version 6.6.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_7">
+            <summary>Stream Deck software version 6.7.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_8">
+            <summary>Stream Deck software version 6.8.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V6_9">
+            <summary>Stream Deck software version 6.9.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V7_0">
+            <summary>Stream Deck software version 7.0.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V7_1">
+            <summary>Stream Deck software version 7.1.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V7_2">
+            <summary>Stream Deck software version 7.2.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Attributes.SoftwareMinVersion.V7_3">
+            <summary>Stream Deck software version 7.3.</summary>
+        </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Communication.Commands.CommandSerializerContext.GetGlobalSettingsCommand">
             <summary>
             Defines the source generated JSON serialization contract metadata for a given type.
@@ -1373,6 +1403,12 @@
             Controller which issued the event
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload.#ctor(System.Text.Json.JsonElement,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Nullable{System.UInt32},System.Boolean,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload">
             <summary>
             ApplicationPayload
@@ -1388,6 +1424,9 @@
             Constructor
             </summary>
             <param name="application"></param>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload">
             <summary>
@@ -1416,6 +1455,12 @@
             <param name="coordinates"></param>
             <param name="settings"></param>
             <param name="controller"></param>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload.#ctor(System.String,System.Nullable{System.Text.Json.JsonElement},Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload">
             <summary>
@@ -1456,6 +1501,12 @@
             <param name="controller"></param>
             <param name="ticks"></param>
             <param name="pressed"></param>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload.#ctor(System.String,System.Nullable{System.Text.Json.JsonElement},Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Int32,System.Boolean)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.EmptyPayload">
             <summary>
@@ -1504,6 +1555,12 @@
             <param name="appearancePayload"></param>
             <param name="deviceInfo"></param>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload.#ctor(System.Nullable{System.Text.Json.JsonElement},Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Nullable{System.UInt32},System.Boolean,System.String,Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.InitialPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates">
             <summary>
             Coordinates of the current key
@@ -1518,6 +1575,12 @@
             <summary>
             Row of the current key
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates.#ctor(System.Int32,System.Int32)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload">
             <summary>
@@ -1559,6 +1622,9 @@
             <param name="userDesiredState"></param>
             <param name="isInMultiAction"></param>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload">
             <summary>
             Payload that holds all the settings in the ReceivedGlobalSettings event
@@ -1568,6 +1634,12 @@
             <summary>
             Global settings object
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload.#ctor(System.Text.Json.JsonElement)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload">
             <summary>
@@ -1593,6 +1665,12 @@
             <summary>
             Is event part of a multiaction
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload.#ctor(System.Text.Json.JsonElement,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Boolean,System.Nullable{System.Int32})">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload">
             <summary>
@@ -1719,6 +1797,12 @@
             <param name="isLongPress"></param>
             <param name="tapPos"></param>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload.#ctor(System.String,System.Nullable{System.Text.Json.JsonElement},Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Boolean,System.Int32[])">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType">
             <summary>
             Type of StreamDeck hardware device, currently two are supported (classic and mini)
@@ -1798,6 +1882,12 @@
             <summary>
             Device pixel ratio
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.#ctor(Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo,Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo[],Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.RegistrationInfo.ToString">
             <summary>
@@ -1889,6 +1979,12 @@
             Current version of the StreamDeck app
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.#ctor(System.String,System.String,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckApplicationInfo.ToString">
             <summary>
             Shows class information as string
@@ -1923,6 +2019,9 @@
             <param name="type"></param>
             <param name="id"></param>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo.ToString">
             <summary>
             Shows class information as string
@@ -1950,6 +2049,9 @@
             </summary>
             <param name="rows"></param>
             <param name="columns"></param>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceSize.ToString">
             <summary>
@@ -2003,6 +2105,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.#ctor(System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.SdkTarget">
             <summary>
             Target to send Title/Image to
@@ -2052,6 +2160,12 @@
             <summary>
             Raised when any event is received from the Stream Deck app.
             Use pattern matching on the BaseEvent to handle specific event types.
+            </summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Components.BaseComponent">
+            <summary>
+            Base class for all SDPI Property Inspector components. Provides the common properties shared by
+            every component: label, setting key, current value, default value, and disabled state.
             </summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.BaseComponent.Default">
@@ -2161,6 +2275,21 @@
             Contains all the valid values for the "type" attribute of &lt;sdpi-calendar&gt; components.
             </summary>
         </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.DATE">
+            <summary>Calendar type for selecting a date (year, month, day).</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.DATETIME_LOCAL">
+            <summary>Calendar type for selecting a date and time (year, month, day, hour, minute).</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.MONTH">
+            <summary>Calendar type for selecting a month and year.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.WEEK">
+            <summary>Calendar type for selecting a week number and year.</summary>
+        </member>
+        <member name="F:Cmpnnt.StreamDeckToolkit.Components.Calendar.TimeTypes.TIME">
+            <summary>Calendar type for selecting a time of day (hour, minute).</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Components.Calendar.Week">
             <summary>
             The &lt;sdpi-calendar type="week"&gt; component provides a styled wrapper of &lt;input type="week"&gt;.
@@ -2236,12 +2365,14 @@
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.Delegate.FormatType">
             <summary>
-            
+            When <c>true</c>, formats the value using the component's built-in type formatter
+            before displaying it. Maps to the <c>format-type</c> HTML attribute.
             </summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.Delegate.Invoke">
             <summary>
-            
+            The name of the <c>sendToPlugin</c> event that the property inspector fires when requesting
+            the delegated value from the plugin. The plugin should respond via <c>sendToPropertyInspector</c>.
             </summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.Delegate.Label">
@@ -2284,7 +2415,8 @@
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.Key">
             <summary>
-            
+            The localization key used to look up the translated string from the plugin's locale files.
+            Maps to the <c>key</c> attribute on <c>&lt;sdpi-i18n&gt;</c>.
             </summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.Value">
@@ -2421,6 +2553,12 @@
             When present, a refresh button is displayed next to the input. Applies only to <see cref="T:Cmpnnt.StreamDeckToolkit.Components.Select"/>.
             </summary>
         </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting">
+            <summary>
+            Represents a single selectable option in a <see cref="T:Cmpnnt.StreamDeckToolkit.Components.Select"/>, <see cref="T:Cmpnnt.StreamDeckToolkit.Components.CheckboxList"/>,
+            or <see cref="T:Cmpnnt.StreamDeckToolkit.Components.Radio"/> component. Rendered as an <c>&lt;option&gt;</c> element in the generated HTML.
+            </summary>
+        </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.Settings.OptionSetting.Label">
             <summary>
             The text displayed for the option.
@@ -2436,6 +2574,12 @@
             Optional: The label of the optgroup this option belongs to.
             If set, the source generator will use this to place this option under an &lt;optgroup&gt;.
             If no &lt;optgroup&gt; with this label exists, one will be created.
+            </summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings">
+            <summary>
+            Controls how and where a component's value is persisted in the Stream Deck settings.
+            When <see cref="P:Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.Setting"/> is empty the parent component's <c>Setting</c> key is used.
             </summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.Settings.PersistenceSettings.Global">
@@ -2519,6 +2663,78 @@
             <param name="element">The JSON object containing the values to merge.</param>
             <returns>The number of properties successfully populated.</returns>
         </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction">
+            <summary>
+            Represents a single action entry within a Stream Deck plugin manifest.
+            Populated automatically by the manifest source generator from <c>[StreamDeckAction]</c> attributes.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Controllers">
+            <summary>
+            Controller types supported by this action (e.g. <c>"Keypad"</c>, <c>"Encoder"</c>).
+            Derived automatically from the interfaces implemented by the action class. Omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.DisableAutomaticStates">
+            <summary>When <c>true</c>, disables automatic state management for this action. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.DisableCaching">
+            <summary>When <c>true</c>, disables image caching for this action. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Encoder">
+            <summary>Encoder (dial) configuration for Stream Deck+ actions. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Icon">
+            <summary>Path to the action icon (without extension).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Name">
+            <summary>Display name of the action shown in Stream Deck.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.PropertyInspectorPath">
+            <summary>Path to the property inspector HTML file for this action. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.States">
+            <summary>The visual states of this action (e.g. on/off). Defaults to a single state.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportedInKeyLogicActions">
+            <summary>When <c>false</c>, prevents use in Stream Deck key logic actions. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportedInMultiActions">
+            <summary>When <c>false</c>, prevents use in multi-actions. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.SupportURL">
+            <summary>URL for the action's support page. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.Tooltip">
+            <summary>Tooltip shown when hovering over the action in Stream Deck. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.UserTitleEnabled">
+            <summary>When <c>false</c>, prevents the user from setting a custom title. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.UUID">
+            <summary>Unique action identifier in reverse-domain format (e.g. <c>"com.mycompany.myplugin.myaction"</c>).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestAction.VisibleInActionsList">
+            <summary>When <c>false</c>, hides the action from the Stream Deck action list. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor">
+            <summary>
+            Specifies the applications whose launch and termination events the plugin wants to receive.
+            Supply an instance via <see cref="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.ApplicationsToMonitor"/>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.Mac">
+            <summary>
+            Bundle identifiers of macOS applications to monitor (e.g. <c>"com.apple.safari"</c>).
+            Omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestApplicationsToMonitor.Windows">
+            <summary>
+            Executable names of Windows applications to monitor (e.g. <c>"Notepad.exe"</c>).
+            Omitted when <c>null</c>.
+            </summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase">
             <summary>
             Base class for providing manifest configuration that cannot be derived from code or MSBuild properties.
@@ -2551,6 +2767,208 @@
             Stream Deck profiles to install with the plugin.
             Returns <c>null</c> to omit <c>Profiles</c> from the manifest.
             </summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig">
+            <summary>
+            Configures the Stream Deck+ encoder (dial) appearance for an action.
+            Set via <see cref="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.DefaultEncoder"/> or per-action in the manifest.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.Background">
+            <summary>Path to the background image shown behind the dial (without extension). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.Icon">
+            <summary>Path to the icon shown on the dial face (without extension). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.Layout">
+            <summary>Name of the built-in touchpad layout to use (e.g. <c>"$B1"</c>). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.StackColor">
+            <summary>Background color of the dial stack as a hex string (e.g. <c>"#FF0000"</c>). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestEncoderConfig.TriggerDescription">
+            <summary>Human-readable descriptions of the dial's trigger interactions. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription">
+            <summary>
+            Human-readable descriptions of the dial's trigger interactions shown in the Stream Deck UI.
+            All fields are optional and omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.LongTouch">
+            <summary>Description of the long-touch interaction on the touchpad above the dial.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.Push">
+            <summary>Description of the dial press (push) interaction.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.Rotate">
+            <summary>Description of the dial rotation interaction.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestTriggerDescription.Touch">
+            <summary>Description of the short-touch interaction on the touchpad above the dial.</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile">
+            <summary>
+            Describes a Stream Deck profile bundled with the plugin.
+            Supply instances via <see cref="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase.Profiles"/>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.AutoInstall">
+            <summary>
+            When <c>true</c>, the profile is automatically installed when the plugin is installed.
+            Omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.DeviceType">
+            <summary>
+            The numeric device type this profile targets.
+            Corresponds to the <see cref="T:Cmpnnt.StreamDeckToolkit.Communication.Registration.DeviceType"/> enum values.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.DontAutoSwitchWhenInstalled">
+            <summary>
+            When <c>true</c>, Stream Deck does not automatically switch to this profile after installation.
+            Omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.Name">
+            <summary>The file name of the profile (without the <c>.streamDeckProfile</c> extension).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestProfile.Readonly">
+            <summary>
+            When <c>true</c>, the user cannot modify this profile.
+            Omitted when <c>null</c>.
+            </summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot">
+            <summary>
+            Represents the root structure of a Stream Deck plugin manifest (<c>manifest.json</c>).
+            Populated by the manifest source generator at build time; use <see cref="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestConfigBase"/>
+            and the <c>[StreamDeckPlugin]</c>/<c>[StreamDeckAction]</c> attributes to control the output.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Schema">
+            <summary>JSON schema URL for the manifest.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Actions">
+            <summary>The list of actions provided by this plugin.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.ApplicationsToMonitor">
+            <summary>
+            Applications whose launch and termination events the plugin wants to receive.
+            Omitted from the manifest when <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Author">
+            <summary>The author of the plugin (maps to the MSBuild <c>Authors</c> property).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Category">
+            <summary>Category label shown in the Stream Deck action list. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CategoryIcon">
+            <summary>Path to the category icon (without extension). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePath">
+            <summary>Relative path to the plugin executable (e.g. <c>myplugin.exe</c> on Windows).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePathMac">
+            <summary>macOS-specific executable path override. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.CodePathWin">
+            <summary>Windows-specific executable path override. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.DefaultWindowSize">
+            <summary>Default size of the plugin window, as <c>[width, height]</c>. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Description">
+            <summary>Plugin description (maps to the MSBuild <c>Description</c> property).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Icon">
+            <summary>Path to the plugin icon (without extension).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Name">
+            <summary>Display name of the plugin shown in Stream Deck.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.OS">
+            <summary>List of supported operating systems and their minimum versions.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Profiles">
+            <summary>Stream Deck profiles bundled with the plugin. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.PropertyInspectorPath">
+            <summary>Default property inspector HTML path for all actions. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.SDKVersion">
+            <summary>Stream Deck SDK version targeted by this plugin (must be 2 or 3).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Software">
+            <summary>Minimum required Stream Deck software version.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.SupportURL">
+            <summary>URL for the plugin's support page. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.URL">
+            <summary>URL for the plugin's website. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.UUID">
+            <summary>Unique plugin identifier in reverse-domain format (e.g. <c>"com.mycompany.myplugin"</c>).</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestRoot.Version">
+            <summary>Plugin version string (maps to the MSBuild <c>Version</c> property).</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS">
+            <summary>Specifies a supported OS platform and its minimum required version.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.Platform">
+            <summary>The OS platform name: <c>"windows"</c> or <c>"mac"</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestOS.MinimumVersion">
+            <summary>The minimum OS version string (e.g. <c>"10"</c> for Windows 10, <c>"12"</c> for macOS 12).</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware">
+            <summary>Specifies the minimum required Stream Deck software version.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestSoftware.MinimumVersion">
+            <summary>The minimum Stream Deck software version string (e.g. <c>"6.4"</c>).</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig">
+            <summary>
+            Configures the appearance of a single action state in the Stream Deck manifest.
+            A state controls the image, title, and font displayed on the key for that state.
+            </summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.FontFamily">
+            <summary>Font family for the state title. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.FontSize">
+            <summary>Font size in points for the state title. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.FontStyle">
+            <summary>Font style for the state title (e.g. <c>"Bold"</c>, <c>"Italic"</c>). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.FontUnderline">
+            <summary>When <c>true</c>, the title is rendered with an underline. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.Image">
+            <summary>Path to the key image (without extension). Defaults to <c>"Images/pluginAction"</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.MultiActionImage">
+            <summary>Path to the image shown in multi-action mode (without extension). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.Name">
+            <summary>Display name for this state shown in the Stream Deck UI. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.ShowTitle">
+            <summary>When <c>false</c>, hides the user-configurable title overlay. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.Title">
+            <summary>Default title text shown on the key. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.TitleAlignment">
+            <summary>Vertical alignment of the title text: <c>"top"</c>, <c>"middle"</c>, or <c>"bottom"</c>. Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.TitleColor">
+            <summary>Title color as a hex string (e.g. <c>"#FFFFFF"</c>). Omitted when <c>null</c>.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection">
             <summary>
@@ -2827,7 +3245,8 @@
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Runtime.Toolkit">
             <summary>
-            * Configuration Instructions: TODO
+            Main entry point for the Stream Deck plugin toolkit.
+            Call <see cref="M:Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.Run(System.String[],Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry,Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler)"/> from your plugin's <c>Main</c> method to connect to the Stream Deck app.
             </summary>
         </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.Toolkit.Run(System.String[],Cmpnnt.StreamDeckToolkit.Runtime.IPluginActionRegistry,Cmpnnt.StreamDeckToolkit.Utilities.IUpdateHandler)">
@@ -2839,11 +3258,13 @@
                 - https://github.com/SaviorXTanren/mixer-mixitup/
             *************************************************************************/
             <summary>
-            Library's main initialization point. 
+            Connects the plugin to the Stream Deck app and begins processing events.
+            Call this from your plugin's <c>Main</c> method, passing the command-line arguments
+            supplied by Stream Deck at launch.
             </summary>
-            <param name="args"></param>
-            <param name="registry"></param>
-            /// <param name="updateHandler"></param>
+            <param name="args">Command-line arguments passed by the Stream Deck app.</param>
+            <param name="registry">Registry that maps action UUIDs to action instances.</param>
+            <param name="updateHandler">Optional handler for plugin update notifications.</param>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Utilities.ExtensionMethods">
             <summary>
@@ -3266,6 +3687,13 @@
             <param name="fileName"></param>
             <param name="addHeaderPrefix"></param>
             <returns></returns>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Utilities.Tools.OpenImageFromFile(System.String)">
+            <summary>
+            Opens an image file and returns it as an <see cref="T:SkiaSharp.SKImage"/>.
+            </summary>
+            <param name="fileName">Path to the image file to open.</param>
+            <returns>An <see cref="T:SkiaSharp.SKImage"/> decoded from the file, or <c>null</c> if the file cannot be read.</returns>
         </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Utilities.Tools.ImageToBase64(SkiaSharp.SKImage,System.Boolean)">
             <summary>

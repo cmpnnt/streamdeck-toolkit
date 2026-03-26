@@ -1,5 +1,9 @@
 ﻿namespace Cmpnnt.StreamDeckToolkit.Components.Settings;
 
+/// <summary>
+/// Represents a single selectable option in a <see cref="Select"/>, <see cref="CheckboxList"/>,
+/// or <see cref="Radio"/> component. Rendered as an <c>&lt;option&gt;</c> element in the generated HTML.
+/// </summary>
 public class OptionSetting
 {
     /// <summary>

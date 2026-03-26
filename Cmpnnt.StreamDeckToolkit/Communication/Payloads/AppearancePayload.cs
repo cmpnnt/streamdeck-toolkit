@@ -38,6 +38,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         [JsonPropertyName("controller")]
         public string Controller { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public AppearancePayload(JsonElement settings, KeyCoordinates coordinates, uint? state, bool isInMultiAction, string controller)
         {
@@ -48,6 +49,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Controller = controller;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public AppearancePayload() {}
     }
 }

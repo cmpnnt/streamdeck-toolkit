@@ -1,5 +1,9 @@
 ﻿namespace Cmpnnt.StreamDeckToolkit.Components.Settings;
 
+/// <summary>
+/// Controls how and where a component's value is persisted in the Stream Deck settings.
+/// When <see cref="Setting"/> is empty the parent component's <c>Setting</c> key is used.
+/// </summary>
 public class PersistenceSettings
 {
     /// <summary>>

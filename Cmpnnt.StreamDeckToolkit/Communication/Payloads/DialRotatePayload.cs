@@ -50,6 +50,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Pressed = pressed;
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public DialRotatePayload(string controller, JsonElement? settings, KeyCoordinates coordinates, int ticks, bool pressed)
         {
@@ -60,6 +61,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             Pressed = pressed;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public DialRotatePayload() {}
     }
 }

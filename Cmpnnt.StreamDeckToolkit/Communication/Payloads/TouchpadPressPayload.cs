@@ -50,6 +50,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             TapPos = tapPos;
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public TouchpadPressPayload(string controller, JsonElement? settings, KeyCoordinates coordinates, bool isLongPress, int[] tapPos)
         {
@@ -60,6 +61,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             TapPos = tapPos;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public TouchpadPressPayload() {}
     }
 }

@@ -21,12 +21,14 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             return $"Version: {Version}";
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public StreamDeckPluginInfo(string version)
         {
             Version = version;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckPluginInfo() { }
     }
 }

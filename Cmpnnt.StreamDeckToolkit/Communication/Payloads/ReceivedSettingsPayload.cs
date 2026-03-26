@@ -32,6 +32,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         [JsonPropertyName("isInMultiAction")]
         public bool IsInMultiAction { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public ReceivedSettingsPayload(JsonElement settings, KeyCoordinates coordinates, bool isInMultiAction, int? state)
         {
@@ -41,6 +42,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             State = state;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public ReceivedSettingsPayload() {}
     }
 }

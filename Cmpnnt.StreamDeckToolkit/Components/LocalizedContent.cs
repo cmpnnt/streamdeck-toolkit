@@ -20,7 +20,8 @@ public class LocalizedContent
     // See: https://sdpi-components.dev/docs/components/i18n
     
     /// <summary>
-    /// 
+    /// The localization key used to look up the translated string from the plugin's locale files.
+    /// Maps to the <c>key</c> attribute on <c>&lt;sdpi-i18n&gt;</c>.
     /// </summary>
     public bool Key { get; set; }
     

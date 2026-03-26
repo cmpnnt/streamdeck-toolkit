@@ -60,15 +60,25 @@ namespace Cmpnnt.StreamDeckToolkit.Attributes
     /// <summary>Minimum Stream Deck software version required by the plugin.</summary>
     public enum SoftwareMinVersion
     {
+        /// <summary>Stream Deck software version 6.4.</summary>
         V6_4 = 0,
+        /// <summary>Stream Deck software version 6.5.</summary>
         V6_5 = 1,
+        /// <summary>Stream Deck software version 6.6.</summary>
         V6_6 = 2,
+        /// <summary>Stream Deck software version 6.7.</summary>
         V6_7 = 3,
+        /// <summary>Stream Deck software version 6.8.</summary>
         V6_8 = 4,
+        /// <summary>Stream Deck software version 6.9.</summary>
         V6_9 = 5,
+        /// <summary>Stream Deck software version 7.0.</summary>
         V7_0 = 6,
+        /// <summary>Stream Deck software version 7.1.</summary>
         V7_1 = 7,
+        /// <summary>Stream Deck software version 7.2.</summary>
         V7_2 = 8,
+        /// <summary>Stream Deck software version 7.3.</summary>
         V7_3 = 9,
     }
 }

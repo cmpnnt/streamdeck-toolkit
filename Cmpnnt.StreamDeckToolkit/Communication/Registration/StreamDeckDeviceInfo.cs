@@ -36,6 +36,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             Id = id;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckDeviceInfo() { }
 
         /// <summary>
