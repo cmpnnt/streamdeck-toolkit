@@ -1,0 +1,58 @@
+﻿# Building your plugin
+
+This toolkit comes with several MSBuild tasks to automate common (and annoying) tasks while building your plugin. The sample project csproj has a fully functional 
+MSBuild pipeline that utilizes all of these tasks to automate as much tedium as possible. These work on both Windows and MacOS.
+
+## Build Tasks
+
+1. CloseStreamDeck: A before-`BeforeBuild` task that closes your open Stream Deck software.
+2. GenerateManifest: An after-`Build` task that uses the manifest source generators to automatically build your plugin's `manifest.json`. 
+See the [Manifest Generation](https://github.com/cmpnnt/streamdeck-toolkit/wiki/Manifest-Generation) page of the wiki for more details.
+3. RenameOutputDirectory: An after-`Build` task to rename your build directory to the format the Stream Deck expects. By default in the 
+example project, the directory uses the `<AssemblyName>` MSBuild property in lower case.
+4. LinkPlugin: An after-`Build` task that uses the [Stream Deck CLI](https://docs.elgato.com/streamdeck/cli/intro/) to link your build 
+directory (for both Debug and Release builds) to the Stream Deck plugin directory.
+5. OpenStreamDeck: An after-`Build` task to reopen the Stream Deck software when the build is complete. When using JetBrains Rider, 
+the build might occasionally fail with `error MSB3027: Could not copy...`. If this happens, run `./kill-msbuild.ps1` from the 
+repository's root directory and rebuild. Running the `dotnet build` and `dotnet publish` commands directly shouldn't produce 
+this error unless you first ran the build through Rider.
+6. ExtractSdpiHtml: An after-`CoreCompile` task that works in conjunction with the `SdpiGenerator` source generator to create property 
+inspector HTML and JavaScript files for your plugins. See the [SdpiGenerator documentation](https://github.com/cmpnnt/streamdeck-toolkit/wiki/Source-Generators#4-sdpigenerator) 
+in the wiki for more details.
+
+### Default Project Workflow
+
+```mermaid
+flowchart TD
+    BT["BuildTasks (InitialTargets)\nBuilds the BuildTasks assembly"]
+    CS["CloseStreamDeck\nKills the Stream Deck process"]
+    COMPILE["CoreCompile\nCompile managed IL"]
+    EH["WriteSdpiHtmlOutput\nExtract SDPI HTML/JS via ExtractSdpiHtml task"]
+    BUILD["Build complete\nOutput: bin/Config/AnyCPU/name.sdPlugin/"]
+    GM["GenerateManifest\nReflect on managed DLL → manifest.json"]
+
+    BT --> CS --> COMPILE
+    COMPILE -.->|AfterTargets: CoreCompile| EH
+    COMPILE --> BUILD
+    BUILD -->|AfterTargets: Build| GM
+
+    GM -->|"dotnet build -c Debug"| LINK
+    GM -->|"dotnet publish -c Release"| NAOT
+
+    subgraph dbg ["Debug"]
+        LINK["LinkPlugin\nstreamdeck link {buildDir}"]
+        OSD_D["OpenStreamDeck"]
+        LINK --> OSD_D
+    end
+
+    subgraph rel ["Release"]
+        NAOT["NativeAOT Publish\nOutput: bin/Release/win-x64/publish/"]
+        COPY["Copy manifest.json\nAnyCPU/name.sdPlugin/ → publish/"]
+        DEL["Delete native PDB"]
+        REN["RenameOutputDirectory\npublish/ → win-x64/name.sdPlugin/"]
+        PACK["PackagePlugin\nstreamdeck pack {buildDir} -o {outputDir}"]
+        OSD_R["OpenStreamDeck"]
+        NAOT -->|AfterTargets: Publish| COPY --> DEL --> REN --> PACK --> OSD_R
+    end
+```
+
