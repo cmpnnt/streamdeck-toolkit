@@ -774,6 +774,12 @@
             Application information
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent.#ctor(Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidLaunchEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent">
             <summary>
             Payload for ApplicationDidTerminate Event
@@ -783,6 +789,12 @@
             <summary>
             Application payload
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent.#ctor(Cmpnnt.StreamDeckToolkit.Communication.Payloads.ApplicationPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.ApplicationDidTerminateEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent">
             <summary>
@@ -799,6 +811,15 @@
             Information on the device connected
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.#ctor(System.String,Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.#ctor(Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckDeviceInfo)">
+            <summary>Initializes the event with device info only.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent">
             <summary>
             Payload for DeviceDidDisconnect Event
@@ -808,6 +829,12 @@
             <summary>
             UUID of device that was disconnected
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent.#ctor(System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidDisconnectEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent">
             <summary>
@@ -834,6 +861,12 @@
             Information on dial status
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialDownEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent">
             <summary>
             Payload for dial rotation event
@@ -858,6 +891,12 @@
             <summary>
             Information on dial rotation
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialRotatePayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialRotateEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent">
             <summary>
@@ -884,6 +923,12 @@
             Information on dial status
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.DialPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DialUpEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent">
             <summary>
             Payload for DidReceiveGlobalSettings Event
@@ -893,6 +938,12 @@
             <summary>
             Global Settings payload
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.#ctor(Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedGlobalSettingsPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveGlobalSettingsEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent">
             <summary>
@@ -919,6 +970,12 @@
             Settings for action
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.ReceivedSettingsPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DidReceiveSettingsEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent">
             <summary>
             Payload for KeyDown event
@@ -943,6 +1000,12 @@
             <summary>
             Information on key
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyDownEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent">
             <summary>
@@ -969,6 +1032,12 @@
             Key settings
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.KeyUpEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent">
             <summary>
             Payload for PropertyInspectorDidAppearEvent event
@@ -988,6 +1057,12 @@
             <summary>
             Stream Deck device UUID
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.#ctor(System.String,System.String,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidAppearEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent">
             <summary>
@@ -1009,6 +1084,12 @@
             Stream Deck device UUID
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.#ctor(System.String,System.String,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.PropertyInspectorDidDisappearEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent">
             <summary>
             Payload for SendToPluginEvent event
@@ -1029,10 +1110,19 @@
             Payload
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent.#ctor(System.String,System.String,System.Text.Json.JsonElement)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SendToPluginEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent">
             <summary>
             Payload for SystemDidWakeUp event
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.SystemDidWakeUpEvent.#ctor">
+            <summary>JSON deserialization constructor.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent">
             <summary>
@@ -1059,6 +1149,12 @@
             Title settings
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TitleParametersDidChangeEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent">
             <summary>
             Payload for touchpad press
@@ -1083,6 +1179,12 @@
             <summary>
             Information on touchpad press
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.TouchTapEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent">
             <summary>
@@ -1109,6 +1211,15 @@
             Appearance settings
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillAppearEvent.ToString">
+            <summary>Returns a string representation of the event.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent">
             <summary>
             Payload for WillDisappearEvent event
@@ -1133,6 +1244,12 @@
             <summary>
             settings
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent.#ctor(System.String,System.String,System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.AppearancePayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.WillDisappearEvent.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Communication.Events.EventSerializerContext.Boolean">
             <summary>
@@ -1708,14 +1825,13 @@
             </summary>
         </member>
         <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.#ctor(System.Text.Json.JsonElement,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Nullable{System.UInt32},System.String,Cmpnnt.StreamDeckToolkit.Wrappers.TitleParameters)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="settings"></param>
-            <param name="coordinates"></param>
-            <param name="state"></param>
-            <param name="title"></param>
-            <param name="titleParameters"></param>
+            <summary>Initializes the payload with strongly-typed title parameters.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.#ctor(System.Text.Json.JsonElement,Cmpnnt.StreamDeckToolkit.Communication.Payloads.KeyCoordinates,System.Nullable{System.UInt32},System.String,Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload">
             <summary>
@@ -1756,6 +1872,12 @@
             <summary>
             Color of title
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload.#ctor(System.String,System.UInt32,System.String,System.Boolean,System.Boolean,System.String,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TitleParametersRawPayload.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Payloads.TouchpadPressPayload">
             <summary>
@@ -2089,6 +2211,12 @@
             Information regarding the StreamDeck app and StreamDeck hardware which was parsed from the RawInfo JSON field.
             </summary>
         </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>JSON deserialization constructor.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckOptions.#ctor">
+            <summary>Default constructor for object initializer usage.</summary>
+        </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Communication.Registration.StreamDeckPluginInfo">
             <summary>
             Holds general information on the StreamDeck App we're communicating with
@@ -2161,6 +2289,12 @@
             Raised when any event is received from the Stream Deck app.
             Use pattern matching on the BaseEvent to handle specific event types.
             </summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.Dispose">
+            <summary>Releases all resources used by this client.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Communication.SdWebSocketClient.DisposeAsync">
+            <summary>Asynchronously releases all resources used by this client.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Components.BaseComponent">
             <summary>
@@ -2421,7 +2555,7 @@
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.Value">
             <summary>
-            The value of the component, and the persisted setting. This will be translated to JSON as the value of <see cref="!:Setting" />
+            The value of the component, and the persisted setting. This will be translated to JSON as the setting value.
             </summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Components.Password">
@@ -2969,6 +3103,48 @@
         </member>
         <member name="P:Cmpnnt.StreamDeckToolkit.Manifest.ManifestStateConfig.TitleColor">
             <summary>Title color as a hex string (e.g. <c>"#FFFFFF"</c>). Omitted when <c>null</c>.</summary>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper">
+            <summary>Default <see cref="T:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket"/> implementation backed by <see cref="T:System.Net.WebSockets.ClientWebSocket"/>.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.#ctor">
+            <summary>Initializes a new instance and sets a 30-second keep-alive interval.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.State">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.SendAsync(System.ArraySegment{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.ReceiveAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.ClientWebSocketWrapper.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket">
+            <summary>Abstraction over <see cref="T:System.Net.WebSockets.ClientWebSocket"/> to enable testing and injection.</summary>
+        </member>
+        <member name="P:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.State">
+            <summary>Gets the current state of the WebSocket connection.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>Connects to the specified URI.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.SendAsync(System.ArraySegment{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)">
+            <summary>Sends data over the WebSocket connection.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.ReceiveAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>Receives data from the WebSocket connection.</summary>
+        </member>
+        <member name="M:Cmpnnt.StreamDeckToolkit.Runtime.IClientWebSocket.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)">
+            <summary>Closes the WebSocket connection.</summary>
         </member>
         <member name="T:Cmpnnt.StreamDeckToolkit.Runtime.IOutboundConnection">
             <summary>

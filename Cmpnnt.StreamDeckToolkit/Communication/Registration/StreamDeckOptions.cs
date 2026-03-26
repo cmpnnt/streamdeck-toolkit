@@ -74,6 +74,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             }
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public StreamDeckOptions(int port, string pluginUuid, string registerEvent, string rawInfo)
         {
@@ -83,6 +84,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Registration
             RawInfo = rawInfo;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public StreamDeckOptions() {}
     }
 }

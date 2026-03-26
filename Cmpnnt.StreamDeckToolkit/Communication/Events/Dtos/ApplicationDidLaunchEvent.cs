@@ -13,12 +13,14 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public ApplicationPayload Payload { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public ApplicationDidLaunchEvent(ApplicationPayload payload)
         {
             Payload = payload;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public ApplicationDidLaunchEvent()
         {
         }

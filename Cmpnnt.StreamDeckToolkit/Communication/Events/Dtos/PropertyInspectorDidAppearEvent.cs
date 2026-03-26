@@ -22,6 +22,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public string Device { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public PropertyInspectorDidAppearEvent(string action, string context, string device)
         {
@@ -30,6 +31,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
             Device = device;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public PropertyInspectorDidAppearEvent() {}
     }
 }

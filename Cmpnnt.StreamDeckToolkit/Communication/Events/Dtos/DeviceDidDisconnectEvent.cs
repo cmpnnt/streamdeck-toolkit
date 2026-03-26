@@ -12,12 +12,14 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public string Device { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public DeviceDidDisconnectEvent(string device)
         {
             Device = device;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public DeviceDidDisconnectEvent()
         {
         }

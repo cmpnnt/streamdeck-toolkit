@@ -60,14 +60,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         [JsonPropertyName("titleParameters")]
         public TitleParametersRawPayload TitleParametersRaw { get; set; }
         
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="settings"></param>
-        /// <param name="coordinates"></param>
-        /// <param name="state"></param>
-        /// <param name="title"></param>
-        /// <param name="titleParameters"></param>
+        /// <summary>Initializes the payload with strongly-typed title parameters.</summary>
         public TitleParametersPayload(JsonElement settings, KeyCoordinates coordinates, uint? state, string title, TitleParameters titleParameters)
         {
             Settings = settings;
@@ -77,6 +70,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             TitleParameters = titleParameters;
         }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public TitleParametersPayload(JsonElement settings, KeyCoordinates coordinates, uint? state, string title, TitleParametersRawPayload titleParametersRaw)
         {
@@ -87,6 +81,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             TitleParametersRaw = titleParametersRaw;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public TitleParametersPayload() {}
     }
 }

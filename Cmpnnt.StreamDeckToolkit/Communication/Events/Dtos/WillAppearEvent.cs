@@ -32,6 +32,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         [JsonPropertyName("payload")]
         public AppearancePayload Payload { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public WillAppearEvent(string action, string context, string device, AppearancePayload payload)
         {
@@ -41,8 +42,10 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
             Payload = payload;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public WillAppearEvent() {}
 
+        /// <summary>Returns a string representation of the event.</summary>
         public override string ToString()
         {
             return $"Action: {Action}, Context: {Context}, Device: {Device} Payload: {Payload}";

@@ -28,6 +28,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public KeyPayload Payload { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public KeyDownEvent(string action, string context, string device, KeyPayload payload)
         {
@@ -37,6 +38,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
             Payload = payload;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public KeyDownEvent() {}
     }
 }

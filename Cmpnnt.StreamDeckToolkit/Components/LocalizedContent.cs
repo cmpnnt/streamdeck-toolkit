@@ -26,7 +26,7 @@ public class LocalizedContent
     public bool Key { get; set; }
     
     /// <summary>
-    /// The value of the component, and the persisted setting. This will be translated to JSON as the value of <see cref="Setting" />
+    /// The value of the component, and the persisted setting. This will be translated to JSON as the setting value.
     /// </summary>
     public required string Value { get; set; }
 }

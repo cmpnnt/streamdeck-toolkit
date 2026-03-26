@@ -28,6 +28,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public TouchpadPressPayload Payload { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public TouchTapEvent(string action, string context, string device, TouchpadPressPayload payload)
         {
@@ -37,6 +38,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
             Payload = payload;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public TouchTapEvent() {}
     }
 }

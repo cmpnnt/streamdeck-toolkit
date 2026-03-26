@@ -18,6 +18,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public StreamDeckDeviceInfo DeviceInfo { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public DeviceDidConnectEvent(string device, StreamDeckDeviceInfo deviceInfo)
         {
@@ -25,11 +26,13 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
             DeviceInfo = deviceInfo;
         }
 
+        /// <summary>Initializes the event with device info only.</summary>
         public DeviceDidConnectEvent(StreamDeckDeviceInfo deviceInfo)
         {
             DeviceInfo = deviceInfo;
         }
-        
+
+        /// <summary>Default constructor for object initializer usage.</summary>
         public DeviceDidConnectEvent()
         {
         }

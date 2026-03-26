@@ -7,6 +7,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
     /// </summary>
     public class SystemDidWakeUpEvent : BaseEvent
     {
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public SystemDidWakeUpEvent() { }
     }

@@ -422,6 +422,7 @@ public class SdWebSocketClient : IDisposable, IAsyncDisposable
     }
     #endregion
     
+    /// <summary>Releases all resources used by this client.</summary>
     public void Dispose()
     {
         if (disposed)
@@ -435,6 +436,7 @@ public class SdWebSocketClient : IDisposable, IAsyncDisposable
         GC.SuppressFinalize(this);
     }
 
+    /// <summary>Asynchronously releases all resources used by this client.</summary>
     public async ValueTask DisposeAsync()
     {
         if (disposed)

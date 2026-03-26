@@ -13,12 +13,14 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos
         /// </summary>
         public ReceivedGlobalSettingsPayload Payload { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public DidReceiveGlobalSettingsEvent(ReceivedGlobalSettingsPayload payload)
         {
             Payload = payload;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public DidReceiveGlobalSettingsEvent() {}
     }
 }

@@ -42,6 +42,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
         /// </summary>
         public string TitleColor { get; set; }
 
+        /// <summary>JSON deserialization constructor.</summary>
         [JsonConstructor]
         public TitleParametersRawPayload(string fontFamily, uint fontSize, string fontStyle, bool fontUnderline, bool showTitle, string titleAlignment, string titleColor)
         {
@@ -54,6 +55,7 @@ namespace Cmpnnt.StreamDeckToolkit.Communication.Payloads
             TitleColor = titleColor;
         }
 
+        /// <summary>Default constructor for object initializer usage.</summary>
         public TitleParametersRawPayload() {}
     }
 }
