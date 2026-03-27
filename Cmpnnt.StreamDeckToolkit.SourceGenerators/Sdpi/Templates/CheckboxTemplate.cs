@@ -14,6 +14,7 @@ internal static class CheckboxTemplate
     {
         var sb = new StringBuilder();
         sb.Append("<sdpi-checkbox");
+        if (model.Global) sb.Append(" global");
         sb.Append(ComponentTemplateHelpers.GenerateAttributeString("setting", model.Setting));
         sb.Append(ComponentTemplateHelpers.GenerateAttributeString("default", properties.GetValueOrDefault<string>("Default")));
         sb.Append(ComponentTemplateHelpers.GenerateAttributeString("label", model.Label));

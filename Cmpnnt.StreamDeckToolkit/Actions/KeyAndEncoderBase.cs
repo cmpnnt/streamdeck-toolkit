@@ -48,7 +48,7 @@ namespace Cmpnnt.StreamDeckToolkit.Actions
         /// <summary>
         /// Called when GetGlobalSettings is called.
         /// </summary>
-        public abstract void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload);
+        public virtual void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
 
         /// <summary>
         /// Called every second. Logic for displaying title/image can go here.

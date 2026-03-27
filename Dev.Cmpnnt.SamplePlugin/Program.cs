@@ -9,7 +9,7 @@ using Cmpnnt.StreamDeckToolkit.SourceGenerators;
     Icon = "Images/pluginIcon",
     SDKVersion = 2,
     SoftwareMinVersion = SoftwareMinVersion.V6_4,
-    WindowsMinVersion = "10"
+    MacMinVersion = "12"
 )]
 
 namespace Cmpnnt.StreamDeckToolkit.SamplePlugin

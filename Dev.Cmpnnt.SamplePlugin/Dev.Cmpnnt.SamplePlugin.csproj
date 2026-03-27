@@ -8,6 +8,7 @@
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest" AssemblyFile="$(TaskAssemblyPath)" />
+  <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper" AssemblyFile="$(TaskAssemblyPath)" />
   <UsingTask TaskName="Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml" TaskFactory="TaskHostFactory" AssemblyFile="$(TaskAssemblyPath)" />
 
   <!-- Properties -->
@@ -48,7 +49,13 @@
             PluginAssemblyPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\$(AssemblyNameLower).dll"
             OutputManifestPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" />
   </Target>
-  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
+  <Target Name="GenerateRuntimeWrapper" AfterTargets="GenerateManifest" BeforeTargets="RenameOutputDirectory" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper
+            BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin"
+            AssemblyName="$(AssemblyName)"
+            ManifestPath="$(BaseDir)\$(AssemblyNameLower).sdPlugin\manifest.json" />
+  </Target>
+  <Target Name="RenameOutputDirectory" AfterTargets="Build" DependsOnTargets="GenerateManifest;GenerateRuntimeWrapper" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
     <Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin BuildDir="$(BaseDir)\$(AssemblyNameLower).sdPlugin" PluginName="$(AssemblyNameLower)" />
     <Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck />
   </Target>
@@ -63,23 +70,20 @@
     <Cmpnnt.StreamDeckToolkit.BuildTasks.PackagePlugin BuildDir="$(_SdPluginPublishDir)" />
     <Cmpnnt.StreamDeckToolkit.BuildTasks.OpenStreamDeck />
   </Target>
-  
+
   <!-- Items -->
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="Images\**\*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="PropertyInspector\**\*.*">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
-  
+
   <!-- Expose MSBuild properties to source generators -->
   <ItemGroup>
     <CompilerVisibleProperty Include="AssemblyName" />
@@ -97,26 +101,26 @@
     <ProjectReference Include="..\Cmpnnt.StreamDeckToolkit\Cmpnnt.StreamDeckToolkit.csproj" />
   </ItemGroup>
 
-    <PropertyGroup>
-        <!-- Enable source generator output for SDPI extraction -->
-        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <!-- Enable source generator output for SDPI extraction -->
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+  </PropertyGroup>
 
-    <Target Name="WriteSdpiHtmlOutput" AfterTargets="CoreCompile" Condition="'$(DesignTimeBuild)' != 'true'">
-        <ItemGroup>
-            <SdpiGeneratedFile Include="$(CompilerGeneratedFilesOutputPath)\**\GeneratedSdpiComponents.g.cs" />
-        </ItemGroup>
-        <Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml
-                Condition="'@(SdpiGeneratedFile)' != ''"
-                GeneratedFile="@(SdpiGeneratedFile)">
-            <Output TaskParameter="GeneratedHtmlFiles" ItemName="SdpiHtmlFiles" />
-        </Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml>
+  <Target Name="WriteSdpiHtmlOutput" AfterTargets="CoreCompile" Condition="'$(DesignTimeBuild)' != 'true'">
+    <ItemGroup>
+      <SdpiGeneratedFile Include="$(CompilerGeneratedFilesOutputPath)\**\GeneratedSdpiComponents.g.cs" />
+    </ItemGroup>
+    <Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml
+            Condition="'@(SdpiGeneratedFile)' != ''"
+            GeneratedFile="@(SdpiGeneratedFile)">
+      <Output TaskParameter="GeneratedHtmlFiles" ItemName="SdpiHtmlFiles" />
+    </Cmpnnt.StreamDeckToolkit.BuildTasks.ExtractSdpiHtml>
 
-        <!-- Copy generated HTML files to output directory -->
-        <Copy SourceFiles="@(SdpiHtmlFiles)"
-              DestinationFiles="@(SdpiHtmlFiles->'$(OutDir)%(Identity)')"
-              SkipUnchangedFiles="true"
-              Condition="'@(SdpiHtmlFiles)' != ''" />
-    </Target>
+    <!-- Copy generated HTML files to output directory -->
+    <Copy SourceFiles="@(SdpiHtmlFiles)"
+          DestinationFiles="@(SdpiHtmlFiles->'$(OutDir)%(Identity)')"
+          SkipUnchangedFiles="true"
+          Condition="'@(SdpiHtmlFiles)' != ''" />
+  </Target>
 </Project>

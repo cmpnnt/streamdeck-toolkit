@@ -10,39 +10,25 @@ namespace Cmpnnt.StreamDeckToolkit.Actions
     /// </summary>
     public abstract class EncoderBase : IEncoderPlugin
     {
-        /// <summary>
-        /// Called when the dial is rotated
-        /// </summary>
+        /// <inheritdoc/>
         public abstract void DialRotate(DialRotatePayload payload);
 
-        /// <summary>
-        /// Called when the dial is pressed
-        /// </summary>
+        /// <inheritdoc/>
         public abstract void DialDown(DialPayload payload);
 
-        /// <summary>
-        /// Called when the dial is released
-        /// </summary>
+        //// <inheritdoc/>
         public abstract void DialUp(DialPayload payload);
 
-        /// <summary>
-        /// Called when the touchpad (above the dials) is pressed
-        /// </summary>
+        /// <inheritdoc/>
         public abstract void TouchPress(TouchpadPressPayload payload);
 
-        /// <summary>
-        /// Called when the PropertyInspector has new settings
-        /// </summary>
+        /// <inheritdoc/>
         public abstract void ReceivedSettings(ReceivedSettingsPayload payload);
 
-        /// <summary>
-        /// Called when GetGlobalSettings is called.
-        /// </summary>
-        public abstract void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload);
+        /// <inheritdoc/>
+        public virtual void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
 
-        /// <summary>
-        /// Called every second. Logic for displaying title/image can go here.
-        /// </summary>
+        /// <inheritdoc/>
         public abstract void OnTick();
 
         /// <summary>
@@ -50,24 +36,16 @@ namespace Cmpnnt.StreamDeckToolkit.Actions
         /// </summary>
         public abstract void Dispose();
 
-        /// <summary>
-        /// Called when the Property Inspector sends a payload to the plugin via sendToPlugin
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void OnSendToPlugin(JsonElement payload) { }
 
-        /// <summary>
-        /// Called when the user changes the title or title parameters
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void OnTitleParametersDidChange(TitleParametersPayload payload) { }
 
-        /// <summary>
-        /// Called when the Property Inspector appears in the Stream Deck software UI
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void OnPropertyInspectorDidAppear() { }
 
-        /// <summary>
-        /// Called when the Property Inspector for this instance is removed from the Stream Deck software UI
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void OnPropertyInspectorDidDisappear() { }
 
         /// <summary>

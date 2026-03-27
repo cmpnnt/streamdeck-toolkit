@@ -7,5 +7,6 @@ internal class CheckboxModel
 {
     public string? Label { get; set; }
     public string? Setting { get; set; }
+    public bool Global { get; set; }
     public bool Disabled { get; set; }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Cmpnnt.StreamDeckToolkit.Actions;
@@ -44,13 +45,14 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
             if (updateHandler != null)
             {
                 updateHandler.OnUpdateStatusChanged += UpdateHandler_OnUpdateStatusChanged;
-                updateHandler.SetPluginConfiguration(Tools.GetExeName(), deviceInfo.Plugin.Version);
+                updateHandler.SetPluginConfiguration(Tools.GetExeName(), deviceInfo?.Plugin?.Version ?? "unknown");
                 await Task.Run(updateHandler.CheckForUpdate);
             }
 
             connection.Run();
+            
             Logger.Instance.LogMessage(TracingLevel.Debug, $"Plugin Loaded: UUID: {pluginUuid} Device Info: {deviceInfo}");
-            Logger.Instance.LogMessage(TracingLevel.Info, $"Plugin version: {deviceInfo.Plugin.Version}");
+            Logger.Instance.LogMessage(TracingLevel.Info, $"Plugin version: {deviceInfo?.Plugin?.Version ?? "unknown"}");
             Logger.Instance.LogMessage(TracingLevel.Info, "Connecting to Stream Deck...");
 
             if (connectEvent.WaitOne(TimeSpan.FromSeconds(STREAMDECK_INITIAL_CONNECTION_TIMEOUT_SECONDS)))
@@ -58,6 +60,7 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
                 Logger.Instance.LogMessage(TracingLevel.Info, "Connected to Stream Deck");
 
                 GlobalSettingsManager.Instance.Initialize(connection);
+                GlobalSettingsManager.Instance.RequestGlobalSettings();
 
                 while (!disconnectEvent.WaitOne(TimeSpan.FromMilliseconds(1000)))
                 {
@@ -175,6 +178,14 @@ namespace Cmpnnt.StreamDeckToolkit.Runtime
                         try
                         {
                             ReceivedGlobalSettingsPayload globalSettings = e.Payload ?? new ReceivedGlobalSettingsPayload();
+                            
+                            if (globalSettings.Settings.ValueKind == JsonValueKind.Object &&                                                                                                                                                                                                                                            
+                                globalSettings.Settings.TryGetProperty("VerboseLogging", out JsonElement verboseElement) &&
+                                verboseElement.ValueKind is JsonValueKind.True or JsonValueKind.False)                                                                                                                                                                                                                                  
+                            {                                                                                                                                                                                                                                                                                                           
+                                Logger.Instance.SetVerbose(verboseElement.GetBoolean());                                                                                                                                                                                                                                                
+                            } 
+                            
                             foreach (string key in Instances.Keys)
                             {
                                 Instances[key].ReceivedGlobalSettings(globalSettings);

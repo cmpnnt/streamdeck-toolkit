@@ -4,6 +4,30 @@
     <head lang="en">
         <meta charset="utf-q8" />
         <script src="sdpi-components.js"></script>
+        <style>
+            details.sdpi-group { margin: 0 0 10px 0; }
+            details.sdpi-group > summary {
+                align-items: center;
+                color: #969696;
+                cursor: pointer;
+                display: flex;
+                font-family: "Segoe UI", Arial, Roboto, Helvetica, sans-serif;
+                font-size: 9pt;
+                list-style: none;
+                padding: 4px 0;
+                user-select: none;
+            }
+            details.sdpi-group > summary::-webkit-details-marker { display: none; }
+            details.sdpi-group > summary::before {
+                content: '▶';
+                display: inline-block;
+                font-size: 7pt;
+                margin: 0 6px 0 8px;
+                transition: transform 0.15s ease;
+                width: 10px;
+            }
+            details.sdpi-group[open] > summary::before { transform: rotate(90deg); }
+        </style>
     </head>
     <body>
         <sdpi-item label="Textarea">
@@ -27,6 +51,12 @@
                     <option value="5">Five</option>
                 </sdpi-checkbox-list>
         </sdpi-item>
+        <details class="sdpi-group">
+            <summary>Advanced Settings</summary>
+        <sdpi-item label="Verbose Logging">
+            <sdpi-checkbox global setting="VerboseLogging" label="Verbose Logging"></sdpi-checkbox>
+        </sdpi-item>
+        </details>
     </body>
 </html>
 

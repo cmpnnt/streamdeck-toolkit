@@ -11,7 +11,32 @@ internal static class HtmlTemplates
     /// <summary>
     /// Generates the basic HTML document structure wrapping the provided body content.
     /// </summary>
-    public static string GenerateHtmlDocument(IEnumerable<string> bodyContent)
+    private const string GroupStyles = @"        <style>
+            details.sdpi-group { margin: 0 0 10px 0; }
+            details.sdpi-group > summary {
+                align-items: center;
+                color: #969696;
+                cursor: pointer;
+                display: flex;
+                font-family: ""Segoe UI"", Arial, Roboto, Helvetica, sans-serif;
+                font-size: 9pt;
+                list-style: none;
+                padding: 4px 0;
+                user-select: none;
+            }
+            details.sdpi-group > summary::-webkit-details-marker { display: none; }
+            details.sdpi-group > summary::before {
+                content: '▶';
+                display: inline-block;
+                font-size: 7pt;
+                margin: 0 6px 0 8px;
+                transition: transform 0.15s ease;
+                width: 10px;
+            }
+            details.sdpi-group[open] > summary::before { transform: rotate(90deg); }
+        </style>";
+
+    public static string GenerateHtmlDocument(IEnumerable<string> bodyContent, bool hasGroups = false)
     {
         var sb = new StringBuilder();
         sb.AppendLine("<!DOCTYPE html>");
@@ -19,6 +44,7 @@ internal static class HtmlTemplates
         sb.AppendLine("    <head lang=\"en\">");
         sb.AppendLine("        <meta charset=\"utf-q8\" />");
         sb.AppendLine("        <script src=\"sdpi-components.js\"></script>");
+        if (hasGroups) sb.AppendLine(GroupStyles);
         sb.AppendLine("    </head>");
         sb.AppendLine("    <body>");
 

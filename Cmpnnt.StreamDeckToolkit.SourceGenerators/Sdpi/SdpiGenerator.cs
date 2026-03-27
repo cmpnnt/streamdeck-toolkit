@@ -32,6 +32,8 @@ public class SdpiGenerator : IIncrementalGenerator
     private const string RADIO_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Components.Radio";
     private const string RANGE_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Components.Range";
     private const string SELECT_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Components.Select";
+    private const string GROUP_START_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Components.GroupStart";
+    private const string GROUP_END_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Components.GroupEnd";
     private const string SDPI_OUTPUT_ATTRIBUTE_FULL_NAME = "Cmpnnt.StreamDeckToolkit.Attributes.SdpiOutputDirectoryAttribute";
 
     private record ClassInfo(
@@ -116,6 +118,7 @@ public class SdpiGenerator : IIncrementalGenerator
 
             SemanticModel semanticModel = compilation.GetSemanticModel(classInfo.ClassSyntax.SyntaxTree);
             List<string> htmlComponents = [];
+            bool hasGroups = false;
 
             foreach (BaseObjectCreationExpressionSyntax objectCreation in objectCreations)
             {
@@ -136,7 +139,7 @@ public class SdpiGenerator : IIncrementalGenerator
                 string? generatedComponent = null;
 
                 // Check if it's one of the types we want to generate HTML for
-                if (fullName is not TEXT_AREA_FULL_NAME and not TEXTFIELD_FULL_NAME and not CHECKBOX_FULL_NAME and not CHECKBOX_LIST_FULL_NAME and not BUTTON_FULL_NAME and not DATE_FULL_NAME and not DATETIME_FULL_NAME and not MONTH_FULL_NAME and not TIME_FULL_NAME and not WEEK_FULL_NAME and not COLOR_FULL_NAME and not DELEGATE_FULL_NAME and not FILE_FULL_NAME and not PASSWORD_FULL_NAME and not RADIO_FULL_NAME and not RANGE_FULL_NAME and not SELECT_FULL_NAME)
+                if (fullName is not TEXT_AREA_FULL_NAME and not TEXTFIELD_FULL_NAME and not CHECKBOX_FULL_NAME and not CHECKBOX_LIST_FULL_NAME and not BUTTON_FULL_NAME and not DATE_FULL_NAME and not DATETIME_FULL_NAME and not MONTH_FULL_NAME and not TIME_FULL_NAME and not WEEK_FULL_NAME and not COLOR_FULL_NAME and not DELEGATE_FULL_NAME and not FILE_FULL_NAME and not PASSWORD_FULL_NAME and not RADIO_FULL_NAME and not RANGE_FULL_NAME and not SELECT_FULL_NAME and not GROUP_START_FULL_NAME and not GROUP_END_FULL_NAME)
                     continue;
 
                 // Extract property values from initializer
@@ -186,6 +189,14 @@ public class SdpiGenerator : IIncrementalGenerator
                             Setting = properties.GetValueOrDefault<string>("Setting"),
                             Disabled = properties.GetValueOrDefault<bool>("Disabled")
                         };
+
+                        if (properties.TryGetValue("PersistenceSettings", out var psObject)
+                            && psObject is Dictionary<string, object?> psProps)
+                        {
+                            model.Global = psProps.GetValueOrDefault<bool>("Global");
+                            model.Setting = psProps.GetValueOrDefault<string>("Setting") ?? model.Setting;
+                        }
+
                         generatedComponent = CheckboxTemplate.GenerateComponent(model, properties);
                         break;
                     }
@@ -361,6 +372,22 @@ public class SdpiGenerator : IIncrementalGenerator
                         generatedComponent = RangeTemplate.GenerateComponent(model, properties);
                         break;
                     }
+                    case GROUP_START_FULL_NAME:
+                    {
+                        var model = new GroupStartModel
+                        {
+                            Label = properties.GetValueOrDefault<string>("Label"),
+                            Open = properties.GetValueOrDefault<bool>("Open")
+                        };
+                        hasGroups = true;
+                        generatedComponent = GroupStartTemplate.GenerateComponent(model);
+                        break;
+                    }
+                    case GROUP_END_FULL_NAME:
+                    {
+                        generatedComponent = GroupEndTemplate.GenerateComponent();
+                        break;
+                    }
                     case SELECT_FULL_NAME:
                     {
                         var model = new SelectModel
@@ -414,7 +441,7 @@ public class SdpiGenerator : IIncrementalGenerator
                 continue;
             }
 
-            string fullHtml = HtmlTemplates.GenerateHtmlDocument(htmlComponents);
+            string fullHtml = HtmlTemplates.GenerateHtmlDocument(htmlComponents, hasGroups);
 
             // Calculate output path
             string? fullOutputPath = null;

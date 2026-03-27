@@ -39,7 +39,7 @@ Questions about plugins that use this toolkit should first be directed toward th
 - Access the Global Settings from anywhere in your code.
 - Simplified working with filenames from the Stream Deck SDK.
 - Large set of helper functions to simplify creating images and sending them to the Stream Deck.
-- NLog for logging. 
+- Serilog for logging. 
 
 ## Known issues
 - Jetbrains Rider might occasionally hold onto the MSBuild tasks and prevent the solution from building. If this happens, use

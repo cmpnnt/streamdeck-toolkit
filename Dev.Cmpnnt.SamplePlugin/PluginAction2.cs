@@ -140,9 +140,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
             SaveSettings();
         }
 
-        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
-
-        #region Private Methods
+#region Private Methods
         private Task SaveSettings()
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action is saving settings");

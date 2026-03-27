@@ -9,31 +9,49 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
     /// </summary>
     internal class SampleManifestConfig : ManifestConfigBase
     {
-        public override ManifestStateConfig[] DefaultStates =>
-        [
-            new ManifestStateConfig
-            {
-                Image = "Images/pluginAction",
-                TitleAlignment = "middle",
-                FontSize = 12,
-            }
-        ];
-
-        public override ManifestEncoderConfig DefaultEncoder => new()
+        public override ManifestStateConfig[] DefaultStates
         {
-            Layout = "$B1",
-            TriggerDescription = new ManifestTriggerDescription
+            get
             {
-                Push = "Play / Pause",
-                Rotate = "Adjust Volume",
-                Touch = "Play / Pause",
-                LongTouch = "Skip Track",
+                return
+                [
+                    new ManifestStateConfig
+                    {
+                        Image = "Images/pluginAction",
+                        TitleAlignment = "middle",
+                        FontSize = 12,
+                    }
+                ];
             }
-        };
+        }
 
-        public override ManifestApplicationsToMonitor ApplicationsToMonitor => new()
+        public override ManifestEncoderConfig DefaultEncoder
         {
-            Windows = ["notepad.exe", "calc.exe"]
-        };
+            get
+            {
+                return new()
+                {
+                    Layout = "$B1",
+                    TriggerDescription = new ManifestTriggerDescription
+                    {
+                        Push = "Play / Pause",
+                        Rotate = "Adjust Volume",
+                        Touch = "Play / Pause",
+                        LongTouch = "Skip Track",
+                    }
+                };
+            }
+        }
+
+        public override ManifestApplicationsToMonitor ApplicationsToMonitor
+        {
+            get
+            {
+                return new()
+                {
+                    Windows = ["notepad.exe", "calc.exe"]
+                };
+            }
+        }
     }
 }

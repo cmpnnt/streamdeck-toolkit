@@ -3,10 +3,10 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Cmpnnt.StreamDeckToolkit.Attributes;
 using Cmpnnt.StreamDeckToolkit.Actions;
+using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.Communication.Payloads;
 using Cmpnnt.StreamDeckToolkit.Components;
 using Cmpnnt.StreamDeckToolkit.Components.Settings;
-using Cmpnnt.StreamDeckToolkit.Runtime;
 using Cmpnnt.StreamDeckToolkit.Utilities;
 using Cmpnnt.StreamDeckToolkit.Wrappers;
 using SkiaSharp;
@@ -69,6 +69,16 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
                 ]
             }
         };
+        
+        public GroupStart AdvancedSettingsGroup = new() { Label = "Advanced Settings" };
+
+        public Checkbox VerboseLoggingCheckbox = new()
+        {
+            Label = "Verbose Logging",
+            PersistenceSettings = new() { Global = true, Setting = "VerboseLogging" }
+        };
+
+        public GroupEnd AdvancedSettingsGroupEnd = new();
 
         #region Private Members
         private readonly PluginAction3Settings settings;
@@ -187,9 +197,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action has received settings");
         }
 
-        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
-
-        #region Private Methods
+#region Private Methods
         private Task SaveSettings()
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action is saving settings");

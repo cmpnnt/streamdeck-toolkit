@@ -1,5 +1,7 @@
-﻿using System;
-using NLog;
+using System;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Cmpnnt.StreamDeckToolkit.Utilities
 {
@@ -31,46 +33,36 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
     }
 
     /// <summary>
-    /// Log4Net logger helper class
+    /// Logger helper class
     /// </summary>
     public class Logger
     {
-        private static Logger _instance;
-        private static readonly object ObjLock = new();
+        private static readonly Lazy<Logger> instance = new(() => new Logger());
+        private readonly LoggingLevelSwitch levelSwitch = new(LogEventLevel.Warning);
 
         /// <summary>
-        /// Returns singleton entry of Log4Net logger
+        /// Returns singleton instance of logger
         /// </summary>
-        public static Logger Instance
-        {
-            get
-            {
-                if (_instance != null)
-                {
-                    return _instance;
-                }
+        public static Logger Instance => instance.Value;
 
-                lock (ObjLock)
-                {
-                    return _instance ??= new Logger();
-                }
-            }
-        }
+        private readonly Serilog.Core.Logger log;
 
-        private readonly NLog.Logger log;
-        
         private Logger()
         {
-            var config = new NLog.Config.LoggingConfiguration();
-            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "pluginlog.log", ArchiveEvery=NLog.Targets.FileArchivePeriod.Day, MaxArchiveFiles=3, ArchiveFileName="archive/log.{###}.log", ArchiveSuffixFormat = ".{#}", Layout = "${longdate}|${level:uppercase=true}|${processname}|${threadid}|${message}" };
-            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
-            LogManager.Configuration = config;
-            log = LogManager.GetCurrentClassLogger();
-            LogMessage(TracingLevel.Debug, "Logger Initialized");
+            log = new LoggerConfiguration()
+                .MinimumLevel.ControlledBy(levelSwitch)
+                .Enrich.WithThreadId()
+                .WriteTo.File(
+                    "pluginlog_.log",
+                    rollingInterval: RollingInterval.Day,
+                    retainedFileCountLimit: 4,
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.ffff}|{Level:u}|{ThreadId}|{Message:lj}{NewLine}{Exception}")
+                .CreateLogger();
+            LogMessage(TracingLevel.Warn, "Logger Initialized");
         }
 
         /// <summary>
-        /// Add message to log with a specific severity level. 
+        /// Add message to log with a specific severity level.
         /// </summary>
         /// <param name="level"></param>
         /// <param name="message"></param>
@@ -79,27 +71,33 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
             switch (level)
             {
                 case TracingLevel.Debug:
-                    log.Debug(message);
+                    log.Debug("{Message}", message);
                     break;
 
                 case TracingLevel.Info:
-                    log.Info(message);
+                    log.Information("{Message}", message);
                     break;
 
                 case TracingLevel.Warn:
-                    log.Warn(message);
+                    log.Warning("{Message}", message);
                     break;
 
                 case TracingLevel.Error:
-                    log.Error(message);
+                    log.Error("{Message}", message);
                     break;
 
                 case TracingLevel.Fatal:
-                    log.Fatal(message);
+                    log.Fatal("{Message}", message);
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(level), level, null);
             }
+        }
+
+        public void SetVerbose(bool verbose)
+        {
+            levelSwitch.MinimumLevel = verbose ? LogEventLevel.Debug : LogEventLevel.Warning;
         }
     }
 }
