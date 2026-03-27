@@ -829,6 +829,35 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.KeyReleased
   nameWithType: KeypadBase.KeyReleased
+- uid: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect(Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent)
+  name: OnDeviceDidConnect(DeviceDidConnectEvent)
+  href: api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html#Cmpnnt_StreamDeckToolkit_Actions_KeypadBase_OnDeviceDidConnect_Cmpnnt_StreamDeckToolkit_Communication_Events_Dtos_DeviceDidConnectEvent_
+  commentId: M:Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect(Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent)
+  fullName: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect(Cmpnnt.StreamDeckToolkit.Communication.Events.Dtos.DeviceDidConnectEvent)
+  nameWithType: KeypadBase.OnDeviceDidConnect(DeviceDidConnectEvent)
+- uid: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect*
+  name: OnDeviceDidConnect
+  href: api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html#Cmpnnt_StreamDeckToolkit_Actions_KeypadBase_OnDeviceDidConnect_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidConnect
+  nameWithType: KeypadBase.OnDeviceDidConnect
+- uid: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect(System.String)
+  name: OnDeviceDidDisconnect(string)
+  href: api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html#Cmpnnt_StreamDeckToolkit_Actions_KeypadBase_OnDeviceDidDisconnect_System_String_
+  commentId: M:Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect(System.String)
+  name.vb: OnDeviceDidDisconnect(String)
+  fullName: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect(string)
+  fullName.vb: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect(String)
+  nameWithType: KeypadBase.OnDeviceDidDisconnect(string)
+  nameWithType.vb: KeypadBase.OnDeviceDidDisconnect(String)
+- uid: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect*
+  name: OnDeviceDidDisconnect
+  href: api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html#Cmpnnt_StreamDeckToolkit_Actions_KeypadBase_OnDeviceDidDisconnect_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnDeviceDidDisconnect
+  nameWithType: KeypadBase.OnDeviceDidDisconnect
 - uid: Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.OnPropertyInspectorDidAppear
   name: OnPropertyInspectorDidAppear()
   href: api/Cmpnnt.StreamDeckToolkit.Actions.KeypadBase.html#Cmpnnt_StreamDeckToolkit_Actions_KeypadBase_OnPropertyInspectorDidAppear
@@ -1584,6 +1613,64 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateManifest.PluginAssemblyPath
   nameWithType: GenerateManifest.PluginAssemblyPath
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper
+  name: GenerateRuntimeWrapper
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html
+  commentId: T:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper
+  nameWithType: GenerateRuntimeWrapper
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName
+  name: AssemblyName
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_AssemblyName
+  commentId: P:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName
+  nameWithType: GenerateRuntimeWrapper.AssemblyName
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName*
+  name: AssemblyName
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_AssemblyName_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.AssemblyName
+  nameWithType: GenerateRuntimeWrapper.AssemblyName
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir
+  name: BuildDir
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_BuildDir
+  commentId: P:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir
+  nameWithType: GenerateRuntimeWrapper.BuildDir
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir*
+  name: BuildDir
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_BuildDir_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.BuildDir
+  nameWithType: GenerateRuntimeWrapper.BuildDir
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute
+  name: Execute()
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_Execute
+  commentId: M:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute()
+  nameWithType: GenerateRuntimeWrapper.Execute()
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute*
+  name: Execute
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_Execute_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.Execute
+  nameWithType: GenerateRuntimeWrapper.Execute
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath
+  name: ManifestPath
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_ManifestPath
+  commentId: P:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath
+  nameWithType: GenerateRuntimeWrapper.ManifestPath
+- uid: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath*
+  name: ManifestPath
+  href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.html#Cmpnnt_StreamDeckToolkit_BuildTasks_GenerateRuntimeWrapper_ManifestPath_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.BuildTasks.GenerateRuntimeWrapper.ManifestPath
+  nameWithType: GenerateRuntimeWrapper.ManifestPath
 - uid: Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin
   name: LinkPlugin
   href: api/Cmpnnt.StreamDeckToolkit.BuildTasks.LinkPlugin.html
@@ -5623,6 +5710,44 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.StreamDeckToolkit.Components.File.PersistenceSettings
   nameWithType: File.PersistenceSettings
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupEnd
+  name: GroupEnd
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupEnd.html
+  commentId: T:Cmpnnt.StreamDeckToolkit.Components.GroupEnd
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupEnd
+  nameWithType: GroupEnd
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupStart
+  name: GroupStart
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupStart.html
+  commentId: T:Cmpnnt.StreamDeckToolkit.Components.GroupStart
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupStart
+  nameWithType: GroupStart
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label
+  name: Label
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupStart.html#Cmpnnt_StreamDeckToolkit_Components_GroupStart_Label
+  commentId: P:Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label
+  nameWithType: GroupStart.Label
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label*
+  name: Label
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupStart.html#Cmpnnt_StreamDeckToolkit_Components_GroupStart_Label_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Label
+  nameWithType: GroupStart.Label
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open
+  name: Open
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupStart.html#Cmpnnt_StreamDeckToolkit_Components_GroupStart_Open
+  commentId: P:Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open
+  nameWithType: GroupStart.Open
+- uid: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open*
+  name: Open
+  href: api/Cmpnnt.StreamDeckToolkit.Components.GroupStart.html#Cmpnnt_StreamDeckToolkit_Components_GroupStart_Open_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Components.GroupStart.Open
+  nameWithType: GroupStart.Open
 - uid: Cmpnnt.StreamDeckToolkit.Components.LocalizedContent
   name: LocalizedContent
   href: api/Cmpnnt.StreamDeckToolkit.Components.LocalizedContent.html
@@ -8949,6 +9074,22 @@ references:
   isSpec: "True"
   fullName: Cmpnnt.StreamDeckToolkit.Utilities.Logger.LogMessage
   nameWithType: Logger.LogMessage
+- uid: Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose(System.Boolean)
+  name: SetVerbose(bool)
+  href: api/Cmpnnt.StreamDeckToolkit.Utilities.Logger.html#Cmpnnt_StreamDeckToolkit_Utilities_Logger_SetVerbose_System_Boolean_
+  commentId: M:Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose(System.Boolean)
+  name.vb: SetVerbose(Boolean)
+  fullName: Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose(bool)
+  fullName.vb: Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose(Boolean)
+  nameWithType: Logger.SetVerbose(bool)
+  nameWithType.vb: Logger.SetVerbose(Boolean)
+- uid: Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose*
+  name: SetVerbose
+  href: api/Cmpnnt.StreamDeckToolkit.Utilities.Logger.html#Cmpnnt_StreamDeckToolkit_Utilities_Logger_SetVerbose_
+  commentId: Overload:Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose
+  isSpec: "True"
+  fullName: Cmpnnt.StreamDeckToolkit.Utilities.Logger.SetVerbose
+  nameWithType: Logger.SetVerbose
 - uid: Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo
   name: PluginUpdateInfo
   href: api/Cmpnnt.StreamDeckToolkit.Utilities.PluginUpdateInfo.html
