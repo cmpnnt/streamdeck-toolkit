@@ -1,5 +1,10 @@
 
 
+## [v1.1.0] - 2026-03-27
+### :sparkles: New Features
+- [`27a4be0`](https://github.com/cmpnnt/streamdeck-toolkit/commit/27a4be05a811f7f4b9b5c49512c7617519e53464) - replace NLog with Serilog and add collapsible SDPI group component *(commit by [@cmpnnt](https://github.com/cmpnnt))*
+
+
 ## [v1.0.0] - 2026-03-26
 ### :boom: BREAKING CHANGES
 - due to [`e3aa29c`](https://github.com/cmpnnt/streamdeck-toolkit/commit/e3aa29c9d32ca649bffed04a1e0743a0d809dfbb) - simplify event routing and fix AOT-safe BaseEvent deserialization *(commit by [@cmpnnt](https://github.com/cmpnnt))*:
@@ -60,3 +65,4 @@
 - [`4f3293d`](https://github.com/cmpnnt/streamdeck-toolkit/commit/4f3293d03eeaf22ed176912b0e61457b788acf23) - **sample plugin**: remove MacMinVersion *(commit by [@cmpnnt](https://github.com/cmpnnt))*
 
 [v1.0.0]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v0.1.0...v1.0.0
+[v1.1.0]: https://github.com/cmpnnt/streamdeck-toolkit/compare/v1.0.0...v1.1.0
