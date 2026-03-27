@@ -25,8 +25,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 
         public PluginAction2(IOutboundConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            // TODO: Examine why this .HasValue pattern is necessary and potentially change in all three actions
-            settings = (payload.Settings == null || !payload.Settings.HasValue) ?
+            settings = payload.Settings == null ?
                 PluginAction2Settings.CreateDefaultSettings() :
                 payload.Settings.Value.Deserialize(SamplePluginSerializerContext.Default.PluginAction2Settings);
 

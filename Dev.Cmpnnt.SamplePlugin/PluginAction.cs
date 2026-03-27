@@ -55,7 +55,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
 
         public PluginAction(IOutboundConnection connection, InitialPayload payload) : base(connection, payload)
         {
-            settings = (payload.Settings == null || !payload.Settings.HasValue) ?
+            settings = payload.Settings == null ?
                 PluginActionSettings.CreateDefaultSettings() :
                 payload.Settings.Value.Deserialize(SamplePluginSerializerContext.Default.PluginActionSettings);
 
