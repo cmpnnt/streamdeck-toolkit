@@ -58,6 +58,7 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
         }
     }
 
+    // TODO: Document verbose logging and collapsable PI groups
     internal class SamplePluginGlobalSettings
     {
         public static SamplePluginGlobalSettings CreateDefaultSettings()
