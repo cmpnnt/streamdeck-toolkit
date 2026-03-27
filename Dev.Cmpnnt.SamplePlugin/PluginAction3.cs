@@ -113,11 +113,6 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
             Logger.Instance.LogMessage(TracingLevel.Info, "Event Triggered: PropertyInspectorDidAppearEvent");
         }
 
-        public override void Dispose()
-        {
-            Logger.Instance.LogMessage(TracingLevel.Info, $"Destructor called");
-        }
-
         public override void DialRotate(DialRotatePayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Dial rotated");
@@ -196,8 +191,13 @@ namespace Cmpnnt.StreamDeckToolkit.SamplePlugin
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action has received settings");
         }
+        
+        public override void Dispose()
+        {
+            Logger.Instance.LogMessage(TracingLevel.Info, $"Destructor called");
+        }
 
-#region Private Methods
+        #region Private Methods
         private Task SaveSettings()
         {
             Logger.Instance.LogMessage(TracingLevel.Info, "Plugin action is saving settings");
