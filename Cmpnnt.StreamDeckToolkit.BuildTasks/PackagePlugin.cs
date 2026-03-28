@@ -30,7 +30,6 @@ public class PackagePlugin : Task
 
     }
     
-    // TODO: Note the default directories for the packaged plugin in the documentation.
     private static string PluginsDirectory()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

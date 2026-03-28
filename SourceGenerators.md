@@ -3,40 +3,42 @@
 ## Table of Contents
 
 - [Overview](#overview)
-  - [Project wiring](#project-wiring)
+    - [Project wiring](#project-wiring)
 - [1. PluginRegistrar](#1-pluginregistrar)
-  - [Problem](#problem)
-  - [How it works](#how-it-works)
-  - [Generated output (sample)](#generated-output-sample)
-  - [Consumer usage](#consumer-usage)
+    - [Problem](#problem)
+    - [How it works](#how-it-works)
+    - [Generated output (sample)](#generated-output-sample)
+    - [Consumer usage](#consumer-usage)
 - [2. ManifestModelSourceGenerator](#2-manifestmodelsourcegenerator)
-  - [Problem](#problem-1)
-  - [How it works](#how-it-works-1)
-  - [Generated output (sample)](#generated-output-sample-1)
-  - [Status](#status)
+    - [Problem](#problem-1)
+    - [How it works](#how-it-works-1)
+    - [Generated output (sample)](#generated-output-sample-1)
+    - [Status](#status)
 - [3. SettingsPopulatorGenerator](#3-settingspopulatorgenerator)
-  - [Problem](#problem-2)
-  - [How it works](#how-it-works-2)
-  - [Type handling table](#type-handling-table)
-  - [Generated output (sample)](#generated-output-sample-2)
-  - [Consumer usage](#consumer-usage-1)
-  - [Diagnostics](#diagnostics)
+    - [Problem](#problem-2)
+    - [How it works](#how-it-works-2)
+    - [Type handling table](#type-handling-table)
+    - [Generated output (sample)](#generated-output-sample-2)
+    - [Consumer usage](#consumer-usage-1)
+    - [Diagnostics](#diagnostics)
 - [4. SdpiGenerator](#4-sdpigenerator)
-  - [Problem](#problem-3)
-  - [How it works](#how-it-works-3)
-  - [Supported components](#supported-components)
-  - [Consumer usage](#consumer-usage-2)
+    - [Problem](#problem-3)
+    - [How it works](#how-it-works-3)
+    - [Supported components](#supported-components)
+    - [Consumer usage](#consumer-usage-2)
 - [How the generators interact at runtime](#how-the-generators-interact-at-runtime)
 - [Adding a new generator](#adding-a-new-generator)
-  - [Key dependencies available in the generator project](#key-dependencies-available-in-the-generator-project)
+    - [Key dependencies available in the generator project](#key-dependencies-available-in-the-generator-project)
 
 ---
 
-This document describes the four Roslyn source generators in the `Cmpnnt.SdTools.SourceGenerators` project: what problems they solve, how they work internally, and how consumer plugin projects use them.
+This document describes the four .NET source generators in the `Cmpnnt.SdTools.SourceGenerators` project: what problems they solve, how they work and how consumer plugin projects use them.
 
 ## Overview
 
 All four generators live in `Cmpnnt.SdTools.SourceGenerators/` and are wired into consumer projects as Roslyn analyzers (not regular project references). This means they run inside the compiler during build and emit `.g.cs` files that participate in compilation.
+
+<details name="diagram">
 
 ```mermaid
 graph LR
@@ -65,6 +67,7 @@ graph LR
     SC --> SP --> G3
     UI --> SG --> G4
 ```
+</details>
 
 ### Project wiring
 
@@ -103,9 +106,11 @@ obj/Generated/Cmpnnt.SdTools.SourceGenerators/
 
 ### Problem
 
-The Stream Deck runtime routes events to plugin actions by string action ID (e.g. `"cmpnnt.sdtools.sampleplugin.pluginaction"`). The host needs a factory that maps these IDs to concrete class constructors. Without code generation, this requires `Activator.CreateInstance` or a hand-maintained switch statement — both are either AOT-hostile or error-prone.
+The Stream Deck runtime routes events to plugin actions by string action ID (e.g. `"cmpnnt.sdtools.sampleplugin.pluginaction"`). The host needs a factory that maps these IDs to concrete class constructors. Without code generation, this requires `Activator.CreateInstance` or a switch statement — both are either incompatible with AOT or error-prone.
 
 ### How it works
+
+<details name="diagram">
 
 ```mermaid
 flowchart TD
@@ -114,12 +119,13 @@ flowchart TD
     C --> D["Pass to PluginActionIdRegistryTemplate"]
     D --> E["Emit PluginActionIdRegistry.g.cs"]
 ```
+</details>
 
 1. The generator scans every class declaration in the compilation.
 2. For each non-abstract class implementing `Cmpnnt.SdTools.Backend.ICommonPluginFunctions`, it collects the fully-qualified class name.
 3. The template emits a `PluginActionIdRegistry` class implementing `IPluginActionRegistry` with:
-   - A `FrozenSet<string>` of all action IDs (lowercase fully-qualified class names)
-   - A `FrozenDictionary<string, Func<ISdConnection, InitialPayload, ICommonPluginFunctions>>` mapping each ID to a `new ClassName(conn, payload)` factory lambda
+    - A `FrozenSet<string>` of all action IDs (lowercase fully-qualified class names)
+    - A `FrozenDictionary<string, Func<ISdConnection, InitialPayload, ICommonPluginFunctions>>` mapping each ID to a `new ClassName(conn, payload)` factory lambda
 
 ### Generated output (sample)
 
@@ -170,13 +176,15 @@ SdWrapper.Run(args, new PluginActionIdRegistry());
 - **Template:** `Templates/ManifestProviderTemplate.cs`
 - **Generated file:** `GeneratedManifestModel.g.cs`
 
-> For full usage instructions, attribute reference, and examples see **[ManifestGeneration.md](ManifestGeneration.md)**.
+> For full usage instructions, attribute reference, and examples see **[ManifestGeneration.md](https://github.com/cmpnnt/streamdeck-toolkit/wiki/Manifest-Generation)**.
 
 ### Problem
 
-Stream Deck plugins require a `manifest.json` describing the plugin's actions, their capabilities (Keypad, Encoder), and metadata. Keeping this JSON file in sync with the actual C# action classes is tedious and error-prone.
+Stream Deck plugins require a `manifest.json` describing the plugin's actions, their capabilities and metadata. Keeping this JSON file in sync with the actual C# action classes is tedious and error-prone.
 
 ### How it works
+
+<details name="diagram">
 
 ```mermaid
 flowchart TD
@@ -186,6 +194,7 @@ flowchart TD
     D["Find ManifestConfigBase subclass (POCO)\n→ capture fully-qualified class name"] --> E
     E["ManifestProviderTemplate.Generate(input)\n→ emit GeneratedManifestModel.g.cs"]
 ```
+</details>
 
 Values are resolved in priority order: **POCO > attribute > MSBuild > convention**.
 
@@ -248,9 +257,13 @@ namespace GeneratedManifest
 
 ### Problem
 
-Plugin actions have settings classes whose values arrive from the Stream Deck software as `JsonElement` payloads. These payloads may contain only the properties that changed — a JSON **merge/patch**, not a full replacement. The previous solution, `Tools.AutoPopulateSettings<T>`, used reflection (`PropertyInfo`, `GetCustomAttributes`, `SetValue`) and `JsonSerializer.Deserialize(element, runtimeType)` — all incompatible with native AOT.
+Plugin actions have settings classes whose values arrive from the Stream Deck software as `JsonElement` payloads.
+These payloads may contain only the properties that changed — a JSON **merge/patch**, not a full replacement.
+The previous solution used reflection and `JsonSerializer.Deserialize`, which are incompatible with native AOT.
 
 ### How it works
+
+<details name="diagram">
 
 ```mermaid
 flowchart TD
@@ -266,12 +279,13 @@ flowchart TD
     I -- no --> K["Report SD001 error"]
     F & H & J --> L["Emit partial class with\nPopulateFromJson method"]
 ```
+</details>
 
 1. Finds classes decorated with `[SdSettings]` (`Cmpnnt.SdTools.Attributes.SdSettingsAttribute`).
 2. For each class, collects its public settable properties and determines:
-   - **JSON key**: from `[JsonPropertyName("...")]` if present, otherwise `JsonNamingPolicy.CamelCase.ConvertName(PropertyName)`.
-   - **Is filename**: whether `[FilenameProperty]` is applied (triggers `C:\fakepath\` stripping).
-   - **Type classification**: one of 20+ categories (String, Bool, NullableBool, Int, NullableInt, ..., Enum, NullableEnum, Complex, Unknown).
+    - **JSON key**: from `[JsonPropertyName("...")]` if present, otherwise `JsonNamingPolicy.CamelCase.ConvertName(PropertyName)`.
+    - **Is filename**: whether `[FilenameProperty]` is applied (triggers `C:\fakepath\` stripping).
+    - **Type classification**: one of 20+ categories (String, Bool, NullableBool, Int, NullableInt, ..., Enum, NullableEnum, Complex, Unknown).
 3. For complex types, the generator scans the compilation for `JsonSerializerContext` subclasses with `[JsonSerializable(typeof(T))]` attributes, building a lookup from type to context expression (e.g. `SamplePluginSerializerContext.Default.PluginAction2Settings`).
 4. Emits a `partial class` implementing `ISettingsPopulatable` with a `PopulateFromJson(JsonElement)` method. The method iterates the JSON properties and dispatches via a `switch (prop.Name)` — no reflection, no runtime Type lookups.
 
@@ -382,9 +396,11 @@ public override void ReceivedSettings(ReceivedSettingsPayload payload)
 
 ### Problem
 
-Each Stream Deck plugin action needs a Property Inspector — an HTML page displayed in the Stream Deck software when the user configures an action. Writing and maintaining these HTML pages by hand, especially keeping them in sync with the plugin's settings, is error-prone. The SDPI (Stream Deck Property Inspector) component library provides web components (`<sdpi-textarea>`, `<sdpi-select>`, etc.) but the HTML boilerplate is still manual.
+Each Stream Deck plugin action needs a Property Inspector — an HTML page displayed in the Stream Deck software when the user configures an action. Writing and maintaining these HTML pages by hand, especially keeping them in sync with the plugin's settings, is a nightmare. The SDPI (Stream Deck Property Inspector) component library provides web components (`<sdpi-textarea>`, `<sdpi-select>`, etc.) but the HTML boilerplate is still manual.
 
 ### How it works
+
+<details name="diagram">
 
 ```mermaid
 flowchart TD
@@ -396,6 +412,7 @@ flowchart TD
     F --> G["Emit C# file containing\nHTML as string constants"]
     G --> H["MSBuild ExtractSdpiHtml task:\nextract HTML to output directory"]
 ```
+</details>
 
 The SDPI generator has the most complex pipeline of the four generators because it bridges C# code to HTML output via a build task:
 
@@ -409,7 +426,7 @@ The SDPI generator has the most complex pipeline of the four generators because 
 
 5. **HTML generation**: Each component type has a template (e.g. `TextAreaTemplate.GenerateComponent(model)`) that emits the corresponding HTML using the Elgato SDPI web component syntax. Properties are converted to kebab-case HTML attributes via `StringUtils.ToKebabCase()`.
 
-6. **HTML document wrapping**: All component HTML fragments for a class are combined into a full HTML document with the SDPI boilerplate (`<script src="sdpi-components.js">`, etc.).
+6. **HTML document wrapping**: All component HTML fragments for a class are combined into a full HTML document with the SDPI boilerplate (`<script src="sdpi-components.js">`, etc.). If the class contains any `GroupStart` fields, a `<style>` block with matching SDPI styles is injected into `<head>`.
 
 7. **C# output**: The generator emits a `GeneratedSdpiComponents.g.cs` file containing the HTML as C# string constants, organized by class name with `OutputPath` metadata.
 
@@ -432,12 +449,14 @@ The SDPI generator has the most complex pipeline of the four generators because 
 | `Radio` | `<sdpi-radio>` | Setting, Columns, Options |
 | `Range` | `<sdpi-range>` | Setting, Min, Max, Step, ShowLabels |
 | `Select` | `<sdpi-select>` | Setting (via PersistenceSettings), Placeholder, Options |
+| `GroupStart` | `<details class="sdpi-group">` | Label, Open |
+| `GroupEnd` | `</details>` | — |
 
-All components share `Label` (wraps in `<sdpi-item>`) and `Disabled`.
+All components except `GroupStart`/`GroupEnd` share `Label` (wraps in `<sdpi-item>`) and `Disabled`.
 
 ### Consumer usage
 
-Declare SDPI components as fields in a plugin action class decorated with `[SdpiOutputDirectory]`:
+Declare SDPI components as fields in a plugin action class decorated with `[SdpiOutputDirectory]`. Fields are emitted in declaration order.
 
 ```csharp
 // PluginAction.cs
@@ -468,6 +487,24 @@ public partial class PluginAction : KeyAndEncoderBase
 }
 ```
 
+#### Collapsible groups
+
+Wrap any number of components between a `GroupStart` and `GroupEnd` field to produce a collapsible `<details>` section. Multiple groups per class are supported. Set `Open = true` on `GroupStart` to render the group expanded by default.
+
+```csharp
+public GroupStart AdvancedGroup = new() { Label = "Advanced Settings" };
+
+public Checkbox VerboseLogging = new()
+{
+    Label = "Verbose Logging",
+    PersistenceSettings = new() { Global = true, Setting = "VerboseLogging" }
+};
+
+public GroupEnd AdvancedGroupEnd = new();
+```
+
+When any `GroupStart` is present the generator injects a `<style>` block into `<head>` that matches the SDPI component library's visual style (gray summary text, animated `▶` chevron, correct font stack).
+
 The generator produces HTML that ends up at `PropertyInspector/PluginAction.html`:
 
 ```html
@@ -476,6 +513,12 @@ The generator produces HTML that ends up at `PropertyInspector/PluginAction.html
     <head lang="en">
         <meta charset="utf-q8" />
         <script src="sdpi-components.js"></script>
+        <style>
+            details.sdpi-group { margin: 0 0 10px 0; }
+            details.sdpi-group > summary { color: #969696; ... }
+            details.sdpi-group > summary::before { content: '▶'; ... }
+            details.sdpi-group[open] > summary::before { transform: rotate(90deg); }
+        </style>
     </head>
     <body>
         <sdpi-item label="Textarea">
@@ -488,6 +531,12 @@ The generator produces HTML that ends up at `PropertyInspector/PluginAction.html
                 <option value="2">Two</option>
             </sdpi-select>
         </sdpi-item>
+        <details class="sdpi-group">
+            <summary>Advanced Settings</summary>
+        <sdpi-item label="Verbose Logging">
+            <sdpi-checkbox global setting="VerboseLogging" label="Verbose Logging"></sdpi-checkbox>
+        </sdpi-item>
+        </details>
     </body>
 </html>
 ```
@@ -495,6 +544,8 @@ The generator produces HTML that ends up at `PropertyInspector/PluginAction.html
 ---
 
 ## How the generators interact at runtime
+
+<details name="diagram">
 
 ```mermaid
 sequenceDiagram
@@ -519,12 +570,13 @@ sequenceDiagram
     PA->>SET: settings.PopulateFromJson(payload.Settings)
     Note over SET: Generated switch/case,<br>no reflection
 ```
+</details>
 
 ---
 
 ## Adding a new generator
 
-If you need to create a fifth generator:
+If you need to create a generator:
 
 1. Create a new `.cs` file in `Cmpnnt.SdTools.SourceGenerators/` with a class implementing `IIncrementalGenerator` and the `[Generator]` attribute.
 2. The generator is automatically discovered by Roslyn — no registration needed.

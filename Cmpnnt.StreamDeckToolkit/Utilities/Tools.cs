@@ -204,8 +204,6 @@ namespace Cmpnnt.StreamDeckToolkit.Utilities
             return GenerateKeyImage(GENERIC_KEY_IMAGE_SIZE, GENERIC_KEY_IMAGE_SIZE, text, titleParameters, backgroundColor, imageFormat, quality);
         }
         
-        //TODO: CreateAction a version of this that can set a background image from a file path or include that param and logic here.
-
         /// <summary>
         /// Creates a key image based on given height, width, color and font properties.
         /// </summary>

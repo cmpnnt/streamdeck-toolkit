@@ -36,7 +36,6 @@ public class DataSourceSettings
     /// <summary>
     /// When present, a refresh button is displayed next to the input. Applies only to <see cref="Select"/>.
     /// </summary>
-    // TODO: In the source generator, ignore properties that do not have values, like this null/boolean when null
     [SdpiPropertyName("show-refresh")]
     public bool? ShowRefresh { get; set; } = null;
     
