@@ -37,7 +37,7 @@ flowchart TD
     F -->|"reflection · ManifestProvider.GetManifestData()"| G["manifest.json\nwritten to plugin output directory"]
 ```
 
-The source generator runs during compilation and emits a `GeneratedManifest.ManifestProvider` class. After the build completes, the `GenerateManifest` MSBuild task loads the compiled plugin DLL, calls `ManifestProvider.GetManifestData()` via reflection, and serializes the result to `manifest.json`.
+The source generator runs during compilation and emits a `GeneratedManifest.ManifestProvider` class. After the build completes, the `GenerateManifest` MSBuild task loads the compiled plugin DLL, calls `ManifestProvider.GetManifestData()` using reflection, and serializes the result to `manifest.json`.
 
 ---
 
@@ -202,7 +202,7 @@ If you use `[SdpiOutputDirectory("PropertyInspector/")]` on an action class, the
 
 ## Layer 3 — POCO config (`ManifestConfigBase`)
 
-For values that cannot be expressed as attribute arguments — complex nested objects like `States`, `Encoder`, and arrays — subclass `ManifestConfigBase` anywhere in your plugin project. The generator finds the subclass automatically (no attribute needed) and instantiates it at build time via the `GenerateManifest` task.
+For values that cannot be expressed as attribute arguments — complex nested objects like `States`, `Encoder`, and arrays — subclass `ManifestConfigBase` anywhere in your plugin project. The generator finds the subclass automatically (no attribute needed) and instantiates it at build time using the `GenerateManifest` task.
 
 ```csharp
 using Cmpnnt.StreamDeckToolkit.Manifest;
@@ -219,7 +219,7 @@ internal class MyManifestConfig : ManifestConfigBase
 
 ### DefaultStates
 
-Sets the `States` array for every action that doesn't otherwise define its own. When `null` (the default), the generator writes a single state with `Image = "Images/pluginAction"`.
+Sets the `States` array for every action that doesn't otherwise define its own. When `null`, the generator writes a single state with `Image = "Images/pluginAction"`.
 
 ```csharp
 public override ManifestStateConfig[] DefaultStates =>
@@ -263,7 +263,7 @@ public override ManifestStateConfig[] DefaultStates =>
 
 ### DefaultEncoder
 
-Sets the `Encoder` object for every action that implements `IEncoderPlugin`. When `null` (the default), the `Encoder` field is omitted from those actions.
+Sets the `Encoder` object for every action that implements `IEncoderPlugin`. When `null`, the `Encoder` field is omitted from those actions.
 
 ```csharp
 public override ManifestEncoderConfig DefaultEncoder => new()
@@ -302,7 +302,7 @@ public override ManifestEncoderConfig DefaultEncoder => new()
 
 ### ApplicationsToMonitor
 
-Tells Stream Deck to notify the plugin when specific applications launch or quit. When `null` (the default), the field is omitted.
+Tells Stream Deck to notify the plugin when specific applications launch or quit. When `null`, the field is omitted.
 
 ```csharp
 public override ManifestApplicationsToMonitor ApplicationsToMonitor => new()
@@ -323,7 +323,7 @@ public override ManifestApplicationsToMonitor ApplicationsToMonitor => new()
 
 ### Profiles
 
-Bundles Stream Deck profiles to install with the plugin. When `null` (the default), the field is omitted.
+Bundles Stream Deck profiles to install with the plugin. When `null`, the field is omitted.
 
 ```csharp
 public override ManifestProfile[] Profiles =>
@@ -381,7 +381,7 @@ Base classes (`KeypadBase`, `EncoderBase`, `KeyAndEncoderBase`) implement the co
 <PropertyGroup>
   <Version>1.0.0</Version>
   <Authors>ACME Corp</Authors>
-  <Description>Controls a widget via Stream Deck.</Description>
+  <Description>Controls a widget with the Stream Deck.</Description>
   <PackageProjectUrl>https://acme.example/widget-plugin</PackageProjectUrl>
 </PropertyGroup>
 
@@ -535,7 +535,7 @@ internal class PluginManifestConfig : ManifestConfigBase
   "Category": "ACME",
   "CategoryIcon": "Images/categoryIcon",
   "CodePath": "com.acme.widgetcontroller.exe",
-  "Description": "Controls a widget via Stream Deck.",
+  "Description": "Controls a widget with the Stream Deck.",
   "Icon": "Images/pluginIcon",
   "Name": "Widget Controller",
   "OS": [{ "Platform": "windows", "MinimumVersion": "10" }],
